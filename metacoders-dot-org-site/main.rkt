@@ -6,17 +6,14 @@
          metacoders-dot-org-lib 
          "./index.rkt"
          "./learn-more.rkt"
-         "./city-search.rkt")
-
-(define (coaches)
-  (page coaches-top-path
-        (normal-content
-          (h1 "Coaches"))))
-
-(define (get-to-work)
-  (page get-to-work-path
-        (normal-content
-          (h1 "Get To Work"))))
+         "./get-to-work.rkt"
+         "./city-search.rkt"
+         
+         "./coaches.rkt"
+         "./tech-coords.rkt"
+         "./scientists.rkt"
+         "./coders.rkt"
+         "./partners.rkt")
 
 (define (metacoders.org)
   (flatten
@@ -28,10 +25,9 @@
       (learn-more)
       (get-to-work) 
       (city-search-page)
-      (add-a-city-page)
       (cities)
-      (coaches))))
-
-
-
-
+      (coaches)
+      (tech-coords)
+      (scientists)
+      (coders)
+      (partners) )))

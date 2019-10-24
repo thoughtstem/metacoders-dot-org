@@ -1,8 +1,7 @@
 #lang racket
 
 (provide city-search-page
-         cities
-         add-a-city-page) 
+         cities)
 
 (require metacoders-dot-org-lib)
 (require (prefix-in dc: metacoders-dot-org-dc-site))
@@ -40,15 +39,11 @@
       (card-body
         (card-title title)))))
 
-(define (add-a-city-page)
-  (page cities/add-a-city.html
-    (normal-content)))
-
 (define (add-a-city-card)
   (card
     (card-body
       (card-title "Your city can too!")
-      (link-to (add-a-city-page)
+      (link-to partners-top-path
                (button-secondary "Learn More")))))
 
 ;Move to website

@@ -3,45 +3,40 @@
 (provide normal-content
          homepage-content)
 
-(provide index-path
-         city-search-path
-         learn-more-path
-         get-to-work-path
-         scientist-top-path        
-         coders-top-path           
-         location-partner-top-path
-         tech-coords-top-path    
-         coaches-top-path)
 
 (provide (all-from-out website/bootstrap)
+         (all-from-out "./begin-training.rkt") 
+         (all-from-out "./email-signup.rkt") 
+         (all-from-out "./visual-aids.rkt") 
+         (all-from-out "./calls-to-action.rkt") 
+         (all-from-out "./paths.rkt") 
          (all-from-out "./imgs.rkt") 
          (all-from-out "./css.rkt"))
 
 (require website/bootstrap
+         "./begin-training.rkt"
+         "./email-signup.rkt"
+         "./visual-aids.rkt"
+         "./calls-to-action.rkt"
+         "./paths.rkt"
          "./imgs.rkt" 
          "./css.rkt")
 
-(define index-path                (list "index.html"))
-(define city-search-path          (list "city-search.html"))
-(define learn-more-path           (list "learn-more.html"))
-(define get-to-work-path          (list "get-to-work.html"))
-(define scientist-top-path        (list "scientists.html"))
-(define coders-top-path           (list "coders.html"))
-(define location-partner-top-path (list "partners.html"))
-(define tech-coords-top-path       (list "tech-coordinators.html"))
-(define coaches-top-path       (list "coaches.html"))
 
 (define (normal-content . more)
   (content
     (normal-navbar)
-    (container more)))
+    (container 
+      id: "main"
+      more)))
 
 (define (homepage-content . more)
   (content 
     #:head (list 
              (include-css testimonial-quotes.css))
     (normal-navbar)
-    more))
+    (div id: "main"
+         more)))
 
 (define (normal-navbar)
   (navbar
@@ -50,44 +45,6 @@
     (nav-link city-search-path "Enroll Kids")
     (nav-link get-to-work-path "Get To Work")))
 
-(provide kid-circle
-         coach-circle
-         tech-coordinator-circle
-         location-circle
-         scientist-circle
-         coder-circle)
-
-(require (only-in 2htdp/image circle))
-
-(define (kid-circle)
-  (write-img 
-    style: (properties margin: "2px") 
-    (circle 4 'solid 'red)))
-
-(define (coach-circle)
-  (write-img 
-    style: (properties margin: "2px") 
-    (circle 4 'solid 'orange)))
-
-(define (tech-coordinator-circle)
-  (write-img 
-    style: (properties margin: "2px") 
-    (circle 4 'solid 'yellow)))
-
-(define (location-circle)
-  (write-img 
-    style: (properties margin: "2px") 
-    (circle 4 'solid 'green)))
-
-(define (scientist-circle)
-  (write-img 
-    style: (properties margin: "2px") 
-    (circle 4 'solid 'blue)))
-
-(define (coder-circle)
-  (write-img 
-    style: (properties margin: "2px") 
-    (circle 4 'solid 'purple)))
 
 
 (provide big-image
@@ -128,12 +85,11 @@
                    (cite
                      attrib
                      (br)
-                     (a href: learn-more-path
+                     (a href: (pathify learn-more-path)
                         (button-secondary 
                           style: (properties
                                    margin-top: 10)
                           "Learn More"))))))))
-
 
 
 
