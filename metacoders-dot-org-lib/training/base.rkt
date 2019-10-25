@@ -1,0 +1,132 @@
+#lang at-exp racket
+
+(provide (struct-out place)
+         (struct-out person) 
+         (struct-out story) 
+         (struct-out story-link) 
+
+         house?
+         classroom?
+
+         lovelace-elementary 
+         babbage-university
+         turing-recreation-center
+
+         new-hire-tc
+         settled-tc
+         1-year-tc
+         new-hire-c
+         settled-c
+         1-year-c
+
+         new-hire-tc-house        
+         settled-tc-house        
+         1-year-tc-house        
+         new-hire-c-house        
+         settled-c-house        
+         1-year-c-house  
+
+         metapolis)
+
+(require lang/posn)
+
+;Stories model...?
+(struct place (name type posn))
+(struct person (name))
+
+(struct story-link (name next-story))
+(struct story (title place content links))
+
+(define (house? p)
+  (eq? (place-type p) 'house))
+
+(define (classroom? p)
+  (eq? (place-type p) 'classroom))
+
+; Uses of base (could possibly be moved to diff file).
+
+(define lovelace-elementary
+  (place "Lovelace Elementary" 
+         'classroom
+         (make-posn 38 14)))
+
+(define babbage-university
+  (place "Babbage University" 
+         'classroom
+         (make-posn 39 19)))
+
+(define turing-recreation-center
+  (place "Turing Recreation Center" 
+         'classroom
+         (make-posn 65 33)))
+
+(define new-hire-tc
+  (person "Jack"))
+
+(define new-hire-tc-house
+  (place "Jack's House" 
+         'house
+         (make-posn 63 32)))
+
+(define settled-tc
+  (person "Kate"))
+
+(define settled-tc-house
+  (place "Kate's House" 
+         'house
+         (make-posn 18 14.5)))
+
+(define 1-year-tc
+  (person "John"))
+
+(define 1-year-tc-house
+  (place "John's House" 
+         'house
+         (make-posn 42.4 19)))
+
+
+(define new-hire-c
+  (person "Bruce"))
+
+(define new-hire-c-house
+  (place "Bruce's House" 
+         'house
+         (make-posn 26.5 16)))
+
+(define settled-c
+  (person "Josheph"))
+
+(define settled-c-house
+  (place "Joseph's House" 
+         'house
+         (make-posn 6 5.5)))
+
+(define 1-year-c
+  (person "Ruby"))
+
+(define 1-year-c-house
+  (place "Ruby's House" 
+         'house
+         (make-posn 56 24)))
+
+
+(define (metapolis)
+  (list
+    lovelace-elementary
+    babbage-university
+    turing-recreation-center
+
+    new-hire-tc-house        
+    settled-tc-house        
+    1-year-tc-house        
+    new-hire-c-house        
+    settled-c-house        
+    1-year-c-house))
+
+
+
+
+
+
+
+

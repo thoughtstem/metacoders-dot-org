@@ -17,5 +17,6 @@
             (col-6
               (email-signup))
             (col-6
-              (begin-training (training)))))))
+              (begin-training 
+                (training-top)))))))
 
