@@ -13,7 +13,10 @@
          "./tech-coords.rkt"
          "./scientists.rkt"
          "./coders.rkt"
-         "./partners.rkt")
+         "./partners.rkt"
+         
+         "./setup-scripts.rkt"
+         )
 
 (define (metacoders.org)
   (flatten
@@ -30,4 +33,5 @@
       (tech-coords)
       (scientists)
       (coders)
-      (partners) )))
+      (partners) 
+      (setup-scripts))))

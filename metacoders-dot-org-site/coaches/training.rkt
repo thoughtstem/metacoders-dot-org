@@ -3,13 +3,11 @@
 (provide training
          training-top)
 
-(require metacoders-dot-org-lib
-         metacoders-dot-org-lib/training/pages)
+(require metacoders-dot-org-lib)
 
 (define (training)
   (list 
-    (training-top)
-    (training-stories)))
+    (training-top)))
 
 (define (training-top)
   (page coaches/training.html
@@ -17,14 +15,4 @@
           (h1 "Coach Training Starts Here")
 
           (h2 "Welcome to Metapolis")
-          (write-img
-            (render-city (metapolis)))
-          
-          (div
-            (h2 "Places of Interest for Coaches")
-            
-              (link-to-place "Lovelace Elementary"
-                             (lovelace-elementary-top))
-              (link-to-place  "Babbage University"
-                              (babbage-university-top))))))
-
+          )))

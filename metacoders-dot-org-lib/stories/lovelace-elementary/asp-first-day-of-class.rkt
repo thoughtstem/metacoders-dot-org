@@ -3,7 +3,7 @@
 (provide asp-first-day-of-class
          asp-first-day-of-class/checkin)
 
-(require website/bootstrap "../base.rkt")
+(require metacoders-dot-org/metacoders-dot-org-lib/stories-lib)
 
 (define (asp-first-day-of-class)
   (story

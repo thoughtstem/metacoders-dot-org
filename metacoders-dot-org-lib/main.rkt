@@ -2,7 +2,6 @@
 
 
 (provide (all-from-out website/bootstrap)
-         (all-from-out "./training/main.rkt") 
          (all-from-out "./begin-training.rkt") 
          (all-from-out "./email-signup.rkt") 
          (all-from-out "./visual-aids.rkt") 
@@ -13,7 +12,6 @@
          (all-from-out "./html-helpers.rkt"))
 
 (require website/bootstrap
-         "./training/main.rkt"
          "./begin-training.rkt"
          "./email-signup.rkt"
          "./visual-aids.rkt"
