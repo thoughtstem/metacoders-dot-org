@@ -4,6 +4,8 @@
 
 (require website/bootstrap
          metacoders-dot-org-lib 
+         (rename-in metapolis-stories 
+                    [site metapolis-stories:site])
          "./index.rkt"
          "./learn-more.rkt"
          "./get-to-work.rkt"
@@ -15,12 +17,13 @@
          "./coders.rkt"
          "./partners.rkt"
          
-         "./setup-scripts.rkt"
-         )
+         "./setup-scripts.rkt")
 
 (define (metacoders.org)
   (flatten
     (list
+      (sub-site "metapolis"
+                (metapolis-stories:site))
       (bootstrap-files)    
       (css)
       (imgs)

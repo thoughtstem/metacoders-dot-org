@@ -9,7 +9,8 @@
          (all-from-out "./paths.rkt") 
          (all-from-out "./imgs.rkt") 
          (all-from-out "./css.rkt")
-         (all-from-out "./html-helpers.rkt"))
+         (all-from-out "./html-helpers.rkt")
+         (all-from-out "./impress.rkt"))
 
 (require website/bootstrap
          "./begin-training.rkt"
@@ -19,7 +20,8 @@
          "./paths.rkt"
          "./imgs.rkt" 
          "./css.rkt"
-         "./html-helpers.rkt")
+         "./html-helpers.rkt"
+         "./impress.rkt")
 
 
 
