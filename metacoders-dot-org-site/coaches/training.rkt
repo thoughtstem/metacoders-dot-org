@@ -4,6 +4,7 @@
          training-top)
 
 (require metacoders-dot-org-lib
+         (except-in metapolis-stories site)
          website/impress)
 
 (define (training)
@@ -15,12 +16,17 @@
   (container
     (h3 "Quest")
     (div
-      style: (properties border: "1px solid black"
-                         width: "100%"
+      style: (properties width: "100%"
                          height: "500px"
                          overflow: "hidden"
                          position: "relative")
-      (impress-metapolis))))
+      (impress-metapolis
+        #:quest
+        (list  
+          places:lovelace-elementary  
+          stories:asp-first-day-of-class  
+          places:jacks-house
+          stories:jack)))))
 
 (define (assess)
   (container
@@ -41,5 +47,4 @@
         (normal-content
           (h1 "Coach Training Starts Here")
 
-          (quest/assess)
-          )))
+          (quest/assess))))
