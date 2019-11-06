@@ -1,5 +1,5 @@
 #lang info
-(define collection "metacoders-dot-org-all")
+(define collection "metacoders-dot-org")
 (define deps '("base"
-               "https://github.com/thoughtstem/metacoders-dot-org.git?path=metacoders-dot-org-lib"
-               "https://github.com/thoughtstem/metacoders-dot-org.git?path=metacoders-dot-org-site"))
+               "https://github.com/thoughtstem/metacoders-dot-org-dc.git?path=metacoders-dot-org-dc-site"
+               "https://github.com/thoughtstem/metapolis-stories.git"))
