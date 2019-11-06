@@ -9,42 +9,117 @@
 
 (define (training)
   (list 
-    (impress-files)
-    (training-top)))
+    (impress-files) ;Hmmm misplaced...
+    (training-top)
+    (training-ch1)
+    (training-ch2)))
 
-(define (quest)
+
+;Move to lib...
+
+(define (quest . content)
   (container
     (h3 "Quest")
     (div
-      style: (properties width: "100%"
-                         height: "500px"
-                         overflow: "hidden"
-                         position: "relative")
-      (impress-metapolis
-        #:quest
-        (list  
-          places:lovelace-elementary  
-          stories:asp-first-day-of-class  
-          places:jacks-house
-          stories:jack)))))
+      style: (properties height: 500)
+      content)
+    
+    ))
 
-(define (assess)
+(define (assess . content)
   (container
     (h3 "Assess")
-    (code 
-      "#lang meta-cards"
-      (br)
-      (br)
-      "(print \"Hello\")")))
+    (div
+      style: (properties height: 500)
+      content)))
 
-(define (quest/assess)
-  (list
-    (quest)
-    (assess)))
+(require (prefix-in ch0: "./training/ch0.rkt"))
+(require (prefix-in ch1: "./training/ch1.rkt"))
+
+(define (quest/assess-book . chs)
+  chs)
+
+(define (quest/assess-chapter q a)
+  (list 
+    (quest q) 
+    (assess a)))
+
+(define (book-chapter b n)
+  (define coming-soon
+    (p "Coming soon"))
+
+  (if (>= n (length b))
+    (quest/assess-chapter coming-soon coming-soon)
+    (list-ref b n)))
+
+(define book
+  (quest/assess-book
+    (quest/assess-chapter 
+      ch0:quest
+      ch0:assess)
+    (quest/assess-chapter 
+      ch1:quest
+      ch1:assess)))
+
+(define (book-nav)
+  (page-nav 
+    (link-to 
+      #:element page-link
+      "#"
+      "Previous")
+    (link-to 
+      #:element page-link
+      (training-ch1)
+      "1")
+
+    (link-to 
+      #:element page-link
+      (training-ch2)
+      "2")
+
+    (link-to 
+      #:element page-link
+      "#"
+      "3")
+    
+    (link-to 
+      #:element page-link
+      "#"
+      "Next")))
 
 (define (training-top)
   (page coaches/training.html
         (normal-content
           (h1 "Coach Training Starts Here")
 
-          (quest/assess))))
+          (book-nav)
+
+          (book-chapter book 0))))
+
+(define (training-ch1)
+  (page coaches/training-ch1.html
+        (normal-content
+          (h1 "Chapter 1")
+
+          (link-to 
+            (training-ch2)
+            (button-primary "Chapter 2"))
+
+          (book-chapter book 1))))
+
+(define (training-ch2)
+  (page coaches/training-ch2.html
+        (normal-content
+          (h1 "Chapter 2")
+
+          (book-chapter book 2))))
+
+
+
+
+
+
+
+
+
+
