@@ -6,7 +6,7 @@ metacoders.org
 ```
 git clone git@github.com:thoughtstem/metacoders-dot-org.git
 cd metacoders-dot-org
-raco pkg install metacoders-dot-org-site
+raco pkg install metacoders-dot-org-site/
 racket main.rkt
 ```
 
