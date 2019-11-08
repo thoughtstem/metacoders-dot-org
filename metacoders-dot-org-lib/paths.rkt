@@ -3,6 +3,7 @@
 (provide index-path
          city-search-path
          learn-more-path
+         donate-path
          get-to-work-path
          scientists-top-path        
          coders-top-path           
@@ -14,6 +15,7 @@
 (define city-search-path          (list "city-search.html"))
 (define learn-more-path           (list "learn-more.html"))
 (define get-to-work-path          (list "get-to-work.html"))
+(define donate-path               (list "donate.html"))
 (define scientists-top-path        (list "scientists.html"))
 (define coders-top-path           (list "coders.html"))
 (define partners-top-path (list "partners.html"))
