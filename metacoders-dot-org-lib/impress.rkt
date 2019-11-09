@@ -1,6 +1,8 @@
 #lang at-exp racket
 
-(provide impress-metapolis)
+(provide impress-metapolis
+         quest-completion-bar
+         update-quest-bar-on-visits)
 
 (require (except-in website/impress site time) 
          (except-in website/bootstrap col site time)  
@@ -16,28 +18,6 @@
 
 (define quest (make-parameter '()))
 
-(define (star-icon color i)
-  (overlay
-    (text (~a i) 12 'black)
-    (star 20 'solid color)))
-
-(define quest-items
-  (list
-    (star-icon 'red 1)
-    (star-icon 'orange 2)
-    (star-icon 'yellow 3)
-    (star-icon 'green 4)
-    (star-icon 'blue 5)
-    (star-icon 'purple 6)))
-
-(define (quest-item-index s)
-  (index-of (quest) s))
-
-(define (quest-item-icon s)
-  (define i (quest-item-index s))
-  (when i
-    (write-img
-      (list-ref quest-items i))))
 
 (define (place->div w h pl)
   (div
@@ -58,7 +38,10 @@
                          background-color: "rgba(0,0,0,0.1)"))))
 
 (define (place-id pl)
-  (urlify (place-name pl)))
+  (string->node-id (place-name pl)))
+
+(define (story-id pl)
+  (string->node-id (story-name pl)))
 
 (define (place-middle pl)
   (posn-scale 0.5
@@ -72,7 +55,6 @@
 (define (place->level pl)
   (define parent
     (node 
-      #:id (place-id pl)
       (posn-x (place->step-posn pl))
       (posn-y (place->step-posn pl))
       (place->div (* s (place-width pl))  
@@ -81,6 +63,7 @@
 
   (define landing-node
     (node 
+      #:id (place-id pl)
       0 200 ;Adjust for content-window height...
       (content-window
         (h3 (quest-item-icon pl) 
@@ -103,6 +86,7 @@
           (story-preview s)))
       (ring 
         (node 0 0
+              #:id (story-id s)
               (content-window
                 (h3 (quest-item-icon s) 
                     (story-name s))
@@ -131,19 +115,21 @@
         (~t (time-start (story-time s))
             "E, MMMM d h:mm a")))))
 
+
 (define (impress-metapolis #:quest (qs (list)))
   (define (metapolis? p)
     (string=? (string-downcase (place-name p)) "metapolis"))
 
   (define steps 
     (parameterize ([quest qs])
-      (with-depth 50
+      (with-depth 5
                   (ring->steps
                     (apply ring
                            (map place->level 
                                 (filter-not metapolis? places:all)))))))
 
   (list
+
     (style/inline type: "text/css"
                   ;Place name effects
                   "#impress .place-name { transform: scale(0.5); -webkit-transform-origin: top left; color: gray; top: -10px; width: 500px;}"
@@ -151,7 +137,7 @@
                   "#impress .present .place-name { transform: scale(1); color: black; top: -20px}"
 
                   ;Place rectangle effects
-               
+
                   "#impress .present .place-rectangle { border: 1px solid black; }"
 
 
@@ -163,14 +149,83 @@
                   ;Story name effects  
 
                   "#impress .present .story-card { transform: scale(1.1);}")
-    (span "Recommended path: " (map write-img (take quest-items (length qs))))
+
     (div 
-     style: (properties cursor: "pointer")
-     (impress 
-       #:transition-duration 300
-       steps)))
-  
-  )
+      style: (properties cursor: "pointer")
+      (impress 
+        #:transition-duration 300
+        steps))
 
+      (update-quest-bar-on-visits (map get-id qs))))
 
+(define (update-quest-bar-on-visits ids)
+  ;Look, Mom!  Javascript inside of Racket!
+  @on-node-visit{
+    window.nodes_to_visit = window.nodes_to_visit || 
+    @(empty-js-quest-visited-hash ids)
+
+    if(!window.nodes_to_visit[currentStep.id] && currentStep.id in window.nodes_to_visit){
+      window.nodes_to_visit[currentStep.id] = true         
+
+      var vals    = Object.values(window.nodes_to_visit)
+      var trues   = vals.filter((v)=>v)
+      var percent = Math.floor((trues.length / vals.length) * 100)
+
+      document.getElementById("quest-completion-bar").style.width = percent + "%"
+      document.getElementById("quest-completion-bar").innerHTML = percent + "%"
+    } 
+  })
+
+(define (get-id x)
+  (cond
+    [(place? x) (place-id x)]
+    [(story? x) (story-id x)]
+    [else (error "Only places and stories can be quest stops")]))
+
+(define (empty-js-quest-visited-hash ids)
+  (define kvs (map (lambda (i)
+                     @~a{"@i": false}) 
+                   ids))
+
+  (define joined (string-join kvs ","))
+
+  ;We return something like this -- a js object:
+  ;  {"babbage-university": false, "lovelace-elementary": false}
+
+  ;Last step just puts the braces around it
+  @~a{{@joined}} )
+
+(define (quest-completion-bar percent)
+  (div class: "progress"
+       (div 
+         id: "quest-completion-bar"
+         class: "progress-bar bg-success"
+         'role: "progressbar"
+         style: (properties width: (~a percent "%"))
+         'aria-valuenow: "25"
+         'aria-valuemin: "0" 
+         'aria-valuemax: "100" )))
+
+(define (star-icon color i)
+  (overlay
+    (text (~a i) 12 'black)
+    (circle 10 'solid color)))
+
+(define quest-items
+  (list
+    (star-icon 'red 1)
+    (star-icon 'orange 2)
+    (star-icon 'yellow 3)
+    (star-icon 'green 4)
+    (star-icon 'blue 5)
+    (star-icon 'purple 6)))
+
+(define (quest-item-index s)
+  (index-of (quest) s))
+
+(define (quest-item-icon s)
+  (define i (quest-item-index s))
+  (when i
+    (write-img
+      (list-ref quest-items i))))
 
