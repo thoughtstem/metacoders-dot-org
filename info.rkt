@@ -2,4 +2,5 @@
 (define collection "metacoders-dot-org")
 (define deps '("base"
                "https://github.com/thoughtstem/metacoders-dot-org-dc.git?path=metacoders-dot-org-dc-site"
-               "https://github.com/thoughtstem/metapolis-stories.git"))
+               "https://github.com/thoughtstem/metapolis-stories.git"
+               "https://github.com/thoughtstem/impress.git"))
