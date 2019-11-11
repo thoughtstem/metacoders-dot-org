@@ -14,7 +14,7 @@
     (container 
       id: "main"
       more)
-    ))
+    (normal-footer)))
 
 (define (homepage-content . more)
   (content 
@@ -23,7 +23,39 @@
     (normal-navbar)
     (div id: "main"
          more)
-    ))
+    (normal-footer)))
+
+(define (normal-footer)
+  (footer class: "pt-4"
+    (container 
+      (row
+        (col-3
+          (h6 "Company")
+          (ul class: "list-unstyled"
+            (li (link-to learn-more-path (small "Learn More")))
+            (li (link-to get-to-work-path (small "Join Our Team")))
+            (li (link-to donate-path (small "Donate")))
+            (li (small "Terms & Conditions"))
+            (li (small "Privacy Policy"))))
+        (col-3
+          (h6 "Programs")
+          (ul class: "list-unstyled"
+            (li (link-to city-search-path (small "Find a Location")))
+            (li (link-to partners-top-path (small "Start a New Location"))))
+          (h6 "Contact Us")
+          (ul class: "list-unstyled"
+            (li (small "(858) 869-9430"))
+            (li (a href:"mailto: contact@metacoders.org" (small "contact@metacoders.org")))
+            (li (small "Monday - Friday, 9am-5pm PT"))))
+        (col-3
+          (h6 "Follow Us")
+          (ul class: "list-unstyled"
+            (li (small "INSERT SOCIAL MEDIA LINKS"))
+            (li (br))
+            (li (small "MetaCoders, Inc. Copyright 2020"))
+            (li (small "All Rights Reserved"))))))))
+
+
 
 (define (normal-navbar)
   (navbar
