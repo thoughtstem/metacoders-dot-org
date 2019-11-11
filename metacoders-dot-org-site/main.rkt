@@ -17,7 +17,10 @@
          "./coders.rkt"
          "./partners.rkt"
          
-         "./setup-scripts.rkt")
+         "./setup-scripts.rkt"
+
+         "./checkout-success.rkt"
+         "./checkout-fail.rkt")
 
 (define (metacoders.org)
   (flatten
@@ -37,4 +40,7 @@
       (scientists)
       (coders)
       (partners) 
-      (setup-scripts))))
+      (setup-scripts)
+
+      (checkout-success)
+      (checkout-fail))))
