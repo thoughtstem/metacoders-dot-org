@@ -26,10 +26,10 @@
     (normal-footer)))
 
 (define (normal-footer)
-  (footer class: "pt-4"
+  (footer class: "pt-4 bg-dark"
     (container 
       (row
-        (col-3
+        (col-3 class: "text-white"
           (h6 "Company")
           (ul class: "list-unstyled"
             (li (link-to learn-more-path (small "Learn More")))
@@ -37,7 +37,7 @@
             (li (link-to donate-path (small "Donate")))
             (li (small "Terms & Conditions"))
             (li (small "Privacy Policy"))))
-        (col-3
+        (col-3 class: "text-white"
           (h6 "Programs")
           (ul class: "list-unstyled"
             (li (link-to city-search-path (small "Find a Location")))
@@ -47,7 +47,7 @@
             (li (small "(858) 869-9430"))
             (li (a href:"mailto: contact@metacoders.org" (small "contact@metacoders.org")))
             (li (small "Monday - Friday, 9am-5pm PT"))))
-        (col-3
+        (col-3 class: "text-white"
           (h6 "Follow Us")
           (ul class: "list-unstyled"
             (li (small "INSERT SOCIAL MEDIA LINKS"))
