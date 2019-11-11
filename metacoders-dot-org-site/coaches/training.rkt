@@ -5,7 +5,8 @@
 
 (require metacoders-dot-org-lib
          (except-in metapolis-stories site)
-         website/impress)
+         website/impress
+         "./common.rkt")
 
 (define (training)
   (list 
@@ -19,19 +20,21 @@
 
 (define (quest . content)
   (container
-    (h3 "Quest")
-    (div
-      style: (properties height: 500)
-      content)
-    
-    ))
+    (card
+      (card-body
+        (card-title "Quest")
+        (quest-completion-bar 0)
+        (div
+          style: (properties height: 500)
+          content)))))
 
 (define (assess . content)
   (container
-    (h3 "Assess")
-    (div
-      style: (properties height: 500)
-      content)))
+    (card
+      (card-body
+        (card-title "Assess")
+        (div
+          content)))))
 
 (require (prefix-in ch0: "./training/ch0.rkt"))
 (require (prefix-in ch1: "./training/ch1.rkt"))
@@ -57,62 +60,38 @@
     (quest/assess-chapter 
       ch0:quest
       ch0:assess)
+
     (quest/assess-chapter 
       ch1:quest
-      ch1:assess)))
-
-(define (book-nav)
-  (page-nav 
-    (link-to 
-      #:element page-link
-      "#"
-      "Previous")
-    (link-to 
-      #:element page-link
-      (training-ch1)
-      "1")
-
-    (link-to 
-      #:element page-link
-      (training-ch2)
-      "2")
-
-    (link-to 
-      #:element page-link
-      "#"
-      "3")
+      ch1:assess)
     
-    (link-to 
-      #:element page-link
-      "#"
-      "Next")))
+    ))
+
 
 (define (training-top)
   (page coaches/training.html
         (normal-content
           (h1 "Coach Training Starts Here")
 
-          (book-nav)
+          (book-nav book #:current 0)
 
           (book-chapter book 0))))
 
 (define (training-ch1)
-  (page coaches/training-ch1.html
+  (page (coach-training-chapter-path 1)
         (normal-content
           (h1 "Chapter 1")
 
-          (link-to 
-            (training-ch2)
-            (button-primary "Chapter 2"))
-
-          (book-chapter book 1))))
+          (book-nav book #:current 1)
+          (book-chapter book  1))))
 
 (define (training-ch2)
-  (page coaches/training-ch2.html
+  (page (coach-training-chapter-path 2)
         (normal-content
           (h1 "Chapter 2")
 
-          (book-chapter book 2))))
+          (book-nav book #:current 2)
+          (book-chapter book  2))))
 
 
 

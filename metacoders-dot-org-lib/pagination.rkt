@@ -6,11 +6,6 @@
 
 (require website/bootstrap)
 
-(define/provide-extensible-element
-  page-item
-  li
-  (class: "page-item" class-join)
-  (href: "#" replace))
 
 (define/provide-extensible-element
   pagination
@@ -22,7 +17,37 @@
   a
   (class: "page-link" class-join))
 
-(define (page-nav #:active (active-i 1) . links)
+(define/provide-extensible-element
+  page-item
+  li
+  (class: "page-item" class-join)
+  (href: "#" replace))
+
+(define (page-nav 
+          #:label (label #f)
+          #:active (active-i 1) . links)
+  (define flat-links (flatten links))
+
+  (define (maybe-active-page-item link i)
+    (page-item 
+      class: (if (= i active-i) "active" "")
+      link))
+
   (nav 'aria-label: "Page Navigation"
        (pagination 
-         links)))
+         (when label
+           (page-item
+             class: "disabled"
+             (page-link label)))
+         (map 
+           (curryr maybe-active-page-item)
+           flat-links
+           (range (length flat-links))))))
+
+
+
+
+
+
+
+

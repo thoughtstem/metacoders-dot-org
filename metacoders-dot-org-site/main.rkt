@@ -10,7 +10,7 @@
          "./learn-more.rkt"
          "./get-to-work.rkt"
          "./city-search.rkt"
-         
+         "./donate.rkt"         
          "./coaches.rkt"
          "./tech-coords.rkt"
          "./scientists.rkt"
@@ -34,6 +34,7 @@
       (learn-more)
       (get-to-work) 
       (city-search-page)
+      (donate)
       (cities)
       (coaches)
       (tech-coords)

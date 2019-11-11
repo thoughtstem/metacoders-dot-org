@@ -13,7 +13,8 @@
     (normal-navbar)
     (container 
       id: "main"
-      more)))
+      more)
+    ))
 
 (define (homepage-content . more)
   (content 
@@ -21,16 +22,16 @@
              (include-css testimonial-quotes.css))
     (normal-navbar)
     (div id: "main"
-         more)))
+         more)
+    ))
 
 (define (normal-navbar)
   (navbar
     #:brand "MetaCoders"
     (nav-link learn-more-path  "Learn More")
-    (nav-link city-search-path "Enroll Kids")
-    (nav-link get-to-work-path "Get To Work")))
-
-
+    (nav-link city-search-path "Locations")
+    (nav-link get-to-work-path "Join Our Team")
+    (nav-link donate-path "Donate")))
 
 (provide big-image
          big-quote)

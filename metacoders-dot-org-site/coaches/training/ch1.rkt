@@ -3,30 +3,16 @@
 (provide quest assess)
 
 (require metacoders-dot-org-lib
-         (except-in metapolis-stories site))
-
-;TODO: MOVE TO LIB
-(define (metapolis-quest . stops)
-  (div
-    style: (properties width: "100%"
-                       height: "500px"
-                       overflow: "hidden"
-                       position: "relative")
-    (impress-metapolis
-      #:quest
-      stops)))
+         (except-in metapolis-stories site)
+         "../common.rkt")
 
 (define quest
   (metapolis-quest
     places:lovelace-elementary
     stories:lovelace-elementary-asp
     places:jacks-house
-    stories:jack ))
+    stories:jack))
 
 (define assess
-  (code 
-    "#lang meta-cards"
-    (br)
-    (br)
-    "(print \"Hello\")"))
+  (flash-cards 'chapter-1-deck))
 
