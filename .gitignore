@@ -5,5 +5,5 @@
 compiled/
 /doc/
 /out/
-\out\
 *.bak
+*.html
