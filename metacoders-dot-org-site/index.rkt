@@ -4,17 +4,20 @@
 
 (require metacoders-dot-org-lib)
 
+(define (jumbotron-header-section)
+  (jumbotron  style: (properties
+                       text-align: "center"
+                       margin-bottom: 0)
+              (h1 "A New Kind of Coding Education")
+              (h6 "We use cutting-edge learning science research,")
+              (h6 "paired with grass-roots community support") 
+              (h6 "to prepare kids for the future.")))
+
 (define (index)
   (page index-path
         (homepage-content
-          (jumbotron  style: (properties
-                               text-align: "center"
-                               margin-bottom: 0)
-                      (h1 "A New Kind of Coding Education")
-                      (h6 "We use cutting-edge learning science research,")
-                      (h6 "paired with grass-roots community support") 
-                      (h6 "to prepare kids for the future."))
-          (jumbotron  style: (properties
+        (jumbotron-header-section)          
+        (jumbotron  style: (properties
                                  text-align: "center"
                                  margin-bottom: 0
                                  background: "white")
