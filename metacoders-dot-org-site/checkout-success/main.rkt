@@ -13,7 +13,7 @@
           (p "Click on the button below to open the form.")
           (a href:"https://docs.google.com/forms/d/e/1FAIpQLSeo6vHe7gyNLl-BLNfOWIGmHyj3tN7Y7WNhsfH49DokINyt5Q/viewform"
              class:"btn btn-info"
-             role:"button"
+             'role: "button"
              "Finish Enrollment")
           (br)
           )))
