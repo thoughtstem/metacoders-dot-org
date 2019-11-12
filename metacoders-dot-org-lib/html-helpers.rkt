@@ -1,4 +1,4 @@
-#lang racket
+#lang at-exp racket
 
 (provide normal-content
          homepage-content)
@@ -20,7 +20,7 @@
   (content 
     #:head (list 
              (include-css testimonial-quotes.css))
-    (normal-navbar)
+    (homepage-navbar)
     (div id: "main"
          more)
     (normal-footer)))
@@ -64,6 +64,47 @@
     (nav-link city-search-path "Locations")
     (nav-link get-to-work-path "Join Our Team")
     (nav-link donate-path "Donate")))
+
+(define (homepage-navbar)
+
+  (list
+   (style/inline
+     @~a{
+      .navbar.solid {
+          background-color: #343a40 !important; 
+          transition: background-color 1s ease 0s;
+        }
+     })
+   (script/inline
+     @~a{
+        $(document).ready(function() {
+                // Transition effect for navbar
+                $(window).scroll(function() {
+                  // checks if window is scrolled more than 500px, adds/removes solid class
+                  if($(this).scrollTop() > 475) {
+                      $('.navbar').addClass('solid');
+                  } else {
+                      $('.navbar').removeClass('solid');
+                  }
+                });
+        });
+     })
+  (nav class: "navbar fixed-top navbar-expand-md bg-transparent"
+    (a class: "navbar-brand"
+       href: "/index.html"
+       style: (properties color: "white")
+       "MetaCoders")
+    (ul class: "navbar-nav ml-auto"
+      (my-nav-link learn-more-path  "Learn More")
+      (my-nav-link city-search-path "Locations")
+      (my-nav-link get-to-work-path "Join Our Team")
+      (my-nav-link donate-path "Donate")))))
+
+(define (my-nav-link to text)
+  (nav-item
+    (a class: "nav-link mr-3 text-white"
+       href: (pathify (add-path-prefix to))
+       text)))
 
 (provide big-image
          big-quote)
