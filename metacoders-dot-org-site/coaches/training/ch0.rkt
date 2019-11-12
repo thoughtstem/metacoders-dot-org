@@ -238,7 +238,7 @@
               (p "Don't know how to assess yourself? You missed something. :)")     
               )))
 
-(define quest
+(define (quest)
   (div
     ;class: "jumbotron"
     style: (properties height: 450
@@ -264,7 +264,7 @@
             "assessment-video"
             "tips"))))
 
-(define assess
+(define (assess)
  (flash-cards 'intro-deck))
 
 

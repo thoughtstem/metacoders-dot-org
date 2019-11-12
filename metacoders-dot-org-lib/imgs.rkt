@@ -49,6 +49,9 @@
 (define homepage-cover-img-path
   (list "img" "homepage-cover.png"))
 
+(define river-img-path
+  (list "img" "river.png"))
+
 (define (imgs)
   (list 
     (page stephen-img-path
@@ -78,6 +81,8 @@
     (page logo-img-path
           (bitmap/file (build-path img "logo.png"))) 
 
+    (page river-img-path
+          (bitmap/file (build-path img "river.png"))) 
     ))
 
 
