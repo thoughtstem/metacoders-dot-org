@@ -40,13 +40,13 @@
     places:metapolis-welcome-center
     stories:welcome-sum-up))
 
-(define quest
+(define (quest)
   (apply metapolis-quest stops))
 
-(define assess
+(define (assess)
   (flash-cards 'chapter-1-deck))
 
-(define hints
+(define (hints)
   (div
     (ol 
       (li "Start at the " @b{Welcome Center})

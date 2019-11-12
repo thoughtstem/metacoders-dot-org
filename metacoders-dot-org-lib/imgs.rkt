@@ -9,7 +9,11 @@
          jason-img-path
          sonny-img-path
          sara-img-path
-         river-img-path)
+         brain-img-path
+         games-img-path
+         story-img-path
+         takes-a-village-path
+         homepage-cover-img-path)
 
 (require website/bootstrap
          (only-in 2htdp/image bitmap/file)
@@ -34,6 +38,16 @@
   (list "img" "jason.png"))
 (define sonny-img-path
   (list "img" "sonny.png"))
+(define games-img-path
+  (list "img" "games.png"))
+(define brain-img-path
+  (list "img" "brain.png"))
+(define story-img-path
+  (list "img" "story.png"))
+(define takes-a-village-path
+  (list "img" "takes-a-village.png"))
+(define homepage-cover-img-path
+  (list "img" "homepage-cover.png"))
 
 (define river-img-path
   (list "img" "river.png"))
@@ -54,7 +68,16 @@
           (bitmap/file (build-path img "jason.png"))) 
     (page sonny-img-path
           (bitmap/file (build-path img "sonny.png"))) 
-
+    (page games-img-path
+          (bitmap/file (build-path img "games.png")))
+    (page brain-img-path
+          (bitmap/file (build-path img "brain.png")))
+    (page story-img-path
+          (bitmap/file (build-path img "story.png")))
+    (page takes-a-village-path
+          (bitmap/file (build-path img "takes-a-village.png")))
+    (page homepage-cover-img-path
+          (bitmap/file (build-path img "homepage-cover.png")))
     (page logo-img-path
           (bitmap/file (build-path img "logo.png"))) 
 

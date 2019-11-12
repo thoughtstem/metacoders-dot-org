@@ -44,5 +44,4 @@
             (h2 "Six ways to \"Go Meta\"")
 
             (six-ways-to-go-meta)
-
             (include-js "js/name-replace-effect.js")))))

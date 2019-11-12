@@ -58,7 +58,11 @@
 (define (quest/assess-chapter q a h)
   (list 
     (quest q) 
-    (container (div class: "card-group" 
+    (container 
+      ;A hack to push the footer off the screen.
+      ;  Can remove if we figure out how to steal the main scrollbar back from impress -- which automatically hides it.  TODO: Look into whether impress really needs to do that and whether it can be overriden easily 
+      style: (properties padding-bottom: 100)
+      (div class: "card-group" 
                  (assess a)
                  (hints h)))))
 
@@ -70,17 +74,17 @@
     (quest/assess-chapter coming-soon coming-soon coming-soon)
     (list-ref b n)))
 
-(define book
+(define (book)
   (quest/assess-book
     (quest/assess-chapter 
-      ch0:quest
-      ch0:assess
+      (ch0:quest)
+      (ch0:assess)
       (p "None"))
 
     (quest/assess-chapter 
-      ch1:quest
-      ch1:assess
-      ch1:hints)
+      (ch1:quest)
+      (ch1:assess)
+      (ch1:hints))
     
     ))
 
@@ -90,25 +94,25 @@
         (normal-content
           (h1 "Coach Training Starts Here")
 
-          (book-nav book #:current 0)
+          (book-nav (book) #:current 0)
 
-          (book-chapter book 0))))
+          (book-chapter (book) 0))))
 
 (define (training-ch1)
   (page (coach-training-chapter-path 1)
         (normal-content
           (h1 "Chapter 1")
 
-          (book-nav book #:current 1)
-          (book-chapter book  1))))
+          (book-nav (book) #:current 1)
+          (book-chapter (book)  1))))
 
 (define (training-ch2)
   (page (coach-training-chapter-path 2)
         (normal-content
           (h1 "Chapter 2")
 
-          (book-nav book #:current 2)
-          (book-chapter book  2))))
+          (book-nav (book) #:current 2)
+          (book-chapter (book)  2))))
 
 
 
