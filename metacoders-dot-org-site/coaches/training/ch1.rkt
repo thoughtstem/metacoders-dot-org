@@ -22,8 +22,8 @@
     stories:lovelace-elementary/ch-1-stories
     stories:lovelace-elementary/ch-1-stories/introduction-story
     stories:lovelace-elementary/ch-1-stories/code-of-awesomeness-stories
+    stories:lovelace-elementary/ch-1-stories/hello-world-intro
     stories:lovelace-elementary/ch-1-stories/reflection
-    stories:lovelace-elementary/ch-1-stories/story-sum-up
 
     places:turing-recreational-center
 
@@ -32,7 +32,6 @@
     stories:turing-rec-center/game-mode-introduction/name-game
     stories:turing-rec-center/game-mode-introduction/coa-mottos
     stories:turing-rec-center/game-mode-introduction/code-game
-    stories:turing-rec-center/game-mode-introduction/game-sum-up
 
     places:hopper-library
     stories:a-students-journey
