@@ -35,7 +35,7 @@
             (li (link-to learn-more-path (small "Learn More")))
             (li (link-to get-to-work-path (small "Join Our Team")))
             (li (link-to donate-path (small "Donate")))
-            (li (small "Terms & Conditions"))
+            (li (link-to terms-and-conditions-path (small "Terms & Conditions")))
             (li (small "Privacy Policy"))))
         (col-3 class: "text-white"
           (h6 "Programs")
@@ -60,10 +60,10 @@
 (define (normal-navbar)
   (navbar
     #:brand "MetaCoders"
-    (nav-link learn-more-path  "Learn More")
-    (nav-link city-search-path "Locations")
-    (nav-link get-to-work-path "Join Our Team")
-    (nav-link donate-path "Donate")))
+    (my-nav-link learn-more-path  "Learn More")
+    (my-nav-link city-search-path "Locations")
+    (my-nav-link get-to-work-path "Join Our Team")
+    (my-nav-link donate-path "Donate")))
 
 (define (homepage-navbar)
 

@@ -16,7 +16,7 @@
          "./scientists.rkt"
          "./coders.rkt"
          "./partners.rkt"
-         
+         "./terms-and-conditions.rkt"         
          "./setup-scripts.rkt"
 
          "./checkout-success.rkt"
@@ -41,6 +41,7 @@
       (scientists)
       (coders)
       (partners) 
+      (terms-and-conditions)
       (setup-scripts)
 
       (checkout-success)

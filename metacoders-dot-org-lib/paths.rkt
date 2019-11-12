@@ -10,6 +10,7 @@
          partners-top-path
          tech-coords-top-path    
          coaches-top-path
+         terms-and-conditions-path
          checkout-success-top-path
          checkout-fail-top-path)
 
@@ -23,6 +24,7 @@
 (define partners-top-path         (list "partners.html"))
 (define tech-coords-top-path      (list "tech-coordinators.html"))
 (define coaches-top-path          (list "coaches.html"))
+(define terms-and-conditions-path          (list "terms-and-conditions.html"))
 
 (define checkout-success-top-path        (list "checkout-success.html"))
 (define checkout-fail-top-path        (list "checkout-fail.html"))
