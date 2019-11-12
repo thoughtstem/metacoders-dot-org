@@ -80,7 +80,7 @@
         (col-sm-7
           (h2 "We’re teaching coding to save the world.")
           (p "Computer scientists saved millions
-of lives in WWII. That trend continues today. In labs around the world, computer scientists are tackling cancer, climate change, and terrorism. If we are going to save the world, we need more people coding.")
+of lives in WWII. That trend continues today. In labs around the world, computer scientists are tackling cancer, self-driving cars, and terrorism. If we are going to save the world, we need more people coding.")
           (br)
           (b (p "Meet the people who are saving the world, one coding student at a time:")))
         (col-sm-5

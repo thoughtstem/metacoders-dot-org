@@ -35,8 +35,7 @@
             (li (link-to learn-more-path (small "Learn More")))
             (li (link-to get-to-work-path (small "Join Our Team")))
             (li (link-to donate-path (small "Donate")))
-            (li (link-to terms-and-conditions-path (small "Terms & Conditions")))
-            (li (small "Privacy Policy"))))
+            (li (link-to terms-and-conditions-path (small "Terms & Conditions")))))
         (col-3 class: "text-white"
           (h6 "Programs")
           (ul class: "list-unstyled"
