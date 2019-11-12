@@ -19,8 +19,8 @@
                                     color: "white"
                                     background: "rgba(0, 0, 0, 0.5)")
                   (h1 "A New Kind of Coding Education")
-                  (h6 "We use cutting-edge learning science research,")
-                  (h6 "paired with grass-roots community support") 
+                  (h6 "Cutting-edge learning science,")
+                  (h6 "with grass-roots community support") 
                   (h6 "to prepare kids for the future.")))))
 
 (define (jumbotron-code-the-meta-way)

@@ -1,5 +1,10 @@
 #!/bin/bash
+
+rm -rf out
+git worktree prune
+git worktree add out gh-pages
 racket main.rkt
-git add out
+cd out/
+git add --all
 git commit -m "deploy"
-git subtree push --prefix out origin gh-pages
+git push -f origin gh-pages
