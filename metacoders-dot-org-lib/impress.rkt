@@ -22,25 +22,24 @@
 (define (place->div w h pl)
   (div
     class: "place-name-and-rect"
+    'data-toggle: "tooltip"
+    'data-placement: "top" 
+    'title: (~a (place-name pl))
     style: (properties position: "relative"
                        width: w
                        height: h)
 
     (quest-item-icon pl)     
-    (div
-      style: (properties position: "absolute")
-      class: "place-name"
-      (quest-item-icon pl)
-      (place-name pl))
-      
+
     (div 
       class: "place-rectangle"
       style: (properties width: w
                          height: h
+                         border-radius: "5%"
                          background-color: 
                          (if (eq? pl (first (quest))) 
-                           "rgba(0,255,0,0.5)" 
-                           "rgba(0,0,0,0.5)") )
+                           "forestgreen"
+                           "black"))
       
       (div
         class: "show-on-present"
@@ -50,7 +49,9 @@
                            position: "absolute"
                            '-ms-transform: "translate(-50%, -50%)"
                            'transform: "translate(-50%, -50%)")
-        (h3 (place-name pl))
+        (h3 
+          style: (properties color: "lightgray")
+          (place-name pl))
         (button-success "Enter")
         (button-danger 'onClick: @~a{setTimeout(()=>{impress().goto("top")},2)} "Exit") 
         ))))
@@ -243,12 +244,8 @@
                   #impress .show-on-present {visibility:hidden}
                   #impress .present .show-on-present {visibility:visible}
                   
-                  #impress .place-name-and-rect .place-name { display:none }
-                  #impress .place-name-and-rect:hover .place-name { color: black; top: -250px; width: 5000px; font-size: 200; display: block}
-
                   #impress .present .place-name-and-rect .place-name { display:none }
-                  }
-                  )
+                  })
 
     (div 
       style: (properties cursor: "pointer")
