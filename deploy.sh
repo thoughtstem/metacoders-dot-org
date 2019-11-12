@@ -1,7 +1,7 @@
 #!/bin/bash
 
 rm -rf out
-git worktree add dist gh-pages
+git worktree add out gh-pages
 racket main.rkt
 cd out/
 git add --all
