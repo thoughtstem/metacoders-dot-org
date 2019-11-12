@@ -19,11 +19,11 @@
 
     places:lovelace-elementary
     stories:lovelace-elementary-asp
-    stories:lovelace-elementary/ch-1-stories
-    stories:lovelace-elementary/ch-1-stories/introduction-story
-    stories:lovelace-elementary/ch-1-stories/code-of-awesomeness-stories
-    stories:lovelace-elementary/ch-1-stories/reflection
-    stories:lovelace-elementary/ch-1-stories/story-sum-up
+    stories:lovelace-elementary-asp/ch-1-stories
+    stories:lovelace-elementary-asp/ch-1-stories/introduction-story
+    stories:lovelace-elementary-asp/ch-1-stories/code-of-awesomeness-stories
+    stories:lovelace-elementary-asp/ch-1-stories/reflection
+    stories:lovelace-elementary-asp/ch-1-stories/story-sum-up
 
     places:turing-recreational-center
 
