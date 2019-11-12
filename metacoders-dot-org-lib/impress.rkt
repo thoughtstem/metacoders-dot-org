@@ -30,6 +30,7 @@
     (div
       style: (properties position: "absolute")
       class: "place-name"
+      (quest-item-icon pl)
       (place-name pl))
       
     (div 
