@@ -8,7 +8,7 @@
   (jumbotron  style: (properties
                       text-align: "center"
                       margin-bottom: 0
-                      background-image: (string-append "url(" (pathify homepage-cover-img-path) ")")
+                      background-image: (string-append "url(" (prefix/pathify homepage-cover-img-path) ")")
                       background-size: "cover"
                       height: "80%")
               class: "d-flex align-items-center"
@@ -38,17 +38,17 @@
                   (br)
                   (card-deck
                       (card
-                      (card-img-top src: (pathify games-img-path)) 
+                      (card-img-top src: (prefix/pathify games-img-path)) 
                       (card-body
                         (card-title "Meta Games")
                         (card-text "Our students stay motivated with badges and prizes.")))
                       (card
-                        (card-img-top src: (pathify brain-img-path))
+                        (card-img-top src: (prefix/pathify brain-img-path))
                         (card-body
                           (card-title "Metacognition")
                           (card-text "By reflecting on how we learn, we are able to learn more efficiently.")))
                       (card
-                        (card-img-top src: (pathify story-img-path))
+                        (card-img-top src: (prefix/pathify story-img-path))
                         (card-body
                           (card-title "Meta Stories")
                           (card-text "Stories are powerful tools for teaching values and communicating ideas."))))))
@@ -61,7 +61,7 @@
         (row 
           class: "align-items-center"
           (col-sm-6
-            (img src: (pathify takes-a-village-path) 
+            (img src: (prefix/pathify takes-a-village-path) 
                   class: "img-fluid rounded"))
           (col-sm-6
               (h2 "A good education takes a village.")
@@ -86,17 +86,17 @@ of lives in WWII. That trend continues today. In labs around the world, computer
         (col-sm-5
           (row
             (col-sm-6
-              (img src: (pathify sonny-img-path) 
+              (img src: (prefix/pathify sonny-img-path) 
                    class: "img-fluid rounded m-3"))
             (col-sm-6
-              (img src: (pathify lindsey-img-path) 
+              (img src: (prefix/pathify lindsey-img-path) 
                    class: "img-fluid rounded m-3")))
           (row
             (col-sm-6
-              (img src: (pathify sara-img-path) 
+              (img src: (prefix/pathify sara-img-path) 
                    class: "img-fluid rounded m-3"))
             (col-sm-6
-              (img src: (pathify judith-img-path) 
+              (img src: (prefix/pathify judith-img-path) 
                    class: "img-fluid rounded m-3")))
 )))))
 
