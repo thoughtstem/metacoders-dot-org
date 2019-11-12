@@ -1,10 +1,9 @@
 #!/bin/bash
 
 rm -rf out
-mkdir out
-touch out/site_prefix
 git worktree prune
 git worktree add out gh-pages
+touch out/site_prefix
 racket main.rkt
 cd out/
 git add --all
