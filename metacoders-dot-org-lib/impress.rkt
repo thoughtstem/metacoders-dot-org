@@ -12,30 +12,47 @@
 (require metapolis-stories
          stories
          posn
-         (only-in 2htdp/image star text))
+         (only-in 2htdp/image star text)
+         "./imgs.rkt")
 
-(define s 10)
 
 (define quest (make-parameter '()))
 
 
 (define (place->div w h pl)
   (div
+    class: "place-name-and-rect"
     style: (properties position: "relative"
                        width: w
                        height: h)
 
+    (quest-item-icon pl)     
     (div
       style: (properties position: "absolute")
       class: "place-name"
-      (quest-item-icon pl)
       (place-name pl))
-
+      
     (div 
       class: "place-rectangle"
       style: (properties width: w
                          height: h
-                         background-color: "rgba(0,0,0,0.1)"))))
+                         background-color: 
+                         (if (eq? pl (first (quest))) 
+                           "rgba(0,255,0,0.5)" 
+                           "rgba(0,0,0,0.5)") )
+      
+      (div
+        class: "show-on-present"
+        style: (properties margin: 0
+                           top: "50%"
+                           left: "50%"
+                           position: "absolute"
+                           '-ms-transform: "translate(-50%, -50%)"
+                           'transform: "translate(-50%, -50%)")
+        (h3 (place-name pl))
+        (button-success "Enter")
+        (button-danger 'onClick: @~a{setTimeout(()=>{impress().goto("top")},2)} "Exit") 
+        ))))
 
 (define (place-id pl)
   (string->node-id (place-name pl)))
@@ -48,72 +65,152 @@
               (posn-add (place-posn pl)
                         (place-posn2 pl))))
 
+
+(define s 100)
+
 (define (place->step-posn pl)
   (posn (* s (posn-x (place-middle pl)))  
         (* s (posn-y (place-middle pl)))))
 
 (define (place->level pl)
+  (define h (* s (place-height pl)))
+  (define w (* s (place-width pl)))   
+
   (define parent
     (node 
       (posn-x (place->step-posn pl))
       (posn-y (place->step-posn pl))
-      (place->div (* s (place-width pl))  
-                  (* s (place-height pl))  
-                  pl)))
+      (place->div w h pl)))
 
   (define landing-node
     (node 
       #:id (place-id pl)
       0 200 ;Adjust for content-window height...
       (content-window
-        (h3 (quest-item-icon pl) 
-            (place-name pl))
+        (quest-item-icon pl)  
+        (h3 (place-name pl))
+
         (place-data pl))))
 
-  (level parent 
-         (ring
-           landing-node
-           (place->story-nodes pl))))
+  (define reader-id
+    (~a "story-reader-" (place-id pl)))
 
-(define (place->story-nodes pl)
-  (define stories (filter-stories-by-place stories:all pl))
-  (define (story->node s y)
+  (define story-nav-node
+    (node 600 200
+          (content-window
+            (h2 "Story Table of Contents")
+            (map (curryr story->story-preview reader-id)
+                 (filter-stories-by-place stories:all pl)))))
+
+  (define story-reader-node
+    (node 1200 200
+          (content-window
+            (div id: reader-id 
+                 (p "No story selected")))))
+
     (level
-      (node
-        (+ 300 250) y
-        (div
-          style: (properties width: 500)
-          (story-preview s)))
-      (ring 
-        (node 0 0
-              #:id (story-id s)
-              (content-window
-                (h3 (quest-item-icon s) 
-                    (story-name s))
-                (story-data s))))))
+      parent
+      (ring
+        landing-node
+        story-nav-node
+        story-reader-node)) )
 
-  (map story->node stories (range 0 (* 100 (length stories))
-                                  100)))
-
+(define (story->story-preview s target-for-full)
+  (div
+    style: (properties width: 500)
+    (story-preview s target-for-full)))
 
 (define (content-window . content)
   (div
-    style: (properties width: "500px"
-                       height: "400px"
+    style: (properties height: "400px"
+                       width: "500px"
                        'overflow-y: "auto")
     content))
 
-(define (story-preview s)
+(define (reduce-h h)
+  (define hs (list h1 h2 h3 h4 h5 h6))   
+  (define i (add1 (index-of hs h)))
+
+  (list-ref hs (min i (sub1 (length hs)))))
+
+
+(define (dump d)
+  (~s
+    (regexp-replaces 
+      (with-output-to-string (thunk (output-xml d)))
+      '([#rx"\n" ""]))))
+
+(define (parent-story-for s)
+  ;Bogus, placeholder.
+  (first stories:all))
+
+(define (story-data-and-links s target-for-full)
+  (list
+    (h3 (quest-item-icon s)     
+        (story-name s))
+    (story-data s)
+    (expandable-linked-stories s h3)))
+
+(define (expandable-linked-stories s h)
+  (when (not (empty? (story-links s)))
+    (list
+      (hr)
+      (map (curryr story-expand (reduce-h h)) 
+           (story-links s)))) )
+
+(define (show-in-reader-link wrap target-for-full s)
+  (a 'data-toggle: "collapse" href: (~a "#collapse-" (story-name s)) 'aria-expanded: "false" 'aria-controls: "collapseExample" 'onClick: @~a{document.getElementById("@target-for-full").innerHTML = @(dump (story-data-and-links s target-for-full)); @(update-quest-bar (story-id s))}
+     (wrap (story-name s))))
+
+(define (expand-link wrap s)
+  (a 'data-toggle: "collapse" href: (~a "#expand-collapse-" (story-name s)) 'aria-expanded: "false" 'aria-controls: "expand-collapseExample" 'onClick: (update-quest-bar (story-id s)) 
+     (wrap (story-name s))))
+
+(define (preview-linked-stories s target-for-full h)
+  (when (not (empty? (story-links s)))
+    (list
+      (hr)
+      (p "Sub-stories:")
+      (map (curryr story-preview target-for-full (reduce-h h)) 
+           (story-links s)))))
+
+(define (story-preview s target-for-full (h h3))
   (local-require (only-in gregor ~t))
   (card
     class: "story-card"
     (card-body 
-      (card-title 
-        (quest-item-icon s)
-        (story-name s))
-      (card-subtitle
-        (~t (time-start (story-time s))
-            "E, MMMM d h:mm a")))))
+      (card-text
+        (quest-item-icon s)     
+
+        (show-in-reader-link h target-for-full s)
+        
+        (card-subtitle
+          (~t (time-start (story-time s))
+              "E, MMMM d h:mm a"))
+
+        (div class: "collapse" id: (~a "collapse-" (story-name s))
+             (div 
+               (p "Read the full story to the right...")
+               (preview-linked-stories s target-for-full h) )) ))))
+
+(define (story-expand s (h h3))
+  (local-require (only-in gregor ~t))
+  (card
+    class: "story-card"
+    (card-body 
+      (card-text
+        (quest-item-icon s)     
+
+        (expand-link h s)
+        
+        (card-subtitle
+          (~t (time-start (story-time s))
+              "E, MMMM d h:mm a"))
+
+        (div class: "collapse" id: (~a "expand-collapse-" (story-name s))
+             (div 
+               (story-data s)
+               (expandable-linked-stories s h) )) ))))
 
 
 (define (impress-metapolis #:quest (qs (list)))
@@ -121,42 +218,57 @@
     (string=? (string-downcase (place-name p)) "metapolis"))
 
   (define steps 
-    (parameterize ([quest qs])
-      (with-depth 5
-                  (ring->steps
-                    (apply ring
-                           (map place->level 
-                                (filter-not metapolis? places:all)))))))
+    (list
+      (step 
+        #:x 4000 #:y 2500 #:scale 10
+        id: "top")
+
+      #; ;Pretty, but makes the zoom animations jittery :(
+      (step 
+        #:x 4000 #:y 2500 #:scale 10
+        id: "river"
+        (img src: (pathify (add-path-prefix river-img-path))))
+      (parameterize ([quest qs])
+        (with-depth 10
+                    (ring->steps
+                      (apply ring
+                             (map place->level 
+                                  (filter-not metapolis? places:all))))))))
 
   (list
 
     (style/inline type: "text/css"
-                  ;Place name effects
-                  "#impress .place-name { transform: scale(0.5); -webkit-transform-origin: top left; color: gray; top: -10px; width: 500px;}"
+                  @~a{
+                  #impress .show-on-present {visibility:hidden}
+                  #impress .present .show-on-present {visibility:visible}
+                  
+                  #impress .place-name-and-rect .place-name { display:none }
+                  #impress .place-name-and-rect:hover .place-name { color: black; top: -250px; width: 5000px; font-size: 200; display: block}
 
-                  "#impress .present .place-name { transform: scale(1); color: black; top: -20px}"
-
-                  ;Place rectangle effects
-
-                  "#impress .present .place-rectangle { border: 1px solid black; }"
-
-
-                  ;After entering place
-
-                  "#impress .place-data { opacity: 0.1; }" 
-                  "#impress .present .place-data { opacity: 1; }"
-
-                  ;Story name effects  
-
-                  "#impress .present .story-card { transform: scale(1.1);}")
+                  #impress .present .place-name-and-rect .place-name { display:none }
+                  }
+                  )
 
     (div 
       style: (properties cursor: "pointer")
       (impress 
-        #:transition-duration 300
+        #:transition-duration 1000
         steps))
 
       (update-quest-bar-on-visits (map get-id qs))))
+
+(define (update-quest-bar id)
+  @~a{
+    window.nodes_to_visit = window.nodes_to_visit || 
+    @(empty-js-quest-visited-hash (map get-id (quest)));
+    window.nodes_to_visit["@id"] = true;
+    var vals    = Object.values(window.nodes_to_visit);
+    var trues   = vals.filter((v)=>v);
+    var percent = Math.floor((trues.length / vals.length) * 100);
+
+    document.getElementById("quest-completion-bar").style.width = percent + "%";
+    document.getElementById("quest-completion-bar").innerHTML = percent + "%";
+  })
 
 (define (update-quest-bar-on-visits ids)
   ;Look, Mom!  Javascript inside of Racket!
@@ -206,26 +318,14 @@
          'aria-valuemin: "0" 
          'aria-valuemax: "100" )))
 
-(define (star-icon color i)
-  (overlay
-    (text (~a i) 12 'black)
-    (circle 10 'solid color)))
-
-(define quest-items
-  (list
-    (star-icon 'red 1)
-    (star-icon 'orange 2)
-    (star-icon 'yellow 3)
-    (star-icon 'green 4)
-    (star-icon 'blue 5)
-    (star-icon 'purple 6)))
-
 (define (quest-item-index s)
   (index-of (quest) s))
 
 (define (quest-item-icon s)
   (define i (quest-item-index s))
   (when i
-    (write-img
-      (list-ref quest-items i))))
+    (div class: "badge badge-pill badge-success"
+           (~a (add1 i) " of " (length (quest))))))
+
+
 

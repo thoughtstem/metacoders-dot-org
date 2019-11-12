@@ -8,7 +8,8 @@
          jordan-img-path
          jason-img-path
          sonny-img-path
-         sara-img-path)
+         sara-img-path
+         river-img-path)
 
 (require website/bootstrap
          (only-in 2htdp/image bitmap/file)
@@ -34,6 +35,9 @@
 (define sonny-img-path
   (list "img" "sonny.png"))
 
+(define river-img-path
+  (list "img" "river.png"))
+
 (define (imgs)
   (list 
     (page stephen-img-path
@@ -54,6 +58,8 @@
     (page logo-img-path
           (bitmap/file (build-path img "logo.png"))) 
 
+    (page river-img-path
+          (bitmap/file (build-path img "river.png"))) 
     ))
 
 
