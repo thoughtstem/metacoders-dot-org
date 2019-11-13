@@ -13,7 +13,13 @@
          games-img-path
          story-img-path
          takes-a-village-path
-         homepage-cover-img-path)
+         homepage-cover-img-path
+
+         grad-cap-icon-path
+         laptop-icon-path
+         dollar-sign-icon-path
+         school-supplies-icon-path
+         )
 
 (require website/bootstrap
          (only-in 2htdp/image bitmap/file)
@@ -52,6 +58,11 @@
 (define river-img-path
   (list "img" "river.png"))
 
+(define grad-cap-icon-path (list "img" "graduation-cap.svg"))
+(define laptop-icon-path (list "img" "laptop.svg"))
+(define dollar-sign-icon-path (list "img" "dollar-sign.svg"))
+(define school-supplies-icon-path (list "img" "school-supplies.svg"))
+
 (define (imgs)
   (list 
     (page stephen-img-path
@@ -79,10 +90,22 @@
     (page homepage-cover-img-path
           (bitmap/file (build-path img "homepage-cover.png")))
     (page logo-img-path
-          (bitmap/file (build-path img "logo.png"))) 
+          (bitmap/file (build-path img "logo.png")))
 
     (page river-img-path
-          (bitmap/file (build-path img "river.png"))) 
+          (bitmap/file(build-path img "river.png")))
+
+    #;(page grad-cap-icon-path
+          (file->bytes (build-path img "graduation-cap.svg")))
+
+    #;(page laptop-icon-path
+          (file->bytes (build-path img "laptop.svg")))
+
+    #;(page dollar-sign-icon-path
+          (file->bytes (build-path img "dollar-sign.svg")))
+
+    #;(page school-supplies-icon-path
+          (file->bytes (build-path img "school-supplies.svg")))
     ))
 
 
