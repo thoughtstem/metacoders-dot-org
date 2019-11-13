@@ -95,17 +95,17 @@
     (page river-img-path
           (bitmap/file(build-path img "river.png")))
 
-    #;(page grad-cap-icon-path
-          (file->bytes (build-path img "graduation-cap.svg")))
+    (page grad-cap-icon-path
+          (file->string (build-path img "graduation-cap.svg")))
 
-    #;(page laptop-icon-path
-          (file->bytes (build-path img "laptop.svg")))
+    (page laptop-icon-path
+          (file->string (build-path img "laptop.svg")))
 
-    #;(page dollar-sign-icon-path
-          (file->bytes (build-path img "dollar-sign.svg")))
+    (page dollar-sign-icon-path
+          (file->string (build-path img "dollar-sign.svg")))
 
-    #;(page school-supplies-icon-path
-          (file->bytes (build-path img "school-supplies.svg")))
+    (page school-supplies-icon-path
+          (file->string (build-path img "school-supplies.svg")))
     ))
 
 
