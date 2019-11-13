@@ -27,6 +27,7 @@
 
 (define (normal-footer)
   (footer class: "pt-4 bg-dark"
+          style: (properties margin-top:"20vh")
     (container 
       (row
         (col-3 class: "text-white"
