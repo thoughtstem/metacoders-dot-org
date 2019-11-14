@@ -52,7 +52,7 @@
             (h6 "Company")
             (ul class: "list-unstyled"
               (li (link-to learn-more-path (small "Learn More")))
-              (li (link-to get-to-work-path (small "Join Our Team")))
+              (li (link-to join-our-team-path (small "Join Our Team")))
               (li (link-to donate-path (small "Donate")))
               (li (link-to terms-and-conditions-path (small "Terms & Conditions")))))
           (col-3 class: "text-white"
@@ -86,7 +86,7 @@
     #:brand "MetaCoders"
     (my-nav-link learn-more-path  "Learn More")
     (my-nav-link city-search-path "Locations")
-    (my-nav-link get-to-work-path "Join Our Team")
+    (my-nav-link join-our-team-path "Join Our Team")
     (my-nav-link donate-path "Donate")))
 
 (define (homepage-navbar)
@@ -124,7 +124,7 @@
       (ul class: "navbar-nav ml-auto"
         (my-nav-link learn-more-path  "Learn More")
         (my-nav-link city-search-path "Locations")
-        (my-nav-link get-to-work-path "Join Our Team")
+        (my-nav-link join-our-team-path "Join Our Team")
         (my-nav-link donate-path "Donate"))))))
 
 (define (my-nav-link to text)

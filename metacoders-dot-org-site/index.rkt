@@ -66,7 +66,7 @@
           (col-sm-6
               (h2 "A good education takes a village.")
               (p "Coding education isn’t possible in many communities because the expertise isn’t there yet. We help train community members to bring grass-roots coding education to local kids.")
-              (link-to get-to-work-path (button-primary id: "main-button" 
+              (link-to join-our-team-path (button-primary id: "main-button" 
                                             class: "float-right"
                                             "Join Our Team")))))))
 
