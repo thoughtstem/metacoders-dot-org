@@ -16,7 +16,7 @@
   (jumbotron  style: (properties
                       text-align: "center"
                       margin-bottom: 0
-                      background-image: (string-append "url(" (prefix/pathify homepage-cover-img-path) ")")
+                      background-image: (string-append "url(" (prefix/pathify join-our-team-banner-path) ")")
                       background-size: "cover"
                       height: "80%")
               class: "d-flex align-items-center"
@@ -41,14 +41,14 @@
       (br)
       (card-deck
         (card
-          (card-img-top)
+          (card-img-top src: (prefix/pathify coding-coach-img-path))
           (card-body
             (card-title "Become a Coding Coach")
             (card-text "Teach kids in your community how to code!")
             (button-primary
               "Learn More")))
         (card
-          (card-img-top)
+          (card-img-top src: (prefix/pathify coding-coach-img-path))
           (card-body
             (card-title "Become a Technology Coordinator")
             (card-text "Work at home and prepare supplies for local classes.")
@@ -67,14 +67,14 @@
       (br)
       (card-deck
         (card
-          (card-img-top)
+          (card-img-top src: (prefix/pathify volunteer-scientist-img-path))
           (card-body
             (card-title "Volunteer as a Learning Scientist")
             (card-text "Study and monitor MetaCoders classes in your local area to make sure kids have the best classroom experiences.")
             (button-primary
               "Learn More")))
         (card
-          (card-img-top)
+          (card-img-top src: (prefix/pathify volunteer-coder-img-path))
           (card-body
             (card-title "Volunteer as a Coder")
             (card-text "Help us code open-source educational software that kids around the world can use to create video games, apps, and more!")
