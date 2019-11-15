@@ -1,6 +1,7 @@
 #lang at-exp racket
 
 (provide normal-content
+         normal-content-wide
          homepage-content)
 
 (require website/bootstrap
@@ -14,6 +15,14 @@
   (content
     (normal-navbar)
     (container 
+      id: "main"
+      more)
+    (normal-footer)))
+
+(define (normal-content-wide . more)
+  (content
+    (normal-navbar)
+    (div 
       id: "main"
       more)
     (normal-footer)))
