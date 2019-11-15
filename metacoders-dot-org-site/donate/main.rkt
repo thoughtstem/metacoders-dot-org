@@ -2,32 +2,35 @@
 
 (provide donate)
 
-(require metacoders-dot-org-lib)
+(require metacoders-dot-org-lib
+         racket/runtime-path)
 
-;(define grad-cap-icon-path (list "img" "graduation-cap.svg"))
-;(define laptop-icon-path (list "img" "laptop.svg"))
-;(define dollar-sign-icon-path (list "img" "dollar-sign.svg"))
-;(define school-supplies-icon-path (list "img" "school-supplies.svg"))
+(define (html/inline str)
+  (define id (random 10000))
+  (define fixed-str (string-replace str "'" "\""))
+  (list (span id: (~a "html-inline-" id))
+        @script/inline{
+(function(){
+  var element = document.getElementById('html-inline-@id');
+  element.innerHTML = '@fixed-str';
+})();}))
+
+(define-runtime-path grad-cap-path "./graduation-cap.svg")
+(define-runtime-path laptop-path "./laptop.svg")
+(define-runtime-path dollar-sign-path "./dollar-sign.svg")
+(define-runtime-path school-supplies-path "./school-supplies.svg")
 
 (define grad-cap-icon
-  (img src: (prefix/pathify grad-cap-icon-path)
-       height: 42
-       style: (properties margin-right: 10)))
+  (html/inline (string-replace (file->string grad-cap-path) "<svg" "<svg class=\"donate-color\"")))
 
 (define laptop-icon
-  (img src: (prefix/pathify laptop-icon-path)
-       height: 42
-       style: (properties margin-right: 10)))
+  (html/inline (string-replace (file->string laptop-path) "<svg" "<svg class=\"donate-color\"")))
 
 (define dollar-sign-icon
-  (img src: (prefix/pathify dollar-sign-icon-path)
-       height: 42
-       style: (properties margin-right: 10)))
+  (html/inline (string-replace (file->string dollar-sign-path) "<svg" "<svg class=\"donate-color\"")))
 
 (define school-supplies-icon
-  (img src: (prefix/pathify school-supplies-icon-path)
-       height: 42
-       style: (properties margin-right: 10)))
+  (html/inline (string-replace (file->string school-supplies-path) "<svg" "<svg class=\"donate-color\"")))
 
 (define (donate-options)
   (div class: "btn-group btn-group-toggle"
@@ -73,8 +76,13 @@
            background-image: (string-append "url(" (prefix/pathify homepage-cover-img-path) ")")
            background-size: "cover"
            height: "80%")
-   class: "d-flex align-items-center"
+   class: "align-items-center"
+   (h1 id: "donate-header" style: (properties color: "white"
+                                              'text-shadow: "-2px 2px black"
+                                              margin-bottom: 20) "Help Students Code Today")
    (container
+    (style/inline type: "text/css"
+                  ".donate-color { height: 42px; width: 42px; margin-right:10px; fill: #ffc107; }")
     (row class: "align-items-center"
          style: (properties 'min-height "50%"
                             padding: 15
@@ -110,6 +118,22 @@
 
 (define (donate) 
   (page donate-path
-    (normal-content 
-      (h1 "Help Students Code Today")
-      (jumbotron-main-section))))
+    (normal-content-wide
+      (jumbotron-main-section)
+      (script/inline type: "text/javascript"
+                   "function randomColor(){
+                      var icons = document.getElementsByClassName('donate-color');
+                      var buttons = document.getElementsByClassName('btn-success');
+                      var myColors = ['#dc3545','#ffc107','#28a745','#007bff','#17a2b8'];
+                      var aColor = myColors[Math.floor(Math.random() * myColors.length)];
+                      for (const icon of icons){
+                        icon.style.fill = aColor;
+                      }
+                      for (const button of buttons){
+                        button.style.backgroundColor = aColor;
+                        button.style.borderColor = aColor;
+                      }
+                      var header = document.getElementById('donate-header');
+                      header.style.textShadow = '-2px 2px ' + aColor;
+                    }
+                    randomColor();"))))
