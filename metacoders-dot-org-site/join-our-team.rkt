@@ -48,7 +48,7 @@
             (button-primary
               "Learn More")))
         (card
-          (card-img-top src: (prefix/pathify coding-coach-img-path))
+          (card-img-top src: (prefix/pathify equipment-img-path))
           (card-body
             (card-title "Become a Technology Coordinator")
             (card-text "Work at home and prepare supplies for local classes.")

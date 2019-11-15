@@ -18,6 +18,7 @@
          coding-coach-img-path
          volunteer-scientist-img-path
          volunteer-coder-img-path
+         equipment-img-path
          grad-cap-icon-path
          laptop-icon-path
          dollar-sign-icon-path
@@ -65,6 +66,8 @@
   (list "img" "volunteer-scientist.png"))
 (define volunteer-coder-img-path
   (list "img" "volunteer-coder.png"))
+(define equipment-img-path
+  (list "img" "equipment.png"))
 
 (define river-img-path
   (list "img" "river.png"))
@@ -110,6 +113,8 @@
           (bitmap/file (build-path img "volunteer-scientist.png")))
     (page volunteer-coder-img-path
           (bitmap/file (build-path img "volunteer-coder.png")))
+    (page equipment-img-path
+          (bitmap/file (build-path img "equipment.png")))
 
     (page river-img-path
           (bitmap/file(build-path img "river.png")))
