@@ -29,6 +29,8 @@
        'data-toggle: "buttons"
        (label class: "btn btn-success active"
               style: (properties width: "50%")
+              data-target: "#donate-mode"
+              data-slide-to: "0"
               (input type: "radio"
                      name: "options"
                      id: "give-once"
@@ -36,6 +38,8 @@
                      "GIVE ONCE"))
        (label class: "btn btn-secondary"
               style: (properties width: "50%")
+              data-target: "#donate-mode"
+              data-slide-to: "1"
               (input type: "radio"
                      name: "options"
                      id: "give-monthly"
@@ -47,12 +51,22 @@
     (button-secondary id:(~a "donate-amount-" amount)
                       style: (properties margin: 4)
                       (~a "$" amount)))
-  (apply (curry container style: (properties height: "60%"
-                                       margin-bottom: 10))
+  (apply container
        (map donate-amount (list 50 100 150 200 "other"))))
+
+(define (donate-amounts-monthly)
+  (define (donate-amount amount)
+    (button-secondary id:(~a "donate-amount-monthly-" amount)
+                      style: (properties margin: 4)
+                      (~a "$" amount "/mo")))
+  (apply container
+       (map donate-amount (list 30 60 90 120 "other"))))
 
 (define (donate-button amount sku)
   (button-success id:(~a "donate-button-" sku)
+                  class: "btn-block"
+                  style: (properties display: "inline-block"
+                                     border-radius: "0 0 0.18rem 0.18rem")
                   (~a "Donate $" amount)))
 
 (define (jumbotron-main-section)
@@ -73,26 +87,36 @@
    (container
     (style/inline type: "text/css"
                   ".donate-color { height: 42px; width: 42px; margin-right:10px; fill: #ffc107; }")
-    (row class: "align-items-center"
-         style: (properties 'min-height "50%"
-                            padding: 15
+    (row class: "align-items-center p-4"
+         style: (properties 'min-height: "50%"
                             color: "white"
                             background: "rgba(0,0,0,0.5)")
          (col-sm-6 style: (properties height: "80%"
                                       color: "black")
           (donate-options)
-           (br)
-           (card-deck
-            (card
-             ;(card-img-top src: (prefix/pathify games-img-path)) 
-             (card-body
-              (container style: (properties height: "20%"
-                                            margin-bottom: 10)
-                   (card-title "Choose an amount to give"))
-              (donate-amounts)
-              (container style: (properties height: "20%")
-                   (donate-button price sku))
-              ))))
+          (br)
+          (carousel id: "donate-mode"
+                    class: "slide"
+                    ;data-ride: "carousel"
+                    (div class: "carousel-inner"
+                     (card class: "carousel-item active mt-2 mb-2"
+                           (card-body
+                            (card-title "Choose an amount to give")
+                            (donate-amounts))
+                           (card-footer class: "text-center"
+                                        style: (properties padding: 0
+                                                           background-color: "transparent"
+                                                           border-top: "none")
+                                        (donate-button price sku)))
+                     (card class: "carousel-item mt-2 mb-2"
+                           (card-body
+                            (card-title "Choose an amount to give")
+                            (donate-amounts-monthly))
+                           (card-footer class: "text-center"
+                                        style: (properties padding: 0
+                                                           background-color: "transparent"
+                                                           border-top: "none")
+                                        (donate-button (~a price "/mo") sku))))))
          (col-sm-6 
           (h4 "WHAT YOUR DONATIONS SUPPORT")
           (table style: (properties color: "white")
