@@ -14,7 +14,11 @@
          story-img-path
          takes-a-village-path
          homepage-cover-img-path
-
+         join-our-team-banner-path
+         coding-coach-img-path
+         volunteer-scientist-img-path
+         volunteer-coder-img-path
+         equipment-img-path
          grad-cap-icon-path
          laptop-icon-path
          dollar-sign-icon-path
@@ -54,6 +58,16 @@
   (list "img" "takes-a-village.png"))
 (define homepage-cover-img-path
   (list "img" "homepage-cover.png"))
+(define join-our-team-banner-path
+  (list "img" "join-our-team-banner.png"))
+(define coding-coach-img-path
+  (list "img" "coding-coach.png"))
+(define volunteer-scientist-img-path
+  (list "img" "volunteer-scientist.png"))
+(define volunteer-coder-img-path
+  (list "img" "volunteer-coder.png"))
+(define equipment-img-path
+  (list "img" "equipment.png"))
 
 (define river-img-path
   (list "img" "river.png"))
@@ -91,6 +105,16 @@
           (bitmap/file (build-path img "homepage-cover.png")))
     (page logo-img-path
           (bitmap/file (build-path img "logo.png")))
+    (page join-our-team-banner-path
+          (bitmap/file (build-path img "join-our-team-banner.png")))
+    (page coding-coach-img-path
+          (bitmap/file (build-path img "coding-coach.png")))
+    (page volunteer-scientist-img-path
+          (bitmap/file (build-path img "volunteer-scientist.png")))
+    (page volunteer-coder-img-path
+          (bitmap/file (build-path img "volunteer-coder.png")))
+    (page equipment-img-path
+          (bitmap/file (build-path img "equipment.png")))
 
     (page river-img-path
           (bitmap/file(build-path img "river.png")))

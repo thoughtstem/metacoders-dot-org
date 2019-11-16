@@ -108,7 +108,7 @@
 
 (define (donate) 
   (page donate-path
-    (normal-content-wide
+    (normal-content
       (jumbotron-main-section)
       (script/inline type: "text/javascript"
                    "function randomColor(){
