@@ -13,21 +13,30 @@
 
 (define (six-ways-to-go-meta)
   (list
-    (row
+   (card-deck
+    (enroll-call-to-action)
+    (coach-call-to-action)
+    (tech-coord-call-to-action))
+   
+    #|(row
       (col-4
         (enroll-call-to-action))
       (col-4
         (coach-call-to-action))
       (col-4
-        (tech-coord-call-to-action)))
-
-    (row
+        (tech-coord-call-to-action)))|#
+   (card-deck
+    (partner-call-to-action)
+    (scientist-call-to-action)
+    (coder-call-to-action))
+    #|(row
       (col-4
         (partner-call-to-action))
       (col-4
         (scientist-call-to-action))
       (col-4
-        (coder-call-to-action)))))
+        (coder-call-to-action)))|#
+    ))
 
 (define (learn-more)
   (list

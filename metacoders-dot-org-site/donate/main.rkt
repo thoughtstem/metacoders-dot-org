@@ -5,16 +5,6 @@
 (require metacoders-dot-org-lib
          racket/runtime-path)
 
-(define (html/inline str)
-  (define id (random 10000))
-  (define fixed-str (string-replace str "'" "\""))
-  (list (span id: (~a "html-inline-" id))
-        @script/inline{
-(function(){
-  var element = document.getElementById('html-inline-@id');
-  element.innerHTML = '@fixed-str';
-})();}))
-
 (define-runtime-path grad-cap-path "./graduation-cap.svg")
 (define-runtime-path laptop-path "./laptop.svg")
 (define-runtime-path dollar-sign-path "./dollar-sign.svg")
