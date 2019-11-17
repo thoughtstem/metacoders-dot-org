@@ -6,7 +6,7 @@
 
 (define (join-our-team)
   (page join-our-team-path
-        (homepage-content
+        (normal-content-wide
           (jumbotron-header-section)
           (two-ways-to-work-with-metacoders)
           (two-other-ways-to-help-metacoders)
@@ -45,15 +45,15 @@
           (card-body
             (card-title "Become a Coding Coach")
             (card-text "Teach kids in your community how to code!")
-            (button-primary
-              "Learn More")))
+            (link-to coaches-top-path 
+              (button-primary "Learn More"))))
         (card
           (card-img-top src: (prefix/pathify equipment-img-path))
           (card-body
             (card-title "Become a Technology Coordinator")
             (card-text "Work at home and prepare supplies for local classes.")
-            (button-primary
-              "Learn More")))))))
+            (link-to tech-coords-top-path 
+              (button-primary "Learn More"))))))))
 
 
 (define (two-other-ways-to-help-metacoders)
@@ -71,15 +71,15 @@
           (card-body
             (card-title "Volunteer as a Learning Scientist")
             (card-text "Study and monitor MetaCoders classes in your local area to make sure kids have the best classroom experiences.")
-            (button-primary
-              "Learn More")))
+            (link-to scientists-top-path
+              (button-primary "Learn More"))))
         (card
           (card-img-top src: (prefix/pathify volunteer-coder-img-path))
           (card-body
             (card-title "Volunteer as a Coder")
             (card-text "Help us code open-source educational software that kids around the world can use to create video games, apps, and more!")
-            (button-primary
-              "Learn More")))))))
+            (link-to coders-top-path 
+              (button-primary "Learn More"))))))))
 
 (define (our-values)
   (jumbotron  style: (properties

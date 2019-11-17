@@ -101,7 +101,7 @@
 
 (define (index)
   (page index-path
-        (homepage-content
+        (normal-content-wide
           (jumbotron-header-section)
           (jumbotron-code-the-meta-way) 
           (jumbotron-it-takes-a-village)

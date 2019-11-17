@@ -1,8 +1,7 @@
 #lang at-exp racket
 
 (provide normal-content
-         normal-content-wide
-         homepage-content)
+         normal-content-wide)
 
 (require website/bootstrap
          racket/runtime-path
@@ -21,19 +20,10 @@
 
 (define (normal-content-wide . more)
   (content
-    (normal-navbar)
+    (jumbotron-navbar)
     (div 
       id: "main"
       more)
-    (normal-footer)))
-
-(define (homepage-content . more)
-  (content 
-    #:head (list 
-             (include-css testimonial-quotes.css))
-    (homepage-navbar)
-    (div id: "main"
-         more)
     (normal-footer)))
 
 
@@ -98,7 +88,7 @@
     (my-nav-link join-our-team-path "Join Our Team")
     (my-nav-link donate-path "Donate")))
 
-(define (homepage-navbar)
+(define (jumbotron-navbar)
 
   (list
    (style/inline
@@ -113,8 +103,8 @@
         $(document).ready(function() {
                 // Transition effect for navbar
                 $(window).scroll(function() {
-                  // checks if window is scrolled more than 75% of screen width, adds/removes solid class
-                  if($(this).scrollTop() > (.75 * window.innerHeight)) {
+                  // checks if window is scrolled more than 5% of screen width, adds/removes solid class
+                  if($(this).scrollTop() > (.05 * window.innerHeight)) {
                       $('.navbar').addClass('solid');
                   } else {
                       $('.navbar').removeClass('solid');
