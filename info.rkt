@@ -3,4 +3,5 @@
 (define deps '("base"
                "https://github.com/thoughtstem/metacoders-dot-org-dc.git?path=metacoders-dot-org-dc-site"
                "https://github.com/thoughtstem/metapolis-stories.git"
+               "https://github.com/thoughtstem/mc-coach-assess.git"
                "https://github.com/thoughtstem/impress.git"))
