@@ -26,13 +26,14 @@
                 (list "coaches" "training.html")
                 "Intro")
               (map nav-link-to-chapter 
-                   (range 1
-                          (add1 (length book)))))))
+                   (map add1
+                        (range 0
+                               (sub1 (length book))))))))
 
 
 (define (flash-cards deck-name)
   (code 
-    "#lang meta-cards"
+    "#lang mc-coach-assess"
     (br)
     (br)
     @~a{(view-deck @deck-name)}))
@@ -46,7 +47,8 @@
                        position: "relative")
     (impress-metapolis
       #:quest
-      stops)))
+      (flatten
+        stops))))
 
 
 

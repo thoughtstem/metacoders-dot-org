@@ -8,7 +8,7 @@
                     [site metapolis-stories:site])
          "./index.rkt"
          "./learn-more.rkt"
-         "./get-to-work.rkt"
+         "./join-our-team.rkt"
          "./city-search.rkt"
          "./donate.rkt"         
          "./coaches.rkt"
@@ -16,7 +16,7 @@
          "./scientists.rkt"
          "./coders.rkt"
          "./partners.rkt"
-         
+         "./terms-and-conditions.rkt"         
          "./setup-scripts.rkt"
 
          "./checkout-success.rkt"
@@ -32,7 +32,7 @@
       (imgs)
       (index)
       (learn-more)
-      (get-to-work) 
+      (join-our-team) 
       (city-search-page)
       (donate)
       (cities)
@@ -41,6 +41,7 @@
       (scientists)
       (coders)
       (partners) 
+      (terms-and-conditions)
       (setup-scripts)
 
       (checkout-success)

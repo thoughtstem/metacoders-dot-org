@@ -19,7 +19,8 @@ raco website-preview
 
 # Deploy
 
-Use `./deploy.sh` to deploy the `out` folder to `gh-pages` branch -- which makes the changes live at `metacoders.org`.
+Use `./deploy.sh` to deploy the `out` folder to `gh-pages` branch -- which makes the changes live at `metacoders.org` (currently changes are live at: `https://thoughtstem.github.io/metacoders-dot-org/` until `metacoders.org` is setup).
+
 
 
 # Develop

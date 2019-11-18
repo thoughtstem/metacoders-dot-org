@@ -16,7 +16,7 @@
           (p "Click here to fill out the registration information for your student:")
           (a href:"https://docs.google.com/forms/d/e/1FAIpQLSeo6vHe7gyNLl-BLNfOWIGmHyj3tN7Y7WNhsfH49DokINyt5Q/viewform"
              class:"btn btn-info"
-             role:"button"
+             'role: "button"
              "Finish Enrollment")
           (br)
           ))))

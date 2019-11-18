@@ -19,8 +19,8 @@
                                     color: "white"
                                     background: "rgba(0, 0, 0, 0.5)")
                   (h1 "A New Kind of Coding Education")
-                  (h6 "We use cutting-edge learning science research,")
-                  (h6 "paired with grass-roots community support") 
+                  (h6 "Cutting-edge learning science,")
+                  (h6 "with grass-roots community support") 
                   (h6 "to prepare kids for the future.")))))
 
 (define (jumbotron-code-the-meta-way)
@@ -66,7 +66,7 @@
           (col-sm-6
               (h2 "A good education takes a village.")
               (p "Coding education isn’t possible in many communities because the expertise isn’t there yet. We help train community members to bring grass-roots coding education to local kids.")
-              (link-to get-to-work-path (button-primary id: "main-button" 
+              (link-to join-our-team-path (button-primary id: "main-button" 
                                             class: "float-right"
                                             "Join Our Team")))))))
 
@@ -79,8 +79,7 @@
         class: "align-items-center"
         (col-sm-7
           (h2 "We’re teaching coding to save the world.")
-          (p "Computer scientists saved millions
-of lives in WWII. That trend continues today. In labs around the world, computer scientists are tackling cancer, climate change, and terrorism. If we are going to save the world, we need more people coding.")
+          (p "Around the world, coders are tackling cancer, self-driving cars, and terrorism.  If we are going to save the world, we need more people coding.")
           (br)
           (b (p "Meet the people who are saving the world, one coding student at a time:")))
         (col-sm-5
@@ -102,7 +101,7 @@ of lives in WWII. That trend continues today. In labs around the world, computer
 
 (define (index)
   (page index-path
-        (homepage-content
+        (normal-content-wide
           (jumbotron-header-section)
           (jumbotron-code-the-meta-way) 
           (jumbotron-it-takes-a-village)
