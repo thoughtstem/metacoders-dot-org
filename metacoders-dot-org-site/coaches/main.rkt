@@ -29,7 +29,7 @@
 (define (job-description-section)
   (container
     (br)
-    (h1 "Coding Coaches")
+    (h1 "Coding Coach")
     (h3 "Part-time Position")
     (h6 "Locations Where We’re Currently Hiring for This Postion:")
     (ul
