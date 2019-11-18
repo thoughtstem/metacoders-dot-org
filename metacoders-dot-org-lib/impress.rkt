@@ -18,6 +18,8 @@
 
 (define quest (make-parameter '()))
 
+(define all-stories (make-parameter stories:all))
+
 
 (define (place->div w h pl)
   (div
@@ -102,7 +104,7 @@
           (content-window
             (h2 "Story Table of Contents")
             (map (curryr story->story-preview reader-id)
-                 (filter-stories-by-place stories:all pl)))))
+                 (filter-stories-by-place (all-stories) pl)))))
 
   (define story-reader-node
     (node 1200 200
@@ -141,10 +143,6 @@
     (regexp-replaces 
       (with-output-to-string (thunk (output-xml d)))
       '([#rx"\n" ""]))))
-
-(define (parent-story-for s)
-  ;Bogus, placeholder.
-  (first stories:all))
 
 (define (story-data-and-links s target-for-full)
   (list
@@ -216,44 +214,46 @@
 
 
 (define (impress-metapolis #:quest (qs (list)))
-  (define (metapolis? p)
-    (string=? (string-downcase (place-name p)) "metapolis"))
+  (parameterize ([all-stories (append (filter story? qs)
+                                      (all-stories))])
+    (define (metapolis? p)
+      (string=? (string-downcase (place-name p)) "metapolis"))
 
-  (define steps 
+    (define steps 
+      (list
+        (step 
+          #:x 4000 #:y 2500 #:scale 10
+          id: "top")
+
+        #; ;Pretty, but makes the zoom animations jittery :(
+        (step 
+          #:x 4000 #:y 2500 #:scale 10
+          id: "river"
+          (img src: (pathify (add-path-prefix river-img-path))))
+        (parameterize ([quest qs])
+          (with-depth 10
+                      (ring->steps
+                        (apply ring
+                               (map place->level 
+                                    (filter-not metapolis? places:all))))))))
+
     (list
-      (step 
-        #:x 4000 #:y 2500 #:scale 10
-        id: "top")
 
-      #; ;Pretty, but makes the zoom animations jittery :(
-      (step 
-        #:x 4000 #:y 2500 #:scale 10
-        id: "river"
-        (img src: (pathify (add-path-prefix river-img-path))))
-      (parameterize ([quest qs])
-        (with-depth 10
-                    (ring->steps
-                      (apply ring
-                             (map place->level 
-                                  (filter-not metapolis? places:all))))))))
+      (style/inline type: "text/css"
+                    @~a{
+                    #impress .show-on-present {visibility:hidden}
+                    #impress .present .show-on-present {visibility:visible}
 
-  (list
+                    #impress .present .place-name-and-rect .place-name { display:none }
+                    })
 
-    (style/inline type: "text/css"
-                  @~a{
-                  #impress .show-on-present {visibility:hidden}
-                  #impress .present .show-on-present {visibility:visible}
-                  
-                  #impress .present .place-name-and-rect .place-name { display:none }
-                  })
+      (div 
+        style: (properties cursor: "pointer")
+        (impress 
+          #:transition-duration 1000
+          steps))
 
-    (div 
-      style: (properties cursor: "pointer")
-      (impress 
-        #:transition-duration 1000
-        steps))
-
-      (update-quest-bar-on-visits (map get-id qs))))
+      (update-quest-bar-on-visits (map get-id qs)))))
 
 (define (update-quest-bar id)
   @~a{
@@ -290,7 +290,9 @@
   (cond
     [(place? x) (place-id x)]
     [(story? x) (story-id x)]
-    [else (error "Only places and stories can be quest stops")]))
+    [else 
+      (displayln x)
+      (error "Only places and stories can be quest stops")]))
 
 (define (empty-js-quest-visited-hash ids)
   (define kvs (map (lambda (i)
