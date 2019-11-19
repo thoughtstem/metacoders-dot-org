@@ -61,12 +61,52 @@ function setDonate@amount() {
        (map donate-amount (list 50 100 150 200 "other"))))
 
 (define (donate-button)
-  (button-success id:(~a "donate-button")
+  (define key "pk_test_BZvU77rH9zfNQvab1EpKB7GK00ZxANulPE")
+  (list (button-success id:(~a "donate-button")
                   class: "btn-block"
                   style: (properties display: "inline-block"
                                      border-radius: "0 0 0.18rem 0.18rem")
-                  ;TODO: Add stripe script
-                  (~a "Donate $50")))
+                  (~a "Donate $50"))
+        ;TODO: Add stripe script
+        (script src:"https://js.stripe.com/v3")
+        @script/inline{
+ (function() {
+  var stripe = Stripe('@key');
+  var donateButton = document.getElementById('donate-button');
+  donateButton.addEventListener('click', function () {
+   var currentButton = document.getElementById('donate-button');
+   var buttonStr = currentButton.innerText.match(/(\d+)/);
+   var numberStr;
+   if (buttonStr){
+    numberStr = buttonStr[0];
+    }else{
+    numberStr = "0"
+   }
+   var donateSku;
+   switch(numberStr){
+    case "50":
+    donateSku = "sku_G7REBMxlyd6Oh1";
+    break;
+    case "100":
+    donateSku = "sku_GA18hKlhrjqjfj";
+    break;
+    default:
+    donateSku = "sku_G7REBMxlyd6Oh1";
+   }
+   stripe.redirectToCheckout({
+    items: [{sku: donateSku, quantity: 1}],
+    successUrl: 'https://metacoders-dot-org/checkout-success.html',
+    cancelUrl: 'https://metacoders-dot-org/checkout-fail.html',
+    billingAddressCollection: 'required',
+    })
+   .then(function (result) {
+    if (result.error) {
+     var displayError = document.getElementById('error-message-' + donateSku);
+     displayError.textContent = result.error.message;
+    }
+    });
+   });
+  })();}))
 
 (define (donate-amounts-monthly)
   (define (donate-amount amount)
