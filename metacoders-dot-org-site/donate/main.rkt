@@ -27,7 +27,7 @@
        style: (properties width: "100%"
                           margin-bottom: 10)
        'data-toggle: "buttons"
-       (label class: "btn btn-success active"
+       (label class: "btn btn-secondary active"
               style: (properties width: "50%")
               data-target: "#donate-mode"
               data-slide-to: "0"
@@ -49,30 +49,48 @@
 (define (donate-amounts)
   (define (donate-amount amount)
     (button-secondary id:(~a "donate-amount-" amount)
-                      style: (properties margin: 4)
-                      (~a "$" amount)))
+                      class: "m-1"
+                      'onclick: (~a "setDonate" amount "();")
+                      @script/inline{
+function setDonate@amount() {
+  var donateBtn = document.getElementById('donate-button');
+  donateBtn.innerHTML = "Donate $@amount";
+}}
+                     (~a "$" amount)))
   (apply container
        (map donate-amount (list 50 100 150 200 "other"))))
+
+(define (donate-button)
+  (button-success id:(~a "donate-button")
+                  class: "btn-block"
+                  style: (properties display: "inline-block"
+                                     border-radius: "0 0 0.18rem 0.18rem")
+                  ;TODO: Add stripe script
+                  (~a "Donate $50")))
 
 (define (donate-amounts-monthly)
   (define (donate-amount amount)
     (button-secondary id:(~a "donate-amount-monthly-" amount)
-                      style: (properties margin: 4)
+                      class: "m-1"
+                      'onclick: (~a "setMonthlyDonate" amount "();")
+                      @script/inline{
+function setMonthlyDonate@amount() {
+  var donateBtn = document.getElementById('monthly-donate-button');
+  donateBtn.innerHTML = "Donate $@(~a amount "/mo")";
+}}
                       (~a "$" amount "/mo")))
   (apply container
        (map donate-amount (list 30 60 90 120 "other"))))
 
-(define (donate-button amount sku)
-  (button-success id:(~a "donate-button-" sku)
+(define (monthly-donate-button)
+  (button-success id:(~a "monthly-donate-button")
                   class: "btn-block"
                   style: (properties display: "inline-block"
                                      border-radius: "0 0 0.18rem 0.18rem")
-                  (~a "Donate $" amount)))
+                  ;TODO: Add stripe script
+                  (~a "Donate $30/mo")))
 
 (define (jumbotron-main-section)
-  (define price 50) ;dummy data
-  (define sku "")
-  (define key "")
   (jumbotron
    style: (properties
            text-align: "center"
@@ -86,39 +104,39 @@
                                               margin-bottom: 20) "Help Students Code Today")
    (container
     (style/inline type: "text/css"
-                  ".donate-color { height: 42px; width: 42px; margin-right:10px; fill: #ffc107; }")
+                  ".donate-color { height: 42px; width: 42px; margin-right:10px; fill: #ffc107; }
+                   .btn.btn-secondary:not(:disabled):not(.disabled).active {background-color:#545b62;}")
     (row class: "align-items-center p-4"
-         style: (properties 'min-height: "50%"
-                            color: "white"
+         style: (properties color: "white"
                             background: "rgba(0,0,0,0.5)")
-         (col-sm-6 style: (properties height: "80%"
-                                      color: "black")
+         (col-sm-6 style: (properties color: "black")
           (donate-options)
           (br)
           (carousel id: "donate-mode"
                     class: "slide"
                     ;data-ride: "carousel"
-                    (div class: "carousel-inner"
+                    (div class: "carousel-inner" style: (properties 'min-height: 250)
                      (card class: "carousel-item active mt-2 mb-2"
-                           (card-body
+                           (card-body class: "p-2" style: (properties 'min-height: "12rem")
                             (card-title "Choose an amount to give")
                             (donate-amounts))
                            (card-footer class: "text-center"
                                         style: (properties padding: 0
                                                            background-color: "transparent"
                                                            border-top: "none")
-                                        (donate-button price sku)))
+                                        (donate-button)))
                      (card class: "carousel-item mt-2 mb-2"
-                           (card-body
+                           (card-body class: "p-2" style: (properties 'min-height: "12rem")
                             (card-title "Choose an amount to give")
                             (donate-amounts-monthly))
                            (card-footer class: "text-center"
                                         style: (properties padding: 0
                                                            background-color: "transparent"
                                                            border-top: "none")
-                                        (donate-button (~a price "/mo") sku))))))
+                                        (monthly-donate-button))))))
          (col-sm-6 
           (h4 "WHAT YOUR DONATIONS SUPPORT")
+          (br)
           (table style: (properties color: "white")
                  (tr (td grad-cap-icon)
                      (td (h5 "Full/Partial Scholarships")))
@@ -132,7 +150,7 @@
 
 (define (donate) 
   (page donate-path
-    (normal-content
+    (normal-content-wide
       (jumbotron-main-section)
       (script/inline type: "text/javascript"
                    "function randomColor(){
