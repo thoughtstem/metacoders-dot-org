@@ -30,7 +30,7 @@
     (br)
     (container
       (h1 position-title)
-      (h3 "Part-time")
+      (h3 "Apply to be a Part-time MetaCoders Employee")
       (h6 "Locations Where We’re Currently Hiring for This Position:")
       (ul
         (map li locations-hiring)) 
