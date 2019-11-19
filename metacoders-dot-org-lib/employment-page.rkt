@@ -35,7 +35,7 @@
       (ul
         (map li locations-hiring)) 
       description    
-      (p "Learn more about employment requirements and apply for employed positions here:")
+      (p "Learn more about employment duties, requirements, and how to apply here:")
       (button-primary class: "mb-4"
                       id: "main-button" 
                       "Apply Here"))))

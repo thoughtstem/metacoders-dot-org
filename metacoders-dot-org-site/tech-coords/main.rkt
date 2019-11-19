@@ -14,12 +14,11 @@
   (page tech-coords-top-path
         (normal-content-wide
           (tech-coord-page)
-          (container
-            (row
-              (col-6
-                (email-signup))
-              (col-6
-                (begin-training (training))))))))
+          (card-deck
+              (email-signup)
+              (begin-training
+                (p "I'm writing stuff here!") 
+                (training))))))
 
 (define (tech-coord-page)
   (employment-page  #:position-title "Technology Coordinator"
