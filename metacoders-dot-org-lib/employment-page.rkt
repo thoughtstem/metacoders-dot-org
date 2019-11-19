@@ -17,6 +17,7 @@
                         margin-bottom: 0
                         background-image: (string-append "url(" (prefix/pathify image-path) ")")
                         background-size: "cover"
+                        background-position: "center"
                         height: "60%")
                 class: "d-flex align-items-center"
       (container

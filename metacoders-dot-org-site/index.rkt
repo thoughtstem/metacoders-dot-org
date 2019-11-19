@@ -9,6 +9,7 @@
                       text-align: "center"
                       margin-bottom: 0
                       background-image: (string-append "url(" (prefix/pathify homepage-cover-img-path) ")")
+                      background-position: "center"
                       background-size: "cover"
                       height: "80%")
               class: "d-flex align-items-center"
