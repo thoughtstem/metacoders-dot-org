@@ -31,15 +31,15 @@
     (br)
     (h1 "Coding Coach")
     (h3 "Part-time Position")
-    (h6 "Locations Where We’re Currently Hiring for This Postion:")
+    (h6 "Locations Where We’re Currently Hiring for This Position:")
     (ul
       (li "Dallas, Texas")
       (li "Minneapolis, Minnesota")
       (li "Raleigh, North Carolina")
       (li "Reno, Nevada"))
     (h6 "Description")
-    (p "We are currently seeking energetic, passionate individuals who will be \"Coding Coaches\" for computer science classes & camps in your area.")
-    (p "Coding Coaches guide students as they learn computer science using MetaCoders’ innovative curriculum. During the school year, Coding Coaches predominantly work with students in Kindergarten through 6th grade in weekly 1-2 hour classes. Over the summer, Coding Coaches predominantly work with students in Kindergarten through 10th grade in summer camps, which operate from 9am-4pm.")
+    (p "We are currently seeking energetic, passionate individuals who will be \"Coding Coaches\" for computer science classes & camps in your area. Candidates do not necessarily need to be experienced in computer science, but should be excited to learn coding with us!")
+    (p "Coding Coaches guide students as they learn computer science using MetaCoders’ innovative curriculum. During the school year, Coding Coaches work with students in Kindergarten through 6th grade in weekly 1-2 hour classes. Over the summer, Coding Coaches predominantly work with students in Kindergarten through 10th grade in summer camps, which operate from 9am-4pm.")
     (h6 "Expectations and Responsibilities")
     (ul
       (li "Guide students through the curriculum; engaging students with different experience levels and motivating everyone with your can-do attitude!")
@@ -52,7 +52,7 @@
       (li "Train on MetaCoders technology, languages, and curriculum to effectively coach students and answer questions.")
       (li "Read and respond in a timely manner to emails from MetaCoders staff regarding scheduling, curriculum, and other updates.")
       (li "Attend all classes, training sessions, and other programs committed to, barring emergencies or significant illness. In cases of emergency or significant illness, coaches must alert MetaCoders with as much advance notice as possible."))
-    (p "Learn more and apply for employed positions here:")
+    (p "Learn more about employment requirements and apply for employed positions here:")
     (button-primary class: "mb-4"
                     id: "main-button" 
                     "Apply Here")))
