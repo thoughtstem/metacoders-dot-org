@@ -19,11 +19,12 @@
 (define (bottom-section)
   (container
     (hr)
+    (br)
     (card-deck
-      (email-signup)
       (begin-training
         (p "Whether you're interested in becoming a Technology Coordinator and would like to learn more, or you've already been hired as a Technology Coordinator, you can start your training now!") 
-        (training)))))
+        (training)
+        "col-9 mx-auto"))))
 
 (define (tech-coord-page)
   (employment-page  #:position-title "Technology Coordinator"

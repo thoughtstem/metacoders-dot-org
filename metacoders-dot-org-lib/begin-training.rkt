@@ -4,8 +4,8 @@
 
 (require website/bootstrap)
 
-(define (begin-training description target-page)
-  (card
+(define (begin-training description target-page [classes ""])
+  (card class: classes
     (card-body
       (card-title "Your quest begins here...")
       (card-text
