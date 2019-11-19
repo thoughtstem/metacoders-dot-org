@@ -17,6 +17,7 @@
                         margin-bottom: 0
                         background-image: (string-append "url(" (prefix/pathify image-path) ")")
                         background-size: "cover"
+                        background-position: "center"
                         height: "60%")
                 class: "d-flex align-items-center"
       (container
@@ -30,12 +31,12 @@
     (br)
     (container
       (h1 position-title)
-      (h3 "Part-time")
+      (h3 "Apply to be a Part-time MetaCoders Employee")
       (h6 "Locations Where We’re Currently Hiring for This Position:")
       (ul
         (map li locations-hiring)) 
       description    
-      (p "Learn more and apply for employed positions here:")
+      (p "Learn more about employment duties, requirements, and how to apply here:")
       (button-primary class: "mb-4"
                       id: "main-button" 
                       "Apply Here"))))
