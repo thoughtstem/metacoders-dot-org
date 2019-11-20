@@ -23,9 +23,8 @@
   (html/inline (string-replace (file->string school-supplies-path) "<svg" "<svg class=\"donate-color\"")))
 
 (define (donate-toggle)
-  (div class: "btn-group btn-group-toggle"
-       style: (properties width: "100%"
-                          margin-bottom: 10)
+  (div class: "btn-group btn-group-toggle mb-2"
+       style: (properties width: "100%")
        'data-toggle: "buttons"
        (label class: "btn btn-secondary active"
               style: (properties width: "50%")
@@ -55,20 +54,19 @@
            margin-bottom: 0
            background-image: (string-append "url(" (prefix/pathify homepage-cover-img-path) ")")
            background-size: "cover"
-           height: "80%")
+           height: "60%")
    class: "align-items-center"
-   (h1 id: "donate-header" style: (properties color: "white"
-                                              'text-shadow: "-2px 2px black"
-                                              margin-bottom: 20)
+   (h1 id: "donate-header" class: "m-4"
+       style: (properties color: "white"
+                          'text-shadow: "-2px 2px #28a745")
        "Help Students Code Today")
    (container
-    (style/inline type: "text/css"
-                  ".donate-color { height: 42px; width: 42px; margin-right:10px; fill: #ffc107; }
-                   .btn.btn-secondary:not(:disabled):not(.disabled).active {background-color:#545b62;}")
-    (row class: "align-items-center p-4"
+    
+    (col-sm-8 class: "p-4 mx-auto"
          style: (properties color: "white"
                             background: "rgba(0,0,0,0.5)")
-         (col-sm-6 style: (properties color: "black")
+         (div ;class: "mx-auto"
+              style: (properties color: "black")
           (donate-toggle)
           (br)
           (carousel id: "donate-carousel"
@@ -86,7 +84,7 @@
                                                     (cons 90  "plan_GD4pLEXRTNJDjd")
                                                     (cons 120 "plan_GD4qJmEqRQehal")))
                      )))
-         (col-sm-6 
+         #;(col-sm-6 
           (h4 "WHAT YOUR DONATIONS SUPPORT")
           (br)
           (table style: (properties color: "white")
@@ -98,13 +96,36 @@
                      (td (h5 "Reduced Overall Costs for Students")))
                  (tr (td school-supplies-icon)
                      (td (h5 "Classroom Supplies"))))
-          )))))
+          )
+         ))))
+
+(define (what-your-donations-support)
+  (jumbotron style: (properties
+                           text-align: "center"
+                           margin-bottom: 0
+                           background: "white")
+    (container
+      (h2 "WHAT YOUR DONATIONS SUPPORT")
+      (br)
+      (table class: "col-sm-8 mx-auto"
+             (tr (td grad-cap-icon)
+                 (td (h5 "Full/Partial Scholarships")))
+             (tr (td laptop-icon)
+                 (td (h5 "Customized Chromebooks for Student Use")))
+             (tr (td dollar-sign-icon)
+                 (td (h5 "Reduced Overall Costs for Students")))
+             (tr (td school-supplies-icon)
+                 (td (h5 "Classroom Supplies")))))))
 
 (define (donate) 
   (page donate-path
     (normal-content-wide
+     (style/inline type: "text/css"
+                   ".donate-color { height: 42px; width: 42px; margin-right:10px; fill: #28a745; }
+                   .btn.btn-secondary:not(:disabled):not(.disabled).active {background-color:#28a745;}")
       (jumbotron-main-section)
-      (script/inline type: "text/javascript"
+      (what-your-donations-support)
+      #;(script/inline type: "text/javascript"
                    "function randomColor(){
                       var icons = document.getElementsByClassName('donate-color');
                       var buttons = document.getElementsByClassName('btn-success');
