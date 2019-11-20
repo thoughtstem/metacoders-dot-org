@@ -1,15 +1,15 @@
 #lang at-exp racket 
 
-(provide employment-page)
+(provide volunteer-page)
 
 (require website/bootstrap)
 
-(define (employment-page
-          #:position-title      [position-title "JOB TITLE"]
-          #:image-path          [image-path ""]   
-          #:jumbotron-tagline   [tagline "TAGLINE"]
-          #:locations-hiring    [locations-hiring '("TBD" "TBD")]
-          #:job-description     [description '(h6 "Job Description goes here")]
+(define (volunteer-page
+  #:position-title      [position-title "JOB TITLE"]
+  #:image-path          [image-path ""]   
+  #:jumbotron-tagline   [tagline "TAGLINE"]
+  #:locations-hiring    [locations-hiring '("TBD" "TBD")]
+  #:volunteer-description     [description '(h6 "Volunteer Position Description goes here")]
           )
   (div
     (jumbotron style: (properties
@@ -31,12 +31,9 @@
     (br)
     (container
       (h1 position-title)
-      (h3 "Apply to be a Part-time MetaCoders Employee")
-      (h6 "Locations Where We’re Currently Hiring for This Position:")
+      (h3 "Volunteer for MetaCoders")
+      (h6 "Locations Where We Currently Need Volunteers:")
       (ul
         (map li locations-hiring)) 
       description    
-      (p "Learn more about employment duties, requirements, and how to apply here:")
-      (button-primary class: "mb-4"
-                      id: "main-button" 
-                      "Apply Here"))))
+      )))

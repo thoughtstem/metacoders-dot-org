@@ -22,103 +22,71 @@
 (define school-supplies-icon
   (html/inline (string-replace (file->string school-supplies-path) "<svg" "<svg class=\"donate-color\"")))
 
-(define (donate-options)
-  (div class: "btn-group btn-group-toggle"
-       style: (properties width: "100%"
-                          margin-bottom: 10)
+(define (donate-toggle)
+  (div class: "btn-group btn-group-toggle mb-2"
+       style: (properties width: "100%")
        'data-toggle: "buttons"
-       (label class: "btn btn-success active"
+       (label class: "btn btn-secondary active"
               style: (properties width: "50%")
-              data-target: "#donate-mode"
+              data-target: "#donate-carousel"
               data-slide-to: "0"
               (input type: "radio"
                      name: "options"
                      id: "give-once"
                      ;autocomplete: "off"
-                     "GIVE ONCE"))
+                     )
+              "GIVE ONCE")
        (label class: "btn btn-secondary"
               style: (properties width: "50%")
-              data-target: "#donate-mode"
+              data-target: "#donate-carousel"
               data-slide-to: "1"
               (input type: "radio"
                      name: "options"
                      id: "give-monthly"
                      ;autocomplete: "off"
-                     "MONTHLY"))))
-
-(define (donate-amounts)
-  (define (donate-amount amount)
-    (button-secondary id:(~a "donate-amount-" amount)
-                      style: (properties margin: 4)
-                      (~a "$" amount)))
-  (apply container
-       (map donate-amount (list 50 100 150 200 "other"))))
-
-(define (donate-amounts-monthly)
-  (define (donate-amount amount)
-    (button-secondary id:(~a "donate-amount-monthly-" amount)
-                      style: (properties margin: 4)
-                      (~a "$" amount "/mo")))
-  (apply container
-       (map donate-amount (list 30 60 90 120 "other"))))
-
-(define (donate-button amount sku)
-  (button-success id:(~a "donate-button-" sku)
-                  class: "btn-block"
-                  style: (properties display: "inline-block"
-                                     border-radius: "0 0 0.18rem 0.18rem")
-                  (~a "Donate $" amount)))
+                     )
+              "MONTHLY")))
 
 (define (jumbotron-main-section)
-  (define price 50) ;dummy data
-  (define sku "")
-  (define key "")
   (jumbotron
    style: (properties
            text-align: "center"
            margin-bottom: 0
            background-image: (string-append "url(" (prefix/pathify homepage-cover-img-path) ")")
            background-size: "cover"
-           height: "80%")
+           height: "60%")
    class: "align-items-center"
-   (h1 id: "donate-header" style: (properties color: "white"
-                                              'text-shadow: "-2px 2px black"
-                                              margin-bottom: 20) "Help Students Code Today")
+   (h1 id: "donate-header" class: "m-4"
+       style: (properties color: "white"
+                          'text-shadow: "-2px 2px #28a745")
+       "Help Students Code Today")
    (container
-    (style/inline type: "text/css"
-                  ".donate-color { height: 42px; width: 42px; margin-right:10px; fill: #ffc107; }")
-    (row class: "align-items-center p-4"
-         style: (properties 'min-height: "50%"
-                            color: "white"
+    
+    (col-sm-8 class: "p-4 mx-auto"
+         style: (properties color: "white"
                             background: "rgba(0,0,0,0.5)")
-         (col-sm-6 style: (properties height: "80%"
-                                      color: "black")
-          (donate-options)
+         (div ;class: "mx-auto"
+              style: (properties color: "black")
+          (donate-toggle)
           (br)
-          (carousel id: "donate-mode"
+          (carousel id: "donate-carousel"
                     class: "slide"
-                    ;data-ride: "carousel"
-                    (div class: "carousel-inner"
-                     (card class: "carousel-item active mt-2 mb-2"
-                           (card-body
-                            (card-title "Choose an amount to give")
-                            (donate-amounts))
-                           (card-footer class: "text-center"
-                                        style: (properties padding: 0
-                                                           background-color: "transparent"
-                                                           border-top: "none")
-                                        (donate-button price sku)))
-                     (card class: "carousel-item mt-2 mb-2"
-                           (card-body
-                            (card-title "Choose an amount to give")
-                            (donate-amounts-monthly))
-                           (card-footer class: "text-center"
-                                        style: (properties padding: 0
-                                                           background-color: "transparent"
-                                                           border-top: "none")
-                                        (donate-button (~a price "/mo") sku))))))
-         (col-sm-6 
+                    (div class: "carousel-inner" style: (properties 'min-height: 250)
+                         (donate-card #:class "carousel-item active"
+                                      #:items (list (cons 50  "sku_GD6NBPpcmYF6fR")
+                                                    (cons 100 "sku_GD6OrlkqZLH3K3")
+                                                    (cons 150 "sku_GD6OcHeBdyHpuT")
+                                                    (cons 200 "sku_GD6PFx9kiwqUuA")))
+                         (donate-card #:class "carousel-item"
+                                      #:mode 'monthly
+                                      #:items (list (cons 30  "plan_GD4oRQ1V1LVp4i")
+                                                    (cons 60  "plan_GD4plj20Iywhi7")
+                                                    (cons 90  "plan_GD4pLEXRTNJDjd")
+                                                    (cons 120 "plan_GD4qJmEqRQehal")))
+                     )))
+         #;(col-sm-6 
           (h4 "WHAT YOUR DONATIONS SUPPORT")
+          (br)
           (table style: (properties color: "white")
                  (tr (td grad-cap-icon)
                      (td (h5 "Full/Partial Scholarships")))
@@ -128,13 +96,47 @@
                      (td (h5 "Reduced Overall Costs for Students")))
                  (tr (td school-supplies-icon)
                      (td (h5 "Classroom Supplies"))))
-          )))))
+          )
+         ))))
+
+(define (what-your-donations-support)
+  (jumbotron style: (properties
+                           text-align: "center"
+                           margin-bottom: 0
+                           background: "white")
+    (container
+      (h2 "WHAT YOUR DONATIONS SUPPORT")
+      (br)
+      (table class: "col-sm-8 mx-auto"
+             (tr (td grad-cap-icon)
+                 (td (h5 "Full/Partial Scholarships")))
+             (tr (td laptop-icon)
+                 (td (h5 "Customized Chromebooks for Student Use")))
+             (tr (td dollar-sign-icon)
+                 (td (h5 "Reduced Overall Costs for Students")))
+             (tr (td school-supplies-icon)
+                 (td (h5 "Classroom Supplies")))))))
+
+(define (more-ways-to-donate-section)
+  (container
+    (br) 
+    (h3 "Other Ways to Donate")
+    (p "At this time, MetaCoders primarily accepts monetary donations to support our efforts in computer science education. There are a few other ways you can donate besides through the donation form above:")
+    (ul
+      (li "Mail a check to our headquarters at 2635 Camino del Rio South, Ste 103, San Diego, CA 92108. Please include your return mailing address and phone number so that we can send you a donation receipt.")
+      (li "Call us at 858-869-9430 with payment details.")
+      (li "If you have a non-monetary donation, please email us at contact@metacoders.org to see if we can accept your donation."))))
 
 (define (donate) 
   (page donate-path
-    (normal-content
+    (normal-content-wide
+     (style/inline type: "text/css"
+                   ".donate-color { height: 42px; width: 42px; margin-right:10px; fill: #28a745; }
+                   .btn.btn-secondary:not(:disabled):not(.disabled).active {background-color:#28a745;}")
       (jumbotron-main-section)
-      (script/inline type: "text/javascript"
+      (more-ways-to-donate-section)
+      (what-your-donations-support)
+      #;(script/inline type: "text/javascript"
                    "function randomColor(){
                       var icons = document.getElementsByClassName('donate-color');
                       var buttons = document.getElementsByClassName('btn-success');

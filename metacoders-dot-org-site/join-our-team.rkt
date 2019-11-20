@@ -17,6 +17,7 @@
                       text-align: "center"
                       margin-bottom: 0
                       background-image: (string-append "url(" (prefix/pathify join-our-team-banner-path) ")")
+                      background-position: "center"
                       background-size: "cover"
                       height: "80%")
               class: "d-flex align-items-center"
@@ -103,7 +104,7 @@
         (card class: "text-white bg-primary"
           (card-header class: "font-weight-bold" "Adaptability")
           (card-body
-            (card-text "We use coding in everything. Our entire team, from coaches to administrators, are always looking for ways to be even more adaptable using the power of code.")))
+            (card-text "We use coding in everything. Our entire team, from coaches to administrators, is always looking for ways to be even more adaptable using the power of code.")))
         (card class: "text-white bg-primary"
           (card-header class: "font-weight-bold" "Respect")
           (card-body

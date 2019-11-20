@@ -13,6 +13,7 @@
          (all-from-out "./html-helpers.rkt")
          (all-from-out "./impress.rkt")
          (all-from-out "./pos.rkt")
+         (all-from-out "./volunteer-page.rkt")
          (all-from-out "./employment-page.rkt"))
 
 (require website/bootstrap
@@ -27,5 +28,6 @@
          "./html-helpers.rkt"
          "./impress.rkt"
          "./pos.rkt"
+         "./volunteer-page.rkt"
          "./employment-page.rkt")
 
