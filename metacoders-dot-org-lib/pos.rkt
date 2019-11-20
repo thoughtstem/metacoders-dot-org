@@ -69,8 +69,9 @@
     (h5 (strong "Start Date: ") (first meeting-dates) " @ " start-time)
     (card-img-top
      src: image-url
-     style: (properties
-             width: 550))
+     ;style: (properties
+     ;        width: 550)
+     )
     (p)
     (card-text description)
     (p (strong "Times:") " from " start-time " to " end-time ".")
@@ -104,7 +105,7 @@
     ;   margin-left: 50)
     ;  course-2))
     )
-   (div style: (properties height: 1000))
+   ;(div style: (properties height: 1000))
   ))
 
 
