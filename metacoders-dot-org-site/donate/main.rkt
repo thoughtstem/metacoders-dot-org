@@ -117,6 +117,16 @@
              (tr (td school-supplies-icon)
                  (td (h5 "Classroom Supplies")))))))
 
+(define (more-ways-to-donate-section)
+  (container
+    (br) 
+    (h3 "Other Ways to Donate")
+    (p "At this time, MetaCoders primarily accepts monetary donations to support our efforts in computer science education. There are a few other ways you can donate besides through the donation form above:")
+    (ul
+      (li "Mail a check to our headquarters at 2635 Camino del Rio South, Ste 103, San Diego, CA 92108. Please include your return mailing address and phone number so that we can send you a donation receipt.")
+      (li "Call us at 858-869-9430 with payment details.")
+      (li "If you have a non-monetary donation, please email us at contact@metacoders.org to see if we can accept your donation."))))
+
 (define (donate) 
   (page donate-path
     (normal-content-wide
@@ -124,6 +134,7 @@
                    ".donate-color { height: 42px; width: 42px; margin-right:10px; fill: #28a745; }
                    .btn.btn-secondary:not(:disabled):not(.disabled).active {background-color:#28a745;}")
       (jumbotron-main-section)
+      (more-ways-to-donate-section)
       (what-your-donations-support)
       #;(script/inline type: "text/javascript"
                    "function randomColor(){

@@ -31,4 +31,3 @@
     @p{
     From that day forward, that otherwise normal city was no longer normal. @b{____} made it "go meta".
     }))
-

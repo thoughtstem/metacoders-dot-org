@@ -56,10 +56,11 @@
          #:sku           [sku ""]
          #:key           [key ""])
   (card
-   style: (properties
-           margin: 10
-           height: 1000
-           width:  600)
+   class: "m-4"
+   ;style: (properties
+   ;        margin: 10
+   ;        height: 1000
+   ;        width:  600)
    (h1 style:(properties text-align: "center")
        title)
    (card-body
@@ -68,8 +69,9 @@
     (h5 (strong "Start Date: ") (first meeting-dates) " @ " start-time)
     (card-img-top
      src: image-url
-     style: (properties
-             width: 550))
+     ;style: (properties
+     ;        width: 550)
+     )
     (p)
     (card-text description)
     (p (strong "Times:") " from " start-time " to " end-time ".")
@@ -87,19 +89,23 @@
     (br))
             
    (div
-    style: (properties
-            position: "absolute"
-            left: "50%"
-            margin-left: -600)
-    (row
-     (col-5
-      course-1)
-     (col-5
-      style:
-      (properties
-       margin-left: 50)
-      course-2)))
-   (div style: (properties height: 1000))
+    (card-deck
+          course-1
+          course-2)
+    ;style: (properties
+    ;        position: "absolute"
+    ;        left: "50%"
+    ;        margin-left: -600)
+    ;(row
+    ; (col-5
+    ;  course-1)
+    ; (col-5
+    ;  style:
+    ;  (properties
+    ;   margin-left: 50)
+    ;  course-2))
+    )
+   ;(div style: (properties height: 1000))
   ))
 
 ;Donate Card
