@@ -17,7 +17,7 @@
                    #:job-description 
   (div
     (h6 "Description")
-    (p "We are currently seeking energetic, passionate individuals who will be \"Coding Coaches\" for computer science classes & camps in your area. Candidates do not necessarily need to be experienced in computer science, but should be excited to learn coding with us! Coding Coaches guide students as they learn computer science using MetaCoders’ innovative curriculum.")
+    (p "We are currently seeking energetic, passionate individuals who will be \"Coding Coaches\" for computer science classes & camps in your area. Candidates do not necessarily need to be experienced in computer science, but should be excited to learn coding with us! Coding Coaches guide students as they learn computer science using MetaCoders’ innovative curriculum. Applicants are strongly encouraged to check out the online training below to see if this position is a good fit for them.")
     (h6 "Schedule")
     (ul
       (li "School Year: approximately 2-5 hours per week to start.")
