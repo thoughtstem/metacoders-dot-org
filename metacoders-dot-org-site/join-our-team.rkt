@@ -52,7 +52,7 @@
           (card-img-top src: (prefix/pathify equipment-img-path))
           (card-body
             (card-title "Become a Technology Coordinator")
-            (card-text "Work at home and prepare supplies for local classes.")
+            (card-text "Help us connect coaches and students in your area!")
             (link-to tech-coords-top-path 
               (button-primary "Learn More"))))))))
 

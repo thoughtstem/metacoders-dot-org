@@ -134,8 +134,8 @@
                    ".donate-color { height: 42px; width: 42px; margin-right:10px; fill: #28a745; }
                    .btn.btn-secondary:not(:disabled):not(.disabled).active {background-color:#28a745;}")
       (jumbotron-main-section)
-      (more-ways-to-donate-section)
       (what-your-donations-support)
+      (more-ways-to-donate-section)
       #;(script/inline type: "text/javascript"
                    "function randomColor(){
                       var icons = document.getElementsByClassName('donate-color');

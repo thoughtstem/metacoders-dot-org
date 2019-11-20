@@ -14,28 +14,31 @@
   (page tech-coords-top-path
         (normal-content-wide
           (tech-coord-page)
-          (bottom-section))))
+          (start-now-section))))
 
-(define (bottom-section)
+(define (start-now-section)
   (container
     (hr)
-    (br)
+    (h3 "Not Hiring in Your City?")
+    (p class: "mt-3"
+       "All of MetaCoders training and curriculum are open source, meaning you can access them and start teaching in your community for free today! We also love to hear from people who want us to come to their community, so reach out to us using the form below and help us bring innovative, science-based coding education to your city!")
     (card-deck
-      (begin-training
-        (p "Whether you're interested in becoming a Technology Coordinator and would like to learn more, or you've already been hired as a Technology Coordinator, you can start your training now!") 
-        (training)
-        "col-9 mx-auto"))))
+        (email-signup)
+        (begin-training
+          (p "Whether you're interested in being hired as a Technology Coordinator, or you're interested in bringing classes to your area, you can start your training to become a Technology Coordinator now!") 
+          (training)))))
 
 (define (tech-coord-page)
   (employment-page  #:position-title "Technology Coordinator"
-                    #:image-path equipment-img-path
+                    #:image-path tech-coordinator-img-path
                     #:jumbotron-tagline "Help us connect coaches and students!"
                     #:locations-hiring (list "Dallas, Texas" "Minneapolis, Minnesota" "Raleigh, North Carolina" "Reno, Nevada")
                     #:job-description 
     (div
       (h6 "Description")
-      (p "MetaCoders is currently seeking upbeat, motivated individuals who want to make a positive difference in their local community as Technology Coordinators. For this position, MetaCoders is specifically seeking individuals who are stay-at-home parents, stay-at-home caretakers, or who have the leisure to work part-time out of their home offices.")
-      (p "Technology Coordinators play a critical role in MetaCoders mission to deliver coding education to local kids. Technology Coordinators prepare computers, hardware, and other classroom materials for coding classes in their surrounding areas. A Technology Coordinator's home serves as a hub for Coding Coaches (our instructors) to pick-up and drop-off equipment before and after class, respectively. With the help of MetaCoders' staff, Technology Coordinators fix any hardware that is broken and charge equipment between classes. Most importantly, Technology Coordinators help further the MetaCoders mission by approaching and setting up new locations for coding classes, thereby helping make computer science education more accessible in their area.")
+      @p{MetaCoders is currently seeking upbeat, motivated @u{individuals who want to make a positive difference} in their local community as Technology Coordinators. For this position, MetaCoders is specifically seeking individuals who are stay-at-home parents, stay-at-home caretakers, or who have the leisure to work part-time out of their home offices.}
+      @p{Technology Coordinators play a critical role in MetaCoders mission to deliver coding education to local kids. Technology Coordinators prepare computers, hardware, and other classroom materials for coding classes in their surrounding areas. A Technology Coordinator's home @u{serves as a hub for Coding Coaches} (our instructors) to pick up equipment before class and return it after.} 
+      @p{Most importantly, Technology Coordinators help further the MetaCoders mission by approaching and setting up new locations for coding classes, thereby @u{helping make computer science education more accessible} in their area.}
       (p "Applicants are strongly encouraged to check out the online training below to see if this position is a good fit for them.")
       (h6 "Schedule")
       (ul
