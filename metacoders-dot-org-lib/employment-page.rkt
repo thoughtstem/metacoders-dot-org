@@ -32,11 +32,12 @@
     (container
       (h1 position-title)
       (h3 "Apply to be a Part-time MetaCoders Employee")
-      (h6 "Locations Where We’re Currently Hiring for This Position:")
+      (h6 style: (properties padding-top: 10) 
+          "Currently Hiring In:")
       (ul
         (map li locations-hiring)) 
       description    
-      (p "Learn more about employment duties, requirements, and how to apply here:")
+      (p "Learn more about employment duties, requirements, or take the next step here:")
       (button-primary class: "mb-4"
                       id: "main-button" 
                       "Apply Here"))))

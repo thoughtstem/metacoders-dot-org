@@ -27,9 +27,9 @@
 (define (start-now-section)
   (container
     (hr)
-    (h3 "Or, if We're Not in Your Area Yet...")
+    (h3 "Not Hiring in Your City?")
     (p class: "mt-3"
-       "If we're not in your area yet, there's no reason you can't use our tools to start teaching free classes in your own community! Alternatively, you can help us start official classes in your community and get paid as an official MetaCoders Coding Coach. Email us to learn more and start your training here:")
+       "All of MetaCoders training and curriculum are open source, meaning you can access them and start teaching in your community for free today! We also love to hear from people who want us to come to their community, so reach out to us using the form below and help us bring innovative, science-based coding education to your city!")
     (card-deck
         (email-signup)
         (begin-training

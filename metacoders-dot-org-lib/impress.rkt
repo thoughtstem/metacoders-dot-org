@@ -159,8 +159,14 @@
            (story-links s)))) )
 
 (define (show-in-reader-link wrap target-for-full s)
-  (a 'data-toggle: "collapse" href: (~a "#collapse-" (story-name s)) 'aria-expanded: "false" 'aria-controls: "collapseExample" 'onClick: @~a{document.getElementById("@target-for-full").innerHTML = @(dump (story-data-and-links s target-for-full)); @(update-quest-bar (story-id s))}
-     (wrap (story-name s))))
+  (define id (gensym 'hidden-story))
+  (list
+    (span id: id 
+          style: (properties display: "none")
+          (story-data-and-links s target-for-full))
+    (a 'data-toggle: "collapse" href: (~a "#collapse-" (story-name s)) 'aria-expanded: "false" 'aria-controls: "collapseExample" 'onClick: @~a{document.getElementById("@target-for-full").innerHTML = document.getElementById("@id").innerHTML; @(update-quest-bar (story-id s))}
+       (wrap (story-name s))))
+  )
 
 (define (expand-link wrap s)
   (a 'data-toggle: "collapse" href: (~a "#expand-collapse-" (story-name s)) 'aria-expanded: "false" 'aria-controls: "expand-collapseExample" 'onClick: (update-quest-bar (story-id s)) 
