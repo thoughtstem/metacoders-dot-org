@@ -101,7 +101,7 @@
 (define (what-your-donations-support)
   (jumbotron class: "mb-0 text-center"
              style: (properties background: "white")
-    (container class: "col-sm-8 mx-auto"
+    (container ;class: "col-sm-8 mx-auto"
       (h3 "What Your Donations Support")
       (br)
       (table class: "mx-auto"
@@ -116,7 +116,7 @@
 
 (define (more-ways-to-donate-section)
   (jumbotron  class: "mb-0 text-center"
-              (container class: "col-sm-8 mx-auto"
+              (container ;class: "col-sm-8 mx-auto"
                          (h3 "Other Ways to Donate")
                          (br)
                          (div class: "text-left"
@@ -128,27 +128,28 @@
 
 (define (more-ways-to-donate-deck-section)
   (jumbotron  class: "mb-0 text-center"
-              (container class: "col-sm-8 mx-auto"
+              (container ;class: "col-sm-8 mx-auto"
                          (h3 "Other Ways to Donate")
                          (br)
                          (div class: "text-left"
                               (p "At this time, MetaCoders primarily accepts monetary donations to support our efforts in computer science education. There are a few other ways you can donate besides through the donation form above:")
-                              (card-deck
-                               (card
-                                (card-header (h6 class: "m-0" "Donate by Mail"))
-                                (card-body (p "Mail a check to our headquarters at:")
-                                           (p (b "2635 Camino del Rio South, Ste 103, San Diego, CA 92108"))
-                                           (p "Please include your return mailing address and phone number so that we can send you a donation receipt.")))
-                               (card
-                                (card-header (h6 class: "m-0" "Donate by Phone"))
-                                (card-body "Call us at "
-                                           (b "858-869-9430")
-                                           " with payment details."))
-                               (card
-                                (card-header (h6 class: "m-0" "Donate by Email"))
-                                (card-body "If you have a non-monetary donation, please email us at "
-                                           (a href: "mailto:contact@metacoders.org" "contact@metacoders.org")
-                                           " to see if we can accept your donation.")))))))
+                              (responsive-row #:columns 3
+                                    (card class: "h-100"
+                                     (card-header (h6 class: "m-0" "Donate by Mail"))
+                                     (card-body (p "Mail a check to our headquarters at:")
+                                                (p (b "2635 Camino del Rio South, Ste 103, San Diego, CA 92108"))
+                                                (p "Please include your return mailing address and phone number so that we can send you a donation receipt.")))
+                                    (card class: "h-100"
+                                     (card-header (h6 class: "m-0" "Donate by Phone"))
+                                     (card-body "Call us at "
+                                                (b "858-869-9430")
+                                                " with payment details."))
+                                    (card class: "h-100"
+                                     (card-header (h6 class: "m-0" "Donate by Email"))
+                                     (card-body "If you have a non-monetary donation, please email us at "
+                                                (a href: "mailto:contact@metacoders.org" "contact@metacoders.org")
+                                                " to see if we can accept your donation."))
+                               )))))
 
 (define (donate) 
   (page donate-path
