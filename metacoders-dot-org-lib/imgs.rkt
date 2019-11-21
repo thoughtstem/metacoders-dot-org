@@ -19,6 +19,7 @@
          volunteer-scientist-img-path
          volunteer-coder-img-path
          equipment-img-path
+         tech-coordinator-img-path
          grad-cap-icon-path
          laptop-icon-path
          dollar-sign-icon-path
@@ -66,6 +67,8 @@
   (list "img" "volunteer-scientist.png"))
 (define volunteer-coder-img-path
   (list "img" "volunteer-coder.png"))
+(define tech-coordinator-img-path
+  (list "img" "tech-coordinator.jpg"))
 (define equipment-img-path
   (list "img" "equipment.png"))
 
@@ -113,24 +116,14 @@
           (bitmap/file (build-path img "volunteer-scientist.png")))
     (page volunteer-coder-img-path
           (bitmap/file (build-path img "volunteer-coder.png")))
+    (page tech-coordinator-img-path
+          (bitmap/file (build-path img "tech-coordinator.jpg")))
     (page equipment-img-path
           (bitmap/file (build-path img "equipment.png")))
 
     (page river-img-path
           (bitmap/file(build-path img "river.png")))
 
-    (page grad-cap-icon-path
-          (file->string (build-path img "graduation-cap.svg")))
-
-    (page laptop-icon-path
-          (file->string (build-path img "laptop.svg")))
-
-    (page dollar-sign-icon-path
-          (file->string (build-path img "dollar-sign.svg")))
-
-    (page school-supplies-icon-path
-          (file->string (build-path img "school-supplies.svg")))
     ))
-
 
 

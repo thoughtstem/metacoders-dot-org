@@ -7,7 +7,7 @@
 (define (email-signup)
   (card
     (card-body
-      (card-title "Apply Now!")
+      (card-title "Reach out for more information:")
       (form action: "https://docs.google.com/forms/u/1/d/e/1FAIpQLScqxPx0LO9PLJF0mltgUlWbUv7t1urtmsWa3UN6om-XYAYcqw/formResponse"
         (div class:"form-group"
           (label "Email")
@@ -15,5 +15,5 @@
         (div class:"form-group"  
           (label "Message")
           (textarea class: "form-control" name: "entry.1000001" rows: "3" cols: "40"))
-        (button-secondary type: "submit" name: "submit"
+        (button-primary type: "submit" name: "submit"
                           "Submit")))))

@@ -4,12 +4,14 @@
 
 (require website/bootstrap)
 
-(define (begin-training target-page)
-  (card
+(define (begin-training description target-page [classes ""])
+  (card class: classes
     (card-body
-      (card-title "Your quest begins here...")
+      (card-title "You Can Start Training Now!")
       (card-text
+        description
         (link-to target-page
-                 "Begin Training!")))))
+                 (button class: "btn btn-primary" 
+                         "Begin Training!"))))))
 
 

@@ -22,12 +22,13 @@
 (define (call-to-action-card title 
                              pitch 
                              link)
-  (card class: "m-4"
+  (card class: "h-100"
     ;style: (properties
     ;         margin: 10
     ;         height: 300)
+    (card-header (h5 class: "m-0" title))
     (card-body
-      (card-title title)
+      ;(card-title title)
       (card-text pitch)
       )
     (card-footer class: "text-center"

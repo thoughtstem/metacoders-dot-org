@@ -13,8 +13,8 @@
   (page coders-top-path
         (normal-content
           (h1 "Coder")
-          (row
-            (col-6
-              (email-signup))
-            (col-6
-              (begin-training (training)))))))
+          (card-deck
+              (email-signup)
+              (begin-training
+                (p "I'm writing stuff here!") 
+                (training))))))
