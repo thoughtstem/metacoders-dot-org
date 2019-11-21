@@ -1,11 +1,33 @@
 #lang at-exp racket 
 
-(provide course-card
+(provide city-page
+         course-card
          location-courses
          donate-card)
 
-(require website/bootstrap)
+(require website/bootstrap
+         "./html-helpers.rkt"
+         "./imgs.rkt")
 
+
+(define (city-page
+         #:banner-url [img-url ""]
+         #:locations-list [l '()])
+  (normal-content-wide
+   (section class: "jumbotron align-items-center mb-0 text-center"
+    style: (properties
+            background-image: (string-append "url(" img-url ")")
+            background-size: "cover"
+            background-position: "center"
+            height: "50%")
+    (div
+     class: "text-center"
+     (img src:
+          ;Gross...
+          (pathify
+           (add-path-prefix logo-img-path)))))
+         
+   l))
 
 (define (buy-button price sku key)
   (list (button-secondary id:(~a "checkout-button-" sku)
@@ -19,20 +41,20 @@
   var checkoutButton = document.getElementById('checkout-button-@sku');
   checkoutButton.addEventListener('click', function () {
 
-    stripe.redirectToCheckout({
-      items: [{sku: '@sku', quantity: 1}],
-      successUrl: 'https://metacoders-dot-org/checkout-success.html',
-      cancelUrl: 'https://metacoders-dot-org/checkout-fail.html',
-      billingAddressCollection: 'required',
+   stripe.redirectToCheckout({
+    items: [{sku: '@sku', quantity: 1}],
+    successUrl: 'https://metacoders-dot-org/checkout-success.html',
+    cancelUrl: 'https://metacoders-dot-org/checkout-fail.html',
+    billingAddressCollection: 'required',
     })
-    .then(function (result) {
-      if (result.error) {
-        var displayError = document.getElementById('error-message@sku');
-        displayError.textContent = result.error.message;
-      }
+   .then(function (result) {
+    if (result.error) {
+     var displayError = document.getElementById('error-message@sku');
+     displayError.textContent = result.error.message;
+    }
     });
-  });
-})();}))
+   });
+  })();}))
 
 (define (print-dates dates [s ""])   
   (if (> (length dates) 1)
@@ -57,10 +79,6 @@
          #:key           [key ""])
   (card
    class: "m-4"
-   ;style: (properties
-   ;        margin: 10
-   ;        height: 1000
-   ;        width:  600)
    (h1 style:(properties text-align: "center")
        title)
    (card-body
@@ -68,10 +86,7 @@
     (h5 (strong "Grades: " age-range))
     (h5 (strong "Start Date: ") (first meeting-dates) " @ " start-time)
     (card-img-top
-     src: image-url
-     ;style: (properties
-     ;        width: 550)
-     )
+     src: image-url)
     (p)
     (card-text description)
     (p (strong "Times:") " from " start-time " to " end-time ".")
@@ -79,34 +94,23 @@
     (p (strong "Location: ") location " - " address ".")
     (buy-button price sku key))))
 
-(define (location-courses name course-1 [course-2 (p)])
-  (div
-   (div
-    style: (properties
-            text-align: "center")
-    (br)
-    (h1 (~a "Sign up for courses at " name "!"))
-    (br))
+(define (location-courses
+         #:location-name [name "TBA"]
+         #:course-1 [course-1 (p)]
+         #:course-2 [course-2 (p)])
+  (div class: "col-lg-8 mx-auto"
+       (div
+        style: (properties
+                text-align: "center")
+        (br)
+        (h1 (~a "Sign up for courses at " name "!"))
+        (br))
             
-   (div
-    (card-deck
-          course-1
-          course-2)
-    ;style: (properties
-    ;        position: "absolute"
-    ;        left: "50%"
-    ;        margin-left: -600)
-    ;(row
-    ; (col-5
-    ;  course-1)
-    ; (col-5
-    ;  style:
-    ;  (properties
-    ;   margin-left: 50)
-    ;  course-2))
-    )
-   ;(div style: (properties height: 1000))
-  ))
+       (div
+        (card-deck
+         course-1
+         course-2))
+       ))
 
 ;Donate Card
 (define (donate-amounts items)
@@ -134,8 +138,8 @@ function setDonate@amount() {
   (define key "pk_test_Jd6aRCVssUu8YfSvltaT3tvU00je9fQbkA")  ;MetaCoders Stripe
   ;(define key "pk_test_BZvU77rH9zfNQvab1EpKB7GK00ZxANulPE") ;Sonny's Stripe
   (define button-id (if (eq? mode 'monthly)
-                                "monthly-donate-button"
-                                "donate-button"))
+                        "monthly-donate-button"
+                        "donate-button"))
   (define (generate-js-switch items)
     (~a "switch(amount){ "
         (apply ~a (map (λ(item)
@@ -145,12 +149,12 @@ function setDonate@amount() {
                        items))
         "} "))
   (list (button-success id: button-id
-                  class: "btn-block"
-                  style: (properties display: "inline-block"
-                                     border-radius: "0 0 0.18rem 0.18rem")
-                  (if (eq? mode 'monthly)
-                      (~a "Donate $" (car (first items)) "/mo")
-                      (~a "Donate $" (car (first items)))))
+                        class: "btn-block"
+                        style: (properties display: "inline-block"
+                                           border-radius: "0 0 0.18rem 0.18rem")
+                        (if (eq? mode 'monthly)
+                            (~a "Donate $" (car (first items)) "/mo")
+                            (~a "Donate $" (car (first items)))))
         (script src:"https://js.stripe.com/v3")
         (if (eq? mode 'monthly)
             @script/inline{
@@ -238,12 +242,12 @@ function setMonthlyDonate@amount() {
                     (rest items)))))
 
 (define (donate-card
-           #:class       [class ""]
-           #:mode        [mode 'give-once]
-           #:items       [items (list (cons 50  "sku_G7REBMxlyd6Oh1")
-                                      (cons 100 "sku_GA18hKlhrjqjfj")
-                                      (cons 150 "sku_G7REBMxlyd6Oh1")
-                                      (cons 200 "sku_G7REBMxlyd6Oh1"))])
+         #:class       [class ""]
+         #:mode        [mode 'give-once]
+         #:items       [items (list (cons 50  "sku_G7REBMxlyd6Oh1")
+                                    (cons 100 "sku_GA18hKlhrjqjfj")
+                                    (cons 150 "sku_G7REBMxlyd6Oh1")
+                                    (cons 200 "sku_G7REBMxlyd6Oh1"))])
 
   (card class: (~a "mt-2 mb-2 " class)
         (card-body class: "p-2" style: (properties 'min-height: "12rem")

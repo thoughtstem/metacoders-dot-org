@@ -4,8 +4,11 @@
          cities)
 
 (require metacoders-dot-org-lib)
-(require (prefix-in dc: metacoders-dot-org-dc-site)
-         (prefix-in reno: metacoders-dot-org-reno-site))
+(require (prefix-in reno: metacoders-dot-org-reno-site)
+         (prefix-in dc: metacoders-dot-org-dc-site)
+         
+         )
+
 (require (only-in pict scale text filled-rectangle cc-superimpose colorize))
 
 (define (cities/reno:index)
