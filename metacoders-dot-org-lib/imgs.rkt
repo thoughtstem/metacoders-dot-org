@@ -20,10 +20,8 @@
          volunteer-coder-img-path
          equipment-img-path
          tech-coordinator-img-path
-         grad-cap-icon-path
-         laptop-icon-path
-         dollar-sign-icon-path
-         school-supplies-icon-path
+         
+         world-img-path
          )
 
 (require website/bootstrap
@@ -75,10 +73,8 @@
 (define river-img-path
   (list "img" "river.png"))
 
-(define grad-cap-icon-path (list "img" "graduation-cap.svg"))
-(define laptop-icon-path (list "img" "laptop.svg"))
-(define dollar-sign-icon-path (list "img" "dollar-sign.svg"))
-(define school-supplies-icon-path (list "img" "school-supplies.svg"))
+(define world-img-path
+  (list "img" "world-map.jpg"))
 
 (define (imgs)
   (list 
@@ -123,6 +119,8 @@
 
     (page river-img-path
           (bitmap/file(build-path img "river.png")))
+    (page world-img-path
+          (bitmap/file(build-path img "world-map.jpg")))
 
     ))
 

@@ -4,7 +4,8 @@
          cities)
 
 (require metacoders-dot-org-lib)
-(require (prefix-in dc: metacoders-dot-org-dc-site))
+(require (prefix-in dc: metacoders-dot-org-dc-site)
+         (prefix-in reno: metacoders-dot-org-reno-site))
 (require (only-in pict scale text filled-rectangle cc-superimpose colorize))
 
 (define (cities/reno:index)
@@ -72,7 +73,7 @@
 
 (define (jumbotron-header-section)
   (jumbotron  style: (properties
-                      background-image: (string-append "url(" (prefix/pathify join-our-team-banner-path) ")")
+                      background-image: (string-append "url(" (prefix/pathify world-img-path) ")")
                       background-position: "center"
                       background-size: "cover"
                       height: "60%")
@@ -83,7 +84,9 @@
                             padding: 15
                             color: "white"
                             background: "rgba(0, 0, 0, 0.5)")
-                    (h1 "Cities That Went Meta")))))
+                    (h1 "Cities That Went Meta")
+                    (h6 "MetaCoders is expanding rapidly throughout the world.
+")))))
 
 (define (cities-section)
   (jumbotron  class: "mb-0 text-center"
@@ -118,6 +121,8 @@
   (jumbotron  class: "mb-0 text-center"
               (container
                (h2 "If you don't see your city listed, you can still go meta.")
+               (br)
+               (p "MetaCoders would love to come to your community and can do it with your help.")
                (br)
                (link-to partners-top-path 
                         (button-primary "Learn More")))))
