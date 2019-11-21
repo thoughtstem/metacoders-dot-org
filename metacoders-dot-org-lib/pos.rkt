@@ -251,7 +251,7 @@ function setMonthlyDonate@amount() {
                    (if (eq? mode 'monthly)
                        (monthly-donate-amounts items)
                        (donate-amounts items))
-                   (div class: "input-group m-1 mx-auto"
+                   #;(div class: "input-group m-1 mx-auto"
                         style: "width:10rem;"
                         (div class: "input-group-prepend"
                              (span class: "input-group-text" "$"))

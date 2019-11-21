@@ -13,30 +13,30 @@
 
 (define (kid-circle)
   (write-img 
-    style: (properties margin: "2px") 
+    class: "mr-2 pb-1"
     (circle 4 'solid 'red)))
 
 (define (coach-circle)
   (write-img 
-    style: (properties margin: "2px") 
+    class: "mr-2 pb-1"
     (circle 4 'solid 'orange)))
 
 (define (tech-coordinator-circle)
   (write-img 
-    style: (properties margin: "2px") 
+    class: "mr-2 pb-1"
     (circle 4 'solid 'yellow)))
 
 (define (location-circle)
   (write-img 
-    style: (properties margin: "2px") 
+    class: "mr-2 pb-1"
     (circle 4 'solid 'green)))
 
 (define (scientist-circle)
   (write-img 
-    style: (properties margin: "2px") 
+    class: "mr-2 pb-1"
     (circle 4 'solid 'blue)))
 
 (define (coder-circle)
   (write-img 
-    style: (properties margin: "2px") 
+    class: "mr-2 pb-1"
     (circle 4 'solid 'purple)))
