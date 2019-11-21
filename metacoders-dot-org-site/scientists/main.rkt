@@ -13,7 +13,7 @@
 (define (volunteer-description)
   (volunteer-page
     #:position-title "Learning Scientist"
-    #:image-path coding-coach-img-path
+    #:image-path volunteer-scientist-img-path
     #:jumbotron-tagline "Study and monitor MetaCoders classes in your local area to make sure kids have the best classroom experiences."
     #:locations-hiring (list "Dallas, Texas" "Reno, Nevada")
     #:volunteer-description 
