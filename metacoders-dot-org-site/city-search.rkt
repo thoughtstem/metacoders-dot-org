@@ -5,6 +5,7 @@
 
 (require metacoders-dot-org-lib)
 (require (prefix-in dc: metacoders-dot-org-dc-site))
+(require (prefix-in reno: metacoders-dot-org-reno-site))
 (require (only-in pict scale text filled-rectangle cc-superimpose colorize))
 
 (define (cities/dc:index)
@@ -13,10 +14,18 @@
     (push-path "dc"
                (dc:index))))
 
+(define (cities/reno:index)
+  (push-path 
+    "cities"
+    (push-path "reno"
+               (reno:index))))
+
 (define (cities)
   (list
     (push-path "cities" 
-               (push-path "dc" (dc:pages)))))
+               (push-path "dc" (dc:pages)))
+    (push-path "cities" 
+               (push-path "reno" (reno:pages)))))
 
 (define (index-page->banner-img index-page)
   (define c (page-content index-page))
@@ -73,5 +82,8 @@
             (col-4
               (index-page->city-card 
                 "Washington, D.C."
-                (cities/dc:index)))))))
+                (cities/dc:index))
+              (index-page->city-card 
+                "Reno, NV"
+                (cities/reno:index)))))))
 
