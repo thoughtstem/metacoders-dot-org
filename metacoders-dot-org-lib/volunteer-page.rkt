@@ -32,7 +32,8 @@
     (container
       (h1 position-title)
       (h3 "Volunteer for MetaCoders")
-      (h6 "Locations Where We Currently Need Volunteers:")
+      (h6 style: (properties padding-top: 10)
+          "Currently Seeking Volunteers In:")
       (ul
         (map li locations-hiring)) 
       description    
