@@ -22,7 +22,7 @@
 (define (call-to-action-card title 
                              pitch 
                              link)
-  (card class: "m-3"
+  (card class: "h-100"
     ;style: (properties
     ;         margin: 10
     ;         height: 300)
