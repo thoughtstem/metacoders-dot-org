@@ -15,6 +15,12 @@
 (require (prefix-in poway: metacoders-dot-org-poway-site))
 (require (prefix-in chula-vista: metacoders-dot-org-chula-vista-site))
 
+(define (cities/dallas:index)
+  (push-path 
+    "cities"
+    (push-path "dallas"
+               (dallas:index))))
+
 (define (cities/reno:index)
   (push-path 
     "cities"
@@ -26,12 +32,6 @@
     "cities"
     (push-path "dc"
                (dc:index))))
-
-(define (cities/dallas:index)
-  (push-path 
-    "cities"
-    (push-path "dallas"
-               (dallas:index))))
 
 (define (cities/temecula:index)
   (push-path 
@@ -91,10 +91,20 @@
       class: "card-img-top"
       style: (properties 
                          background-image: 
-                         (index-page->banner-img index-page)))
+                         (index-page->banner-img index-page)
+                         background-position: "center"
+                         background-size: "cover"))
     (link-to index-page
-      (card-body
-        (card-title title)))))
+       (card-footer class: "text-center p-0"
+                    style: (properties background-color: "transparent"
+                                       border-top: "none")
+        (button-light class: "btn-block p-3 text-primary"
+                      style: (properties display: "inline-block"
+                                         border-radius: "0 0 0.18rem 0.18rem")
+                      (h5 class: "m-0" title)))
+      ;(card-body
+      ;  (card-title title))
+      )))
 
 (define (add-a-city-card)
   (card class: "h-100"
@@ -121,7 +131,7 @@
 
 (define (jumbotron-header-section)
   (jumbotron  style: (properties
-                      background-image: (string-append "url(" (prefix/pathify join-our-team-banner-path) ")")
+                      background-image: (string-append "url(" (prefix/pathify world-img-path) ")")
                       background-position: "center"
                       background-size: "cover"
                       height: "60%")
@@ -132,7 +142,9 @@
                             padding: 15
                             color: "white"
                             background: "rgba(0, 0, 0, 0.5)")
-                    (h1 "Cities That Went Meta")))))
+                    (h1 "Cities That Went Meta")
+                    (h6 "MetaCoders is expanding rapidly throughout the world.
+")))))
 
 (define (cities-section)
   (jumbotron  class: "mb-0 text-center"
@@ -167,6 +179,8 @@
   (jumbotron  class: "mb-0 text-center"
               (container
                (h2 "If you don't see your city listed, you can still go meta.")
+               (br)
+               (p "MetaCoders would love to come to your community and can do it with your help.")
                (br)
                (link-to partners-top-path 
                         (button-primary "Learn More")))))
