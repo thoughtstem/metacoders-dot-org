@@ -117,7 +117,7 @@
      })
   (nav class: "navbar fixed-top navbar-dark navbar-expand-md bg-transparent"
     (a class: "navbar-brand"
-       href: "/index.html"
+       href: (pathify (add-path-prefix index-path)) ;"/index.html"
        style: (properties color: "white")
        "MetaCoders")
     (button class: "navbar-toggler" type: "button" `data-toggle: "collapse" `data-target: "#navbarSupportedContent" `aria-controls: "navbarSupportedContent" `aria-expanded: "false" `aria-label: "Toggle navigation"
