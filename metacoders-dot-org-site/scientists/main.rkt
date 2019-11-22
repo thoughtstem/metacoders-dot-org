@@ -19,7 +19,8 @@
     #:volunteer-description 
     (div 
       (h6 "Job Description")
-      (p "We're looking for volunteers with an interest in education to help ")
+      (p "We're looking for volunteers to provide classroom support for our Coding Coaches and students. Learning scientists will monitor classes, step in as necessary to provide educational interventions, and help Coaches make high-level strategic decisions to ensure all students achieve the best possible learning outcomes.")
+      (p "If you are interested in volunteering in classrooms, MetaCoders will provide you all the training and materials you need to make a difference as a Learning Scientist. Send us an email below to join our team!")
     (h6 "Schedule")
     (ul
       (li "School Year: at least 2 hours per week.")
