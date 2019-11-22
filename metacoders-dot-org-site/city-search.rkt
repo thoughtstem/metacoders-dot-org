@@ -4,12 +4,22 @@
          cities)
 
 (require metacoders-dot-org-lib)
-(require (prefix-in reno: metacoders-dot-org-reno-site)
-         (prefix-in dc: metacoders-dot-org-dc-site)
-         
-         )
-
 (require (only-in pict scale text filled-rectangle cc-superimpose colorize))
+
+; --- require cities and define index
+(require (prefix-in dc: metacoders-dot-org-dc-site))
+(require (prefix-in reno: metacoders-dot-org-reno-site))
+(require (prefix-in dallas: metacoders-dot-org-dallas-site))
+(require (prefix-in temecula: metacoders-dot-org-temecula-site))
+(require (prefix-in minneapolis: metacoders-dot-org-minneapolis-site))
+(require (prefix-in poway: metacoders-dot-org-poway-site))
+(require (prefix-in chula-vista: metacoders-dot-org-chula-vista-site))
+
+(define (cities/dallas:index)
+  (push-path 
+    "cities"
+    (push-path "dallas"
+               (dallas:index))))
 
 (define (cities/reno:index)
   (push-path 
@@ -23,12 +33,47 @@
     (push-path "dc"
                (dc:index))))
 
+(define (cities/temecula:index)
+  (push-path 
+    "cities"
+    (push-path "temecula"
+               (temecula:index))))
+
+(define (cities/minneapolis:index)
+  (push-path 
+    "cities"
+    (push-path "minneapolis"
+               (minneapolis:index))))
+
+(define (cities/poway:index)
+  (push-path 
+    "cities"
+    (push-path "poway"
+               (poway:index))))
+
+(define (cities/chula-vista:index)
+  (push-path 
+    "cities"
+    (push-path "chula-vista"
+               (chula-vista:index))))
+
 (define (cities)
   (list
-    (push-path "cities" 
-               (push-path "reno" (reno:pages)))
-    (push-path "cities" 
-               (push-path "dc" (dc:pages)))))
+   (push-path "cities" 
+              (push-path "dallas" (dallas:pages)))
+   (push-path "cities" 
+              (push-path "reno" (reno:pages)))
+   (push-path "cities" 
+              (push-path "dc" (dc:pages)))
+   (push-path "cities" 
+              (push-path "temecula" (temecula:pages)))
+   (push-path "cities" 
+              (push-path "minneapolis" (minneapolis:pages)))
+   (push-path "cities" 
+              (push-path "poway" (poway:pages)))
+   (push-path "cities" 
+              (push-path "chula-vista" (chula-vista:pages)))))
+; -----------------------------------
 
 (define (index-page->banner-img index-page)
   (define c (page-content index-page))
@@ -46,10 +91,20 @@
       class: "card-img-top"
       style: (properties 
                          background-image: 
-                         (index-page->banner-img index-page)))
+                         (index-page->banner-img index-page)
+                         background-position: "center"
+                         background-size: "cover"))
     (link-to index-page
-      (card-body
-        (card-title title)))))
+       (card-footer class: "text-center p-0"
+                    style: (properties background-color: "transparent"
+                                       border-top: "none")
+        (button-light class: "btn-block p-3 text-primary"
+                      style: (properties display: "inline-block"
+                                         border-radius: "0 0 0.18rem 0.18rem")
+                      (h5 class: "m-0" title)))
+      ;(card-body
+      ;  (card-title title))
+      )))
 
 (define (add-a-city-card)
   (card class: "h-100"
@@ -100,22 +155,22 @@
                (responsive-row #:columns 3
                                (index-page->city-card 
                                 "Chula Vista, CA"
-                                (cities/dc:index))
+                                (cities/chula-vista:index))
                                (index-page->city-card 
                                 "Dallas, TX"
-                                (cities/dc:index))
+                                (cities/dallas:index))
                                (index-page->city-card 
                                 "Minneapolis, MN"
-                                (cities/dc:index))
+                                (cities/minneapolis:index))
                                (index-page->city-card 
                                 "Poway, CA"
-                                (cities/dc:index))
+                                (cities/poway:index))
                                (index-page->city-card 
                                 "Reno, NV"
                                 (cities/reno:index))
                                (index-page->city-card 
                                 "Temecula, CA"
-                                (cities/dc:index))
+                                (cities/temecula:index))
                                (index-page->city-card 
                                 "Washington, D.C."
                                 (cities/dc:index))))))
