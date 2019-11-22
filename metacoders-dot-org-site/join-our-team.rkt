@@ -92,20 +92,20 @@
       (br)
       (p "We're all in this together! Our core values help us accomplish our mission of creating a world where everyone knows how to code.")
       (br)
-      (card-deck
-        (card class: "text-white bg-primary"
+      (responsive-row #:columns 4
+        (card class: "text-white bg-primary h-100"
           (card-header class: "font-weight-bold" "Compassion")
           (card-body
             (card-text "A common phrase we use: \"we be good people\". We always exercise compassion when working with our employees, volunteers, parent customers, and students.")))
-        (card class: "text-white bg-primary"
+        (card class: "text-white bg-primary h-100"
           (card-header class: "font-weight-bold" "Resourcefulness")
           (card-body
             (card-text "It doesn't take the most expensive equipment or the flashiest software to teach coding. Many of us learned at home on our own! Resourcefulness is one way we offer better classes at lower costs.")))
-        (card class: "text-white bg-primary"
+        (card class: "text-white bg-primary h-100"
           (card-header class: "font-weight-bold" "Adaptability")
           (card-body
             (card-text "We use coding in everything. Our entire team, from coaches to administrators, is always looking for ways to be even more adaptable using the power of code.")))
-        (card class: "text-white bg-primary"
+        (card class: "text-white bg-primary h-100"
           (card-header class: "font-weight-bold" "Respect")
           (card-body
             (card-text "We respect people of all backgrounds. Respect between teachers and students is paramount in the classroom. The same goes for respect between all levels of staff at MetaCoders.")))))))
