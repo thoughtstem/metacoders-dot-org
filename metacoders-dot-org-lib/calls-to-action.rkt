@@ -31,9 +31,8 @@
       ;(card-title title)
       (card-text pitch)
       )
-    (card-footer class: "text-center"
-                 style: (properties padding: 0
-                                    background-color: "transparent"
+    (card-footer class: "text-center p-0"
+                 style: (properties background-color: "transparent"
                                     border-top: "none")
                  link)
     ))

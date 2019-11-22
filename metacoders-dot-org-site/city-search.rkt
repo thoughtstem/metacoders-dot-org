@@ -4,12 +4,19 @@
          cities)
 
 (require metacoders-dot-org-lib)
-(require (prefix-in reno: metacoders-dot-org-reno-site)
+(require (prefix-in dallas: metacoders-dot-org-dallas-site)
+         (prefix-in reno: metacoders-dot-org-reno-site)
          (prefix-in dc: metacoders-dot-org-dc-site)
-         
+
          )
 
 (require (only-in pict scale text filled-rectangle cc-superimpose colorize))
+
+(define (cities/dallas:index)
+  (push-path 
+    "cities"
+    (push-path "dallas"
+               (dallas:index))))
 
 (define (cities/reno:index)
   (push-path 
@@ -25,6 +32,8 @@
 
 (define (cities)
   (list
+   (push-path "cities" 
+               (push-path "dallas" (dallas:pages)))
     (push-path "cities" 
                (push-path "reno" (reno:pages)))
     (push-path "cities" 
@@ -46,10 +55,20 @@
       class: "card-img-top"
       style: (properties 
                          background-image: 
-                         (index-page->banner-img index-page)))
+                         (index-page->banner-img index-page)
+                         background-position: "center"
+                         background-size: "cover"))
     (link-to index-page
-      (card-body
-        (card-title title)))))
+       (card-footer class: "text-center p-0"
+                    style: (properties background-color: "transparent"
+                                       border-top: "none")
+        (button-light class: "btn-block p-3 text-primary"
+                      style: (properties display: "inline-block"
+                                         border-radius: "0 0 0.18rem 0.18rem")
+                      (h5 class: "m-0" title)))
+      ;(card-body
+      ;  (card-title title))
+      )))
 
 (define (add-a-city-card)
   (card class: "h-100"
@@ -103,7 +122,7 @@
                                 (cities/dc:index))
                                (index-page->city-card 
                                 "Dallas, TX"
-                                (cities/dc:index))
+                                (cities/dallas:index))
                                (index-page->city-card 
                                 "Minneapolis, MN"
                                 (cities/dc:index))
