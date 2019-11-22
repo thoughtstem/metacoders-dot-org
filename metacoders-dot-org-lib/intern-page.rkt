@@ -1,15 +1,15 @@
 #lang at-exp racket 
 
-(provide volunteer-page)
+(provide intern-page)
 
 (require website/bootstrap)
 
-(define (volunteer-page
+(define (intern-page
   #:position-title      [position-title "JOB TITLE"]
   #:image-path          [image-path ""]   
   #:jumbotron-tagline   [tagline "TAGLINE"]
   #:locations-hiring    [locations-hiring '("TBD" "TBD")]
-  #:volunteer-description     [description '(h6 "Volunteer Position Description goes here")]
+  #:intern-description     [description '(h6 "Intern Position Description goes here")]
           )
   (div
     (jumbotron style: (properties
@@ -31,9 +31,9 @@
     (br)
     (container
       (h1 position-title)
-      (h3 "Volunteer for MetaCoders")
+      (h3 "Intern with MetaCoders")
       (h6 style: (properties padding-top: 10)
-          "Currently Seeking Volunteers In:")
+          "Currently Seeking Interns In:")
       (ul
         (map li locations-hiring)) 
       description    

@@ -16,6 +16,7 @@
          homepage-cover-img-path
          join-our-team-banner-path
          coding-coach-img-path
+         summer-camp-intern-img-path
          volunteer-scientist-img-path
          volunteer-coder-img-path
          equipment-img-path
@@ -65,6 +66,8 @@
   (list "img" "volunteer-scientist.png"))
 (define volunteer-coder-img-path
   (list "img" "volunteer-coder.png"))
+(define summer-camp-intern-img-path
+  (list "img" "summer-camp-intern.jpg"))
 (define tech-coordinator-img-path
   (list "img" "tech-coordinator.jpg"))
 (define equipment-img-path
@@ -110,6 +113,9 @@
           (bitmap/file (build-path img "coding-coach.png")))
     (page volunteer-scientist-img-path
           (bitmap/file (build-path img "volunteer-scientist.png")))
+    (page summer-camp-intern-img-path
+          (bitmap/file (build-path img "summer-camp-intern.jpg")))
+
     (page volunteer-coder-img-path
           (bitmap/file (build-path img "volunteer-coder.png")))
     (page tech-coordinator-img-path

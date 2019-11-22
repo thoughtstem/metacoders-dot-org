@@ -78,7 +78,10 @@
                     (a href: "https://www.instagram.com/thoughtstem" class: "fab fa-instagram fa-2x"))))
               (li (br))
               (li (small "MetaCoders, Inc. Copyright 2020"))
-              (li (small "All Rights Reserved")))))))))
+              (li (small "All Rights Reserved"))
+              (li (br))
+              (li (small "MetaCoders, Inc. is a non-profit registered in the state of California."))
+              (li (small "Tax ID: 84-3633066")))))))))
 
 (define (normal-navbar)
   (navbar
@@ -114,7 +117,7 @@
      })
   (nav class: "navbar fixed-top navbar-dark navbar-expand-md bg-transparent"
     (a class: "navbar-brand"
-       href: "/index.html"
+       href: (pathify (add-path-prefix index-path)) ;"/index.html"
        style: (properties color: "white")
        "MetaCoders")
     (button class: "navbar-toggler" type: "button" `data-toggle: "collapse" `data-target: "#navbarSupportedContent" `aria-controls: "navbarSupportedContent" `aria-expanded: "false" `aria-label: "Toggle navigation"
