@@ -1,0 +1,1 @@
+("7.4" racket ("273e9f1f3d2457d1c89b0004646288bc5f6b6b56" . "5b44b2d9b89f2511fb1deaa303d604bb21a63e9e") (collects #"2htdp" #"image.rkt") (collects #"errortrace" #"errortrace-key.rkt") (collects #"racket" #"main.rkt") (collects #"racket" #"runtime-config.rkt") (collects #"racket" #"runtime-path.rkt") (collects #"website" #"bootstrap.rkt"))

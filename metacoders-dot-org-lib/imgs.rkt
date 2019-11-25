@@ -23,6 +23,7 @@
          tech-coordinator-img-path
          
          world-img-path
+         partners-img-path
          )
 
 (require website/bootstrap
@@ -79,6 +80,9 @@
 (define world-img-path
   (list "img" "world-map.jpg"))
 
+(define partners-img-path
+  (list "img" "partners-banner.jpg"))
+
 (define (imgs)
   (list 
     (page stephen-img-path
@@ -124,10 +128,10 @@
           (bitmap/file (build-path img "equipment.png")))
 
     (page river-img-path
-          (bitmap/file(build-path img "river.png")))
+          (bitmap/file (build-path img "river.png")))
     (page world-img-path
-          (bitmap/file(build-path img "world-map.jpg")))
+          (bitmap/file (build-path img "world-map.jpg")))
+    (page partners-img-path
+          (bitmap/file (build-path img "partners-banner.jpg")))
 
     ))
-
-
