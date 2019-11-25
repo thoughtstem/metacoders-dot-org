@@ -107,8 +107,11 @@
                  (filter-stories-by-place (all-stories) pl)))))
 
   (define story-reader-node
-    (node 1200 200
-          (content-window
+    (node 1400 200
+          (div
+             style: (properties height: "500px"
+                                width: "700px"
+                                'overflow-y: "auto")
             (div id: reader-id 
                  (p "No story selected")))))
 
