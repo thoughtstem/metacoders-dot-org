@@ -86,8 +86,9 @@
         (col-sm-5
           (row
             (col-sm-6
-              (img src: (prefix/pathify sonny-img-path) 
-                   class: "img-fluid rounded m-3"))
+              (a href: "#" `data-toggle: "modal" `data-target: "#Modal-Sonny"
+                (img src: (prefix/pathify sonny-img-path) 
+                     class: "img-fluid rounded m-3")))
             (col-sm-6
               (img src: (prefix/pathify lindsey-img-path) 
                    class: "img-fluid rounded m-3")))
@@ -98,7 +99,11 @@
             (col-sm-6
               (img src: (prefix/pathify judith-img-path) 
                    class: "img-fluid rounded m-3")))
-)))))
+          (staff-modal #:id "Modal-Sonny"
+                       #:name "Sonny Najar"
+                       #:position "Software Developer and Instructor at MetaCoders"
+                       #:quote "Bringing teachers and students together to learn coding is the most important thing we can be doing for our future."))))))
+
 
 (define (index)
   (page index-path

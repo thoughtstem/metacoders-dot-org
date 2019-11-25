@@ -64,7 +64,7 @@
     (container
       (h2 "Other Ways You Can Help")
       (br)
-      (p "In addition to employment opportunities, we're always looking for volunteers to help us maximize student outcomes in our classrooms.")
+      (p "In addition to employment opportunities, we're always looking for volunteers and interns to help us maximize student outcomes in our classrooms.")
       (br)
       (responsive-row #:columns 3
         (card class: "h-100"
