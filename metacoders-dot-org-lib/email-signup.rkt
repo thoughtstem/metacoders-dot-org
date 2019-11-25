@@ -6,8 +6,9 @@
 
 (define (email-signup)
   (card
+   ;(card-header "Reach Out To Us")
     (card-body
-      (card-title "Reach out for more information:")
+      ;(card-title "Reach out for more information:")
       (form action: "https://docs.google.com/forms/u/1/d/e/1FAIpQLScqxPx0LO9PLJF0mltgUlWbUv7t1urtmsWa3UN6om-XYAYcqw/formResponse"
         (div class:"form-group"
           (label "Email")
