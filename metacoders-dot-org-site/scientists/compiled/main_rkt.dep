@@ -1,1 +1,0 @@
-("7.4" racket ("27e31bfaf4af2c3280deeb729c9840145cdc5d45" . "9098d02755e5bb2cc9ff1820e4bbdecb777461fa") (collects #"at-exp" #"lang" #"reader.rkt") (collects #"metacoders-dot-org-lib" #"main.rkt") (collects #"metacoders-dot-org-site" #"scientists" #"training.rkt") (collects #"racket" #"main.rkt") (collects #"racket" #"runtime-config.rkt"))

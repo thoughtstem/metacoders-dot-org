@@ -87,7 +87,7 @@
   (style/inline
    (rule (~a "#" id ".card:before") ;".card-img-top"
          (properties
-            content: "' '" 
+            'content: "' '" 
             height: "100%"
             background-image: bg-url
             background-position: "center"
@@ -99,7 +99,7 @@
    (rule (~a "#" id ".card:hover:before") ;".card-img-top:hover"
          (properties
             filter: "none"
-            -webkit-filter: "grayscale(0%)"
+            '-webkit-filter: "grayscale(0%)"
             ))
     ))
 
@@ -112,7 +112,7 @@
 
 (define (index-page->city-card title index-page)
   (a href: (pathify (add-path-prefix (page-path index-page)))
-     style: (properties text-decoration: "none")
+     style: (properties 'text-decoration: "none")
      (card id: (title->id title)
            class: "border-primary text-primary"
            style: (properties height: "18rem" ;300px
@@ -146,7 +146,7 @@
     (rule ".card-img-top:hover"
       (properties
         filter: "none"
-        -webkit-filter: "grayscale(0%)"
+        '-webkit-filter: "grayscale(0%)"
         ))
     ))
 
