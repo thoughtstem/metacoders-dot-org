@@ -27,16 +27,8 @@
 
  ;--- Check pkg(s)
  (check-pkg "3d-exploration"
-            "https://github.com/thoughtstem/TS-VR-Languages.git?path=3d-exploration");
-
- ;--- Setting up pkg(s)
- (msg-alert "Running raco setup on 3d-exploration")
- (system "raco setup 3d-exploration")
-
- ;--- Adding file(s) to test folder
- (msg-alert "Adding test files")
- (add-test 3d-exploration-test
-           "3d-exploration-test")
+            "https://github.com/thoughtstem/TS-VR-Languages.git?path=3d-exploration"
+            3d-exploration-test);
       })
 
 (define 3d-exploration.rkt
