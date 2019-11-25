@@ -3,7 +3,8 @@
 (provide city-search-page
          cities)
 
-(require metacoders-dot-org-lib)
+(require metacoders-dot-org-lib
+         threading)
 (require (only-in pict scale text filled-rectangle cc-superimpose colorize))
 
 ; --- require cities and define index
@@ -82,29 +83,47 @@
                                (findf-element (query section)
                                               c))))
 
+(define (bg-color-change-style id bg-url)
+  (style/inline
+   (rule (~a "#" id ".card:before") ;".card-img-top"
+         (properties
+            content: "' '" 
+            height: "100%"
+            background-image: bg-url
+            background-position: "center"
+            background-size: "cover"
+            filter: "grayscale(100%)"
+            'border-top-left-radius: "calc(.25rem - 1px)"
+            'border-top-right-radius: "calc(.25rem - 1px)"
+            ))
+   (rule (~a "#" id ".card:hover:before") ;".card-img-top:hover"
+         (properties
+            filter: "none"
+            -webkit-filter: "grayscale(0%)"
+            ))
+    ))
+
+(define (title->id title)
+  (~> title
+      (string-downcase _)
+      (string-replace _ "," "")
+      (string-replace _ "." "")
+      (string-replace _ " " "-")))
 
 (define (index-page->city-card title index-page)
-  (card
-    style: (properties height: "300px") 
-    ;Can't use link-to because it doesn't take attributes like class:.  TODO: It should.
-    (a href: (pathify (add-path-prefix (page-path index-page)))
-      class: "card-img-top"
-      style: (properties 
-                         background-image: 
-                         (index-page->banner-img index-page)
-                         background-position: "center"
-                         background-size: "cover"))
-    (link-to index-page
-       (card-footer class: "text-center p-0"
-                    style: (properties background-color: "transparent"
-                                       border-top: "none")
-        (button-light class: "btn-block p-3 text-primary"
-                      style: (properties display: "inline-block"
-                                         border-radius: "0 0 0.18rem 0.18rem")
-                      (h5 class: "m-0" title)))
-      ;(card-body
-      ;  (card-title title))
-      )))
+  (a href: (pathify (add-path-prefix (page-path index-page)))
+     style: (properties text-decoration: "none")
+     (card id: (title->id title)
+           class: "border-primary text-primary"
+           style: (properties height: "18rem" ;300px
+                              ;background-image: (index-page->banner-img index-page)
+                              ;background-position: "center"
+                              ;background-size: "cover"
+                              )
+           (bg-color-change-style (title->id title) (index-page->banner-img index-page))
+           (card-footer class: "p-0 border-primary"
+                        (h5 class: "m-0 p-3" title)))
+    ))
 
 (define (add-a-city-card)
   (card class: "h-100"
@@ -122,12 +141,22 @@
     (rule ".card-img-top"
          (properties
            filter: "grayscale(1)"
-           height: "100%"))
+           ))
 
     (rule ".card-img-top:hover"
       (properties
         filter: "none"
-        '-webkit-filter: "grayscale(0%)"))))
+        -webkit-filter: "grayscale(0%)"
+        ))
+    ))
+
+
+(define (invert-color-change-style)
+  (style/inline
+   (rule ".card:hover"
+         (properties
+            background-color: "#007bff"
+            color: "white !important"))))
 
 (define (jumbotron-header-section)
   (jumbotron  style: (properties
@@ -188,7 +217,7 @@
 (define (city-search-page)
   (page city-search-path
         (normal-content-wide
-          (color-change-style)
+          (invert-color-change-style)
           (jumbotron-header-section)
           (cities-section)
           (learn-more-section)

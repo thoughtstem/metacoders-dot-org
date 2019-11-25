@@ -40,15 +40,15 @@
       (br)
       (p "MetaCoders is in communities throughout the United States, and we are continuing to grow.  We are looking for candidates who support our mission of a world with more computer science education. Our current employment opportunities are:")
       (br)
-      (card-deck
-        (card
+      (responsive-row #:columns 2
+        (card class: "h-100"
           (card-img-top src: (prefix/pathify coding-coach-img-path))
           (card-body
             (card-title "Become a Coding Coach")
             (card-text "Teach kids in your community how to code!")
             (link-to coaches-top-path 
               (button-primary "Learn More"))))
-        (card
+        (card class: "h-100"
           (card-img-top src: (prefix/pathify equipment-img-path))
           (card-body
             (card-title "Become a Technology Coordinator")
@@ -64,22 +64,29 @@
     (container
       (h2 "Other Ways You Can Help")
       (br)
-      (p "In addition to employment opportunities, we're always looking for volunteers to help us maximize student outcomes in our classrooms.")
+      (p "In addition to employment opportunities, we're always looking for volunteers and interns to help us maximize student outcomes in our classrooms.")
       (br)
-      (card-deck
-        (card
+      (responsive-row #:columns 3
+        (card class: "h-100"
           (card-img-top src: (prefix/pathify volunteer-scientist-img-path))
           (card-body
             (card-title "Volunteer as a Learning Scientist")
             (card-text "Study and monitor MetaCoders classes in your local area to make sure kids have the best classroom experiences.")
             (link-to scientists-top-path
               (button-primary "Learn More"))))
-        (card
+        (card class: "h-100"
           (card-img-top src: (prefix/pathify volunteer-coder-img-path))
           (card-body
             (card-title "Volunteer as a Coder")
             (card-text "Help us code open-source educational software that kids around the world can use to create video games, apps, and more!")
             (link-to coders-top-path 
+              (button-primary "Learn More"))))
+        (card class: "h-100"
+          (card-img-top src: (prefix/pathify summer-camp-intern-img-path))
+          (card-body
+            (card-title "Intern as a Summer Camp Team Leader")
+            (card-text "Lead students in our summer camps in coding exercises and make sure they have a great first experience with coding!")
+            (link-to summer-camp-intern-top-path 
               (button-primary "Learn More"))))))))
 
 (define (our-values)

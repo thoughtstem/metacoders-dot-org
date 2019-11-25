@@ -15,6 +15,7 @@
          "./tech-coords.rkt"
          "./scientists.rkt"
          "./coders.rkt"
+         "./summer-interns.rkt"
          "./partners.rkt"
          "./terms-and-conditions.rkt"         
          "./setup-scripts.rkt"
@@ -40,6 +41,7 @@
       (tech-coords)
       (scientists)
       (coders)
+      (summer-interns)
       (partners) 
       (terms-and-conditions)
       (setup-scripts)

@@ -14,6 +14,7 @@
          (all-from-out "./impress.rkt")
          (all-from-out "./pos.rkt")
          (all-from-out "./volunteer-page.rkt")
+         (all-from-out "./intern-page.rkt")
          (all-from-out "./employment-page.rkt"))
 
 (require website/bootstrap
@@ -29,5 +30,6 @@
          "./impress.rkt"
          "./pos.rkt"
          "./volunteer-page.rkt"
+         "./intern-page.rkt"
          "./employment-page.rkt")
 

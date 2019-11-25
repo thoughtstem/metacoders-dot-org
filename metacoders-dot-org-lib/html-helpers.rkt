@@ -1,7 +1,8 @@
 #lang at-exp racket
 
 (provide normal-content
-         normal-content-wide)
+         normal-content-wide
+         staff-modal)
 
 (require website/bootstrap
          racket/runtime-path
@@ -78,7 +79,10 @@
                     (a href: "https://www.instagram.com/thoughtstem" class: "fab fa-instagram fa-2x"))))
               (li (br))
               (li (small "MetaCoders, Inc. Copyright 2020"))
-              (li (small "All Rights Reserved")))))))))
+              (li (small "All Rights Reserved"))
+              (li (br))
+              (li (small "MetaCoders, Inc. is a non-profit registered in the state of California."))
+              (li (small "Tax ID: 84-3633066")))))))))
 
 (define (normal-navbar)
   (navbar
@@ -114,7 +118,7 @@
      })
   (nav class: "navbar fixed-top navbar-dark navbar-expand-md bg-transparent"
     (a class: "navbar-brand"
-       href: "/index.html"
+       href: (pathify (add-path-prefix index-path)) ;"/index.html"
        style: (properties color: "white")
        "MetaCoders")
     (button class: "navbar-toggler" type: "button" `data-toggle: "collapse" `data-target: "#navbarSupportedContent" `aria-controls: "navbarSupportedContent" `aria-expanded: "false" `aria-label: "Toggle navigation"
@@ -134,6 +138,32 @@
 
 (provide big-image
          big-quote)
+
+(define (staff-modal #:id modal-id
+                     #:name [name "Name goes here"]
+                     #:position [position "Position goes here"]
+                     #:quote [quote "Quote goes here"])
+  (modal id: modal-id `tabindex: "-1" `role: "dialog" `aria-labelledby: "exampleModalLabel" `aria-hidden: "true"
+    (modal-dialog class: "modal-dialog-centered"
+      (modal-content
+        (modal-header class: "bg-primary"
+          (button type: "button" class: "close" `data-dismiss: "modal" `aria-label: "Close"
+            (span class: "text-white" `aria-hidden: "true" 
+                  "×")))
+        (modal-body 
+          (row 
+            (col-4
+              (img src: (prefix/pathify sonny-img-path)
+                  class: "img-fluid rounded m-3"))
+            (col-8 
+              (h3 name)
+              (p (strong "Position: ") position)
+              (p (i quote)))))
+        (modal-footer
+          (button type: "button" class: "btn btn-secondary" `data-dismiss: "modal"
+                  "Close")
+          (button type: "button" class: "btn btn-primary"   
+                  "Save Changes"))))))
 
 (define (big-image url
                    #:offset-y (offset-y 0)

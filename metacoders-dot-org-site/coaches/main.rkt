@@ -13,7 +13,7 @@
   (employment-page #:position-title "Coding Coach"
                    #:image-path coding-coach-img-path
                    #:jumbotron-tagline "Work at home and prepare supplies for local classes!"
-                   #:locations-hiring (list "Dallas, Texas" "Minneapolis, Minnesota" "Raleigh, North Carolina" "Reno, Nevada")
+                   #:locations-hiring (list "Dallas, Texas" "Minneapolis, Minnesota" "Temecula, CA" "Poway, CA" "Chula Vista, CA" "Reno, Nevada")
                    #:job-description 
   (div
     (h6 "Description")

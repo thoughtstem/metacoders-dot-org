@@ -161,8 +161,7 @@
 (define (show-in-reader-link wrap target-for-full s)
   (define id (gensym 'hidden-story))
   (list
-    (span id: id 
-          style: (properties display: "none")
+    (template id: id 
           (story-data-and-links s target-for-full))
     (a 'data-toggle: "collapse" href: (~a "#collapse-" (story-name s)) 'aria-expanded: "false" 'aria-controls: "collapseExample" 'onClick: @~a{document.getElementById("@target-for-full").innerHTML = document.getElementById("@id").innerHTML; @(update-quest-bar (story-id s))}
        (wrap (story-name s))))

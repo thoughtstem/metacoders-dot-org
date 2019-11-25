@@ -1,5 +1,6 @@
 #lang info
 (define deps '("base"
+               "threading"
                "https://github.com/thoughtstem/metacoders-dot-org.git?path=metacoders-dot-org-lib"
                ; --- all cities
                "https://github.com/thoughtstem/metacoders-dot-org-dc.git?path=metacoders-dot-org-dc-site"

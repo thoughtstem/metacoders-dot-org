@@ -10,6 +10,7 @@
          partners-top-path
          tech-coords-top-path    
          coaches-top-path
+         summer-camp-intern-top-path
          terms-and-conditions-path
          checkout-success-top-path
          checkout-fail-top-path)
@@ -21,6 +22,7 @@
 (define scientists-top-path       (list "scientists.html"))
 (define donate-path               (list "donate.html"))
 (define coders-top-path           (list "coders.html"))
+(define summer-camp-intern-top-path           (list "summer-interns.html"))
 (define partners-top-path         (list "partners.html"))
 (define tech-coords-top-path      (list "tech-coordinators.html"))
 (define coaches-top-path          (list "coaches.html"))
