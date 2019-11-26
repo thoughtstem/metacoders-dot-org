@@ -8,12 +8,12 @@
 
 (define-runtime-path scripts "./scripts")
 
-(define (make-path n)
+(define (code-from-path n)
   (file->string (build-path scripts n)))
 
 (define (setup-scripts)
   (list config.sh
        (page 3d-exploration.rkt
-             (make-path "3d-exploration.rkt"))
+             (code-from-path "3d-exploration.rkt"))
        (page clicker-cartoon.rkt
-             (make-path "clicker-cartoon.rkt"))))
+             (code-from-path "clicker-cartoon.rkt"))))
