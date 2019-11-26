@@ -135,5 +135,3 @@
           (bitmap/file (build-path img "partners-banner.jpg")))
 
     ))
-
-

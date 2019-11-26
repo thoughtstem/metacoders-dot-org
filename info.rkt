@@ -12,4 +12,5 @@
                ; ---------------
                "https://github.com/thoughtstem/metapolis-stories.git"
                "https://github.com/thoughtstem/mc-coach-assess.git"
+               "https://github.com/thoughtstem/mc-classmaps.git"
                "https://github.com/thoughtstem/impress.git"))

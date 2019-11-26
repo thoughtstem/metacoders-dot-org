@@ -7,7 +7,8 @@
          (except-in metapolis-stories site)
          website/impress
          (only-in stories/base place-name)
-         "./common.rkt")
+         "./common.rkt"
+         mc-classmaps)
 
 ;TODO: This file combines some stuff that could be separated to make things clearer.
 ; The (book) function is assembled here, but there's also a bunch of stuff about how it gets displayed.
@@ -15,7 +16,10 @@
 
 (define (training)
   (list 
-    (impress-files) ;Hmmm misplaced...
+    ;(impress-files) ;Hmmm misplaced...
+    (page coaches/maps.html
+      (normal-content
+        (classmaps-index-content)))
     (training-top)
     (training-ch 1)
     (training-ch 2)
@@ -153,7 +157,8 @@
 
           (book-nav (book) #:current 0)
 
-          (book-chapter (book) 0))))
+          (book-chapter (book) 0)))
+          )
 
 (define (training-ch n)
   (page (coach-training-chapter-path n)
