@@ -6,8 +6,6 @@
 
 (define clicker-cartoon-script
   @~a{
- #lang racket
-
  (require mc-scripts)
 
  ;--- Define pkg(s) test(s)

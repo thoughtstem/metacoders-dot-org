@@ -6,8 +6,6 @@
 
 (define 3d-exploration-script
   @~a{
- #lang racket
-
  (require mc-scripts)
  
  ;--- Define pkg(s) test(s)
