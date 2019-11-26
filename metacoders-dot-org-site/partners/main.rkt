@@ -18,15 +18,15 @@
                                     color: "white"
                                     background: "rgba(0, 0, 0, 0.5)")
               (h1 "Become Our Partner")
-              (h6 "Make a difference by bringing MetaCoders to your community! We hope our excitement for teaching coding is infectious, and you will be inspired to invite us to your neighborhood.")))))
+              (h6 "Make a difference by bringing MetaCoders to your community!")))))
 
 (define (what-we-do-section)
   (jumbotron  class: "mb-0"
               style: (properties background: "white")
     (container
-      ;(h2 class: "text-center" "What We Do")
-      ;(br)
-      ;(p "We hope our excitement for teaching coding is infectious, and you will be inspired to invite us to your neighborhood.")
+      (h2 class: "text-center" "What We Do")
+      (br)
+      (p "We hope our excitement for teaching coding is infectious, and you will be inspired to invite us to your neighborhood.")
       (p "MetaCoders teaches " (b "weekly one-hour") " coding classes during the school year after-school on "
          (b "weekday afternoons") " and on " (b "weekends") ".  We run " (b "single day") " camps during "
          (b "school breaks") ".  During the " (b "summers") ", we run " (b "week-long, half-day") " camps.")

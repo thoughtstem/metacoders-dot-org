@@ -88,26 +88,49 @@
             (col-sm-6
               (a href: "#" `data-toggle: "modal" `data-target: "#Modal-Sonny"
                 (img src: (prefix/pathify sonny-img-path) 
-                     class: "img-fluid rounded m-3")))
+                     class: "img-fluid rounded m-3 img-link")))
             (col-sm-6
-              (img src: (prefix/pathify lindsey-img-path) 
-                   class: "img-fluid rounded m-3")))
+              (a href: "#" `data-toggle: "modal" `data-target: "#Modal-Lindsey"
+                (img src: (prefix/pathify lindsey-img-path) 
+                     class: "img-fluid rounded m-3 img-link"))))
           (row
             (col-sm-6
-              (img src: (prefix/pathify sara-img-path) 
-                   class: "img-fluid rounded m-3"))
+              (a href: "#" `data-toggle: "modal" `data-target: "#Modal-Sara"
+                (img src: (prefix/pathify sara-img-path) 
+                     class: "img-fluid rounded m-3 img-link")))
             (col-sm-6
-              (img src: (prefix/pathify judith-img-path) 
-                   class: "img-fluid rounded m-3")))
+              (a href: "#" `data-toggle: "modal" `data-target: "#Modal-Judith"
+                (img src: (prefix/pathify judith-img-path) 
+                     class: "img-fluid rounded m-3 img-link"))))
           (staff-modal #:id "Modal-Sonny"
+                       #:path sonny-img-path
                        #:name "Sonny Najar"
                        #:position "Software Developer and Instructor at MetaCoders"
+                       #:quote "Bringing teachers and students together to learn coding is the most important thing we can be doing for our future.")
+          (staff-modal #:id "Modal-Lindsey"
+                       #:path lindsey-img-path
+                       #:name "Lindsey Handley, Ph.D."
+                       #:position "Co-Founder & Officer"
+                       #:quote "Bringing teachers and students together to learn coding is the most important thing we can be doing for our future.")
+          (staff-modal #:id "Modal-Sara"
+                       #:path sara-img-path
+                       #:name "Sara Lucchini"
+                       #:position "Software Developer and Instructor at MetaCoders"
+                       #:quote "Bringing teachers and students together to learn coding is the most important thing we can be doing for our future.")
+          (staff-modal #:id "Modal-Judith"
+                       #:path judith-img-path
+                       #:name "Judith Eisenberg"
+                       #:position "Administrator and Instructor at MetaCoders"
                        #:quote "Bringing teachers and students together to learn coding is the most important thing we can be doing for our future."))))))
 
 
 (define (index)
   (page index-path
         (normal-content-wide
+          (style/inline type: "text/css" 
+                        (~a ".img-link:hover {
+                            opacity: 0.5;
+                            filter: alpha(opacity=50); /* For IE8 and earlier */}"))
           (jumbotron-header-section)
           (jumbotron-code-the-meta-way) 
           (jumbotron-it-takes-a-village)
