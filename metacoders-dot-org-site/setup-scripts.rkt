@@ -3,12 +3,17 @@
 (provide setup-scripts)
 
 (require website
-         "./scripts/initial-script.rkt"
-         "./scripts/clicker-cartoon.rkt"
-         "./scripts/3d-exploration.rkt")
+         racket/runtime-path
+         "./scripts/initial-script.rkt")
 
+(define-runtime-path scripts "./scripts")
+
+(define (make-path n)
+  (file->string (build-path scripts n)))
 
 (define (setup-scripts)
   (list config.sh
-        clicker-cartoon.rkt
-        3d-exploration.rkt))
+       (page 3d-exploration.rkt
+             (make-path "3d-exploration.rkt"))
+       (page clicker-cartoon.rkt
+             (make-path "clicker-cartoon.rkt"))))
