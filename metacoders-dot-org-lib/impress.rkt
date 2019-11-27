@@ -166,9 +166,15 @@
   (list
     (template id: id 
           (story-data-and-links s target-for-full))
-    (a 'data-toggle: "collapse" href: (~a "#collapse-" (story-name s)) 'aria-expanded: "false" 'aria-controls: "collapseExample" 'onClick: @~a{document.getElementById("@target-for-full").innerHTML = document.getElementById("@id").innerHTML; @(update-quest-bar (story-id s))}
+    (a 'data-toggle: "collapse" href: (~a "#collapse-" (story-name s)) 'aria-expanded: "false" 'aria-controls: "collapseExample" 'onClick: (show-story-js target-for-full id s) 
        (wrap (story-name s))))
   )
+
+(define (show-story-js target-for-full id s)
+ @~a{
+    document.getElementById("@target-for-full").innerHTML = "";
+    document.getElementById("@target-for-full").appendChild(document.getElementById("@id").content); 
+    @(update-quest-bar (story-id s));})
 
 (define (expand-link wrap s)
   (a 'data-toggle: "collapse" href: (~a "#expand-collapse-" (story-name s)) 'aria-expanded: "false" 'aria-controls: "expand-collapseExample" 'onClick: (update-quest-bar (story-id s)) 
