@@ -3,13 +3,15 @@
 (provide normal-content
          normal-content-wide
          staff-modal
-         course-modal)
+         course-modal
+         meeting-date->weekday)
 
 (require website/bootstrap
          racket/runtime-path
          "./css.rkt"
          "./imgs.rkt"
-         "./paths.rkt")
+         "./paths.rkt"
+         gregor)
 
 
 (define (normal-content . more)
@@ -174,7 +176,13 @@
       (begin (set! s (~a s (first dates) "."))
              s)))
 
+(define (meeting-date->weekday meeting-date)
+  (define date (parse-date meeting-date "M/d/yyyy"))
+  (define day-list (list "Sunday" "Monday" "Tuesday" "Wednesday" "Thursday" "Friday" "Saturday"))
+  (list-ref day-list (->wday date)))
+
 (define (course-modal #:id modal-id
+                      #:topic topic
                       #:description   description
                       #:age-range     age-range
                       #:meeting-dates meeting-dates
@@ -182,27 +190,26 @@
                       #:end-time      end-time
                       #:location      location
                       #:address       address
+                      #:address-link  address-link
                       #:price         price
                       #:buy-button    buy-button)
   (modal id: modal-id 'tabindex: "-1" role: "dialog"
      (modal-dialog class: "modal-lg modal-dialog-centered"
         (modal-content
-          (modal-header class: "bg-primary p-2 text-white" "Class Details")
+          (modal-header class: "bg-primary p-2 pl-3 pr-3 text-white h5 m-0" (~a location " - " topic " (" age-range ")"))
           (modal-body
            (row class: "text-left"
-                (col-md-4
-                 (ul class: "pl-0" style: (properties 'list-style-type: "none")
-                  (li (b "Grades: ") age-range)
-                  (li (b "Total Meetings: ") (length meeting-dates))
-                  (li (b "Meets on: ") "[DAY-OF-THE-WEEK]")
-                  (li (b "Time: ") start-time " - " end-time)
-                  (li (b "Start Date: ") (first meeting-dates))
-                  (li (b "Location: ") location " - " address ".")
-                  (li (b "Price: $") price)
-                  (li (b "Schedule: ")
-                      (br)
-                      (print-dates meeting-dates))))
-                (col-md-8
+                (col-lg-6 class: "col-xs-12"
+                 (table class: "table table-striped table-bordered"
+                  (tr (td (b "Grades: ")) (td age-range))
+                  (tr (td (b "Total Meetings: ")) (td (length meeting-dates)))
+                  (tr (td (b "Meets on: ")) (td (~a (meeting-date->weekday (first meeting-dates)) "s")))
+                  (tr (td (b "Time: ")) (td start-time " - " end-time))
+                  (tr (td (b "Start Date: ")) (td (first meeting-dates)))
+                  (tr (td (b "Location: ")) (td location (br) (a target:"_blank" href: address-link address)))
+                  (tr (td (b "Price: ")) (td (~a "$" price)))
+                  (tr (td (b "Schedule: ")) (td (print-dates meeting-dates)))))
+                (col-lg-6 class: "col-xs-12"
                  (h5 "Course Description:")
                  (p description))))
           (modal-footer class: "text-center p-0"

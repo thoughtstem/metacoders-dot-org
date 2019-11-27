@@ -10,20 +10,32 @@
          "./imgs.rkt")
 
 
-(define (city-page-fold-section)
-  (jumbotron class: "mb-0 pt-4 text-center"
-             style: (properties background: "white")
+(define (city-page-links-section)
+  (jumbotron class: "mb-0 p-4 text-center bg-white"
     (container
-      (responsive-row #:columns 2
+      (row ;abstract to responsive-row-md?
+       (div class: "col-md-6 col-xs-12 my-2"
+            (a href: "#school-year-classes" style: (properties 'text-decoration: "none")
+               (button-primary class: "btn-lg btn-block"
+                               "Enroll in School-Year Classes")))
+       (div class: "col-md-6 col-xs-12 my-2"
+            (a href: "#summer-camps" style: (properties 'text-decoration: "none")
+               (button-primary class: "btn-lg btn-block"
+                               "Enroll in Summer Camps")))))))
+
+(define (city-page-fold-section)
+  (jumbotron class: "mb-0 text-center"
+    (container
+      #|(responsive-row #:columns 2
                       (a href: "#school-year-classes" style: (properties 'text-decoration: "none")
                                (button-primary class: "btn-lg btn-block"
                                       "Enroll in School-Year Classes"))
                       (a href: "#summer-camps" style: (properties 'text-decoration: "none")
                                (button-primary class: "btn-lg btn-block"
                                       "Enroll in Summer Camps")))
-      (hr)
+      (hr)|#
       (h2 "MetaCoders Classes and Camps Inspire Students to Create with Technology")
-      (row class: "align-items-center"
+      (row class: "align-items-center" ;abstract to responsive-row-lg?
            (div class: "col-lg-6 col-xs-12 p-4"
                 (img src: (prefix/pathify takes-a-village-path) 
                      class: "img-fluid rounded"))
@@ -58,6 +70,7 @@
                   background: "rgba(0, 0, 0, 0.5)")
           (h1 "Coding Classes & Camps in")
           (h1 city-name))))
+   (city-page-links-section)
    (city-page-fold-section)
    l))
 
@@ -132,11 +145,12 @@
          #:topic         [topic "TBA"]
          #:description   [description "TBA"]
          #:age-range     [age-range "TBA"]
-         #:meeting-dates [meeting-dates '("TBA")]
+         #:meeting-dates [meeting-dates '("10/1/2012")]
          #:start-time    [start-time "TBA"]
          #:end-time      [end-time "TBA"]
          #:location      [location "TBA"]
          #:address       [address "TBA"]
+         #:address-link  [address-link (~a "https://www.google.com/maps/place/" (string-replace address " " "+"))]
          #:price         [price "TBA"]
          #:sku           [sku ""]
          #:key           [key ""])
@@ -160,14 +174,16 @@
   (card class: "h-100 text-center"
         (img src: image-url
              class: "card-img-top")
+        ;(card-header (h5 class: "m-0 p-0" (~a topic " (" age-range ")")))
         (card-body
          (h5 class: "card-title" (~a topic " (" age-range ")"))
          ;(img src: image-url
          ;     class: "img-fluid rounded")
-         (ul class: "text-left mt-3 pl-0" style: (properties 'list-style-type: "none")
-              (li (strong "Start Date: ") (first meeting-dates) " @ " start-time)
-              (li (strong "Schedule: ") (~a (length meeting-dates) " weeks"))
-              (li (strong "Location: ") location " - " address "."))
+         (table class: "table table-sm table-borderless text-left"  ;class: "text-left mt-3 pl-0" style: (properties 'list-style-type: "none")
+              (tr (td (strong "Start Date: ")) (td (first meeting-dates) " @ " start-time))
+              (tr (td (strong "Schedule: ") (td (~a (meeting-date->weekday (first meeting-dates)) "s, "
+                                                    (length meeting-dates) " weeks"))))
+              (tr (td (strong "Location: ") (td location (br) (a target:"_blank" href: address-link address)))))
         )
         (card-footer class: "text-center"
                      style: (properties padding: 0
@@ -182,6 +198,7 @@
                                    "Class Details"))
               (modal-buy-button price sku key))
          (course-modal #:id (~a "details-modal-" sku)
+                       #:topic         topic
                        #:description   description
                        #:age-range     age-range
                        #:meeting-dates meeting-dates
@@ -189,51 +206,37 @@
                        #:end-time      end-time
                        #:location      location
                        #:address       address
+                       #:address-link  address-link
                        #:price         price
                        #:buy-button (buy-button price sku key)))
         )
   )
-
-#;(define (location-courses
-         #:location-name [name "TBA"]
-         #:course-1 [course-1 (p)]
-         #:course-2 [course-2 (p)])
-  (div class: "col-lg-8 mx-auto"
-       (div
-        style: (properties
-                text-align: "center")
-        (br)
-        (h1 (~a "Sign up for courses at " name "!"))
-        (br))
-            
-       (div
-        (card-deck
-         course-1
-         course-2))
-       ))
 
 (define (location-courses
          #:location-name [name "TBA"]
          #:course-1 [course-1 (p)]
          #:course-2 [course-2 (p)])
   (list (jumbotron  id: "school-year-classes"
-                    class: "mb-0 text-center"
-                   (container
-                    (h2 "Register for School-Year Classes")
-                    (responsive-row #:columns 2
-                                    course-1
-                                    course-1 ;dummy duplicate for now
-                                    )
-                    ))
+                    class: "mb-0 text-center bg-white"
+                    (container
+                     (h2 "Register for School-Year Classes")
+                     (row ;abstract to responsive-row-md?
+                      (div class: "col-md-6 col-xs-12 my-3"
+                           course-1)
+                      (div class: "col-md-6 col-xs-12 my-3"
+                           course-1 ;dummy duplicate for now
+                           ))
+                     ))
         (jumbotron id: "summer-camps"
                    class: "mb-0 text-center"
-                   style: (properties background: "white")
                    (container
                     (h2  "Register for Summer Camps")
-                    (responsive-row #:columns 2
-                                    course-1
-                                    course-1 ;dummy duplicate for now
-                                    )
+                    (row 
+                     (div class: "col-md-6 col-xs-12 my-3"
+                          course-1)
+                     (div class: "col-md-6 col-xs-12 my-3"
+                          course-1 ;dummy duplicate for now
+                          ))
                     ))))
 
 ;Donate Card
