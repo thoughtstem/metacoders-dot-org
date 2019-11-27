@@ -1,7 +1,191 @@
-<html><head><link rel="stylesheet" type="text/css" href="/metacoders-dot-org/css/bootstrap.min.css" /></head><body><script src="/metacoders-dot-org/js/jquery-3.2.1.slim.min.js"></script><nav class="navbar sticky-top navbar-expand-md navbar-dark bg-dark"><a href="/metacoders-dot-org/index.html" class="navbar-brand">MetaCoders</a><ul class="navbar-nav ml-auto"><li class="nav-item"><a class="nav-link mr-3 text-white" href="/metacoders-dot-org/learn-more.html">Learn More</a></li><li class="nav-item"><a class="nav-link mr-3 text-white" href="/metacoders-dot-org/city-search.html">Locations</a></li><li class="nav-item"><a class="nav-link mr-3 text-white" href="/metacoders-dot-org/get-to-work.html">Join Our Team</a></li><li class="nav-item"><a class="nav-link mr-3 text-white" href="/metacoders-dot-org/donate.html">Donate</a></li></ul></nav><div class="container" id="main"><h1>Help Students Code Today</h1></div><footer class="pt-4 bg-dark"><div class="container"><div class="row"><div class="col-3 text-white" class="text-white"><h6>Company</h6><ul class="list-unstyled"><li><a href="/metacoders-dot-org/learn-more.html"><small>Learn More</small></a></li><li><a href="/metacoders-dot-org/get-to-work.html"><small>Join Our Team</small></a></li><li><a href="/metacoders-dot-org/donate.html"><small>Donate</small></a></li><li><a href="/metacoders-dot-org/terms-and-conditions.html"><small>Terms &amp; Conditions</small></a></li><li><small>Privacy Policy</small></li></ul></div><div class="col-3 text-white" class="text-white"><h6>Programs</h6><ul class="list-unstyled"><li><a href="/metacoders-dot-org/city-search.html"><small>Find a Location</small></a></li><li><a href="/metacoders-dot-org/partners.html"><small>Start a New Location</small></a></li></ul><h6>Contact Us</h6><ul class="list-unstyled"><li><small>(858) 869-9430</small></li><li><a href="mailto: contact@metacoders.org"><small>contact@metacoders.org</small></a></li><li><small>Monday - Friday, 9am-5pm PT</small></li></ul></div><div class="col-3 text-white" class="text-white"><h6>Follow Us</h6><ul class="list-unstyled"><li><small>INSERT SOCIAL MEDIA LINKS</small></li><li><br /></li><li><small>MetaCoders, Inc. Copyright 2020</small></li><li><small>All Rights Reserved</small></li></ul></div></div></div></footer><script src="/metacoders-dot-org/js/bootstrap.bundle.min.js"></script><script>
+<html><head><link rel="stylesheet" type="text/css" href="/metacoders-dot-org/css/bootstrap.min.css" /></head><body><script src="/metacoders-dot-org/js/jquery-3.2.1.slim.min.js"></script><script src="/metacoders-dot-org/js/moment.min.js"></script><style>
+.navbar.solid {
+    background-color: #343a40 !important;
+    transition: background-color 1s ease 0s;
+  }
+</style><script>
+//<![CDATA[
+$(document).ready(function() {
+        // Transition effect for navbar
+        $(window).scroll(function() {
+          // checks if window is scrolled more than 5% of screen width, adds/removes solid class
+          if($(this).scrollTop() > (.05 * window.innerHeight)) {
+              $('.navbar').addClass('solid');
+          } else {
+              $('.navbar').removeClass('solid');
+          }
+        });
+});
+//]]>
+</script><nav class="navbar fixed-top navbar-dark navbar-expand-md bg-transparent"><a class="navbar-brand" href="/metacoders-dot-org/index.html" style="color:white;">MetaCoders</a><button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button><div class="collapse navbar-collapse" id="navbarSupportedContent"><ul class="navbar-nav ml-auto"><li class="nav-item"><a class="nav-link mr-3 text-white" href="/metacoders-dot-org/learn-more.html">Learn More</a></li><li class="nav-item"><a class="nav-link mr-3 text-white" href="/metacoders-dot-org/city-search.html">Locations</a></li><li class="nav-item"><a class="nav-link mr-3 text-white" href="/metacoders-dot-org/join-our-team.html">Join Our Team</a></li><li class="nav-item"><a class="nav-link mr-3 text-white" href="/metacoders-dot-org/donate.html">Donate</a></li></ul></div></nav><div id="main"><style type="text/css">
+.donate-color { height: 42px; width: 42px; margin-right:10px; fill: #28a745; }.btn.btn-secondary:not(:disabled):not(.disabled).active {background-color:#222;}.card-header {background-color: #28a745; color: white;}tr {height: 60px;}
+</style><div class="jumbotron d-flex align-items-center" style="text-align:center;margin-bottom:0.0px;background-image:url(/metacoders-dot-org/img/homepage-cover.png);background-size:cover;min-height:60%;" class="d-flex align-items-center"><div class="container"><div class="col-sm-8 p-4 mx-auto" class="p-4 mx-auto" style="color:white;background:rgba(0,0,0,0.5);"><h1 id="donate-header" class="mb-4 text-white">Help Students Code Today</h1><div style="color:black;"><div class="btn-group btn-group-toggle mb-2" style="width:100%;" data-toggle="buttons"><label class="btn btn-secondary active" style="width:50%;" data-target="#donate-carousel" data-slide-to="0"><input type="radio" name="options" id="give-once" />GIVE ONCE</label><label class="btn btn-secondary" style="width:50%;" data-target="#donate-carousel" data-slide-to="1"><input type="radio" name="options" id="give-monthly" />MONTHLY</label></div><br /><div class="carousel slide" id="donate-carousel" class="slide"><div class="carousel-inner" style="min-height:250.0px;"><div class="card mt-2 mb-2 carousel-item active" class="mt-2 mb-2 carousel-item active"><div class="card-body p-2" class="p-2" style="min-height:12rem;"><h5 class="card-title">Choose an amount to give</h5><div class="btn-group-toggle" data-toggle="buttons"><label class="btn btn-secondary m-1 active" onclick="setDonate50();"><input type="radio" name="amount-options" id="donate-amount-50" /><script>
+//<![CDATA[
+function setDonate50() {
+  var donateBtn = document.getElementById('donate-button');
+  donateBtn.innerHTML = "Donate $50";
+}
+//]]>
+</script>$50</label><label class="btn btn-secondary m-1 " onclick="setDonate100();"><input type="radio" name="amount-options" id="donate-amount-100" /><script>
+//<![CDATA[
+function setDonate100() {
+  var donateBtn = document.getElementById('donate-button');
+  donateBtn.innerHTML = "Donate $100";
+}
+//]]>
+</script>$100</label><label class="btn btn-secondary m-1 " onclick="setDonate150();"><input type="radio" name="amount-options" id="donate-amount-150" /><script>
+//<![CDATA[
+function setDonate150() {
+  var donateBtn = document.getElementById('donate-button');
+  donateBtn.innerHTML = "Donate $150";
+}
+//]]>
+</script>$150</label><label class="btn btn-secondary m-1 " onclick="setDonate200();"><input type="radio" name="amount-options" id="donate-amount-200" /><script>
+//<![CDATA[
+function setDonate200() {
+  var donateBtn = document.getElementById('donate-button');
+  donateBtn.innerHTML = "Donate $200";
+}
+//]]>
+</script>$200</label></div></div><div class="card-footer text-center" class="text-center" style="padding:0.0px;background-color:transparent;border-top:none;"><button type="button" class="btn btn-success btn-block" id="donate-button" class="btn-block" style="display:inline-block;border-radius:0 0 0.18rem 0.18rem;">Donate $50</button><script src="https://js.stripe.com/v3"></script><script>
+//<![CDATA[
+(function() {
+ var stripe = Stripe('pk_test_Jd6aRCVssUu8YfSvltaT3tvU00je9fQbkA');
+ var donateButton = document.getElementById('donate-button');
+ donateButton.addEventListener('click', function () {
+  var currentButton = document.getElementById('donate-button');
+  var buttonStr = currentButton.innerText.match(/(\d+)/);
+  var amount;
+  if (buttonStr){
+   amount = parseInt(buttonStr[0]);
+   }else{
+   amount = 0;
+  }
+  var donateSku;
+
+  switch(amount){ case 50: donateSku = "sku_GD6NBPpcmYF6fR"; break; case 100: donateSku = "sku_GD6OrlkqZLH3K3"; break; case 150: donateSku = "sku_GD6OcHeBdyHpuT"; break; case 200: donateSku = "sku_GD6PFx9kiwqUuA"; break; } 
+
+  stripe.redirectToCheckout({
+   items: [{sku: donateSku, quantity: 1}],
+   successUrl: 'https://metacoders-dot-org/checkout-success.html',
+   cancelUrl: 'https://metacoders-dot-org/checkout-fail.html',
+   billingAddressCollection: 'required',
+   submitType: 'donate',
+   })
+  .then(function (result) {
+   if (result.error) {
+    var displayError = document.getElementById('error-message-' + donateSku);
+    displayError.textContent = result.error.message;
+   }
+   });
+  });
+ })();
+//]]>
+</script></div></div><div class="card mt-2 mb-2 carousel-item" class="mt-2 mb-2 carousel-item"><div class="card-body p-2" class="p-2" style="min-height:12rem;"><h5 class="card-title">Choose an amount to give</h5><div class="btn-group-toggle" data-toggle="buttons"><label class="btn btn-secondary m-1 active" onclick="setMonthlyDonate30();"><input type="radio" name="monthly-amount-options" id="donate-amount-monthly-30" /><script>
+//<![CDATA[
+function setMonthlyDonate30() {
+  var donateBtn = document.getElementById('monthly-donate-button');
+  donateBtn.innerHTML = "Donate $30/mo";
+}
+//]]>
+</script>$30/mo</label><label class="btn btn-secondary m-1 " onclick="setMonthlyDonate60();"><input type="radio" name="monthly-amount-options" id="donate-amount-monthly-60" /><script>
+//<![CDATA[
+function setMonthlyDonate60() {
+  var donateBtn = document.getElementById('monthly-donate-button');
+  donateBtn.innerHTML = "Donate $60/mo";
+}
+//]]>
+</script>$60/mo</label><label class="btn btn-secondary m-1 " onclick="setMonthlyDonate90();"><input type="radio" name="monthly-amount-options" id="donate-amount-monthly-90" /><script>
+//<![CDATA[
+function setMonthlyDonate90() {
+  var donateBtn = document.getElementById('monthly-donate-button');
+  donateBtn.innerHTML = "Donate $90/mo";
+}
+//]]>
+</script>$90/mo</label><label class="btn btn-secondary m-1 " onclick="setMonthlyDonate120();"><input type="radio" name="monthly-amount-options" id="donate-amount-monthly-120" /><script>
+//<![CDATA[
+function setMonthlyDonate120() {
+  var donateBtn = document.getElementById('monthly-donate-button');
+  donateBtn.innerHTML = "Donate $120/mo";
+}
+//]]>
+</script>$120/mo</label></div></div><div class="card-footer text-center" class="text-center" style="padding:0.0px;background-color:transparent;border-top:none;"><button type="button" class="btn btn-success btn-block" id="monthly-donate-button" class="btn-block" style="display:inline-block;border-radius:0 0 0.18rem 0.18rem;">Donate $30/mo</button><script src="https://js.stripe.com/v3"></script><script>
+//<![CDATA[
+(function() {
+ var stripe = Stripe('pk_test_Jd6aRCVssUu8YfSvltaT3tvU00je9fQbkA');
+ var donateButton = document.getElementById('monthly-donate-button');
+ donateButton.addEventListener('click', function () {
+  var currentButton = document.getElementById('monthly-donate-button');
+  var buttonStr = currentButton.innerText.match(/(\d+)/);
+  var amount;
+  if (buttonStr){
+   amount = parseInt(buttonStr[0]);
+   }else{
+   amount = 0;
+  }
+  var donateSku;
+
+  switch(amount){ case 30: donateSku = "plan_GD4oRQ1V1LVp4i"; break; case 60: donateSku = "plan_GD4plj20Iywhi7"; break; case 90: donateSku = "plan_GD4pLEXRTNJDjd"; break; case 120: donateSku = "plan_GD4qJmEqRQehal"; break; } 
+
+  stripe.redirectToCheckout({
+   items: [{plan: donateSku, quantity: 1}],
+   successUrl: 'https://metacoders-dot-org/checkout-success.html',
+   cancelUrl: 'https://metacoders-dot-org/checkout-fail.html',
+   billingAddressCollection: 'required',
+   })
+  .then(function (result) {
+   if (result.error) {
+    var displayError = document.getElementById('error-message-' + donateSku);
+    displayError.textContent = result.error.message;
+   }
+   });
+  });
+ })();
+//]]>
+</script></div></div></div></div></div></div></div></div><div class="jumbotron mb-0 text-center" class="mb-0 text-center" style="background:white;"><div class="container"><h3>What Your Donations Support</h3><br /><table class="mx-auto"><tr><td><span id="html-inline-1"></span><script>
+//<![CDATA[
+(function(){
+  var element = document.getElementById('html-inline-1');
+  element.innerHTML = '<svg class="donate-color" height="100px" width="100px"  fill="#000000" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" x="0px" y="0px" viewBox="0 0 64 64" style="enable-background:new 0 0 64 64;" xml:space="preserve"><g><path d="M63.4,24.4l-31-11.1c-0.2-0.1-0.4-0.1-0.7,0l-31,11.1C0.3,24.6,0,24.9,0,25.3c0,0.4,0.3,0.8,0.6,0.9l31,11.1   c0.1,0,0.2,0.1,0.3,0.1c0.1,0,0.2,0,0.3-0.1l23.1-8.2v8.6h-0.3c-1.1,0-1.9,0.9-1.9,1.9v5.7c0,0.5,0.4,1,1,1h4.4c0.5,0,1-0.4,1-1   v-5.7c0-1.1-0.9-1.9-1.9-1.9h-0.3v-9.3l6-2.1c0.4-0.1,0.6-0.5,0.6-0.9C64,24.9,63.7,24.6,63.4,24.4z"></path><path d="M32,39.3c-0.3,0-0.7-0.1-1-0.2l-17.7-6.3v14.7c0,0.5,0.3,0.9,0.8,1c0.5,0.1,11.2,2.2,17.9,2.2s17.5-2.1,17.9-2.2   c0.5-0.1,0.8-0.5,0.8-1V32.8L33,39.2C32.7,39.3,32.3,39.3,32,39.3z"></path></g></svg>';
+})();
+//]]>
+</script></td><td><h6><b>Financial aid</b> to help all students have the opportunity to learn how to code no matter their financial means.</h6></td></tr><tr><td><span id="html-inline-2"></span><script>
+//<![CDATA[
+(function(){
+  var element = document.getElementById('html-inline-2');
+  element.innerHTML = '<svg class="donate-color" height="100px" width="100px"  fill="#000000" xmlns="http://www.w3.org/2000/svg" data-name="Layer 1" viewBox="0 0 100 100" x="0px" y="0px"><title>All4</title><path d="M98,60a21.23,21.23,0,0,0-2-1c-7.43-3.26-14.83-6.57-22.31-9.72a6.62,6.62,0,0,1-3.95-4.56c-2.27-8.16-4.36-16.37-6.55-24.55C62.31,17,61.51,14,60.47,11c-0.81-2.34-2.22-3-4.41-2.57-6.75,1.4-13.51,2.79-20.26,4.22Q19.65,16.07,3.51,19.54c-2.84.6-4,2.5-3.3,5.31C3.77,38.49,7.3,52.14,10.92,65.77c0.94,3.54,2,7,5.53,9.15,7.58,4.73,15,9.75,22.47,14.62,2,1.29,4.07,2.36,6.8,2.13a6.93,6.93,0,0,0,3.35-1.09l48.48-24.1A3.89,3.89,0,0,0,100,63.14,3.33,3.33,0,0,0,98,60Zm-80,.4a1.71,1.71,0,0,1-2.27-1.2L7.58,28A1.83,1.83,0,0,1,9,25.75L54.46,15.65a2,2,0,0,1,2.37,1.42l6.84,24.77a2.1,2.1,0,0,1-1.28,2.48ZM63.81,79.45L58.06,76.6l12-5.69,5.74,2.36Z"></path></svg>';
+})();
+//]]>
+</script></td><td><h6><b>Customized Chromebooks</b> filled with MetaCoders curriculum and programming languages for students to use during classes and camps.</h6></td></tr><tr><td><span id="html-inline-3"></span><script>
+//<![CDATA[
+(function(){
+  var element = document.getElementById('html-inline-3');
+  element.innerHTML = '<svg class="donate-color" height="100px" width="100px"  fill="#000000" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" x="0px" y="0px" viewBox="0 0 95 95" enable-background="new 0 0 95 95" xml:space="preserve"><path d="M31.867,59.911c0.127,4.288,1.437,7.677,3.933,10.172c2.494,2.497,5.637,4.062,9.427,4.702V49.489  c-3.35-0.819-6.237-1.705-8.669-2.652s-4.452-2.116-6.063-3.505c-1.611-1.39-2.796-3.063-3.553-5.022  c-0.759-1.956-1.138-4.326-1.138-7.104c0-2.843,0.505-5.448,1.516-7.816c1.01-2.369,2.384-4.42,4.12-6.158  c1.737-1.737,3.79-3.111,6.159-4.123c2.368-1.009,4.91-1.61,7.627-1.799V5.057h5.21v6.347c5.116,0.632,9.189,2.543,12.221,5.731  c3.033,3.19,5.179,7.532,6.443,13.028h-8.053c-1.265-6.36-4.8-10.087-10.611-11.181v23.497l5.685,1.515  c1.198,0.317,2.668,0.869,4.405,1.658c1.737,0.791,3.395,1.879,4.974,3.269c1.578,1.391,2.921,3.126,4.027,5.21  c1.104,2.084,1.657,4.581,1.657,7.485c0,3.031-0.521,5.764-1.563,8.195c-1.042,2.433-2.48,4.531-4.312,6.3  c-1.832,1.769-4.012,3.159-6.537,4.168c-2.525,1.01-5.305,1.642-8.337,1.895v7.769h-5.21v-7.769  c-6.253-0.632-11.26-2.856-15.018-6.679c-3.757-3.821-5.889-9.015-6.394-15.585H31.867z M45.227,18.7  c-3.033,0.32-5.607,1.417-7.721,3.297c-2.117,1.879-3.174,4.635-3.174,8.264c0,1.72,0.267,3.155,0.804,4.3  c0.537,1.147,1.294,2.118,2.274,2.914c0.979,0.797,2.132,1.481,3.458,2.053c1.325,0.576,2.779,1.085,4.358,1.53V18.7z   M50.437,74.785c1.768-0.128,3.395-0.46,4.88-1.002c1.483-0.542,2.779-1.29,3.884-2.244s1.957-2.18,2.559-3.677  c0.599-1.495,0.898-3.262,0.898-5.298c0-1.784-0.315-3.313-0.945-4.586c-0.634-1.272-1.485-2.355-2.56-3.246  c-1.074-0.892-2.367-1.639-3.884-2.244c-1.517-0.604-3.126-1.163-4.832-1.672V74.785z"></path></svg>';
+})();
+//]]>
+</script></td><td><h6><b>Reduced overall costs</b> of classes and camps for all families.</h6></td></tr><tr><td><span id="html-inline-4"></span><script>
+//<![CDATA[
+(function(){
+  var element = document.getElementById('html-inline-4');
+  element.innerHTML = '<svg class="donate-color" width="100px" height="100px" enable-background="new 0 0 100 100" fill="#000000" version="1.1" viewBox="0 0 100 100" xml:space="preserve" xmlns="http://www.w3.org/2000/svg"><path d="m39.646 30.975c-0.25575 0-0.51153 0.097469-0.70703 0.29297-4.996 4.996-4.996 13.124 0 18.119l14.078 14.08-5.9258 5.9258c-3.775-0.354-7.356 1.2241-9.666 4.2871-2.918 3.868-2.8319 9.4239 0.20312 13.211 1.936 2.416 4.8041 3.8974 7.8711 4.0664 0.198 0.011 0.39675 0.017578 0.59375 0.017578 2.86 0 5.6213-1.136 7.6523-3.168 2.295-2.295 3.4163-5.4225 3.1133-8.6465l5.9258-5.9258 5.9258 5.9258c-0.302 3.223 0.81633 6.3515 3.1113 8.6465 2.109 2.109 4.8794 3.1641 7.6504 3.1641s5.5414-1.0551 7.6504-3.1641c4.218-4.218 4.218-11.083 0-15.301-2.295-2.295-5.4215-3.4163-8.6445-3.1113l-5.9277-5.9258 14.08-14.08c4.997-4.997 4.996-13.125 0-18.121-0.391-0.391-1.0231-0.391-1.4141 0l-22.432 22.432-22.432-22.432c-0.1955-0.1955-0.45128-0.29297-0.70703-0.29297zm23.186 31c0.688 0 1.25 0.56005 1.25 1.248 0 0.689-0.562 1.248-1.25 1.248s-1.2461-0.55905-1.2461-1.248c0-0.688 0.55809-1.248 1.2461-1.248zm16.707 13.506c1.231 0 2.3898 0.47861 3.2598 1.3496 1.796 1.796 1.796 4.7216 0 6.5176-0.87 0.87-2.0288 1.3496-3.2598 1.3496-1.23 0-2.3878-0.47861-3.2578-1.3496-1.796-1.796-1.796-4.7216 0-6.5176 0.87-0.87 2.0268-1.3496 3.2578-1.3496zm-33.16 0.003906c1.18 0 2.3598 0.4477 3.2578 1.3457 1.796 1.796 1.796 4.7216 0 6.5176s-4.7196 1.797-6.5176 0c-1.796-1.796-1.796-4.7216 0-6.5176 0.898-0.898 2.0798-1.3457 3.2598-1.3457z"/><path d="m56.867 11.082c-0.551 0.029-1.0964 0.16516-1.6094 0.41016-1.026 0.49-1.7997 1.3499-2.1797 2.4219l-2.375 6.7188c-0.783 2.213 0.38075 4.6486 2.5938 5.4316l14.557 5.1484c0.464 0.164 0.94388 0.24609 1.4219 0.24609 0.626 0 1.25-0.13902 1.832-0.41602 1.026-0.49 1.7997-1.3518 2.1797-2.4238l2.375-6.7188c0.379-1.072 0.31812-2.226-0.17188-3.252s-1.3509-1.7997-2.4219-2.1797l-14.559-5.1484c-0.536-0.189-1.0916-0.26728-1.6426-0.23828z"/><path d="m15.986 10c-2.204 0-3.9961 1.7921-3.9961 3.9961v3.2539h-0.86328c-0.552 0-1 0.448-1 1v56.5c-1e-3 0.552 0.44605 1 0.99805 1h0.27539l6.2246 11.354v1.8965c0 0.552 0.448 1 1 1s1-0.448 1-1v-1.9277l6.1035-11.322h0.27148c0.552 0 1-0.448 1-1v-31.678c0.419 2.35 1.4981 4.2941 3.6641 5.3301 0.139 0.066 0.28664 0.097656 0.43164 0.097656 0.373 0 0.73034-0.20936 0.90234-0.56836 0.238-0.499 0.027297-1.096-0.4707-1.334-4.96-2.372-2.048-12.531-0.45898-18.072 0.833-2.906 0.65003-5.0958-0.54297-6.5098-1.101-1.304-2.7084-1.5114-3.5234-1.5254v-2.2402c0-0.552-0.448-1-1-1h-0.86523v-3.2539c0-2.204-1.7921-3.9961-3.9961-3.9961h-5.1543zm11.016 12.488c0.471 0.011 1.4101 0.12341 1.9961 0.81641 0.726 0.86 0.777 2.475 0.125 4.752-0.719 2.509-1.6941 5.9186-2.1211 9.2676v-14.836z"/></svg>';
+})();
+//]]>
+</script></td><td><h6><b>Classroom supplies</b> and learning materials that help keep students engaged. This includes things like badges to earn, toys to earn, kata cards, and more!</h6></td></tr></table></div></div><div class="jumbotron mb-0 text-center" class="mb-0 text-center"><div class="container"><h3>Other Ways to Donate</h3><br /><div class="text-left"><p>At this time, MetaCoders primarily accepts monetary donations to support our efforts in computer science education. There are a few other ways you can donate besides through the donation form above:</p><div class="row"><div class="col-lg-4 col-sm-6 col-xs-12 my-3"><div class="card h-100" class="h-100"><div class="card-header"><h6 class="m-0">Donate by Mail</h6></div><div class="card-body"><p>Mail a check to our headquarters:</p><p><b>2635 Camino del Rio South, Ste 103, San Diego, CA 92108</b></p><p>Please include your return mailing address and phone number so that we can send you a donation receipt.</p></div></div></div><div class="col-lg-4 col-sm-6 col-xs-12 my-3"><div class="card h-100" class="h-100"><div class="card-header"><h6 class="m-0">Donate by Phone</h6></div><div class="card-body">Call us at <b>858-869-9430</b> with payment details and we can take your donation over the phone.</div></div></div><div class="col-lg-4 col-sm-6 col-xs-12 my-3"><div class="card h-100" class="h-100"><div class="card-header"><h6 class="m-0">Donate by Email</h6></div><div class="card-body">If you have a non-monetary donation, please email us at <a href="mailto:contact@metacoders.org">contact@metacoders.org</a> to see if we are able to accept your donation.</div></div></div></div></div></div></div></div><style>
+.fab {
+  padding: 5px;
+  font-size: 30px;
+  text-align: center;
+  text-decoration: none;
+}
+
+/* Add a hover effect if you want */
+.fab:hover {
+  opacity: 0.7;
+}
+</style><footer class="pt-4 bg-dark" style="margin-top:20vh;"><div class="container"><div class="row"><div class="col-3 text-white" class="text-white"><h6>Company</h6><ul class="list-unstyled"><li><a href="/metacoders-dot-org/learn-more.html"><small>Learn More</small></a></li><li><a href="/metacoders-dot-org/join-our-team.html"><small>Join Our Team</small></a></li><li><a href="/metacoders-dot-org/donate.html"><small>Donate</small></a></li><li><a href="/metacoders-dot-org/terms-and-conditions.html"><small>Terms &amp; Conditions</small></a></li></ul></div><div class="col-3 text-white" class="text-white"><h6>Programs</h6><ul class="list-unstyled"><li><a href="/metacoders-dot-org/city-search.html"><small>Find a Location</small></a></li><li><a href="/metacoders-dot-org/partners.html"><small>Start a New Location</small></a></li></ul><h6>Contact Us</h6><ul class="list-unstyled"><li><small>(858) 869-9430</small></li><li><a href="mailto: contact@metacoders.org"><small>contact@metacoders.org</small></a></li><li><small>Monday - Friday, 9am-5pm PT</small></li></ul></div><div class="col-3 text-white" class="text-white"><h6>Follow Us</h6><ul class="list-unstyled"><li><div class="row"><div class="col-12"><a href="https://www.facebook.com/thoughtstem" style="padding-left:0px;" class="fab fa-facebook-square fa-2x"></a><a href="https://www.twitter.com/thoughtstem" class="fab fa-twitter-square fa-2x"></a><a href="https://www.linkedin.com/company/thoughtstem" class="fab fa-linkedin fa-2x"></a><a href="https://www.instagram.com/thoughtstem" class="fab fa-instagram fa-2x"></a></div></div></li><li><br /></li><li><small>MetaCoders, Inc. Copyright 2020</small></li><li><small>All Rights Reserved</small></li><li><br /></li><li><small>MetaCoders, Inc. is a non-profit registered in the state of California.</small></li><li><small>Tax ID: 84-3633066</small></li></ul></div></div></div></footer><script src="/metacoders-dot-org/js/bootstrap.bundle.min.js"></script><script>
 //<![CDATA[
 $(function () {
   $('[data-toggle="tooltip"]').tooltip()
 })
 //]]>
-</script></body></html>
+</script><script src="/metacoders-dot-org/js/font-awesome.js"></script></body></html>

@@ -1,0 +1,222 @@
+<html><head><link rel="stylesheet" type="text/css" href="/metacoders-dot-org/css/bootstrap.min.css" /></head><body><script src="/metacoders-dot-org/js/jquery-3.2.1.slim.min.js"></script><script src="/metacoders-dot-org/js/moment.min.js"></script><style>
+.navbar.solid {
+    background-color: #343a40 !important;
+    transition: background-color 1s ease 0s;
+  }
+</style><script>
+//<![CDATA[
+$(document).ready(function() {
+        // Transition effect for navbar
+        $(window).scroll(function() {
+          // checks if window is scrolled more than 5% of screen width, adds/removes solid class
+          if($(this).scrollTop() > (.05 * window.innerHeight)) {
+              $('.navbar').addClass('solid');
+          } else {
+              $('.navbar').removeClass('solid');
+          }
+        });
+});
+//]]>
+</script><nav class="navbar fixed-top navbar-dark navbar-expand-md bg-transparent"><a class="navbar-brand" href="/metacoders-dot-org/index.html" style="color:white;">MetaCoders</a><button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button><div class="collapse navbar-collapse" id="navbarSupportedContent"><ul class="navbar-nav ml-auto"><li class="nav-item"><a class="nav-link mr-3 text-white" href="/metacoders-dot-org/learn-more.html">Learn More</a></li><li class="nav-item"><a class="nav-link mr-3 text-white" href="/metacoders-dot-org/city-search.html">Locations</a></li><li class="nav-item"><a class="nav-link mr-3 text-white" href="/metacoders-dot-org/join-our-team.html">Join Our Team</a></li><li class="nav-item"><a class="nav-link mr-3 text-white" href="/metacoders-dot-org/donate.html">Donate</a></li></ul></div></nav><div id="main"><section class="jumbotron d-flex align-items-center mb-0 text-center" style="background-image:url(https://upload.wikimedia.org/wikipedia/commons/e/e5/Chula_Vista%2C_CA%2C_USA_-_panoramio_%288%29.jpg);background-size:cover;background-position:center;height:60%;"><div class="container"><div style="display:inline-block;padding:15.0px;color:white;background:rgba(0, 0, 0, 0.5);"><h1>Coding Classes &amp; Camps in</h1><h1></h1></div></div></section><div class="jumbotron mb-0 p-4 text-center bg-white" class="mb-0 p-4 text-center bg-white"><div class="container"><div class="row"><div class="col-md-6 col-xs-12 my-2"><a href="#school-year-classes" style="text-decoration:none;"><button type="button" class="btn btn-primary btn-lg btn-block" class="btn-lg btn-block">Enroll in School-Year Classes</button></a></div><div class="col-md-6 col-xs-12 my-2"><a href="#summer-camps" style="text-decoration:none;"><button type="button" class="btn btn-primary btn-lg btn-block" class="btn-lg btn-block">Enroll in Summer Camps</button></a></div></div></div></div><div class="jumbotron mb-0 text-center" class="mb-0 text-center"><div class="container"><h2>MetaCoders Classes and Camps Inspire Students to Create with Technology</h2><div class="row align-items-center" class="align-items-center"><div class="col-lg-6 col-xs-12 p-4"><img src="/metacoders-dot-org/img/takes-a-village.png" class="img-fluid rounded" /></div><div class="col-lg-6 col-xs-12 p-4 text-left"><ul class="pl-4"><li><p><b>Technolgy Is The Future: </b>More than ever, K-12 students need to prepare for the future by becoming fluent in coding, and they're not being taught enough coding in schools!</p></li><li><p><b>Awesome Instructors: </b>MetaCoders instructors teach computer science year-round. We strive for a 1:10 mentor:student ratio that ensures students get the hands-on attention they deserve.</p></li><li><p><b>Focus on Engagement: </b>We belive it's important for students to not only understand technology, but also enjoy creating with it! We want to inspire the next generation of engineers, web developers, and computer scientists.</p></li></ul></div></div></div></div><div class="jumbotron mb-0 text-center bg-white" id="school-year-classes" class="mb-0 text-center bg-white"><div class="container"><h2>Register for School-Year Classes</h2><div class="row"><div class="col-md-6 col-xs-12 my-3"><div class="card h-100 text-center" class="h-100 text-center"><img src="" class="card-img-top" /><div class="card-body"><h5 class="card-title">TBA (TBA)</h5><table class="table table-sm table-borderless text-left"><tr><td><strong>Start Date: </strong></td><td>10/1/2012 @ TBA</td></tr><tr><td><strong>Schedule: </strong><td>Mondays, 1 weeks</td></td></tr><tr><td><strong>Location: </strong><td>TBA<br /><a target="_blank" href="https://www.google.com/maps/place/TBA">TBA</a></td></td></tr></table></div><div class="card-footer text-center" class="text-center" style="padding:0.0px;background-color:transparent;"><div class="btn-group w-100"><a href="#" class="col-sm-6 m-0 p-0" data-toggle="modal" data-target="#details-modal-"><button type="button" class="btn btn-secondary w-100" class="w-100" style="border-radius:0 0 0 0.18rem;">Class Details</button></a><button type="button" class="btn btn-primary m-0 col-sm-6" id="modal-checkout-button-" class="m-0 col-sm-6" style="border-radius:0 0 0.18rem 0;">Enroll Now for $TBA</button><div id="error-message"></div><script src="https://js.stripe.com/v3"></script><script>
+//<![CDATA[
+(function() {
+ var stripe = Stripe('');
+
+ var checkoutButton = document.getElementById('modal-checkout-button-');
+ checkoutButton.addEventListener('click', function () {
+
+  stripe.redirectToCheckout({
+   items: [{sku: '', quantity: 1}],
+   successUrl: 'https://metacoders-dot-org/checkout-success.html',
+   cancelUrl: 'https://metacoders-dot-org/checkout-fail.html',
+   billingAddressCollection: 'required',
+   })
+  .then(function (result) {
+   if (result.error) {
+    var displayError = document.getElementById('error-message');
+    displayError.textContent = result.error.message;
+   }
+   });
+  });
+ })();
+//]]>
+</script></div><div class="modal fade" id="details-modal-" tabindex="-1" role="dialog"><div class="modal-dialog modal-lg modal-dialog-centered" class="modal-lg modal-dialog-centered"><div class="modal-content"><div class="modal-header bg-primary p-2 pl-3 pr-3 text-white h5 m-0" class="bg-primary p-2 pl-3 pr-3 text-white h5 m-0">TBA - TBA (TBA)</div><div class="modal-body"><div class="row text-left" class="text-left"><div class="col-lg-6 col-xs-12" class="col-xs-12"><table class="table table-striped table-bordered"><tr><td><b>Grades: </b></td><td>TBA</td></tr><tr><td><b>Total Meetings: </b></td><td>1</td></tr><tr><td><b>Meets on: </b></td><td>Mondays</td></tr><tr><td><b>Time: </b></td><td>TBA - TBA</td></tr><tr><td><b>Start Date: </b></td><td>10/1/2012</td></tr><tr><td><b>Location: </b></td><td>TBA<br /><a target="_blank" href="https://www.google.com/maps/place/TBA">TBA</a></td></tr><tr><td><b>Price: </b></td><td>$TBA</td></tr><tr><td><b>Schedule: </b></td><td>10/1/2012.</td></tr></table></div><div class="col-lg-6 col-xs-12" class="col-xs-12"><h5>Course Description:</h5><p>TBA</p></div></div></div><div class="modal-footer text-center p-0" class="text-center p-0"><div class="btn-group w-100"><button type="button" class="btn btn-secondary m-0 col-sm-6" class="m-0 col-sm-6" style="border-radius:0 0 0 0.18rem;" data-dismiss="modal">Close</button><button type="button" class="btn btn-primary m-0 col-sm-6" id="checkout-button-" class="m-0 col-sm-6" style="border-radius:0 0 0.18rem 0;">Enroll Now for $TBA</button><div id="error-message"></div><script src="https://js.stripe.com/v3"></script><script>
+//<![CDATA[
+(function() {
+ var stripe = Stripe('');
+
+ var checkoutButton = document.getElementById('checkout-button-');
+ checkoutButton.addEventListener('click', function () {
+
+  stripe.redirectToCheckout({
+   items: [{sku: '', quantity: 1}],
+   successUrl: 'https://metacoders-dot-org/checkout-success.html',
+   cancelUrl: 'https://metacoders-dot-org/checkout-fail.html',
+   billingAddressCollection: 'required',
+   })
+  .then(function (result) {
+   if (result.error) {
+    var displayError = document.getElementById('error-message');
+    displayError.textContent = result.error.message;
+   }
+   });
+  });
+ })();
+//]]>
+</script></div></div></div></div></div></div></div></div><div class="col-md-6 col-xs-12 my-3"><div class="card h-100 text-center" class="h-100 text-center"><img src="" class="card-img-top" /><div class="card-body"><h5 class="card-title">TBA (TBA)</h5><table class="table table-sm table-borderless text-left"><tr><td><strong>Start Date: </strong></td><td>10/1/2012 @ TBA</td></tr><tr><td><strong>Schedule: </strong><td>Mondays, 1 weeks</td></td></tr><tr><td><strong>Location: </strong><td>TBA<br /><a target="_blank" href="https://www.google.com/maps/place/TBA">TBA</a></td></td></tr></table></div><div class="card-footer text-center" class="text-center" style="padding:0.0px;background-color:transparent;"><div class="btn-group w-100"><a href="#" class="col-sm-6 m-0 p-0" data-toggle="modal" data-target="#details-modal-"><button type="button" class="btn btn-secondary w-100" class="w-100" style="border-radius:0 0 0 0.18rem;">Class Details</button></a><button type="button" class="btn btn-primary m-0 col-sm-6" id="modal-checkout-button-" class="m-0 col-sm-6" style="border-radius:0 0 0.18rem 0;">Enroll Now for $TBA</button><div id="error-message"></div><script src="https://js.stripe.com/v3"></script><script>
+//<![CDATA[
+(function() {
+ var stripe = Stripe('');
+
+ var checkoutButton = document.getElementById('modal-checkout-button-');
+ checkoutButton.addEventListener('click', function () {
+
+  stripe.redirectToCheckout({
+   items: [{sku: '', quantity: 1}],
+   successUrl: 'https://metacoders-dot-org/checkout-success.html',
+   cancelUrl: 'https://metacoders-dot-org/checkout-fail.html',
+   billingAddressCollection: 'required',
+   })
+  .then(function (result) {
+   if (result.error) {
+    var displayError = document.getElementById('error-message');
+    displayError.textContent = result.error.message;
+   }
+   });
+  });
+ })();
+//]]>
+</script></div><div class="modal fade" id="details-modal-" tabindex="-1" role="dialog"><div class="modal-dialog modal-lg modal-dialog-centered" class="modal-lg modal-dialog-centered"><div class="modal-content"><div class="modal-header bg-primary p-2 pl-3 pr-3 text-white h5 m-0" class="bg-primary p-2 pl-3 pr-3 text-white h5 m-0">TBA - TBA (TBA)</div><div class="modal-body"><div class="row text-left" class="text-left"><div class="col-lg-6 col-xs-12" class="col-xs-12"><table class="table table-striped table-bordered"><tr><td><b>Grades: </b></td><td>TBA</td></tr><tr><td><b>Total Meetings: </b></td><td>1</td></tr><tr><td><b>Meets on: </b></td><td>Mondays</td></tr><tr><td><b>Time: </b></td><td>TBA - TBA</td></tr><tr><td><b>Start Date: </b></td><td>10/1/2012</td></tr><tr><td><b>Location: </b></td><td>TBA<br /><a target="_blank" href="https://www.google.com/maps/place/TBA">TBA</a></td></tr><tr><td><b>Price: </b></td><td>$TBA</td></tr><tr><td><b>Schedule: </b></td><td>10/1/2012.</td></tr></table></div><div class="col-lg-6 col-xs-12" class="col-xs-12"><h5>Course Description:</h5><p>TBA</p></div></div></div><div class="modal-footer text-center p-0" class="text-center p-0"><div class="btn-group w-100"><button type="button" class="btn btn-secondary m-0 col-sm-6" class="m-0 col-sm-6" style="border-radius:0 0 0 0.18rem;" data-dismiss="modal">Close</button><button type="button" class="btn btn-primary m-0 col-sm-6" id="checkout-button-" class="m-0 col-sm-6" style="border-radius:0 0 0.18rem 0;">Enroll Now for $TBA</button><div id="error-message"></div><script src="https://js.stripe.com/v3"></script><script>
+//<![CDATA[
+(function() {
+ var stripe = Stripe('');
+
+ var checkoutButton = document.getElementById('checkout-button-');
+ checkoutButton.addEventListener('click', function () {
+
+  stripe.redirectToCheckout({
+   items: [{sku: '', quantity: 1}],
+   successUrl: 'https://metacoders-dot-org/checkout-success.html',
+   cancelUrl: 'https://metacoders-dot-org/checkout-fail.html',
+   billingAddressCollection: 'required',
+   })
+  .then(function (result) {
+   if (result.error) {
+    var displayError = document.getElementById('error-message');
+    displayError.textContent = result.error.message;
+   }
+   });
+  });
+ })();
+//]]>
+</script></div></div></div></div></div></div></div></div></div></div></div><div class="jumbotron mb-0 text-center" id="summer-camps" class="mb-0 text-center"><div class="container"><h2>Register for Summer Camps</h2><div class="row"><div class="col-md-6 col-xs-12 my-3"><div class="card h-100 text-center" class="h-100 text-center"><img src="" class="card-img-top" /><div class="card-body"><h5 class="card-title">TBA (TBA)</h5><table class="table table-sm table-borderless text-left"><tr><td><strong>Start Date: </strong></td><td>10/1/2012 @ TBA</td></tr><tr><td><strong>Schedule: </strong><td>Mondays, 1 weeks</td></td></tr><tr><td><strong>Location: </strong><td>TBA<br /><a target="_blank" href="https://www.google.com/maps/place/TBA">TBA</a></td></td></tr></table></div><div class="card-footer text-center" class="text-center" style="padding:0.0px;background-color:transparent;"><div class="btn-group w-100"><a href="#" class="col-sm-6 m-0 p-0" data-toggle="modal" data-target="#details-modal-"><button type="button" class="btn btn-secondary w-100" class="w-100" style="border-radius:0 0 0 0.18rem;">Class Details</button></a><button type="button" class="btn btn-primary m-0 col-sm-6" id="modal-checkout-button-" class="m-0 col-sm-6" style="border-radius:0 0 0.18rem 0;">Enroll Now for $TBA</button><div id="error-message"></div><script src="https://js.stripe.com/v3"></script><script>
+//<![CDATA[
+(function() {
+ var stripe = Stripe('');
+
+ var checkoutButton = document.getElementById('modal-checkout-button-');
+ checkoutButton.addEventListener('click', function () {
+
+  stripe.redirectToCheckout({
+   items: [{sku: '', quantity: 1}],
+   successUrl: 'https://metacoders-dot-org/checkout-success.html',
+   cancelUrl: 'https://metacoders-dot-org/checkout-fail.html',
+   billingAddressCollection: 'required',
+   })
+  .then(function (result) {
+   if (result.error) {
+    var displayError = document.getElementById('error-message');
+    displayError.textContent = result.error.message;
+   }
+   });
+  });
+ })();
+//]]>
+</script></div><div class="modal fade" id="details-modal-" tabindex="-1" role="dialog"><div class="modal-dialog modal-lg modal-dialog-centered" class="modal-lg modal-dialog-centered"><div class="modal-content"><div class="modal-header bg-primary p-2 pl-3 pr-3 text-white h5 m-0" class="bg-primary p-2 pl-3 pr-3 text-white h5 m-0">TBA - TBA (TBA)</div><div class="modal-body"><div class="row text-left" class="text-left"><div class="col-lg-6 col-xs-12" class="col-xs-12"><table class="table table-striped table-bordered"><tr><td><b>Grades: </b></td><td>TBA</td></tr><tr><td><b>Total Meetings: </b></td><td>1</td></tr><tr><td><b>Meets on: </b></td><td>Mondays</td></tr><tr><td><b>Time: </b></td><td>TBA - TBA</td></tr><tr><td><b>Start Date: </b></td><td>10/1/2012</td></tr><tr><td><b>Location: </b></td><td>TBA<br /><a target="_blank" href="https://www.google.com/maps/place/TBA">TBA</a></td></tr><tr><td><b>Price: </b></td><td>$TBA</td></tr><tr><td><b>Schedule: </b></td><td>10/1/2012.</td></tr></table></div><div class="col-lg-6 col-xs-12" class="col-xs-12"><h5>Course Description:</h5><p>TBA</p></div></div></div><div class="modal-footer text-center p-0" class="text-center p-0"><div class="btn-group w-100"><button type="button" class="btn btn-secondary m-0 col-sm-6" class="m-0 col-sm-6" style="border-radius:0 0 0 0.18rem;" data-dismiss="modal">Close</button><button type="button" class="btn btn-primary m-0 col-sm-6" id="checkout-button-" class="m-0 col-sm-6" style="border-radius:0 0 0.18rem 0;">Enroll Now for $TBA</button><div id="error-message"></div><script src="https://js.stripe.com/v3"></script><script>
+//<![CDATA[
+(function() {
+ var stripe = Stripe('');
+
+ var checkoutButton = document.getElementById('checkout-button-');
+ checkoutButton.addEventListener('click', function () {
+
+  stripe.redirectToCheckout({
+   items: [{sku: '', quantity: 1}],
+   successUrl: 'https://metacoders-dot-org/checkout-success.html',
+   cancelUrl: 'https://metacoders-dot-org/checkout-fail.html',
+   billingAddressCollection: 'required',
+   })
+  .then(function (result) {
+   if (result.error) {
+    var displayError = document.getElementById('error-message');
+    displayError.textContent = result.error.message;
+   }
+   });
+  });
+ })();
+//]]>
+</script></div></div></div></div></div></div></div></div><div class="col-md-6 col-xs-12 my-3"><div class="card h-100 text-center" class="h-100 text-center"><img src="" class="card-img-top" /><div class="card-body"><h5 class="card-title">TBA (TBA)</h5><table class="table table-sm table-borderless text-left"><tr><td><strong>Start Date: </strong></td><td>10/1/2012 @ TBA</td></tr><tr><td><strong>Schedule: </strong><td>Mondays, 1 weeks</td></td></tr><tr><td><strong>Location: </strong><td>TBA<br /><a target="_blank" href="https://www.google.com/maps/place/TBA">TBA</a></td></td></tr></table></div><div class="card-footer text-center" class="text-center" style="padding:0.0px;background-color:transparent;"><div class="btn-group w-100"><a href="#" class="col-sm-6 m-0 p-0" data-toggle="modal" data-target="#details-modal-"><button type="button" class="btn btn-secondary w-100" class="w-100" style="border-radius:0 0 0 0.18rem;">Class Details</button></a><button type="button" class="btn btn-primary m-0 col-sm-6" id="modal-checkout-button-" class="m-0 col-sm-6" style="border-radius:0 0 0.18rem 0;">Enroll Now for $TBA</button><div id="error-message"></div><script src="https://js.stripe.com/v3"></script><script>
+//<![CDATA[
+(function() {
+ var stripe = Stripe('');
+
+ var checkoutButton = document.getElementById('modal-checkout-button-');
+ checkoutButton.addEventListener('click', function () {
+
+  stripe.redirectToCheckout({
+   items: [{sku: '', quantity: 1}],
+   successUrl: 'https://metacoders-dot-org/checkout-success.html',
+   cancelUrl: 'https://metacoders-dot-org/checkout-fail.html',
+   billingAddressCollection: 'required',
+   })
+  .then(function (result) {
+   if (result.error) {
+    var displayError = document.getElementById('error-message');
+    displayError.textContent = result.error.message;
+   }
+   });
+  });
+ })();
+//]]>
+</script></div><div class="modal fade" id="details-modal-" tabindex="-1" role="dialog"><div class="modal-dialog modal-lg modal-dialog-centered" class="modal-lg modal-dialog-centered"><div class="modal-content"><div class="modal-header bg-primary p-2 pl-3 pr-3 text-white h5 m-0" class="bg-primary p-2 pl-3 pr-3 text-white h5 m-0">TBA - TBA (TBA)</div><div class="modal-body"><div class="row text-left" class="text-left"><div class="col-lg-6 col-xs-12" class="col-xs-12"><table class="table table-striped table-bordered"><tr><td><b>Grades: </b></td><td>TBA</td></tr><tr><td><b>Total Meetings: </b></td><td>1</td></tr><tr><td><b>Meets on: </b></td><td>Mondays</td></tr><tr><td><b>Time: </b></td><td>TBA - TBA</td></tr><tr><td><b>Start Date: </b></td><td>10/1/2012</td></tr><tr><td><b>Location: </b></td><td>TBA<br /><a target="_blank" href="https://www.google.com/maps/place/TBA">TBA</a></td></tr><tr><td><b>Price: </b></td><td>$TBA</td></tr><tr><td><b>Schedule: </b></td><td>10/1/2012.</td></tr></table></div><div class="col-lg-6 col-xs-12" class="col-xs-12"><h5>Course Description:</h5><p>TBA</p></div></div></div><div class="modal-footer text-center p-0" class="text-center p-0"><div class="btn-group w-100"><button type="button" class="btn btn-secondary m-0 col-sm-6" class="m-0 col-sm-6" style="border-radius:0 0 0 0.18rem;" data-dismiss="modal">Close</button><button type="button" class="btn btn-primary m-0 col-sm-6" id="checkout-button-" class="m-0 col-sm-6" style="border-radius:0 0 0.18rem 0;">Enroll Now for $TBA</button><div id="error-message"></div><script src="https://js.stripe.com/v3"></script><script>
+//<![CDATA[
+(function() {
+ var stripe = Stripe('');
+
+ var checkoutButton = document.getElementById('checkout-button-');
+ checkoutButton.addEventListener('click', function () {
+
+  stripe.redirectToCheckout({
+   items: [{sku: '', quantity: 1}],
+   successUrl: 'https://metacoders-dot-org/checkout-success.html',
+   cancelUrl: 'https://metacoders-dot-org/checkout-fail.html',
+   billingAddressCollection: 'required',
+   })
+  .then(function (result) {
+   if (result.error) {
+    var displayError = document.getElementById('error-message');
+    displayError.textContent = result.error.message;
+   }
+   });
+  });
+ })();
+//]]>
+</script></div></div></div></div></div></div></div></div></div></div></div></div><style>
+.fab {
+  padding: 5px;
+  font-size: 30px;
+  text-align: center;
+  text-decoration: none;
+}
+
+/* Add a hover effect if you want */
+.fab:hover {
+  opacity: 0.7;
+}
+</style><footer class="pt-4 bg-dark" style="margin-top:20vh;"><div class="container"><div class="row"><div class="col-3 text-white" class="text-white"><h6>Company</h6><ul class="list-unstyled"><li><a href="/metacoders-dot-org/learn-more.html"><small>Learn More</small></a></li><li><a href="/metacoders-dot-org/join-our-team.html"><small>Join Our Team</small></a></li><li><a href="/metacoders-dot-org/donate.html"><small>Donate</small></a></li><li><a href="/metacoders-dot-org/terms-and-conditions.html"><small>Terms &amp; Conditions</small></a></li></ul></div><div class="col-3 text-white" class="text-white"><h6>Programs</h6><ul class="list-unstyled"><li><a href="/metacoders-dot-org/city-search.html"><small>Find a Location</small></a></li><li><a href="/metacoders-dot-org/partners.html"><small>Start a New Location</small></a></li></ul><h6>Contact Us</h6><ul class="list-unstyled"><li><small>(858) 869-9430</small></li><li><a href="mailto: contact@metacoders.org"><small>contact@metacoders.org</small></a></li><li><small>Monday - Friday, 9am-5pm PT</small></li></ul></div><div class="col-3 text-white" class="text-white"><h6>Follow Us</h6><ul class="list-unstyled"><li><div class="row"><div class="col-12"><a href="https://www.facebook.com/thoughtstem" style="padding-left:0px;" class="fab fa-facebook-square fa-2x"></a><a href="https://www.twitter.com/thoughtstem" class="fab fa-twitter-square fa-2x"></a><a href="https://www.linkedin.com/company/thoughtstem" class="fab fa-linkedin fa-2x"></a><a href="https://www.instagram.com/thoughtstem" class="fab fa-instagram fa-2x"></a></div></div></li><li><br /></li><li><small>MetaCoders, Inc. Copyright 2020</small></li><li><small>All Rights Reserved</small></li><li><br /></li><li><small>MetaCoders, Inc. is a non-profit registered in the state of California.</small></li><li><small>Tax ID: 84-3633066</small></li></ul></div></div></div></footer><script src="/metacoders-dot-org/js/bootstrap.bundle.min.js"></script><script>
+//<![CDATA[
+$(function () {
+  $('[data-toggle="tooltip"]').tooltip()
+})
+//]]>
+</script><script src="/metacoders-dot-org/js/font-awesome.js"></script></body></html>

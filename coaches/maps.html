@@ -1,0 +1,413 @@
+<html><head><link rel="stylesheet" type="text/css" href="/metacoders-dot-org/css/bootstrap.min.css" /></head><body><script src="/metacoders-dot-org/js/jquery-3.2.1.slim.min.js"></script><script src="/metacoders-dot-org/js/moment.min.js"></script><nav class="navbar sticky-top navbar-expand-md navbar-dark bg-dark"><a href="/metacoders-dot-org/index.html" class="navbar-brand">MetaCoders</a><ul class="navbar-nav ml-auto"><li class="nav-item"><a class="nav-link mr-3 text-white" href="/metacoders-dot-org/learn-more.html">Learn More</a></li><li class="nav-item"><a class="nav-link mr-3 text-white" href="/metacoders-dot-org/city-search.html">Locations</a></li><li class="nav-item"><a class="nav-link mr-3 text-white" href="/metacoders-dot-org/join-our-team.html">Join Our Team</a></li><li class="nav-item"><a class="nav-link mr-3 text-white" href="/metacoders-dot-org/donate.html">Donate</a></li></ul></nav><div class="container" id="main"><div class="card"><script>
+//<![CDATA[
+   function replaceAllText(root, find, replace) {
+
+       var walker = document.createTreeWalker(
+           root,
+           NodeFilter.SHOW_ALL,  // filtering only text nodes
+           null,
+           false
+       );
+
+       while (walker.nextNode()) {
+           var c = walker.currentNode
+           if(c.id){
+             c.id = c.id.replace(find, replace)
+           }
+           if(c.getAttribute && c.getAttribute('onclick')){
+             c.setAttribute('onclick', c.getAttribute('onclick').replace(find, replace))
+           }
+           if(c.tagName == "SCRIPT"){
+             c.textContent = c.textContent.replace(find, replace)
+           }
+
+           if(c.tagName == "TEMPLATE"){
+             var content = c.content
+             console.log(content)
+             replaceAllText(content, find, replace)
+           }
+       }
+   }
+
+function newNamespaceKeeping(old){
+   var cache = {}
+   return function(ns){
+     if(!cache[ns] && ns != old){
+       //Keep a cache.  And avoid changing the oldNamespace...
+       window.namespace_num = window.namespace_num || 0
+       window.namespace_num += 1
+       var freshNamespace = ns + "0000" + window.namespace_num
+       cache[ns] = freshNamespace
+     }
+
+     return cache[ns] || ns;
+   }
+}
+
+function getNamespace(component){
+  return component.innerHTML.match(/ns\d+/)[0]
+}
+
+function injectComponent(template, target, oldNamespace){
+       var actualTemplate = null;
+       if(typeof(template) == "string")
+           actualTemplate = document.getElementById(template);
+       else
+           actualTemplate = template;
+
+       var s = actualTemplate.innerHTML
+
+       var content = actualTemplate.content
+       var clonedContent = document.importNode(content, true)
+       replaceAllText(clonedContent, /ns\d+/g, newNamespaceKeeping(oldNamespace))
+
+       document.getElementById(target).appendChild(clonedContent)
+
+       window.injected = document.getElementById(target).lastChild
+       if (actualTemplate.afterInject)
+          actualTemplate.afterInject(window.injected)
+}
+//]]>
+</script><style>
+.fade {
+  opacity: 0;
+  -webkit-transition: opacity 0.15s linear;
+  -moz-transition: opacity 0.15s linear;
+  -o-transition: opacity 0.15s linear;
+  transition: opacity 0.15s linear;
+}
+.fade.in {
+  opacity: 1;
+}
+</style><div class="card-header bg-info text-white" class="bg-info text-white">Class Launch Map <span class="badge badge-pill badge-secondary" id="ns5016_minutes-display">60 minutes</span></div><div class="card-body"><div class="form-group row"><label class="col-sm-2 col-form-label">Start</label><div class="col-sm-10"><select class="custom-select mr-sm-2" onChange="window.ns5018_onChange(this)"><option value="8:00 AM">8:00 AM</option><option value="8:30 AM">8:30 AM</option><option value="9:00 AM">9:00 AM</option><option value="9:30 AM">9:30 AM</option><option value="10:00 AM">10:00 AM</option><option value="10:30 AM">10:30 AM</option><option value="11:00 AM">11:00 AM</option><option value="11:30 AM">11:30 AM</option><option value="12:00 PM">12:00 PM</option><option value="12:30 PM">12:30 PM</option><option value="1:00 PM">1:00 PM</option><option value="1:30 PM">1:30 PM</option><option selected value="2:00 PM">2:00 PM</option><option value="2:30 PM">2:30 PM</option><option value="3:00 PM">3:00 PM</option><option value="3:30 PM">3:30 PM</option><option value="4:00 PM">4:00 PM</option><option value="4:30 PM">4:30 PM</option><option value="5:00 PM">5:00 PM</option><option value="5:30 PM">5:30 PM</option><option value="6:00 PM">6:00 PM</option></select><script>
+//<![CDATA[
+window.ns5018_time=null;
+window.ns5018_selectId="ns5018_selector";
+window.ns5018_onChange = function(me){
+window.ns5018_time=me.options[me.selectedIndex].value;
+;
+ window.ns5017_onStartChange(window.ns5018_time);
+
+}
+
+
+//]]>
+</script></div></div><div class="form-group row"><label class="col-sm-2 col-form-label">End</label><div class="col-sm-10"><select class="custom-select mr-sm-2" onChange="window.ns5019_onChange(this)"><option value="8:00 AM">8:00 AM</option><option value="8:30 AM">8:30 AM</option><option value="9:00 AM">9:00 AM</option><option value="9:30 AM">9:30 AM</option><option value="10:00 AM">10:00 AM</option><option value="10:30 AM">10:30 AM</option><option value="11:00 AM">11:00 AM</option><option value="11:30 AM">11:30 AM</option><option value="12:00 PM">12:00 PM</option><option value="12:30 PM">12:30 PM</option><option value="1:00 PM">1:00 PM</option><option value="1:30 PM">1:30 PM</option><option value="2:00 PM">2:00 PM</option><option value="2:30 PM">2:30 PM</option><option selected value="3:00 PM">3:00 PM</option><option value="3:30 PM">3:30 PM</option><option value="4:00 PM">4:00 PM</option><option value="4:30 PM">4:30 PM</option><option value="5:00 PM">5:00 PM</option><option value="5:30 PM">5:30 PM</option><option value="6:00 PM">6:00 PM</option></select><script>
+//<![CDATA[
+window.ns5019_time=null;
+window.ns5019_selectId="ns5019_selector";
+window.ns5019_onChange = function(me){
+window.ns5019_time=me.options[me.selectedIndex].value;
+;
+ window.ns5017_onEndChange(window.ns5019_time);
+
+}
+
+
+//]]>
+</script></div></div><script>
+//<![CDATA[
+window.ns5017_startTime=moment("2:00 PM", "h:mm a");
+window.ns5017_endTime=moment("3:00 PM", "h:mm a");
+window.ns5017_onStartChange = function(t){
+window.ns5017_startTime=moment(t, "h:mm a");
+;
+ window.ns5016_timeChange(window.ns5017_startTime , window.ns5017_endTime);
+
+}
+
+window.ns5017_onEndChange = function(t){
+window.ns5017_endTime=moment(t, "h:mm a");
+;
+ window.ns5016_timeChange(window.ns5017_startTime , window.ns5017_endTime);
+
+}
+
+
+//]]>
+</script><div class="row"><div class="col" id="ns5016_modes"><span id="ns5020_mode"><div class="card-group" onClick="document.getElementById(&quot;content-id5015&quot;).innerHTML = document.getElementById(&quot;story-mode5021-content&quot;).innerHTML;
+
+setTimeout(()=&gt;{
+  $(document.getElementById(&quot;content-id5015&quot;).childNodes[0]).addClass(&quot;in&quot;);
+}, 100)"><div class="card bg-light" class="bg-light"><div class="card-header text-truncate h-100" class="text-truncate h-100" data-toggle="tooltip" data-placement="left" title="Coach Story"><i class="fas fa-book"></i> Coach Story</div></div><div class="card"><div class="card-header" style="height:49.0px;"><span class="mode-minutes">5</span> minutes</div></div><template id="story-mode5021-content"><div class="card fade  " class="fade  "><div class="card-header"><i class="fas fa-book"></i> Coach Story</div><div class="card-body"><div><p>Tell your coach story</p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer ex purus, consequat quis lobortis in, maximus sed diam. Vestibulum id enim mauris. Ut eu augue mauris. Praesent rutrum metus vel neque pharetra, ut tempus ante blandit. Nulla augue sapien, dignissim in diam in, hendrerit malesuada metus. Suspendisse vitae rutrum justo.</div></div></div></template></div></span><script>
+//<![CDATA[
+window.ns5020_originalModeMinutes=5;
+window.ns5020_originalClassMinutes=25;
+window.ns5020_construct=setTimeout(()=> window.ns5020_updateMinutes(60) ,1);
+window.ns5020_updateMinutes = function(total){
+var newScale =  total  /  window.ns5020_originalClassMinutes;
+ var newMinutes = Math.floor( window.ns5020_originalModeMinutes  * newScale);
+ $(" #ns5020_mode  .mode-minutes").html(newMinutes);
+
+}
+
+
+//]]>
+</script><span id="ns5022_mode"><div class="card-group" onClick="document.getElementById(&quot;content-id5015&quot;).innerHTML = document.getElementById(&quot;story-mode5023-content&quot;).innerHTML;
+
+setTimeout(()=&gt;{
+  $(document.getElementById(&quot;content-id5015&quot;).childNodes[0]).addClass(&quot;in&quot;);
+}, 100)"><div class="card bg-light" class="bg-light"><div class="card-header text-truncate h-100" class="text-truncate h-100" data-toggle="tooltip" data-placement="left" title="Code of Awesomeness Stories"><i class="fas fa-book"></i> Code of Awesomeness Stories</div></div><div class="card"><div class="card-header" style="height:99.0px;"><span class="mode-minutes">10</span> minutes</div></div><template id="story-mode5023-content"><div class="card fade  " class="fade  "><div class="card-header"><i class="fas fa-book"></i> Code of Awesomeness Stories</div><div class="card-body"><div><p>Read the following stories...</p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer ex purus, consequat quis lobortis in, maximus sed diam. Vestibulum id enim mauris. Ut eu augue mauris. Praesent rutrum metus vel neque pharetra, ut tempus ante blandit. Nulla augue sapien, dignissim in diam in, hendrerit malesuada metus. Suspendisse vitae rutrum justo.</div></div></div></template></div></span><script>
+//<![CDATA[
+window.ns5022_originalModeMinutes=10;
+window.ns5022_originalClassMinutes=25;
+window.ns5022_construct=setTimeout(()=> window.ns5022_updateMinutes(60) ,1);
+window.ns5022_updateMinutes = function(total){
+var newScale =  total  /  window.ns5022_originalClassMinutes;
+ var newMinutes = Math.floor( window.ns5022_originalModeMinutes  * newScale);
+ $(" #ns5022_mode  .mode-minutes").html(newMinutes);
+
+}
+
+
+//]]>
+</script><span id="ns5024_mode"><div class="card-group" onClick="document.getElementById(&quot;content-id5015&quot;).innerHTML = document.getElementById(&quot;game-mode5025-content&quot;).innerHTML;
+
+setTimeout(()=&gt;{
+  $(document.getElementById(&quot;content-id5015&quot;).childNodes[0]).addClass(&quot;in&quot;);
+}, 100)"><div class="card order-last order-sm-first" class="order-last order-sm-first" data-toggle="modal" data-target="#game-mode5025"><div class="card-header bg-dark text-white minutes-display" class="bg-dark text-white minutes-display" style="height:99.0px;"><span class="mode-minutes">10</span> minutes</div></div><div class="card text-white bg-dark order-first order-sm-last" class="text-white bg-dark order-first order-sm-last" data-toggle="modal" data-target="#game-mode5025"><div class="card-header text-truncate h-100" class="text-truncate h-100" data-toggle="tooltip" data-placement="right" title="Code of Awesomeness Mottos"><i class="fas fa-chess-knight"></i> Code of Awesomeness Mottos</div></div><template id="game-mode5025-content"><div class="card fade bg-dark text-white" class="fade bg-dark text-white"><div class="card-header"><i class="fas fa-chess-knight"></i> Code of Awesomeness Mottos</div><div class="card-body"><div><p>Have them come up with mottos for the following ...</p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer ex purus, consequat quis lobortis in, maximus sed diam. Vestibulum id enim mauris. Ut eu augue mauris. Praesent rutrum metus vel neque pharetra, ut tempus ante blandit. Nulla augue sapien, dignissim in diam in, hendrerit malesuada metus. Suspendisse vitae rutrum justo.</div></div></div></template></div></span><script>
+//<![CDATA[
+window.ns5024_originalModeMinutes=10;
+window.ns5024_originalClassMinutes=25;
+window.ns5024_construct=setTimeout(()=> window.ns5024_updateMinutes(60) ,1);
+window.ns5024_updateMinutes = function(total){
+var newScale =  total  /  window.ns5024_originalClassMinutes;
+ var newMinutes = Math.floor( window.ns5024_originalModeMinutes  * newScale);
+ $(" #ns5024_mode  .mode-minutes").html(newMinutes);
+
+}
+
+
+//]]>
+</script></div><div class="col" id="content-id5015"></div></div></div></div><script>
+//<![CDATA[
+window.ns5016_minutesDisplay="ns5016_minutes-display";
+window.ns5016_timeChange = function(s , e){
+var diff = moment.duration( e  .diff( s )).asMinutes();
+ document.getElementById( window.ns5016_minutesDisplay ) .innerHTML = diff + " minutes";
+ var children = $(" #ns5016_modes  script") 
+
+ for(var c of children){ 
+    window[getNamespace( c ) +  "_updateMinutes" ]( diff ) 
+ };
+
+}
+
+
+//]]>
+</script><div class="card"><script>
+//<![CDATA[
+   function replaceAllText(root, find, replace) {
+
+       var walker = document.createTreeWalker(
+           root,
+           NodeFilter.SHOW_ALL,  // filtering only text nodes
+           null,
+           false
+       );
+
+       while (walker.nextNode()) {
+           var c = walker.currentNode
+           if(c.id){
+             c.id = c.id.replace(find, replace)
+           }
+           if(c.getAttribute && c.getAttribute('onclick')){
+             c.setAttribute('onclick', c.getAttribute('onclick').replace(find, replace))
+           }
+           if(c.tagName == "SCRIPT"){
+             c.textContent = c.textContent.replace(find, replace)
+           }
+
+           if(c.tagName == "TEMPLATE"){
+             var content = c.content
+             console.log(content)
+             replaceAllText(content, find, replace)
+           }
+       }
+   }
+
+function newNamespaceKeeping(old){
+   var cache = {}
+   return function(ns){
+     if(!cache[ns] && ns != old){
+       //Keep a cache.  And avoid changing the oldNamespace...
+       window.namespace_num = window.namespace_num || 0
+       window.namespace_num += 1
+       var freshNamespace = ns + "0000" + window.namespace_num
+       cache[ns] = freshNamespace
+     }
+
+     return cache[ns] || ns;
+   }
+}
+
+function getNamespace(component){
+  return component.innerHTML.match(/ns\d+/)[0]
+}
+
+function injectComponent(template, target, oldNamespace){
+       var actualTemplate = null;
+       if(typeof(template) == "string")
+           actualTemplate = document.getElementById(template);
+       else
+           actualTemplate = template;
+
+       var s = actualTemplate.innerHTML
+
+       var content = actualTemplate.content
+       var clonedContent = document.importNode(content, true)
+       replaceAllText(clonedContent, /ns\d+/g, newNamespaceKeeping(oldNamespace))
+
+       document.getElementById(target).appendChild(clonedContent)
+
+       window.injected = document.getElementById(target).lastChild
+       if (actualTemplate.afterInject)
+          actualTemplate.afterInject(window.injected)
+}
+//]]>
+</script><style>
+.fade {
+  opacity: 0;
+  -webkit-transition: opacity 0.15s linear;
+  -moz-transition: opacity 0.15s linear;
+  -o-transition: opacity 0.15s linear;
+  transition: opacity 0.15s linear;
+}
+.fade.in {
+  opacity: 1;
+}
+</style><div class="card-header bg-info text-white" class="bg-info text-white">Class Launch Map (v2) <span class="badge badge-pill badge-secondary" id="ns5027_minutes-display">60 minutes</span></div><div class="card-body"><div class="form-group row"><label class="col-sm-2 col-form-label">Start</label><div class="col-sm-10"><select class="custom-select mr-sm-2" onChange="window.ns5029_onChange(this)"><option value="8:00 AM">8:00 AM</option><option value="8:30 AM">8:30 AM</option><option value="9:00 AM">9:00 AM</option><option value="9:30 AM">9:30 AM</option><option value="10:00 AM">10:00 AM</option><option value="10:30 AM">10:30 AM</option><option value="11:00 AM">11:00 AM</option><option value="11:30 AM">11:30 AM</option><option value="12:00 PM">12:00 PM</option><option value="12:30 PM">12:30 PM</option><option value="1:00 PM">1:00 PM</option><option value="1:30 PM">1:30 PM</option><option selected value="2:00 PM">2:00 PM</option><option value="2:30 PM">2:30 PM</option><option value="3:00 PM">3:00 PM</option><option value="3:30 PM">3:30 PM</option><option value="4:00 PM">4:00 PM</option><option value="4:30 PM">4:30 PM</option><option value="5:00 PM">5:00 PM</option><option value="5:30 PM">5:30 PM</option><option value="6:00 PM">6:00 PM</option></select><script>
+//<![CDATA[
+window.ns5029_time=null;
+window.ns5029_selectId="ns5029_selector";
+window.ns5029_onChange = function(me){
+window.ns5029_time=me.options[me.selectedIndex].value;
+;
+ window.ns5028_onStartChange(window.ns5029_time);
+
+}
+
+
+//]]>
+</script></div></div><div class="form-group row"><label class="col-sm-2 col-form-label">End</label><div class="col-sm-10"><select class="custom-select mr-sm-2" onChange="window.ns5030_onChange(this)"><option value="8:00 AM">8:00 AM</option><option value="8:30 AM">8:30 AM</option><option value="9:00 AM">9:00 AM</option><option value="9:30 AM">9:30 AM</option><option value="10:00 AM">10:00 AM</option><option value="10:30 AM">10:30 AM</option><option value="11:00 AM">11:00 AM</option><option value="11:30 AM">11:30 AM</option><option value="12:00 PM">12:00 PM</option><option value="12:30 PM">12:30 PM</option><option value="1:00 PM">1:00 PM</option><option value="1:30 PM">1:30 PM</option><option value="2:00 PM">2:00 PM</option><option value="2:30 PM">2:30 PM</option><option selected value="3:00 PM">3:00 PM</option><option value="3:30 PM">3:30 PM</option><option value="4:00 PM">4:00 PM</option><option value="4:30 PM">4:30 PM</option><option value="5:00 PM">5:00 PM</option><option value="5:30 PM">5:30 PM</option><option value="6:00 PM">6:00 PM</option></select><script>
+//<![CDATA[
+window.ns5030_time=null;
+window.ns5030_selectId="ns5030_selector";
+window.ns5030_onChange = function(me){
+window.ns5030_time=me.options[me.selectedIndex].value;
+;
+ window.ns5028_onEndChange(window.ns5030_time);
+
+}
+
+
+//]]>
+</script></div></div><script>
+//<![CDATA[
+window.ns5028_startTime=moment("2:00 PM", "h:mm a");
+window.ns5028_endTime=moment("3:00 PM", "h:mm a");
+window.ns5028_onStartChange = function(t){
+window.ns5028_startTime=moment(t, "h:mm a");
+;
+ window.ns5027_timeChange(window.ns5028_startTime , window.ns5028_endTime);
+
+}
+
+window.ns5028_onEndChange = function(t){
+window.ns5028_endTime=moment(t, "h:mm a");
+;
+ window.ns5027_timeChange(window.ns5028_startTime , window.ns5028_endTime);
+
+}
+
+
+//]]>
+</script><div class="row"><div class="col" id="ns5027_modes"><span id="ns5031_mode"><div class="card-group" onClick="document.getElementById(&quot;content-id5026&quot;).innerHTML = document.getElementById(&quot;story-mode5032-content&quot;).innerHTML;
+
+setTimeout(()=&gt;{
+  $(document.getElementById(&quot;content-id5026&quot;).childNodes[0]).addClass(&quot;in&quot;);
+}, 100)"><div class="card bg-light" class="bg-light"><div class="card-header text-truncate h-100" class="text-truncate h-100" data-toggle="tooltip" data-placement="left" title="Coach Story"><i class="fas fa-book"></i> Coach Story</div></div><div class="card"><div class="card-header" style="height:49.0px;"><span class="mode-minutes">5</span> minutes</div></div><template id="story-mode5032-content"><div class="card fade  " class="fade  "><div class="card-header"><i class="fas fa-book"></i> Coach Story</div><div class="card-body"><div><p>Tell your coach story</p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer ex purus, consequat quis lobortis in, maximus sed diam. Vestibulum id enim mauris. Ut eu augue mauris. Praesent rutrum metus vel neque pharetra, ut tempus ante blandit. Nulla augue sapien, dignissim in diam in, hendrerit malesuada metus. Suspendisse vitae rutrum justo.</div></div></div></template></div></span><script>
+//<![CDATA[
+window.ns5031_originalModeMinutes=5;
+window.ns5031_originalClassMinutes=25;
+window.ns5031_construct=setTimeout(()=> window.ns5031_updateMinutes(60) ,1);
+window.ns5031_updateMinutes = function(total){
+var newScale =  total  /  window.ns5031_originalClassMinutes;
+ var newMinutes = Math.floor( window.ns5031_originalModeMinutes  * newScale);
+ $(" #ns5031_mode  .mode-minutes").html(newMinutes);
+
+}
+
+
+//]]>
+</script><span id="ns5033_mode"><div class="card-group" onClick="document.getElementById(&quot;content-id5026&quot;).innerHTML = document.getElementById(&quot;story-mode5034-content&quot;).innerHTML;
+
+setTimeout(()=&gt;{
+  $(document.getElementById(&quot;content-id5026&quot;).childNodes[0]).addClass(&quot;in&quot;);
+}, 100)"><div class="card bg-light" class="bg-light"><div class="card-header text-truncate h-100" class="text-truncate h-100" data-toggle="tooltip" data-placement="left" title="Code of Awesomeness Stories"><i class="fas fa-book"></i> Code of Awesomeness Stories</div></div><div class="card"><div class="card-header" style="height:99.0px;"><span class="mode-minutes">10</span> minutes</div></div><template id="story-mode5034-content"><div class="card fade  " class="fade  "><div class="card-header"><i class="fas fa-book"></i> Code of Awesomeness Stories</div><div class="card-body"><div><p>Read the following stories...</p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer ex purus, consequat quis lobortis in, maximus sed diam. Vestibulum id enim mauris. Ut eu augue mauris. Praesent rutrum metus vel neque pharetra, ut tempus ante blandit. Nulla augue sapien, dignissim in diam in, hendrerit malesuada metus. Suspendisse vitae rutrum justo.</div></div></div></template></div></span><script>
+//<![CDATA[
+window.ns5033_originalModeMinutes=10;
+window.ns5033_originalClassMinutes=25;
+window.ns5033_construct=setTimeout(()=> window.ns5033_updateMinutes(60) ,1);
+window.ns5033_updateMinutes = function(total){
+var newScale =  total  /  window.ns5033_originalClassMinutes;
+ var newMinutes = Math.floor( window.ns5033_originalModeMinutes  * newScale);
+ $(" #ns5033_mode  .mode-minutes").html(newMinutes);
+
+}
+
+
+//]]>
+</script><span id="ns5035_mode"><div class="card-group" onClick="document.getElementById(&quot;content-id5026&quot;).innerHTML = document.getElementById(&quot;game-mode5036-content&quot;).innerHTML;
+
+setTimeout(()=&gt;{
+  $(document.getElementById(&quot;content-id5026&quot;).childNodes[0]).addClass(&quot;in&quot;);
+}, 100)"><div class="card order-last order-sm-first" class="order-last order-sm-first" data-toggle="modal" data-target="#game-mode5036"><div class="card-header bg-dark text-white minutes-display" class="bg-dark text-white minutes-display" style="height:99.0px;"><span class="mode-minutes">10</span> minutes</div></div><div class="card text-white bg-dark order-first order-sm-last" class="text-white bg-dark order-first order-sm-last" data-toggle="modal" data-target="#game-mode5036"><div class="card-header text-truncate h-100" class="text-truncate h-100" data-toggle="tooltip" data-placement="right" title="Code of Awesomeness Mottos"><i class="fas fa-chess-knight"></i> Code of Awesomeness Mottos</div></div><template id="game-mode5036-content"><div class="card fade bg-dark text-white" class="fade bg-dark text-white"><div class="card-header"><i class="fas fa-chess-knight"></i> Code of Awesomeness Mottos</div><div class="card-body"><div><p>Have them come up with mottos for the following ...</p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer ex purus, consequat quis lobortis in, maximus sed diam. Vestibulum id enim mauris. Ut eu augue mauris. Praesent rutrum metus vel neque pharetra, ut tempus ante blandit. Nulla augue sapien, dignissim in diam in, hendrerit malesuada metus. Suspendisse vitae rutrum justo.</div></div></div></template></div></span><script>
+//<![CDATA[
+window.ns5035_originalModeMinutes=10;
+window.ns5035_originalClassMinutes=25;
+window.ns5035_construct=setTimeout(()=> window.ns5035_updateMinutes(60) ,1);
+window.ns5035_updateMinutes = function(total){
+var newScale =  total  /  window.ns5035_originalClassMinutes;
+ var newMinutes = Math.floor( window.ns5035_originalModeMinutes  * newScale);
+ $(" #ns5035_mode  .mode-minutes").html(newMinutes);
+
+}
+
+
+//]]>
+</script></div><div class="col" id="content-id5026"></div></div></div></div><script>
+//<![CDATA[
+window.ns5027_minutesDisplay="ns5027_minutes-display";
+window.ns5027_timeChange = function(s , e){
+var diff = moment.duration( e  .diff( s )).asMinutes();
+ document.getElementById( window.ns5027_minutesDisplay ) .innerHTML = diff + " minutes";
+ var children = $(" #ns5027_modes  script") 
+
+ for(var c of children){ 
+    window[getNamespace( c ) +  "_updateMinutes" ]( diff ) 
+ };
+
+}
+
+
+//]]>
+</script></div><style>
+.fab {
+  padding: 5px;
+  font-size: 30px;
+  text-align: center;
+  text-decoration: none;
+}
+
+/* Add a hover effect if you want */
+.fab:hover {
+  opacity: 0.7;
+}
+</style><footer class="pt-4 bg-dark" style="margin-top:20vh;"><div class="container"><div class="row"><div class="col-3 text-white" class="text-white"><h6>Company</h6><ul class="list-unstyled"><li><a href="/metacoders-dot-org/learn-more.html"><small>Learn More</small></a></li><li><a href="/metacoders-dot-org/join-our-team.html"><small>Join Our Team</small></a></li><li><a href="/metacoders-dot-org/donate.html"><small>Donate</small></a></li><li><a href="/metacoders-dot-org/terms-and-conditions.html"><small>Terms &amp; Conditions</small></a></li></ul></div><div class="col-3 text-white" class="text-white"><h6>Programs</h6><ul class="list-unstyled"><li><a href="/metacoders-dot-org/city-search.html"><small>Find a Location</small></a></li><li><a href="/metacoders-dot-org/partners.html"><small>Start a New Location</small></a></li></ul><h6>Contact Us</h6><ul class="list-unstyled"><li><small>(858) 869-9430</small></li><li><a href="mailto: contact@metacoders.org"><small>contact@metacoders.org</small></a></li><li><small>Monday - Friday, 9am-5pm PT</small></li></ul></div><div class="col-3 text-white" class="text-white"><h6>Follow Us</h6><ul class="list-unstyled"><li><div class="row"><div class="col-12"><a href="https://www.facebook.com/thoughtstem" style="padding-left:0px;" class="fab fa-facebook-square fa-2x"></a><a href="https://www.twitter.com/thoughtstem" class="fab fa-twitter-square fa-2x"></a><a href="https://www.linkedin.com/company/thoughtstem" class="fab fa-linkedin fa-2x"></a><a href="https://www.instagram.com/thoughtstem" class="fab fa-instagram fa-2x"></a></div></div></li><li><br /></li><li><small>MetaCoders, Inc. Copyright 2020</small></li><li><small>All Rights Reserved</small></li><li><br /></li><li><small>MetaCoders, Inc. is a non-profit registered in the state of California.</small></li><li><small>Tax ID: 84-3633066</small></li></ul></div></div></div></footer><script src="/metacoders-dot-org/js/bootstrap.bundle.min.js"></script><script>
+//<![CDATA[
+$(function () {
+  $('[data-toggle="tooltip"]').tooltip()
+})
+//]]>
+</script><script src="/metacoders-dot-org/js/font-awesome.js"></script></body></html>
