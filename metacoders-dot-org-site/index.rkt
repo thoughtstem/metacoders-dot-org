@@ -111,7 +111,7 @@
                        #:path lindsey-img-path
                        #:name "Lindsey Handley, Ph.D."
                        #:position "Co-Founder & Officer"
-                       #:quote "Bringing teachers and students together to learn coding is the most important thing we can be doing for our future.")
+                       #:quote "")
           (staff-modal #:id "Modal-Sara"
                        #:path sara-img-path
                        #:name "Sara Lucchini"
