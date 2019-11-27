@@ -13,3 +13,4 @@
                ; --------------
                "https://github.com/thoughtstem/website.git"
                "https://github.com/thoughtstem/impress.git"))
+(define compile-omit-paths '("scripts/"))
