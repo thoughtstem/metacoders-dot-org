@@ -54,15 +54,13 @@
            margin-bottom: 0
            background-image: (string-append "url(" (prefix/pathify homepage-cover-img-path) ")")
            background-size: "cover"
-           height: "60%")
+           'min-height: "60%")
    class: "d-flex align-items-center"
    (container
     (col-sm-8 class: "p-4 mx-auto"
          style: (properties color: "white"
                             background: "rgba(0,0,0,0.5)")
-         (h1 id: "donate-header" class: "mb-4"
-             style: (properties color: "white"
-                                'text-shadow: "-2px 2px #28a745")
+         (h1 id: "donate-header" class: "mb-4 text-white"
              "Help Students Code Today")
          (div ;class: "mx-auto"
               style: (properties color: "black")
@@ -108,23 +106,11 @@
              (tr (td grad-cap-icon)
                  (td (h6 (b "Financial aid") " to help all students have the opportunity to learn how to code no matter their financial means.")))
              (tr (td laptop-icon)
-                 (td (h6 (b "Customized Chromebooks") " filled with MetaCoder curriculum and programming languages for students to use during classes and camps.")))
+                 (td (h6 (b "Customized Chromebooks") " filled with MetaCoders curriculum and programming languages for students to use during classes and camps.")))
              (tr (td dollar-sign-icon)
                  (td (h6 (b "Reduced overall costs") " of classes and camps for all families.")))
              (tr (td school-supplies-icon)
                  (td (h6 (b "Classroom supplies") " and learning materials that help keep students engaged. This includes things like badges to earn, toys to earn, kata cards, and more!")))))))
-
-(define (more-ways-to-donate-section)
-  (jumbotron  class: "mb-0 text-center"
-              (container ;class: "col-sm-8 mx-auto"
-                         (h3 "Other Ways to Donate")
-                         (br)
-                         (div class: "text-left"
-                              (p "At this time, MetaCoders primarily accepts monetary donations to support our efforts in computer science education. There are a few other ways you can donate besides through the donation form above:")
-                              (ul
-                               (li "Mail a check to our headquarters at 2635 Camino del Rio South, Ste 103, San Diego, CA 92108. Please include your return mailing address and phone number so that we can send you a donation receipt.")
-                               (li "Call us at 858-869-9430 with payment details.")
-                               (li "If you have a non-monetary donation, please email us at contact@metacoders.org to see if we can accept your donation."))))))
 
 (define (more-ways-to-donate-deck-section)
   (jumbotron  class: "mb-0 text-center"
@@ -136,19 +122,19 @@
                               (responsive-row #:columns 3
                                     (card class: "h-100"
                                      (card-header (h6 class: "m-0" "Donate by Mail"))
-                                     (card-body (p "Mail a check to our headquarters at:")
+                                     (card-body (p "Mail a check to our headquarters:")
                                                 (p (b "2635 Camino del Rio South, Ste 103, San Diego, CA 92108"))
                                                 (p "Please include your return mailing address and phone number so that we can send you a donation receipt.")))
                                     (card class: "h-100"
                                      (card-header (h6 class: "m-0" "Donate by Phone"))
                                      (card-body "Call us at "
                                                 (b "858-869-9430")
-                                                " with payment details."))
+                                                " with payment details and we can take your donation over the phone."))
                                     (card class: "h-100"
                                      (card-header (h6 class: "m-0" "Donate by Email"))
                                      (card-body "If you have a non-monetary donation, please email us at "
                                                 (a href: "mailto:contact@metacoders.org" "contact@metacoders.org")
-                                                " to see if we can accept your donation."))
+                                                " to see if we are able to accept your donation."))
                                )))))
 
 (define (donate) 
@@ -157,7 +143,9 @@
      (style/inline type: "text/css"
                    (~a ".donate-color { height: 42px; width: 42px; margin-right:10px; fill: #28a745; }"
                        ".btn.btn-secondary:not(:disabled):not(.disabled).active {background-color:#222;}"
-                       ".card-header {background-color: #28a745; color: white;}"))
+                       ".card-header {background-color: #28a745; color: white;}"
+                       
+                       "tr {height: 60px;}"))
       (jumbotron-main-section)
       (what-your-donations-support)
       (more-ways-to-donate-deck-section)

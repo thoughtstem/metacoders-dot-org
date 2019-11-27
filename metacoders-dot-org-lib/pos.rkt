@@ -10,27 +10,61 @@
          "./imgs.rkt")
 
 
+(define (city-page-fold-section)
+  (jumbotron class: "mb-0 pt-4 text-center"
+             style: (properties background: "white")
+    (container
+      (responsive-row #:columns 2
+                      (a href: "#school-year-classes" style: (properties 'text-decoration: "none")
+                               (button-primary class: "btn-lg btn-block"
+                                      "Enroll in School-Year Classes"))
+                      (a href: "#summer-camps" style: (properties 'text-decoration: "none")
+                               (button-primary class: "btn-lg btn-block"
+                                      "Enroll in Summer Camps")))
+      (hr)
+      (h2 "MetaCoders Classes and Camps Inspire Students to Create with Technology")
+      (row class: "align-items-center"
+           (div class: "col-lg-6 col-xs-12 p-4"
+                (img src: (prefix/pathify takes-a-village-path) 
+                     class: "img-fluid rounded"))
+           (div class: "col-lg-6 col-xs-12 p-4 text-left"
+                ;(h5 "MetaCoders Classes and Camps Inspire Students to Create with Technology")
+                (ul class: "pl-4"
+                    (li (p (b "Technolgy Is The Future: ") (~a "More than ever, K-12 students need to prepare for the future by "
+                                                               "becoming fluent in coding, and they're not being taught enough coding in schools!")))
+                    (li (p (b "Awesome Instructors: ") (~a "MetaCoders instructors teach computer science year-round. We strive for a 1:10 mentor:student "
+                                                           "ratio that ensures students get the hands-on attention they deserve.")))
+                    (li (p (b "Focus on Engagement: ") (~a "We belive it's important for students to not only understand technology, but also enjoy creating with "
+                                                           "it! We want to inspire the next generation of engineers, web developers, and computer scientists.")))
+                    ))))))
+
+
 (define (city-page
+         #:city-name [city-name ""]
          #:banner-url [img-url ""]
          #:locations-list [l '()])
   (normal-content-wide
-   (section class: "jumbotron align-items-center mb-0 text-center"
+   (section class: "jumbotron d-flex align-items-center mb-0 text-center"
     style: (properties
             background-image: (string-append "url(" img-url ")")
             background-size: "cover"
             background-position: "center"
-            height: "50%")
-    (div
-     class: "text-center"
-     (img src:
-          ;Gross...
-          (pathify
-           (add-path-prefix logo-img-path)))))
-         
+            height: "60%")
+    (container
+     (div style: (properties
+                  display: "inline-block"
+                  padding: 15
+                  color: "white"
+                  background: "rgba(0, 0, 0, 0.5)")
+          (h1 "Coding Classes & Camps in")
+          (h1 city-name))))
+   (city-page-fold-section)
    l))
 
 (define (buy-button price sku key)
-  (list (button-secondary id:(~a "checkout-button-" sku)
+  (list (button-primary id:(~a "checkout-button-" sku)
+                        class: "m-0 col-sm-6" 
+                        style: (properties border-radius: "0 0 0.18rem 0")
                           (~a "Enroll Now for $" price))
         (div id:(~a "error-message" sku))
         (script src:"https://js.stripe.com/v3")
@@ -39,6 +73,35 @@
   var stripe = Stripe('@key');
 
   var checkoutButton = document.getElementById('checkout-button-@sku');
+  checkoutButton.addEventListener('click', function () {
+
+   stripe.redirectToCheckout({
+    items: [{sku: '@sku', quantity: 1}],
+    successUrl: 'https://metacoders-dot-org/checkout-success.html',
+    cancelUrl: 'https://metacoders-dot-org/checkout-fail.html',
+    billingAddressCollection: 'required',
+    })
+   .then(function (result) {
+    if (result.error) {
+     var displayError = document.getElementById('error-message@sku');
+     displayError.textContent = result.error.message;
+    }
+    });
+   });
+  })();}))
+
+(define (modal-buy-button price sku key)
+  (list (button-primary id:(~a "modal-checkout-button-" sku)
+                        class: "m-0 col-sm-6" 
+                        style: (properties border-radius: "0 0 0.18rem 0")
+                          (~a "Enroll Now for $" price))
+        (div id:(~a "error-message" sku))
+        (script src:"https://js.stripe.com/v3")
+        @script/inline{
+ (function() {
+  var stripe = Stripe('@key');
+
+  var checkoutButton = document.getElementById('modal-checkout-button-@sku');
   checkoutButton.addEventListener('click', function () {
 
    stripe.redirectToCheckout({
@@ -77,7 +140,8 @@
          #:price         [price "TBA"]
          #:sku           [sku ""]
          #:key           [key ""])
-  (card
+  ;define course modal
+  #;(card
    class: "m-4"
    (h1 style:(properties text-align: "center")
        title)
@@ -92,9 +156,45 @@
     (p (strong "Times:") " from " start-time " to " end-time ".")
     (p (strong "Dates: ") (print-dates meeting-dates))
     (p (strong "Location: ") location " - " address ".")
-    (buy-button price sku key))))
+    (buy-button price sku key)))
+  (card class: "h-100 text-center"
+        (img src: image-url
+             class: "card-img-top")
+        (card-body
+         (h5 class: "card-title" (~a topic " (" age-range ")"))
+         ;(img src: image-url
+         ;     class: "img-fluid rounded")
+         (ul class: "text-left mt-3 pl-0" style: (properties 'list-style-type: "none")
+              (li (strong "Start Date: ") (first meeting-dates) " @ " start-time)
+              (li (strong "Schedule: ") (~a (length meeting-dates) " weeks"))
+              (li (strong "Location: ") location " - " address "."))
+        )
+        (card-footer class: "text-center"
+                     style: (properties padding: 0
+                                        background-color: "transparent"
+                                        ;border-top: "none"
+                                        )
+         (div class: "btn-group w-100"
+              (a href: "#" class: "col-sm-6 m-0 p-0"
+                 'data-toggle: "modal" 'data-target: (~a "#details-modal-" sku)
+                 (button-secondary class: "w-100" 
+                                   style: (properties border-radius: "0 0 0 0.18rem")
+                                   "Class Details"))
+              (modal-buy-button price sku key))
+         (course-modal #:id (~a "details-modal-" sku)
+                       #:description   description
+                       #:age-range     age-range
+                       #:meeting-dates meeting-dates
+                       #:start-time    start-time
+                       #:end-time      end-time
+                       #:location      location
+                       #:address       address
+                       #:price         price
+                       #:buy-button (buy-button price sku key)))
+        )
+  )
 
-(define (location-courses
+#;(define (location-courses
          #:location-name [name "TBA"]
          #:course-1 [course-1 (p)]
          #:course-2 [course-2 (p)])
@@ -111,6 +211,30 @@
          course-1
          course-2))
        ))
+
+(define (location-courses
+         #:location-name [name "TBA"]
+         #:course-1 [course-1 (p)]
+         #:course-2 [course-2 (p)])
+  (list (jumbotron  id: "school-year-classes"
+                    class: "mb-0 text-center"
+                   (container
+                    (h2 "Register for School-Year Classes")
+                    (responsive-row #:columns 2
+                                    course-1
+                                    course-1 ;dummy duplicate for now
+                                    )
+                    ))
+        (jumbotron id: "summer-camps"
+                   class: "mb-0 text-center"
+                   style: (properties background: "white")
+                   (container
+                    (h2  "Register for Summer Camps")
+                    (responsive-row #:columns 2
+                                    course-1
+                                    course-1 ;dummy duplicate for now
+                                    )
+                    ))))
 
 ;Donate Card
 (define (donate-amounts items)

@@ -2,7 +2,8 @@
 
 (provide normal-content
          normal-content-wide
-         staff-modal)
+         staff-modal
+         course-modal)
 
 (require website/bootstrap
          racket/runtime-path
@@ -140,6 +141,7 @@
          big-quote)
 
 (define (staff-modal #:id modal-id
+                     #:path the-path
                      #:name [name "Name goes here"]
                      #:position [position "Position goes here"]
                      #:quote [quote "Quote goes here"])
@@ -153,7 +155,7 @@
         (modal-body 
           (row 
             (col-4
-              (img src: (prefix/pathify sonny-img-path)
+              (img src: (prefix/pathify the-path)
                   class: "img-fluid rounded m-3"))
             (col-8 
               (h3 name)
@@ -164,6 +166,52 @@
                   "Close")
           (button type: "button" class: "btn btn-primary"   
                   "Save Changes"))))))
+
+(define (print-dates dates [s ""])   
+  (if (> (length dates) 1)
+      (begin (set! s (~a s (first dates) ", "))
+             (print-dates (rest dates) s))
+      (begin (set! s (~a s (first dates) "."))
+             s)))
+
+(define (course-modal #:id modal-id
+                      #:description   description
+                      #:age-range     age-range
+                      #:meeting-dates meeting-dates
+                      #:start-time    start-time
+                      #:end-time      end-time
+                      #:location      location
+                      #:address       address
+                      #:price         price
+                      #:buy-button    buy-button)
+  (modal id: modal-id 'tabindex: "-1" role: "dialog"
+     (modal-dialog class: "modal-lg modal-dialog-centered"
+        (modal-content
+          (modal-header class: "bg-primary p-2 text-white" "Class Details")
+          (modal-body
+           (row class: "text-left"
+                (col-md-4
+                 (ul class: "pl-0" style: (properties 'list-style-type: "none")
+                  (li (b "Grades: ") age-range)
+                  (li (b "Total Meetings: ") (length meeting-dates))
+                  (li (b "Meets on: ") "[DAY-OF-THE-WEEK]")
+                  (li (b "Time: ") start-time " - " end-time)
+                  (li (b "Start Date: ") (first meeting-dates))
+                  (li (b "Location: ") location " - " address ".")
+                  (li (b "Price: $") price)
+                  (li (b "Schedule: ")
+                      (br)
+                      (print-dates meeting-dates))))
+                (col-md-8
+                 (h5 "Course Description:")
+                 (p description))))
+          (modal-footer class: "text-center p-0"
+           (div class: "btn-group w-100"
+                (button-secondary class: "m-0 col-sm-6"
+                                  style: (properties border-radius: "0 0 0 0.18rem")
+                                  'data-dismiss: "modal"
+                   "Close")
+                buy-button))))))
 
 (define (big-image url
                    #:offset-y (offset-y 0)
