@@ -4,8 +4,10 @@
 
 (require website/bootstrap)
 
-(define (email-signup)
-  (card
+(define (email-signup
+          #:class [classes ""]
+          )
+  (card class: classes
    ;(card-header "Reach Out To Us")
     (card-body
       ;(card-title "Reach out for more information:")
