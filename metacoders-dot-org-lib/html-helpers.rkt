@@ -143,6 +143,7 @@
          big-quote)
 
 (define (staff-modal #:id modal-id
+                     #:path the-path
                      #:name [name "Name goes here"]
                      #:position [position "Position goes here"]
                      #:quote [quote "Quote goes here"])
@@ -156,7 +157,7 @@
         (modal-body 
           (row 
             (col-4
-              (img src: (prefix/pathify sonny-img-path)
+              (img src: (prefix/pathify the-path)
                   class: "img-fluid rounded m-3"))
             (col-8 
               (h3 name)
