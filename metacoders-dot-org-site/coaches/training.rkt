@@ -16,10 +16,9 @@
 
 (define (training)
   (list 
-    ;(impress-files) ;Hmmm misplaced...
     (page coaches/maps.html
       (normal-content
-        (classmaps-index-content)))
+       (page-content (classmaps-index))))
     (training-top)
     (training-ch 1)
     (training-ch 2)

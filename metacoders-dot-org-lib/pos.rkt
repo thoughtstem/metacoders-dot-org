@@ -3,7 +3,9 @@
 (provide city-page
          course-card
          location-courses
-         donate-card)
+         donate-card
+         school-year-courses
+         summer-courses)
 
 (require website/bootstrap
          "./html-helpers.rkt"
@@ -26,21 +28,12 @@
 (define (city-page-fold-section)
   (jumbotron class: "mb-0 text-center"
     (container
-      #|(responsive-row #:columns 2
-                      (a href: "#school-year-classes" style: (properties 'text-decoration: "none")
-                               (button-primary class: "btn-lg btn-block"
-                                      "Enroll in School-Year Classes"))
-                      (a href: "#summer-camps" style: (properties 'text-decoration: "none")
-                               (button-primary class: "btn-lg btn-block"
-                                      "Enroll in Summer Camps")))
-      (hr)|#
       (h2 "MetaCoders Classes and Camps Inspire Students to Create with Technology")
       (row class: "align-items-center" ;abstract to responsive-row-lg?
            (div class: "col-lg-6 col-xs-12 p-4"
                 (img src: (prefix/pathify takes-a-village-path) 
                      class: "img-fluid rounded"))
            (div class: "col-lg-6 col-xs-12 p-4 text-left"
-                ;(h5 "MetaCoders Classes and Camps Inspire Students to Create with Technology")
                 (ul class: "pl-4"
                     (li (p (b "Technolgy Is The Future: ") (~a "More than ever, K-12 students need to prepare for the future by "
                                                                "becoming fluent in coding, and they're not being taught enough coding in schools!")))
@@ -54,7 +47,9 @@
 (define (city-page
          #:city-name [city-name ""]
          #:banner-url [img-url ""]
-         #:locations-list [l '()])
+         #:locations-list [l '()]
+         #:school-year-courses [school-year-courses '()]
+         #:summer-courses [summer-courses '()])
   (normal-content-wide
    (section class: "jumbotron d-flex align-items-center mb-0 text-center"
     style: (properties
@@ -72,7 +67,10 @@
           (h1 city-name))))
    (city-page-links-section)
    (city-page-fold-section)
-   l))
+   l
+   school-year-courses
+   summer-courses
+   ))
 
 (define (buy-button price sku key)
   (list (button-primary id:(~a "checkout-button-" sku)
@@ -212,32 +210,104 @@
         )
   )
 
+(define (camp-calendar . camps)
+  (table class: "table table-striped table-bordered bg-white"
+         (thead (tr (th 'scope: "col" "Courses")
+                    (th 'scope: "col" "Jun 15 - 19")
+                    (th 'scope: "col" "Jun 22 - 26")
+                    (th 'scope: "col" "Jun 29 - Jul 3")
+                    (th 'scope: "col" "July 6 - 10")
+                    (th 'scope: "col" "July 13 - 17")))
+         (tr (td "Awesome Animals" (br)
+                 "Ages: 5-7" (br)
+                 (button-secondary class: "btn-sm mt-2" "Course Info"))
+             (td "9am-1pm" (br)
+                 "$250")
+             (td) (td) (td) (td))
+         (tr (td  "Superhero Adventure" (br)
+                  "Ages: 5-7" (br)
+                 (button-secondary class: "btn-sm mt-2" "Course Info"))
+             (td)
+             (td "9am-1pm" (br)
+                 "$250")
+             (td) (td) (td))))
+
 (define (location-courses
          #:location-name [name "TBA"]
-         #:course-1 [course-1 (p)]
-         #:course-2 [course-2 (p)])
-  (list (jumbotron  id: "school-year-classes"
-                    class: "mb-0 text-center bg-white"
-                    (container
-                     (h2 "Register for School-Year Classes")
-                     (row ;abstract to responsive-row-md?
-                      (div class: "col-md-6 col-xs-12 my-3"
-                           course-1)
-                      (div class: "col-md-6 col-xs-12 my-3"
-                           course-1 ;dummy duplicate for now
-                           ))
-                     ))
-        (jumbotron id: "summer-camps"
-                   class: "mb-0 text-center"
-                   (container
-                    (h2  "Register for Summer Camps")
-                    (row 
-                     (div class: "col-md-6 col-xs-12 my-3"
-                          course-1)
-                     (div class: "col-md-6 col-xs-12 my-3"
-                          course-1 ;dummy duplicate for now
-                          ))
-                    ))))
+         #:course-1 [course-1 (p "Coming soon!")]
+         #:course-2 [course-2 (p "Coming soon!")])
+  (list (school-year-courses course-1)
+        (summer-courses course-2)
+        ))
+
+(define (school-year-courses . course-cards)
+  (jumbotron  id: "school-year-classes"
+              class: "mb-0 text-center bg-white"
+              (container
+               (h2 "Register for School-Year Classes")
+               (if (> (length course-cards) 1)
+                   (apply row (map (curry div class: "col-md-6 col-xs-12 my-3 mx-auto")
+                               course-cards))
+                   (apply row (map (curry div class: "col-lg-6 col-md-8 col-xs-12 my-3 mx-auto")
+                               course-cards)))
+               (p "By enrolling in any of these sessions, you agree to the " (link-to "http://thoughtstem.com"
+                                                                                      "terms and conditions") ".")
+               )
+              ))
+
+(define (summer-camps-links-section)
+  (row ;abstract to responsive-row-md?
+   (div class: "col-md-6 col-xs-12 my-2"
+        (a href: "#k-2-summer-options" style: (properties 'text-decoration: "none")
+           (button-primary class: "btn-lg btn-block"
+                           "K-2nd Summer Options")))
+   (div class: "col-md-6 col-xs-12 my-2"
+        (a href: "#3-6-summer-options" style: (properties 'text-decoration: "none")
+           (button-primary class: "btn-lg btn-block"
+                           "3rd-6th Summer Options")))))
+
+(define (summer-camps-info-section location-name)
+  (row class: "align-items-center" ;abstract to responsive-row-lg?
+       (div class: "col-lg-6 col-xs-12 p-4 text-left"
+            (h5 class: "text-center" "What Makes MetaCoders Camps Different?")
+            (ul class: "pl-4"
+                (li (p (b "Affordable: ") (~a "We brgins summer technology education to local students at a more affordable price. "
+                                              "Additional discoutns are available for multiple registrations.")))
+                (li (p (b "Flexible: ") (~a "Choose between half-day camps or full-day camps; morning-only  camps include lunch in "
+                                            location-name "'s delicious dining halls. ") (strong "Extended daycare") " also available!"))
+                (li (p (b "Prestigous Location: ") (~a "Students receive an authentic college experience on the beautiful " location-name " campus.")))
+                (li (p (b "Awesome Instructors: ") (~a "MetaCoders instructors teach computer science year-round. We strive for a 1:5 "
+                                                       "mentor:student ratio during the summer, which ensures students get the hands-on "
+                                                       "attention they deserve.")))
+                ))
+       (div class: "col-lg-6 col-xs-12 p-4"
+            (img src: (prefix/pathify takes-a-village-path) 
+                 class: "img-fluid rounded"))
+       ))
+
+(define (summer-courses #:location-name [location-name "TBA"]
+                        . course-cards)
+  (jumbotron  id: "summer-camps"
+              class: "mb-0 text-center"
+              (container
+               (h2  "Register for Summer Camps")
+               (summer-camps-info-section location-name)
+               (summer-camps-links-section)
+               (h5 id: "k-2-summer-options" class: "mt-5"
+                   "Summer Camp Schedule for K-2nd")
+               (camp-calendar)
+               (h5 id: "3-6-summer-options" class: "mt-5"
+                   "Summer Camp Schedule for 3rd-6th")
+               (camp-calendar)
+               ;(if (> (length course-cards) 1)
+               ;    (apply row (map (curry div class: "col-md-6 col-xs-12 my-3 mx-auto")
+               ;                course-cards))
+               ;    (apply row (map (curry div class: "col-lg-6 col-md-8 col-xs-12 my-3 mx-auto")
+               ;                course-cards)))
+               (p "By enrolling in any of these sessions, you agree to the " (link-to "http://thoughtstem.com"
+                                                                                      "terms and conditions") ".")
+               )
+              ))
 
 ;Donate Card
 (define (donate-amounts items)
