@@ -235,7 +235,7 @@
 (define (big-quote #:title (title "TITLE")
                    #:tagline (tagline "tag line...")
                    #:content (content (p "lorem ipsum..."))
-                   #:image-src (image-src stephen-img-path)
+                   #:image-src (image-src lindsey-img-path)
                    #:attribution (attrib (list (span "Someone Famous") (br) "MetaCoders.org, Founding Member"))
                    #:right? (right #t))
   (section 

@@ -52,7 +52,7 @@
    style: (properties
            text-align: "center"
            margin-bottom: 0
-           background-image: (string-append "url(" (prefix/pathify homepage-cover-img-path) ")")
+           background-image: (string-append "url(" (prefix/pathify homepage-banner-path) ")")
            background-size: "cover"
            'min-height: "60%")
    class: "d-flex align-items-center"

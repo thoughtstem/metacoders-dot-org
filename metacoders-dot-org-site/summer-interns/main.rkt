@@ -12,7 +12,7 @@
 (define (intern-description)
   (intern-page
     #:position-title "Summer Camp Team Leader"
-    #:image-path summer-camp-intern-img-path
+    #:image-path summer-camp-intern-banner-path
     #:jumbotron-tagline "Lead students in our summer camps in coding exercises and make sure they have a great first experience with coding!"
     #:locations-hiring (list "Dallas, Texas" "Minneapolis, Minnesota" "Temecula, CA" "Poway, CA" "Chula Vista, CA" "Reno, Nevada")
     #:intern-description 

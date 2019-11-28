@@ -8,7 +8,7 @@
   (jumbotron  style: (properties
                       text-align: "center"
                       margin-bottom: 0
-                      background-image: (string-append "url(" (prefix/pathify homepage-cover-img-path) ")")
+                      background-image: (string-append "url(" (prefix/pathify homepage-banner-path) ")")
                       background-position: "center"
                       background-size: "cover"
                       height: "80%")
@@ -62,8 +62,26 @@
         (row 
           class: "align-items-center"
           (col-sm-6
-            (img src: (prefix/pathify takes-a-village-path) 
-                  class: "img-fluid rounded"))
+            (carousel class: "slide" 'data-ride:"carousel" id: "carouselExampleControls"
+              (carousel-inner
+                (carousel-item class: "active" 
+                  (img src: (prefix/pathify takes-a-village-path) 
+                  class: "img-fluid rounded d-block w-100" 'alt: "First Slide"))
+                (carousel-item 'alt: "Second Slide"
+                  (img src: (prefix/pathify takes-a-village-2-path) 
+                  class: "img-fluid rounded d-block w-100" 'alt: "Second Slide"))
+                (carousel-item 'alt: "Third Slide"
+                  (img src: (prefix/pathify takes-a-village-3-path) 
+                  class: "img-fluid rounded d-block w-100" 'alt: "Third Slide"))
+                (carousel-item 'alt: "Fourth Slide"
+                  (img src: (prefix/pathify takes-a-village-4-path) 
+                  class: "img-fluid rounded d-block w-100" 'alt: "Fourth Slide")))
+              (a class: "carousel-control-prev" href: "#carouselExampleControls" 'role: "button" 'data-slide: "prev"
+                (span class: "carousel-control-prev-icon" 'aria-hidden: "true")
+                (span class: "sr-only" "Previous"))
+              (a class: "carousel-control-next" href: "#carouselExampleControls" 'role: "button" 'data-slide: "next"
+                (span class: "carousel-control-next-icon" 'aria-hidden: "true")
+                (span class: "sr-only" "Next"))))
           (col-sm-6
               (h2 "A good education takes a village.")
               (p "Coding education isn’t possible in many communities because the expertise isn’t there yet. We help train community members to bring grass-roots coding education to local kids.")
@@ -106,22 +124,22 @@
                        #:path sonny-img-path
                        #:name "Sonny Najar"
                        #:position "Software Developer and Instructor at MetaCoders"
-                       #:quote "Bringing teachers and students together to learn coding is the most important thing we can be doing for our future.")
+                       #:quote "Pick any object and ask, How did this get here? Odds are, its design, manufacturing, and distribution was shaped by code. We write these stories at a rate of 111 billion lines per year. MetaCoders can help you write your first line, or your millionth.")
           (staff-modal #:id "Modal-Lindsey"
                        #:path lindsey-img-path
                        #:name "Lindsey Handley, Ph.D."
                        #:position "Co-Founder & Officer"
-                       #:quote "")
+                       #:quote "The moment we realized coding education could transform everything -- from math and sciences to history and language arts -- that was when we decided to found MetaCoders. You don't leave something broken when you know how to fix it.")
           (staff-modal #:id "Modal-Sara"
                        #:path sara-img-path
                        #:name "Sara Lucchini"
                        #:position "Software Developer and Instructor at MetaCoders"
-                       #:quote "Bringing teachers and students together to learn coding is the most important thing we can be doing for our future.")
+                       #:quote "Writing code is a form of storytelling -- where the stories actually come true. That's the magic of our time. With that alone, teachers and students can rewrite education as we know it. MetaCoders paves the way.")
           (staff-modal #:id "Modal-Judith"
                        #:path judith-img-path
                        #:name "Judith Eisenberg"
                        #:position "Administrator and Instructor at MetaCoders"
-                       #:quote "Bringing teachers and students together to learn coding is the most important thing we can be doing for our future."))))))
+                       #:quote "Put a coder in an fMRI, and what lights up? The language parts. The better the coder, the more their brains look like they are reading English while reading code. I designed MetaCoders education around this simple neuroscientific insight: learning to code is a form of language acquisition."))))))
 
 
 (define (index)
