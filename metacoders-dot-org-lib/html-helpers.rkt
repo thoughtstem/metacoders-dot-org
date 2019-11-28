@@ -51,14 +51,14 @@
             style: (properties margin-top:"20vh")
       (container 
         (row
-          (col-3 class: "text-white"
+          (col-md-3 class: "text-white"
             (h6 "Company")
             (ul class: "list-unstyled"
               (li (link-to learn-more-path (small "Learn More")))
               (li (link-to join-our-team-path (small "Join Our Team")))
               (li (link-to donate-path (small "Donate")))
               (li (link-to terms-and-conditions-path (small "Terms & Conditions")))))
-          (col-3 class: "text-white"
+          (col-md-3 class: "text-white"
             (h6 "Programs")
             (ul class: "list-unstyled"
               (li (link-to city-search-path (small "Find a Location")))
@@ -68,7 +68,7 @@
               (li (small "(858) 869-9430"))
               (li (a href:"mailto: contact@metacoders.org" (small "contact@metacoders.org")))
               (li (small "Monday - Friday, 9am-5pm PT"))))
-          (col-3 class: "text-white"
+          (col-md-3 class: "text-white"
             (h6 "Follow Us")
             (ul class: "list-unstyled"
               (li 
