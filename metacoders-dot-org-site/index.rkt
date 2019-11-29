@@ -2,7 +2,8 @@
 
 (provide index)
 
-(require metacoders-dot-org-lib)
+(require metacoders-dot-org-lib
+         racket/runtime-path)
 
 (define (jumbotron-header-section)
   (jumbotron  style: (properties
@@ -40,17 +41,23 @@
                   (br)
                   (responsive-row #:columns 3
                       (card class:"h-100"
-                      (card-img-top src: (prefix/pathify games-img-path)) 
+                      (card-img-top class: "gradient-effect"
+                                    src: (prefix/pathify games-svg-path)
+                                    style: (properties background-color: "#00C851")) 
                       (card-body
                         (card-title "Meta Games")
                         (card-text "Our students stay motivated with badges and prizes.")))
                       (card class:"h-100"
-                        (card-img-top src: (prefix/pathify brain-img-path))
+                        (card-img-top class: "gradient-effect"
+                                      src: (prefix/pathify brain-svg-path)
+                                      style: (properties background-color: "#ffbb33")) 
                         (card-body
                           (card-title "Metacognition")
                           (card-text "By reflecting on how we learn, we are able to learn more efficiently.")))
                       (card class:"h-100"
-                        (card-img-top src: (prefix/pathify story-img-path))
+                        (card-img-top class: "gradient-effect"
+                                      src: (prefix/pathify story-svg-path)
+                                      style: (properties background-color: "#33b5e5")) 
                         (card-body
                           (card-title "Meta Stories")
                           (card-text "Stories are powerful tools for teaching values and communicating ideas."))))))
@@ -149,7 +156,21 @@
           (style/inline type: "text/css" 
                         (~a ".img-link:hover {
                             opacity: 0.5;
-                            filter: alpha(opacity=50); /* For IE8 and earlier */}"))
+                            filter: alpha(opacity=50); /* For IE8 and earlier */}"
+                            "@keyframes flow {
+                              0% {
+                                background-position: 0% 50%;
+                              }
+                              50% {
+                                background-position: 100% 50%;
+                              }
+                              100% {
+                                background-position: 0% 50%;
+                              }
+                            }"
+                            ".gradient-effect:hover {background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
+                                                    background-size: 400% 400%;
+                                                    animation: flow 10s ease infinite;}"))
           (jumbotron-header-section)
           (jumbotron-code-the-meta-way) 
           (jumbotron-it-takes-a-village)

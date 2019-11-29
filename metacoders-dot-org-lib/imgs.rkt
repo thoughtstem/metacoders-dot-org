@@ -6,9 +6,9 @@
          judith-img-path
          sonny-img-path
          sara-img-path
-         brain-img-path
-         games-img-path
-         story-img-path
+         brain-svg-path
+         games-svg-path
+         story-svg-path
          takes-a-village-path
          takes-a-village-2-path
          takes-a-village-3-path
@@ -44,12 +44,12 @@
   (list "img" "sara.jpg"))
 (define sonny-img-path
   (list "img" "sonny.jpg"))
-(define games-img-path
-  (list "img" "games.png"))
-(define brain-img-path
-  (list "img" "brain.png"))
-(define story-img-path
-  (list "img" "story.png"))
+(define games-svg-path
+  (list "img" "games.svg"))
+(define brain-svg-path
+  (list "img" "brain.svg"))
+(define story-svg-path
+  (list "img" "story.svg"))
 (define takes-a-village-path
   (list "img" "takes-a-village.jpg"))
 (define takes-a-village-2-path
@@ -96,12 +96,12 @@
           (bitmap/file (build-path img "sara.jpg"))) 
     (page sonny-img-path
           (bitmap/file (build-path img "sonny.jpg"))) 
-    (page games-img-path
-          (bitmap/file (build-path img "games.png")))
-    (page brain-img-path
-          (bitmap/file (build-path img "brain.png")))
-    (page story-img-path
-          (bitmap/file (build-path img "story.png")))
+    (page games-svg-path
+          (file->string (build-path img "games.svg")))
+    (page brain-svg-path
+          (file->string (build-path img "brain.svg")))
+    (page story-svg-path
+          (file->string (build-path img "story.svg")))
     (page takes-a-village-path
           (bitmap/file (build-path img "takes-a-village.jpg")))
     (page takes-a-village-2-path
