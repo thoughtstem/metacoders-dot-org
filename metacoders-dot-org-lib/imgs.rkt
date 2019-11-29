@@ -22,7 +22,9 @@
          volunteer-coder-img-path
          equipment-img-path
          tech-coordinator-img-path
-         
+         in-school-img-path
+         weekly-classes-img-path
+
          world-img-path
          partners-img-path
          )
@@ -76,6 +78,10 @@
   (list "img" "tech-coordinator.jpg"))
 (define equipment-img-path
   (list "img" "equipment.jpg"))
+(define in-school-img-path
+  (list "img" "in-school.jpg"))
+(define weekly-classes-img-path
+  (list "img" "weekly-classes.jpg"))
 
 (define river-img-path
   (list "img" "river.png"))
@@ -131,6 +137,10 @@
           (bitmap/file (build-path img "tech-coordinator.jpg")))
     (page equipment-img-path
           (bitmap/file (build-path img "equipment.jpg")))
+    (page weekly-classes-img-path
+          (bitmap/file (build-path img "weekly-classes.jpg")))
+    (page in-school-img-path
+          (bitmap/file (build-path img "in-school.jpg")))
 
     (page river-img-path
           (bitmap/file (build-path img "river.png")))
