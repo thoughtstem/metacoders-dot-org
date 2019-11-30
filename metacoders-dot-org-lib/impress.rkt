@@ -112,13 +112,12 @@
                  (filter-stories-by-place (all-stories) pl)))))
 
   (define story-reader-node
-    (node 1400 200
+    (node 1300 200
           (div
              style: (properties height: "500px"
                                 width: "700px"
                                 'overflow-y: "auto")
-            (div id: reader-id 
-                 (p "No story selected")))))
+            (div class: "p-3" id: reader-id ))))
 
     (level
       parent
@@ -178,7 +177,7 @@
 (define (show-story-js target-for-full id s)
  @~a{
     document.getElementById("@target-for-full").innerHTML = "";
-    document.getElementById("@target-for-full").appendChild(document.getElementById("@id").content); 
+    document.getElementById("@target-for-full").appendChild(document.importNode(document.getElementById("@id").content, true)); 
     @(update-quest-bar (story-id s));})
 
 (define (expand-link wrap s)
@@ -209,7 +208,7 @@
 
         (div class: "collapse" id: (~a "collapse-" (story-name s))
              (div 
-               (p "Read the full story to the right...")
+               (p "Read the full story to the right: " (i class: "fas fa-arrow-right"))
                (preview-linked-stories s target-for-full h) )) ))))
 
 (define (story-expand s (h h3))
