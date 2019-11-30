@@ -43,19 +43,24 @@
                            "forestgreen"
                            "black"))
       
-      (div
-        class: "show-on-present"
-        style: (properties margin: 0
-                           top: "50%"
-                           left: "50%"
-                           position: "absolute"
-                           '-ms-transform: "translate(-50%, -50%)"
-                           'transform: "translate(-50%, -50%)")
-        (h3 
-          style: (properties color: "lightgray")
-          (place-name pl))
-        (button-success "Enter")
-        (button-danger 'onClick: @~a{setTimeout(()=>{impress().goto("top")},2)} "Exit") 
+      (card class: "show-on-present"
+        style: (properties height: h
+                           'min-width: 200
+                           'min-height: 250)
+        (card-header class: "text-truncate" (h5 (place-name pl)))
+        (card-body class: "h-100"
+          (card-text 
+            (if (member pl (quest))
+              @p{There are stories here for your current quest}
+              @p{There are @b{no} stories here for your current quest})))
+        (card-footer class: "m-0 p-0"
+         (div class: "button-group m-0 p-0"
+          (button-danger 
+            style: (properties border-radius: "0 0 0 0.18rem")
+            class: "col-sm-6" 'onClick: @~a{setTimeout(()=>{impress().goto("top")},2)} "Exit")
+          (button-success 
+            style: (properties border-radius: "0 0 0 0.18rem")
+            class: "col-sm-6" "Enter")))
         ))))
 
 (define (place-id pl)
