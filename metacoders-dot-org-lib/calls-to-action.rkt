@@ -5,6 +5,8 @@
          tech-coord-call-to-action
          scientist-call-to-action
          coder-call-to-action
+         donate-call-to-action
+         join-our-team-call-to-action
          enroll-call-to-action
          partner-call-to-action)
 
@@ -40,7 +42,6 @@
 (define (coach-call-to-action)
   (call-to-action-card
     (span 
-      (coach-circle)
       "Become a Coach")
     @list{You can apply to be
          @b{hired as a MetaCoders coach}, being paid to teach local kids
@@ -51,7 +52,6 @@
 (define (tech-coord-call-to-action)
   (call-to-action-card
     (span 
-      (tech-coordinator-circle)
       "Become a Tech Coordinator")
     @list{You can apply to be @b{hired as MetaCoders technology coordinator}, charging computers in your house for local MetaCoders coaches to pick up on their way to class.} 
     (link-to tech-coords-top-path
@@ -60,19 +60,33 @@
 (define (scientist-call-to-action)
   (call-to-action-card
     (span 
-      (scientist-circle)
       "Volunteer as a Scientist")
     @list{You don’t need a science background to @b{ learn the learning sciences} and help ensure that MetaCoder classes are of the highest quality. All you need is free time and a clipboard.}
     (link-to scientists-top-path
+             (learn-more-button))))
+
+(define (donate-call-to-action)
+  (call-to-action-card
+    (span 
+      "Donate")
+    @list{Help us provide coding education to children nationwide at the most affordable price possible. Your donations @b{help subsidize the cost of classes} for everyone, but especially families in need of financial assistance.}
+    (link-to donate-path
+             (learn-more-button))))
+
+(define (join-our-team-call-to-action)
+  (call-to-action-card
+    (span 
+      "Join Our Team")
+    @list{You can apply to be hired as a @b{MetaCoders coach}, being paid to teach local kids how to code, or as a @b{Technology Coordinator}, charging computers in your house for local MetaCoders coaches to pick up on their way to class.}
+    (link-to join-our-team-path
              (learn-more-button))))
 
 
 (define (coder-call-to-action)
   (call-to-action-card
     (span 
-      (coder-circle)
-      "Code to teach Coding")
-    @list{You can help @b{code educational software} that MetaCoders uses in classes.}
+      "Code to Teach Coding")
+    @list{You can help @b{code educational software} that MetaCoders uses in classes. With your help, we can @b{inspire more students to become software developers} and engineers, solving the problems of the future!}
     (link-to coders-top-path
              (learn-more-button))))
 
@@ -80,18 +94,16 @@
 (define (partner-call-to-action)
   (call-to-action-card
           (span
-            (location-circle)  
             "Register a Location")
-          @list{You can apply to @b{list a public location} you manage (i.e. a local school, art studio, etc.) as a MetaCoders classroom.}
+          @list{You can apply to @b{list a public location} you manage (i.e. a local school, art studio, etc.) as a MetaCoders classroom. Help spread computer science education by sharing your space!}
           (link-to partners-top-path
                    (learn-more-button))))
 
 (define (enroll-call-to-action)
   (call-to-action-card
     (span
-      (kid-circle)  
-      "Enroll Kids")
-    @list{You can @b{enroll children} in local classes and summer camps – applying for scholarships based on need.} 
+      "Enroll Your Children")
+    @list{You can @b{enroll children} in local coding classes and summer camps in your area. Don't forget to invite your friends! Why? Because @b{coding is always more fun with friends}, and when you're having fun, you learn better!} 
     (link-to city-search-path 
              (learn-more-button)))
   )

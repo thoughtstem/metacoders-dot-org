@@ -10,6 +10,7 @@
                "https://github.com/thoughtstem/metacoders-dot-org-minneapolis.git?path=metacoders-dot-org-minneapolis-site"
                "https://github.com/thoughtstem/metacoders-dot-org-poway.git?path=metacoders-dot-org-poway-site"
                "https://github.com/thoughtstem/metacoders-dot-org-chula-vista.git?path=metacoders-dot-org-chula-vista-site"
+               "https://github.com/thoughtstem/metacoders-dot-org-core-pages.git"
                ; --------------
                "https://github.com/thoughtstem/website.git"
                "https://github.com/thoughtstem/impress.git"))

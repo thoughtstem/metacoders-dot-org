@@ -90,7 +90,7 @@
   (list "img" "world-map.jpg"))
 
 (define partners-img-path
-  (list "img" "partners-banner.jpg"))
+  (list "img" "partner-banner.jpg"))
 
 (define (imgs)
   (list 
@@ -147,6 +147,6 @@
     (page world-img-path
           (bitmap/file (build-path img "world-map.jpg")))
     (page partners-img-path
-          (bitmap/file (build-path img "partners-banner.jpg")))
+          (bitmap/file (build-path img "partner-banner.jpg")))
 
     ))

@@ -14,8 +14,8 @@
 (define (six-ways-to-go-meta)
   (responsive-row #:columns 3
     (enroll-call-to-action)
-    (coach-call-to-action)
-    (tech-coord-call-to-action)
+    (join-our-team-call-to-action)
+    (donate-call-to-action)
     (partner-call-to-action)
     (scientist-call-to-action)
     (coder-call-to-action))
@@ -36,8 +36,8 @@
                                     padding: 15
                                     color: "white"
                                     background: "rgba(0, 0, 0, 0.5)")
-              (h1 "About Us")
-              (h6 "Learn about MetaCoders' educational philosophy, team, and more!")))))
+              (h1 "Bringing the World Together Through Coding")
+              (h6 "We prepare students for the future by making sure they are fluent in one of the most powerful languages of today: code.")))))
 
 (define (about-and-mission)
   (jumbotron style: (properties background: "white" margin-bottom: 0)
@@ -74,7 +74,9 @@
 (define (what-makes-us-different)
   (jumbotron style: (properties background: "white" margin-bottom: 0)
     (container
-      (h2 "What Makes MetaCoders Different?")
+      (div class: "text-center" 
+        (h2 "What Makes MetaCoders Different?"))
+      (br)
       (accordion
         (card
           (button class: "btn btn-primary p-3 text-left" 'data-toggle: "collapse" 'data-target: "#collapseOne" 'aria-expanded: "true" 'aria-controls: "collapseOne" 
@@ -103,8 +105,10 @@
   (jumbotron style: (properties margin-bottom: 0)
     (container
       (div class: "text-center"
-        (h2 "Where Do You Fit In?")
-        (p "If you want to help us in our mission, there’s a lot of ways you can become involved, from enrolling your student to donating to becoming an employee or volunteer! Help us change the world!"))
+        (h2 "Where Do You Fit In With MetaCoders?")
+        (br)
+        (p "If you want to help us in our mission, there’s a lot of ways you can become involved, from enrolling your student to donating to becoming an employee or volunteer! Help us change the world!")
+        (br))
       (six-ways-to-go-meta))))
 
 (define (learn-more)
