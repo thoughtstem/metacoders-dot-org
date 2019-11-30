@@ -39,7 +39,7 @@
                          height: h
                          border-radius: "5%"
                          background-color: 
-                         (if (eq? pl (first (quest))) 
+                         (if (member pl (quest))
                            "forestgreen"
                            "black"))
       
@@ -265,6 +265,7 @@
         style: (properties cursor: "pointer")
         (impress 
           #:transition-duration 1000
+          #:body-scrollbar? #t
           steps))
 
       (update-quest-bar-on-visits (map get-id qs)))))

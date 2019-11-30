@@ -253,6 +253,7 @@
       "#impress .step.present {opacity:1}")
     (impress
       #:transition-duration 300
+      #:body-scrollbar? #t
       (with-depth 3
                   (ring->steps
                     (ring
