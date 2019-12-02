@@ -1,4 +1,5 @@
-#lang racket
+#lang at-exp racket
 
-(provide (all-from-out "./partners/main.rkt"))
-(require "./partners/main.rkt")
+(require metacoders-dot-org-core-pages)
+
+(provide partners)

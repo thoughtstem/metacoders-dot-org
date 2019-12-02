@@ -1,4 +1,5 @@
-#lang racket
+#lang at-exp racket
 
-(provide (all-from-out "./donate/main.rkt"))
-(require "./donate/main.rkt")
+(require metacoders-dot-org-core-pages)
+
+(provide donate)

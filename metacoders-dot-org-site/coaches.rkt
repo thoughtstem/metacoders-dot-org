@@ -1,4 +1,5 @@
-#lang racket
+#lang at-exp racket
 
-(provide (all-from-out "./coaches/main.rkt"))
-(require "./coaches/main.rkt")
+(require metacoders-dot-org-core-pages)
+
+(provide coaches)
