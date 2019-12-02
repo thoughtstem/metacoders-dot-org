@@ -8,11 +8,11 @@
        
        (define (my-enemy)
          (basic-enemy
-           #:ai 'medium
            #:sprite bat-sprite
            #:amount-in-world 5))
  
-       (survival-game #:enemy-list (list (my-enemy)))})
+       (survival-game
+         #:enemy-list (list (my-enemy)))})
 
  ;--- Check pkg(s)
  (check-pkg "survival"
