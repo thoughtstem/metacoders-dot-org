@@ -1,4 +1,4 @@
-#lang racket
+#lang at-exp racket
 
 (provide quest assess)
 
@@ -229,9 +229,10 @@
     (node 0 0
           (div
             style: (properties width: 200)
-            (h1 "The End?")))
+            (h1 "The End?")
+            @p{There's one more tip @(i class: "fas fa-arrow-right")}))
 
-    (tip-node 0 200
+    (tip-node 200 0
               (p "Ready for Chapter 1? Do it!")
               (book-nav #:current 1 (range 2))
               (p  "Worried you missed something? Assess yourself.")

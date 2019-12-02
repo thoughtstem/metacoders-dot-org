@@ -1,4 +1,6 @@
-#lang racket
+#lang at-exp racket
 
-(provide (all-from-out "./checkout-success/main.rkt"))
-(require "./checkout-success/main.rkt")
+(require metacoders-dot-org-core-pages)
+
+(provide checkout-success)
+
