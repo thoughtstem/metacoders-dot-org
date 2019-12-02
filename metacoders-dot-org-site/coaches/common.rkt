@@ -39,7 +39,7 @@
     "#lang mc-coach-assess"
     (br)
     (br)
-    @~a{(view-deck @deck-name)}))
+    @~a{(view-deck (@deck-name))}))
 
 
 (define (metapolis-quest . stops)
