@@ -28,7 +28,8 @@
     (training-ch 6)
     (training-ch 7)
     (training-ch 8)
-    (training-ch 9)))
+    (training-ch 9)
+    (appendix)))
 
 
 ;Move to lib...
@@ -137,7 +138,8 @@
       'chapter-8)
     (normal-quest/assess-chapter 
       (ch9:quest-stops)
-      'chapter-9)))
+      'chapter-9)
+      ))
 
 (define (usual-hints stops)
   (div
@@ -165,4 +167,13 @@
           (container class: "mt-3"
             (book-nav (book) #:current n)
             (book-chapter (book) n)))))
+
+(define (appendix)
+  (page coaches/training-appendix.html
+        (normal-content
+          (container class: "mt-3"
+            (book-nav (book) #:current 10)
+            ))))
+
+
 

@@ -2,7 +2,8 @@
 
 (require metacoders-dot-org-core-pages
          "./coaches/training.rkt")
-(define coaches+training
+
+(define (coaches+training)
   (list (coaches)
         (training)))
 

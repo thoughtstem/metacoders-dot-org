@@ -28,7 +28,10 @@
               (map nav-link-to-chapter 
                    (map add1
                         (range 0
-                               (sub1 (length book))))))))
+                               (sub1 (length book)))))
+              (link-to #:element page-link
+                (list "coaches" "training-appendix.html")
+                "Appendix"))))
 
 
 (define (flash-cards deck-name)
