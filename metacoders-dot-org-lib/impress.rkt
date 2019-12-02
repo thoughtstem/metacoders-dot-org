@@ -39,23 +39,28 @@
                          height: h
                          border-radius: "5%"
                          background-color: 
-                         (if (eq? pl (first (quest))) 
+                         (if (member pl (quest))
                            "forestgreen"
                            "black"))
       
-      (div
-        class: "show-on-present"
-        style: (properties margin: 0
-                           top: "50%"
-                           left: "50%"
-                           position: "absolute"
-                           '-ms-transform: "translate(-50%, -50%)"
-                           'transform: "translate(-50%, -50%)")
-        (h3 
-          style: (properties color: "lightgray")
-          (place-name pl))
-        (button-success "Enter")
-        (button-danger 'onClick: @~a{setTimeout(()=>{impress().goto("top")},2)} "Exit") 
+      (card class: "show-on-present"
+        style: (properties height: h
+                           'min-width: 200
+                           'min-height: 250)
+        (card-header class: "text-truncate" (h5 (place-name pl)))
+        (card-body class: "h-100"
+          (card-text 
+            (if (member pl (quest))
+              @p{There are stories here for your current quest}
+              @p{There are @b{no} stories here for your current quest})))
+        (card-footer class: "m-0 p-0"
+         (div class: "button-group m-0 p-0"
+          (button-danger 
+            style: (properties border-radius: "0 0 0 0.18rem")
+            class: "col-sm-6" 'onClick: @~a{setTimeout(()=>{impress().goto("top")},2)} "Exit")
+          (button-success 
+            style: (properties border-radius: "0 0 0 0.18rem")
+            class: "col-sm-6" "Enter")))
         ))))
 
 (define (place-id pl)
@@ -107,13 +112,12 @@
                  (filter-stories-by-place (all-stories) pl)))))
 
   (define story-reader-node
-    (node 1400 200
+    (node 1300 200
           (div
              style: (properties height: "500px"
                                 width: "700px"
                                 'overflow-y: "auto")
-            (div id: reader-id 
-                 (p "No story selected")))))
+            (div class: "p-3" id: reader-id ))))
 
     (level
       parent
@@ -173,7 +177,7 @@
 (define (show-story-js target-for-full id s)
  @~a{
     document.getElementById("@target-for-full").innerHTML = "";
-    document.getElementById("@target-for-full").appendChild(document.getElementById("@id").content); 
+    document.getElementById("@target-for-full").appendChild(document.importNode(document.getElementById("@id").content, true)); 
     @(update-quest-bar (story-id s));})
 
 (define (expand-link wrap s)
@@ -204,7 +208,7 @@
 
         (div class: "collapse" id: (~a "collapse-" (story-name s))
              (div 
-               (p "Read the full story to the right...")
+               (p "Read the full story to the right: " (i class: "fas fa-arrow-right"))
                (preview-linked-stories s target-for-full h) )) ))))
 
 (define (story-expand s (h h3))
@@ -265,6 +269,7 @@
         style: (properties cursor: "pointer")
         (impress 
           #:transition-duration 1000
+          #:body-scrollbar? #t
           steps))
 
       (update-quest-bar-on-visits (map get-id qs)))))
