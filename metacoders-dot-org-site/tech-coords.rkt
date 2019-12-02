@@ -1,4 +1,5 @@
-#lang racket
+#lang at-exp racket
 
-(provide (all-from-out "./tech-coords/main.rkt"))
-(require "./tech-coords/main.rkt")
+(require metacoders-dot-org-core-pages)
+
+(provide tech-coords)
