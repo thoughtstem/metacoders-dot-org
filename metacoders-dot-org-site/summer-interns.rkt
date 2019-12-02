@@ -1,4 +1,5 @@
-#lang racket
+#lang at-exp racket
 
-(provide (all-from-out "./summer-interns/main.rkt"))
-(require "./summer-interns/main.rkt")
+(require metacoders-dot-org-core-pages)
+
+(provide summer-interns)

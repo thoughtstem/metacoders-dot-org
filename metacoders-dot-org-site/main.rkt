@@ -34,7 +34,7 @@
       (index)
       (learn-more)
       (join-our-team) 
-      (city-search-page)
+      (city-search)
       (donate)
       (cities)
       (coaches)
