@@ -70,6 +70,7 @@
    l
    school-year-courses
    summer-courses
+   (have-questions-section)
    ))
 
 (define (buy-button price sku key)
@@ -100,6 +101,36 @@
     });
    });
   })();}))
+
+(define (camp-buy-button price sku key)
+  (list (button-primary id:(~a "checkout-button-" sku)
+                        class: "m-0 col-sm-4" 
+                        style: (properties border-radius: "0 0 0.18rem 0")
+                          (~a "Enroll Now for $" price))
+        (div id:(~a "error-message" sku))
+        (script src:"https://js.stripe.com/v3")
+        @script/inline{
+ (function() {
+  var stripe = Stripe('@key');
+
+  var checkoutButton = document.getElementById('checkout-button-@sku');
+  checkoutButton.addEventListener('click', function () {
+
+   stripe.redirectToCheckout({
+    items: [{sku: '@sku', quantity: 1}],
+    successUrl: 'https://metacoders-dot-org/checkout-success.html',
+    cancelUrl: 'https://metacoders-dot-org/checkout-fail.html',
+    billingAddressCollection: 'required',
+    })
+   .then(function (result) {
+    if (result.error) {
+     var displayError = document.getElementById('error-message@sku');
+     displayError.textContent = result.error.message;
+    }
+    });
+   });
+  })();}))
+
 
 (define (modal-buy-button price sku key)
   (list (button-primary id:(~a "modal-checkout-button-" sku)
@@ -211,6 +242,23 @@
   )
 
 (define (camp-calendar . camps)
+  (define dummy-camp-enroll
+    (a href: "#" ;class: "m-0 p-0"
+                 'data-toggle: "modal" 'data-target: "#enroll-modal-sku_GG43XFZEQxqgmG"
+                 (button-primary class: "btn-sm"
+                                 "Enroll")))
+  (define dummy-camp-modal
+    (am-camp-modal #:id            "enroll-modal-sku_GG43XFZEQxqgmG"
+                   #:topic         "Point & Click Games Camp!"
+                   #:image-url     "https://s3-us-west-1.amazonaws.com/ts-email-assets-and-stuff/DSC_0603_370_200.jpg"
+                   #:description   "In our Summer program, students at La Jolla will learn how to code their own whack-a-mole style games that utilize the mouse. Students will learn how to customize their game with near endless possible combinations: Are you a UFO collecting cows? Or a kid eating up their favorite foods and avoiding their least favorites? Or a ninja nabbing fruit and not the bombs? Their games will feature a point system, and students will code in-game items such that they gain or lose points when the player clicks on them. This course will not only strengthen students’ coding skills, but also their keyboard and mouse skills. Throughout the course, students will earn physical badges that demonstrate their mastery and inspire them to keep coding!"
+                   #:age-range     "K - 2nd"
+                   #:meeting-dates (list "7/15/2020" "7/16/2020" "7/17/2020" "7/18/2020" "7/19/2020") ;full list of meeting dates
+                   #:location      "Gallaudet University"
+                   #:address       "800 Florida Ave NE, Washington, DC 20002"
+                   #:address-link  "https://goo.gl/maps/Yypsi9LRZB7sFTjc9"
+                   #:price         300
+                   #:buy-button    (camp-buy-button 300 "sku_GG43XFZEQxqgmG" "pk_test_Jd6aRCVssUu8YfSvltaT3tvU00je9fQbkA")))
   (table class: "table table-striped table-bordered bg-white"
          (thead (tr (th 'scope: "col" "Courses")
                     (th 'scope: "col" "Jun 15 - 19")
@@ -221,15 +269,19 @@
          (tr (td "Awesome Animals" (br)
                  "Ages: 5-7" (br)
                  (button-secondary class: "btn-sm mt-2" "Course Info"))
-             (td "9am-1pm" (br)
-                 "$250")
+             (td dummy-camp-enroll (br)
+                 "9am-1pm" (br)
+                 "$300"
+                 dummy-camp-modal)
              (td) (td) (td) (td))
          (tr (td  "Superhero Adventure" (br)
                   "Ages: 5-7" (br)
                  (button-secondary class: "btn-sm mt-2" "Course Info"))
              (td)
-             (td "9am-1pm" (br)
-                 "$250")
+             (td dummy-camp-enroll (br)
+                 "9am-1pm" (br)
+                 "$300"
+                 dummy-camp-modal)
              (td) (td) (td))))
 
 (define (location-courses
@@ -285,18 +337,47 @@
                  class: "img-fluid rounded"))
        ))
 
+(define (summer-camp-pricing-at location-name)
+  (div class: "text-left"
+       (h4 class: "mb-4" "Summer Camp Pricing at " location-name)
+       (strong "Purchasing 1 Half-Day Camp? Purchase using the table above.")
+       (ul
+        (li "Morning Only (9am - 1pm): $370, includes lunch at the dining hall.")
+        (li "Afternoon Only (1pm - 4pm): $290."))
+       (strong "Purchasing More than 1 Camp? Fill out the registration form "
+               (link-to "form.pdf" "here") ", and email it to "
+               (a href: "mailto:contact@metacoders.org" "contact@metacoders.org")
+               ".")
+       (ul
+        (li "Full Day, 1-week (9am - 4pm): $594, includes lunch at the dining hall.")
+        (li "Want to buy more than 1 week of camp? We'll take an extra 10% off your entire order."))))
+
+
+(define (have-questions-section)
+  (jumbotron class: "mb-0 text-center bg-white"
+             (container
+              (h2 "Have Questions?")
+              (p "Email us at "
+                 (a href: "mailto:contact@metacoders.org" "contact@metacoders.org")
+                 " or call " (strong "858-869-9430")))))
+
 (define (summer-courses #:location-name [location-name "TBA"]
                         . course-cards)
-  (jumbotron  id: "summer-camps"
+  (list (jumbotron  id: "summer-camps"
               class: "mb-0 text-center"
               (container
                (h2  "Register for Summer Camps")
                (summer-camps-info-section location-name)
                (summer-camps-links-section)
-               (h5 id: "k-2-summer-options" class: "mt-5"
-                   "Summer Camp Schedule for K-2nd")
+               ))
+        (jumbotron  id: "k-2-summer-options"
+              class: "mb-0 text-center bg-white"
+              (container
+               ;(summer-camps-links-section)
+               (h5 "Summer Camp Schedule for K-2nd")
                (camp-calendar)
-               (h5 id: "3-6-summer-options" class: "mt-5"
+               (br id: "3-6-summer-options")
+               (h5 class: "mt-5"
                    "Summer Camp Schedule for 3rd-6th")
                (camp-calendar)
                ;(if (> (length course-cards) 1)
@@ -304,10 +385,15 @@
                ;                course-cards))
                ;    (apply row (map (curry div class: "col-lg-6 col-md-8 col-xs-12 my-3 mx-auto")
                ;                course-cards)))
+               ))
+        (jumbotron  id: "summer-camps"
+              class: "mb-0 text-center"
+              (container
+               (summer-camp-pricing-at location-name)
                (p "By enrolling in any of these sessions, you agree to the " (link-to "http://thoughtstem.com"
                                                                                       "terms and conditions") ".")
-               )
-              ))
+               ))
+        ))
 
 ;Donate Card
 (define (donate-amounts items)
