@@ -13,7 +13,7 @@
 
 
 (define (city-page-links-section)
-  (jumbotron class: "mb-0 p-4 text-center bg-white"
+  (jumbotron class: "mb-0 pt-4 pb-4 text-center"
     (container
       (row ;abstract to responsive-row-md?
        (div class: "col-md-6 col-xs-12 my-2"
@@ -26,7 +26,7 @@
                                "Enroll in Summer Camps")))))))
 
 (define (city-page-fold-section)
-  (jumbotron class: "mb-0 text-center"
+  (jumbotron class: "mb-0 pt-5 pb-5 text-center bg-white"
     (container
       (h2 "MetaCoders Classes and Camps Inspire Students to Create with Technology")
       (row class: "align-items-center" ;abstract to responsive-row-lg?
@@ -105,7 +105,7 @@
 (define (camp-buy-button price sku key)
   (list (button-primary id:(~a "checkout-button-" sku)
                         class: "m-0 col-sm-4" 
-                        style: (properties border-radius: "0 0 0.18rem 0")
+                        style: (properties border-radius: "0 0 0.20rem 0")
                           (~a "Enroll Now for $" price))
         (div id:(~a "error-message" sku))
         (script src:"https://js.stripe.com/v3")
@@ -294,7 +294,7 @@
 
 (define (school-year-courses . course-cards)
   (jumbotron  id: "school-year-classes"
-              class: "mb-0 text-center bg-white"
+              class: "mb-0 pt-5 pb-5 text-center"
               (container
                (h2 "Register for School-Year Classes")
                (if (> (length course-cards) 1)
@@ -308,9 +308,9 @@
               ))
 
 (define (summer-camps-links-section)
-  (row ;abstract to responsive-row-md?
+  (row id: "summer-buttons" ;abstract to responsive-row-md?
    (div class: "col-md-6 col-xs-12 my-2"
-        (a href: "#k-2-summer-options" style: (properties 'text-decoration: "none")
+        (a href: "#summer-buttons" style: (properties 'text-decoration: "none")
            (button-primary class: "btn-lg btn-block"
                            "K-2nd Summer Options")))
    (div class: "col-md-6 col-xs-12 my-2"
@@ -323,7 +323,7 @@
        (div class: "col-lg-6 col-xs-12 p-4 text-left"
             (h5 class: "text-center" "What Makes MetaCoders Camps Different?")
             (ul class: "pl-4"
-                (li (p (b "Affordable: ") (~a "We brgins summer technology education to local students at a more affordable price. "
+                (li (p (b "Affordable: ") (~a "We bring summer technology education to local students at a more affordable price. "
                                               "Additional discoutns are available for multiple registrations.")))
                 (li (p (b "Flexible: ") (~a "Choose between half-day camps or full-day camps; morning-only  camps include lunch in "
                                             location-name "'s delicious dining halls. ") (strong "Extended daycare") " also available!"))
@@ -338,23 +338,26 @@
        ))
 
 (define (summer-camp-pricing-at location-name)
-  (div class: "text-left"
-       (h4 class: "mb-4" "Summer Camp Pricing at " location-name)
-       (strong "Purchasing 1 Half-Day Camp? Purchase using the table above.")
-       (ul
-        (li "Morning Only (9am - 1pm): $370, includes lunch at the dining hall.")
-        (li "Afternoon Only (1pm - 4pm): $290."))
-       (strong "Purchasing More than 1 Camp? Fill out the registration form "
-               (link-to "form.pdf" "here") ", and email it to "
-               (a href: "mailto:contact@metacoders.org" "contact@metacoders.org")
-               ".")
-       (ul
-        (li "Full Day, 1-week (9am - 4pm): $594, includes lunch at the dining hall.")
-        (li "Want to buy more than 1 week of camp? We'll take an extra 10% off your entire order."))))
+  (row class: "align-items-center"
+       (div class: "col-lg-4 col-xs-12 p-4"
+            (img src: (prefix/pathify takes-a-village-path)
+                 class: "img-fluid rounded"))
+       (div class: "col-lg-8 col-xs-12 p-4 text-left"
+            (h2 class: "mb-4" "Summer Camp Pricing at " location-name)
+            (strong "Purchasing 1 Half-Day Camp? Purchase using the table above.")
+            (ul
+             (li "Morning Only (9am - 1pm): $370, includes lunch at the dining hall")
+             (li "Afternoon Only (1pm - 4pm): $290"))
+            (strong "Purchasing More than 1 Camp? Fill out the registration form "
+                    (link-to "form.pdf" "here") ", and email it to "
+                    (a href: "mailto:contact@metacoders.org" "contact@metacoders.org"))
+            (ul
+             (li "Full Day, 1-week (9am - 4pm): $594, includes lunch at the dining hall")
+             (li "Want to buy more than 1 week of camp? We'll take an extra 10% off your entire order")))))
 
 
 (define (have-questions-section)
-  (jumbotron class: "mb-0 text-center bg-white"
+  (jumbotron class: "mb-0 pt-5 pb-5 text-center"
              (container
               (h2 "Have Questions?")
               (p "Email us at "
@@ -364,31 +367,27 @@
 (define (summer-courses #:location-name [location-name "TBA"]
                         . course-cards)
   (list (jumbotron  id: "summer-camps"
-              class: "mb-0 text-center"
+              class: "mb-0 pt-5 pb-5 text-center bg-white"
               (container
                (h2  "Register for Summer Camps")
                (summer-camps-info-section location-name)
                (summer-camps-links-section)
-               ))
-        (jumbotron  id: "k-2-summer-options"
-              class: "mb-0 text-center bg-white"
-              (container
+               ;))
+        ;(jumbotron  id: "k-2-summer-options"
+        ;      class: "mb-0 pt-0 pb-0 text-center bg-white"
+        ;      (container
                ;(summer-camps-links-section)
-               (h5 "Summer Camp Schedule for K-2nd")
+               (h5 class: "mt-5"
+                   "Summer Camp Schedule for K-2nd")
                (camp-calendar)
                (br id: "3-6-summer-options")
                (h5 class: "mt-5"
                    "Summer Camp Schedule for 3rd-6th")
                (camp-calendar)
-               ;(if (> (length course-cards) 1)
-               ;    (apply row (map (curry div class: "col-md-6 col-xs-12 my-3 mx-auto")
-               ;                course-cards))
-               ;    (apply row (map (curry div class: "col-lg-6 col-md-8 col-xs-12 my-3 mx-auto")
-               ;                course-cards)))
-               ))
-        (jumbotron  id: "summer-camps"
-              class: "mb-0 text-center"
-              (container
+               ;))
+        ;(jumbotron  id: "summer-camps"
+        ;      class: "mb-0 text-center"
+        ;      (container
                (summer-camp-pricing-at location-name)
                (p "By enrolling in any of these sessions, you agree to the " (link-to "http://thoughtstem.com"
                                                                                       "terms and conditions") ".")
