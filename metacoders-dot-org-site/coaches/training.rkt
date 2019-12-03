@@ -173,7 +173,15 @@
         (normal-content
           (container class: "mt-3"
             (book-nav (book) #:current 10)
-            ))))
+            (quest
+             (h3 "Appendix")
+             (p "Helpful resources:")
+             (ul
+              @li{@b{How do I start training?}  Our training materials are open and available to anyone.  Simply start reading this digital book, starting at the beginning.  However, if you want us to assess your knowledge, grade your submissions, and grant you the certification, you'll need to contact us at @(a href: "mailto:training@metacoders.org" "training@metacoders.org").  Usually, we only do this for coaches employed by MetaCoders.  We occasionally make exceptions for enthusiastic people who are fighting to bring coding education to their city.}
+              @li{@b{How can I find the MetaCoders curriculum?} Here's a link to the basic building blocks of a MetaCoders classroom:  
+                @(link-to (list "coaches" "maps.html") 
+                         "Classmaps, Story Modes, and Game Modes")})
+                         )))))
 
 
 

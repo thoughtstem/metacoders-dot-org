@@ -13,7 +13,21 @@
 
 (define (setup-scripts)
   (list config.sh
-       (page 3d-exploration.rkt
-             (code-from-path "3d-exploration.rkt"))
-       (page clicker-cartoon.rkt
-             (code-from-path "clicker-cartoon.rkt"))))
+        ;GE Langs
+        (page survival.rkt
+              (code-from-path "survival.rkt"))
+        (page battlearena.rkt
+              (code-from-path "battlearena.rkt"))
+        (page adventure.rkt
+              (code-from-path "adventure.rkt"))
+        ;VR Langs
+        (page 3d-exploration.rkt
+              (code-from-path "3d-exploration.rkt"))
+        ;MIS Langs
+        (page data-sci.rkt
+              (code-from-path "data-sci.rkt"))
+        ;K2 Langs
+        (page clicker-cartoon.rkt
+              (code-from-path "clicker-cartoon.rkt"))
+        (page healer-animal.rkt
+              (code-from-path "healer-animal.rkt"))))

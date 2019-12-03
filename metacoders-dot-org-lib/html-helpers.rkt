@@ -4,7 +4,8 @@
          normal-content-wide
          staff-modal
          course-modal
-         meeting-date->weekday)
+         meeting-date->weekday
+         am-camp-modal)
 
 (require website/bootstrap
          racket/runtime-path
@@ -218,6 +219,64 @@
                                   style: (properties border-radius: "0 0 0 0.18rem")
                                   'data-dismiss: "modal"
                    "Close")
+                buy-button))))))
+
+(define (am-camp-modal #:id modal-id
+                       #:topic topic
+                       #:image-url image-url
+                       #:description   description
+                       #:age-range     age-range
+                       #:meeting-dates meeting-dates ;full list of meeting dates
+                       ;#:start-time    start-time
+                       ;#:end-time      end-time
+                       #:location      location
+                       #:address       address
+                       #:address-link  address-link
+                       #:price         price
+                       #:buy-button    buy-button)
+  (modal id: modal-id 'tabindex: "-1" role: "dialog"
+     (modal-dialog class: "modal-lg modal-dialog-centered"
+        (modal-content
+          (modal-header class: "bg-primary p-2 pl-3 pr-3 text-white h5 m-0" (~a location " - " topic " (" age-range ")"))
+          (modal-body
+           (row class: "text-left"
+                (col-lg-6 class: "col-xs-12"
+                 (img src: image-url
+                      class: "img-fluid rounded")
+                 (h5 class: "mt-4" "Camp Schedule")
+                 (table class: "table table-sm table-striped table-bordered"
+                   (tr (td (b "Check-in:")) (td "8:45am - 9:00am"))
+                   (tr (td (b "Camp Activities:")) (td "9:00am - 12:00pm")
+                   (tr (td (b "Lunchtime:")) (td "12:00pm - 1:00pm"))
+                   (tr (td (b "Pick-up:")) (td "1:00pm - 1:15pm"))
+                   (tr (td (b "Grades: ")) (td age-range))
+                   (tr (td (b "Start Date: ")) (td (first meeting-dates)))
+                   (tr (td (b "Location: ")) (td location (br) (a target:"_blank" href: address-link address)))
+                   (tr (td (b "Price: ")) (td (~a "$" price)))
+                   (tr (td (b "Dates: ")) (td (print-dates meeting-dates)))))
+                 )
+                (col-lg-6 class: "col-xs-12"
+                 (h5 "Camp Description")
+                 (p description)
+                 (h5 "What's Included?")
+                 (ul (li "6:1 student-to-instructor ratio")
+                     (li "A week full of coding fun!")
+                     (li "All-you-can-eat lunch at the campus dining hall")
+                     (li "Outdoor time, team-building, & teamerwork excercises"))
+                 (h5 "How to Purchase")
+                 (p "Buy this camp now, or if you plan to purchase a full-day camp or multiple camp weeks, download our registration form!")
+                 )))
+          (modal-footer class: "text-center p-0"
+           (div class: "btn-group w-100"
+                (button-secondary class: "m-0 col-sm-4"
+                                  style: (properties border-radius: "0 0 0 0.18rem")
+                                  'data-dismiss: "modal"
+                   "Close")
+                (a href: "registration-form.pdf"
+                   class: "m-0 p-0 col-sm-4"
+                   (button-primary class: "w-100"
+                                   style: (properties border-radius: "0 0 0 0")
+                   "Download Form"))
                 buy-button))))))
 
 (define (big-image url
