@@ -11,6 +11,7 @@
          story-svg-path
          takes-a-village-path
          takes-a-village-2-path
+         takes-a-village-3-path
          summer-camps-img-path
          homepage-banner-path
          join-our-team-banner-path
@@ -58,6 +59,8 @@
   (list "img" "takes-a-village.jpg"))
 (define takes-a-village-2-path
   (list "img" "takes-a-village-2.jpg"))
+(define takes-a-village-3-path
+  (list "img" "takes-a-village-3.jpg"))
 (define summer-camps-img-path
   (list "img" "summer-camps.jpg"))
 (define homepage-banner-path
@@ -69,7 +72,7 @@
 (define coding-coach-img-path
   (list "img" "coding-coach.jpg"))
 (define coding-coach-banner-path
-  (list "img" "coding-coach-banner.jpg"))
+  (list "img" "coding-coach-banner-2.jpg"))
 (define volunteer-scientist-img-path
   (list "img" "volunteer-scientist.jpg"))
 (define volunteer-scientist-banner-path
@@ -120,6 +123,8 @@
           (bitmap/file (build-path img "takes-a-village.jpg")))
     (page takes-a-village-2-path
           (bitmap/file (build-path img "takes-a-village-2.jpg")))
+    (page takes-a-village-3-path
+          (bitmap/file (build-path img "takes-a-village-3.jpg")))
     (page summer-camps-img-path
           (bitmap/file (build-path img "summer-camps.jpg")))
     (page homepage-banner-path
@@ -133,7 +138,7 @@
     (page coding-coach-img-path
           (bitmap/file (build-path img "coding-coach.jpg")))
     (page coding-coach-banner-path
-          (bitmap/file (build-path img "coding-coach-banner.jpg")))
+          (bitmap/file (build-path img "coding-coach-banner-2.jpg")))
     (page volunteer-scientist-img-path
           (bitmap/file (build-path img "volunteer-scientist.jpg")))
     (page volunteer-scientist-banner-path
