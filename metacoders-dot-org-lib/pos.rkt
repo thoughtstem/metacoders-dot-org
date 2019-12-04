@@ -87,8 +87,12 @@
   var checkoutButton = document.getElementById('checkout-button-@sku');
   checkoutButton.addEventListener('click', function () {
 
+   var quantity = parseInt(
+          document.getElementById("student-quantity-@sku").value
+        );
+        
    stripe.redirectToCheckout({
-    items: [{sku: '@sku', quantity: 1}],
+    items: [{sku: '@sku', quantity: quantity}],
     successUrl: 'https://metacoders-dot-org/checkout-success.html',
     cancelUrl: 'https://metacoders-dot-org/checkout-fail.html',
     billingAddressCollection: 'required',
@@ -142,12 +146,16 @@
         @script/inline{
  (function() {
   var stripe = Stripe('@key');
-
+        
   var checkoutButton = document.getElementById('modal-checkout-button-@sku');
   checkoutButton.addEventListener('click', function () {
 
+   var quantity = parseInt(
+          document.getElementById("modal-student-quantity-@sku").value
+        );
+        
    stripe.redirectToCheckout({
-    items: [{sku: '@sku', quantity: 1}],
+    items: [{sku: '@sku', quantity: quantity}],
     successUrl: 'https://metacoders-dot-org/checkout-success.html',
     cancelUrl: 'https://metacoders-dot-org/checkout-fail.html',
     billingAddressCollection: 'required',
@@ -168,6 +176,76 @@
       (begin (set! s (~a s (first dates) "."))
              s)))
 
+(define (student-spinner sku price)
+  (list (div class: "btn-group d-flex justify-content-center"
+              (button-warning id: (~a "student-subtract-" sku)
+                              'onclick: (~a "updateStudents" sku "(event);")
+                              "-")
+              (input type: "text"
+                     class: "text-center col-2"
+                     id: (~a "student-quantity-" sku)
+                     'value: 1)
+              (button-warning id: (~a "student-add-" sku)
+                              'onclick: (~a "updateStudents" sku "(event);")
+                               "+"))
+@script/inline{
+ var updateStudents@sku = function(evt) {
+  if (evt && evt.type === "keypress" && evt.keyCode !== 13) {
+   return;
+  }
+  var isAdding = evt.target.id === "student-add-@sku";
+  var inputEl = document.getElementById("student-quantity-@sku");
+  var currentQuantity = parseInt(inputEl.value);
+  document.getElementById("student-add-@sku").disabled = false;
+  document.getElementById("student-subtract-@sku").disabled = false;
+  var quantity = isAdding ? currentQuantity + 1 : currentQuantity - 1;
+  inputEl.value = quantity;
+  document.getElementById("checkout-button-@sku").textContent = "Enroll Now for $" + quantity * @price;
+  // Disable the button if the customers hits the max or min
+  if (quantity === 1) {
+   document.getElementById("student-subtract-@sku").disabled = true;
+  }
+  if (quantity === 10) {
+   document.getElementById("student-add-@sku").disabled = true;
+  }
+}}
+         (p class: "m-0 text-secondary text-center" "Number of Students")))
+
+(define (modal-student-spinner sku price)
+  (list (div class: "btn-group d-flex justify-content-center"
+              (button-warning id: (~a "modal-student-subtract-" sku)
+                              'onclick: (~a "modalUpdateStudents" sku "(event);")
+                              "-")
+              (input type: "text"
+                     class: "text-center col-2"
+                     id: (~a "modal-student-quantity-" sku)
+                     'value: 1)
+              (button-warning id: (~a "modal-student-add-" sku)
+                              'onclick: (~a "modalUpdateStudents" sku "(event);")
+                               "+"))
+@script/inline{
+ var modalUpdateStudents@sku = function(evt) {
+  if (evt && evt.type === "keypress" && evt.keyCode !== 13) {
+   return;
+  }
+  var isAdding = evt.target.id === "modal-student-add-@sku";
+  var inputEl = document.getElementById("modal-student-quantity-@sku");
+  var currentQuantity = parseInt(inputEl.value);
+  document.getElementById("modal-student-add-@sku").disabled = false;
+  document.getElementById("modal-student-subtract-@sku").disabled = false;
+  var quantity = isAdding ? currentQuantity + 1 : currentQuantity - 1;
+  inputEl.value = quantity;
+  document.getElementById("modal-checkout-button-@sku").textContent = "Enroll Now for $" + quantity * @price;
+  // Disable the button if the customers hits the max or min
+  if (quantity === 1) {
+   document.getElementById("modal-student-subtract-@sku").disabled = true;
+  }
+  if (quantity === 10) {
+   document.getElementById("modal-student-add-@sku").disabled = true;
+  }
+}}
+         (p class: "m-0 text-secondary text-center" "Number of Students")))
+
 (define (course-card
          #:title         [title "NEW COURSE"]
          #:image-url     [image-url ""]
@@ -183,23 +261,6 @@
          #:price         [price "TBA"]
          #:sku           [sku ""]
          #:key           [key ""])
-  ;define course modal
-  #;(card
-   class: "m-4"
-   (h1 style:(properties text-align: "center")
-       title)
-   (card-body
-    (h3 topic)
-    (h5 (strong "Grades: " age-range))
-    (h5 (strong "Start Date: ") (first meeting-dates) " @ " start-time)
-    (card-img-top
-     src: image-url)
-    (p)
-    (card-text description)
-    (p (strong "Times:") " from " start-time " to " end-time ".")
-    (p (strong "Dates: ") (print-dates meeting-dates))
-    (p (strong "Location: ") location " - " address ".")
-    (buy-button price sku key)))
   (card class: "h-100 text-center"
         (img src: image-url
              class: "card-img-top")
@@ -213,7 +274,8 @@
               (tr (td (strong "Schedule: ") (td (~a (meeting-date->weekday (first meeting-dates)) "s, "
                                                     (length meeting-dates) " weeks"))))
               (tr (td (strong "Location: ") (td location (br) (a target:"_blank" href: address-link address)))))
-        )
+         (student-spinner sku price)
+         )
         (card-footer class: "text-center"
                      style: (properties padding: 0
                                         background-color: "transparent"
@@ -225,7 +287,7 @@
                  (button-secondary class: "w-100" 
                                    style: (properties border-radius: "0 0 0 0.18rem")
                                    "Class Details"))
-              (modal-buy-button price sku key))
+              (buy-button price sku key))
          (course-modal #:id (~a "details-modal-" sku)
                        #:topic         topic
                        #:description   description
@@ -237,7 +299,8 @@
                        #:address       address
                        #:address-link  address-link
                        #:price         price
-                       #:buy-button (buy-button price sku key)))
+                       #:quantity-spinner (modal-student-spinner sku price)
+                       #:buy-button (modal-buy-button price sku key)))
         )
   )
 

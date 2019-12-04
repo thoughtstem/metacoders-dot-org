@@ -193,6 +193,7 @@
                       #:address       address
                       #:address-link  address-link
                       #:price         price
+                      #:quantity-spinner quantity-spinner
                       #:buy-button    buy-button)
   (modal id: modal-id 'tabindex: "-1" role: "dialog"
      (modal-dialog class: "modal-lg modal-dialog-centered"
@@ -212,7 +213,9 @@
                   (tr (td (b "Schedule: ")) (td (print-dates meeting-dates)))))
                 (col-lg-6 class: "col-xs-12"
                  (h5 "Course Description:")
-                 (p description))))
+                 (p description)
+                 quantity-spinner
+                 )))
           (modal-footer class: "text-center p-0"
            (div class: "btn-group w-100"
                 (button-secondary class: "m-0 col-sm-6"
