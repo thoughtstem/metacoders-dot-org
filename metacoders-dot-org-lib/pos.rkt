@@ -407,11 +407,11 @@
                  class: "img-fluid rounded"))
        (div class: "col-lg-8 col-xs-12 p-4 text-left"
             (h2 class: "mb-4" "Summer Camp Pricing at " location-name)
-            (strong "Purchasing 1 Half-Day Camp? Purchase using the table above.")
+            (strong "Purchasing 1 Half-Day Morning or Afternoon Camp? Purchase using the table above.")
             (ul
              (li "Morning Only (9am - 1pm): $370, includes lunch at the dining hall")
              (li "Afternoon Only (1pm - 4pm): $290"))
-            (strong "Purchasing More than 1 Camp? Fill out the registration form "
+            (strong "Purchasing More than 1 Half-Day Camp? Fill out the registration form "
                     (link-to "form.pdf" "here") ", and email it to "
                     (a href: "mailto:contact@metacoders.org" "contact@metacoders.org"))
             (ul

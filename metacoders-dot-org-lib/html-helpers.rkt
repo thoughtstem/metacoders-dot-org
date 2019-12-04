@@ -267,7 +267,7 @@
                      (li "All-you-can-eat lunch at the campus dining hall")
                      (li "Outdoor time, team-building, & teamerwork excercises"))
                  (h5 "How to Purchase")
-                 (p "Buy this camp now, or if you plan to purchase a full-day camp or multiple camp weeks, download our registration form!")
+                 (p "To purchase this one half-day camp, use the Enroll Now button below. Alternatively, if you plan to purchase multiple half-day camps, download our registration form below to receive additional discounts! The registration form is best if you plan to purchase both a morning & afternoon camp to make a full-day camp OR if you plan to purchase multiple camp weeks.")
                  (br)
                  (p "By enrolling in any of these sessions, you agree to the " (link-to "http://thoughtstem.com"
                                                                                       "terms and conditions") ".")
