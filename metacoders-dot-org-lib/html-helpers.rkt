@@ -265,16 +265,19 @@
                      (li "Outdoor time, team-building, & teamerwork excercises"))
                  (h5 "How to Purchase")
                  (p "Buy this camp now, or if you plan to purchase a full-day camp or multiple camp weeks, download our registration form!")
+                 (br)
+                 (p "By enrolling in any of these sessions, you agree to the " (link-to "http://thoughtstem.com"
+                                                                                      "terms and conditions") ".")
                  )))
           (modal-footer class: "text-center p-0"
            (div class: "btn-group w-100"
                 (button-secondary class: "m-0 col-sm-4"
-                                  style: (properties border-radius: "0 0 0 0.18rem")
+                                  style: (properties border-radius: "0 0 0 0.20rem")
                                   'data-dismiss: "modal"
                    "Close")
                 (a href: "registration-form.pdf"
                    class: "m-0 p-0 col-sm-4"
-                   (button-primary class: "w-100"
+                   (button-warning class: "w-100"
                                    style: (properties border-radius: "0 0 0 0")
                    "Download Form"))
                 buy-button))))))
