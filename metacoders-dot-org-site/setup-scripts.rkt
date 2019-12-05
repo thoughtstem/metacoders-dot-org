@@ -30,4 +30,7 @@
         (page clicker-cartoon.rkt
               (code-from-path "clicker-cartoon.rkt"))
         (page healer-animal.rkt
-              (code-from-path "healer-animal.rkt"))))
+              (code-from-path "healer-animal.rkt")))
+        ;Helper Packages
+        (page fandom-sprites.rkt
+              (code-from-path "fandom-sprites.rkt")))
