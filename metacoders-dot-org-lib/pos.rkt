@@ -5,11 +5,14 @@
          location-courses
          donate-card
          school-year-courses
-         summer-courses)
+         summer-courses
+         (except-out (struct-out camp) camp)
+         (rename-out (make-camp camp)))
 
 (require website/bootstrap
          "./html-helpers.rkt"
-         "./imgs.rkt")
+         "./imgs.rkt"
+         "./paths.rkt")
 
 
 (define (city-page-links-section)
@@ -49,7 +52,7 @@
          #:banner-url [img-url ""]
          #:locations-list [l '()]
          #:school-year-courses [school-year-courses '()]
-         #:summer-courses [summer-courses '()])
+         #:summer-camps [summer-camps '()])
   (normal-content-wide
    (section class: "jumbotron d-flex align-items-center mb-0 text-center"
     style: (properties
@@ -67,9 +70,28 @@
           (h1 city-name))))
    (city-page-links-section)
    (city-page-fold-section)
-   l
-   school-year-courses
-   summer-courses
+   
+   ;l
+   
+   ;TODO: Use a course-struct and write (courses->course-registration ...)
+   (cond [(and (empty? school-year-courses)
+               (empty? summer-camps))  (jumbotron class: "mb-0 pt-5 pb-5 text-center"
+                                                  (container (h2 "Coming Soon!")))]
+         [(empty? school-year-courses) (list (jumbotron  id: "school-year-classes"
+                                                         class: "mb-0 pt-5 pb-5 text-center"
+                                                         (container
+                                                          (h2 "Register for School-Year Classes")
+                                                          (p "Coming Soon!")))
+                                             (camps->camp-registration summer-camps))]
+         [(empty? summer-camps) (list school-year-courses
+                                      (jumbotron  id: "summer-camps"
+                                                  class: "mb-0 pt-5 pb-5 text-center bg-white"
+                                                  (container
+                                                   (h2 "Register for Summer Camps")
+                                                   (p "Coming Soon!"))))]
+         [else (list school-year-courses
+                     (camps->camp-registration summer-camps))
+          ])
    (have-questions-section)
    ))
 
@@ -177,7 +199,7 @@
              s)))
 
 (define (student-spinner sku price)
-  (list (div class: "btn-group d-flex justify-content-center"
+  (div (div class: "btn-group d-flex justify-content-center"
               (button-warning id: (~a "student-subtract-" sku)
                               'onclick: (~a "updateStudents" sku "(event);")
                               "-")
@@ -212,7 +234,7 @@
          (p class: "m-0 text-secondary text-center" "Number of Students")))
 
 (define (modal-student-spinner sku price)
-  (list (div class: "btn-group d-flex justify-content-center"
+  (div (div class: "btn-group d-flex justify-content-center"
               (button-warning id: (~a "modal-student-subtract-" sku)
                               'onclick: (~a "modalUpdateStudents" sku "(event);")
                               "-")
@@ -261,7 +283,9 @@
          #:price         [price "TBA"]
          #:sku           [sku ""]
          #:key           [key ""])
-  (card class: "h-100 text-center"
+  (if (eq? title "NEW COURSE")
+      (p "Coming Soon")
+      (card class: "h-100 text-center"
         (img src: image-url
              class: "card-img-top")
         ;(card-header (h5 class: "m-0 p-0" (~a topic " (" age-range ")")))
@@ -301,58 +325,15 @@
                        #:price         price
                        #:quantity-spinner (modal-student-spinner sku price)
                        #:buy-button (modal-buy-button price sku key)))
-        )
+        ))
   )
-
-(define (camp-calendar . camps)
-  (define dummy-camp-enroll
-    (a href: "#" ;class: "m-0 p-0"
-                 'data-toggle: "modal" 'data-target: "#enroll-modal-sku_GG43XFZEQxqgmG"
-                 (button-primary class: "btn-sm"
-                                 "Enroll")))
-  (define dummy-camp-modal
-    (am-camp-modal #:id            "enroll-modal-sku_GG43XFZEQxqgmG"
-                   #:topic         "Point & Click Games Camp!"
-                   #:image-url     "https://s3-us-west-1.amazonaws.com/ts-email-assets-and-stuff/DSC_0603_370_200.jpg"
-                   #:description   "In our Summer program, students at La Jolla will learn how to code their own whack-a-mole style games that utilize the mouse. Students will learn how to customize their game with near endless possible combinations: Are you a UFO collecting cows? Or a kid eating up their favorite foods and avoiding their least favorites? Or a ninja nabbing fruit and not the bombs? Their games will feature a point system, and students will code in-game items such that they gain or lose points when the player clicks on them. This course will not only strengthen students’ coding skills, but also their keyboard and mouse skills. Throughout the course, students will earn physical badges that demonstrate their mastery and inspire them to keep coding!"
-                   #:age-range     "K - 2nd"
-                   #:meeting-dates (list "7/15/2020" "7/16/2020" "7/17/2020" "7/18/2020" "7/19/2020") ;full list of meeting dates
-                   #:location      "Gallaudet University"
-                   #:address       "800 Florida Ave NE, Washington, DC 20002"
-                   #:address-link  "https://goo.gl/maps/Yypsi9LRZB7sFTjc9"
-                   #:price         300
-                   #:buy-button    (camp-buy-button 300 "sku_GG43XFZEQxqgmG" "pk_test_Jd6aRCVssUu8YfSvltaT3tvU00je9fQbkA")))
-  (table class: "table table-striped table-bordered bg-white"
-         (thead (tr (th 'scope: "col" "Courses")
-                    (th 'scope: "col" "Jun 15 - 19")
-                    (th 'scope: "col" "Jun 22 - 26")
-                    (th 'scope: "col" "Jun 29 - Jul 3")
-                    (th 'scope: "col" "July 6 - 10")
-                    (th 'scope: "col" "July 13 - 17")))
-         (tr (td "Awesome Animals" (br)
-                 "Ages: 5-7" (br)
-                 (button-secondary class: "btn-sm mt-2" "Course Info"))
-             (td dummy-camp-enroll (br)
-                 "9am-1pm" (br)
-                 "$300"
-                 dummy-camp-modal)
-             (td) (td) (td) (td))
-         (tr (td  "Superhero Adventure" (br)
-                  "Ages: 5-7" (br)
-                 (button-secondary class: "btn-sm mt-2" "Course Info"))
-             (td)
-             (td dummy-camp-enroll (br)
-                 "9am-1pm" (br)
-                 "$300"
-                 dummy-camp-modal)
-             (td) (td) (td))))
 
 (define (location-courses
          #:location-name [name "TBA"]
          #:course-1 [course-1 (p "Coming soon!")]
          #:course-2 [course-2 (p "Coming soon!")])
   (list (school-year-courses course-1)
-        (summer-courses course-2)
+        (summer-courses #:location-name name course-2)
         ))
 
 (define (school-year-courses . course-cards)
@@ -365,7 +346,7 @@
                                course-cards))
                    (apply row (map (curry div class: "col-lg-6 col-md-8 col-xs-12 my-3 mx-auto")
                                course-cards)))
-               (p "By enrolling in any of these sessions, you agree to the " (link-to "http://thoughtstem.com"
+               (p "By enrolling in any of these sessions, you agree to the " (link-to terms-and-conditions-path
                                                                                       "terms and conditions") ".")
                )
               ))
@@ -373,7 +354,7 @@
 (define (summer-camps-links-section)
   (row id: "summer-buttons" ;abstract to responsive-row-md?
    (div class: "col-md-6 col-xs-12 my-2"
-        (a href: "#summer-buttons" style: (properties 'text-decoration: "none")
+        (a href: "#k-2-summer-options" style: (properties 'text-decoration: "none")
            (button-primary class: "btn-lg btn-block"
                            "K-2nd Summer Options")))
    (div class: "col-md-6 col-xs-12 my-2"
@@ -427,6 +408,38 @@
                  (a href: "mailto:contact@metacoders.org" "contact@metacoders.org")
                  " or call " (strong "858-869-9430")))))
 
+(define (camps->camp-registration camps)
+  (define location-name (camp-location (first camps)))
+  
+  (define (k-2-camp? c)
+    (string-contains? (camp-age-range c) "K - 2nd"))
+  (define (3-6-camp? c)
+    (string-contains? (camp-age-range c) "3rd - 6th"))
+  
+  (define k-2-camps (filter k-2-camp? camps))
+  (define 3-6-camps (filter 3-6-camp? camps))
+  
+  (list (jumbotron  id: "summer-camps"
+              class: "mb-0 pt-5 pb-5 text-center bg-white"
+              (container
+               (h2  "Register for Summer Camps")
+               (summer-camps-links-section)
+               (summer-camps-info-section location-name)
+               
+               (br id: "k-2-summer-options")
+               (h5 class: "mt-5"
+                   "Summer Camp Schedule for Students Entering K-2nd")
+               (camps->camp-calendar k-2-camps)
+               (br id: "3-6-summer-options")
+               (h5 class: "mt-5"
+                   "Summer Camp Schedule for Students Entering 3rd-6th")
+               (camps->camp-calendar 3-6-camps)
+               (summer-camp-pricing-at location-name)
+               (p "By enrolling in any of these sessions, you agree to the " (link-to terms-and-conditions-path
+                                                                                      "terms and conditions") ".")
+               ))
+        ))
+
 (define (summer-courses #:location-name [location-name "TBA"]
                         . course-cards)
   (list (jumbotron  id: "summer-camps"
@@ -435,24 +448,17 @@
                (h2  "Register for Summer Camps")
                (summer-camps-info-section location-name)
                (summer-camps-links-section)
-               ;))
-        ;(jumbotron  id: "k-2-summer-options"
-        ;      class: "mb-0 pt-0 pb-0 text-center bg-white"
-        ;      (container
-               ;(summer-camps-links-section)
+     
                (h5 class: "mt-5"
                    "Summer Camp Schedule for K-2nd")
-               (camp-calendar)
+               (first course-cards)
                (br id: "3-6-summer-options")
                (h5 class: "mt-5"
                    "Summer Camp Schedule for 3rd-6th")
-               (camp-calendar)
-               ;))
-        ;(jumbotron  id: "summer-camps"
-        ;      class: "mb-0 text-center"
-        ;      (container
+               (first course-cards)
+
                (summer-camp-pricing-at location-name)
-               (p "By enrolling in any of these sessions, you agree to the " (link-to "http://thoughtstem.com"
+               (p "By enrolling in any of these sessions, you agree to the " (link-to terms-and-conditions-path
                                                                                       "terms and conditions") ".")
                ))
         ))
@@ -619,3 +625,332 @@ function setMonthlyDonate@amount() {
                      (if (eq? mode 'monthly)
                          (donate-button items #:mode 'monthly)
                          (donate-button items)))))
+
+(struct camp (topic
+              sku
+              image-url
+              description
+              age-range
+              location
+              address
+              address-link
+              price
+              check-in-time
+              camp-time
+              lunch-time
+              pickup-time
+              meeting-dates
+              open?))
+
+(define (make-camp #:topic         [topic ""]
+                   #:sku           [sku   ""]
+                   #:image-url     [image-url ""]
+                   #:description   [description ""]
+                   #:age-range     [age-range ""]
+                   #:location      [location ""]
+                   #:address       [address ""]
+                   #:address-link  [address-link ""]
+                   #:price         [price 300]
+                   #:check-in-time [check-in-time ""]
+                   #:camp-time     [camp-time ""]
+                   #:lunch-time    [lunch-time  ""]
+                   #:pickup-time   [pickup-time ""]
+                   #:meeting-dates [meeting-dates '()]
+                   #:open?         [open? #t])
+  (camp topic sku image-url description age-range location address address-link price check-in-time camp-time lunch-time pickup-time meeting-dates open?))
+
+(define (course-modal #:id modal-id
+                      #:topic topic
+                      #:description   description
+                      #:age-range     age-range
+                      #:meeting-dates meeting-dates
+                      #:start-time    start-time
+                      #:end-time      end-time
+                      #:location      location
+                      #:address       address
+                      #:address-link  address-link
+                      #:price         price
+                      #:quantity-spinner quantity-spinner
+                      #:buy-button    buy-button)
+  (modal id: modal-id 'tabindex: "-1" role: "dialog"
+     (modal-dialog class: "modal-lg modal-dialog-centered"
+        (modal-content
+          (modal-header class: "bg-primary p-2 pl-3 pr-3 text-white h5 m-0" (~a location " - " topic " (" age-range ")"))
+          (modal-body
+           (row class: "text-left"
+                (col-lg-6 class: "col-xs-12"
+                 (table class: "table table-striped table-bordered"
+                  (tr (td (b "Grades: ")) (td age-range))
+                  (tr (td (b "Total Meetings: ")) (td (length meeting-dates)))
+                  (tr (td (b "Meets on: ")) (td (~a (meeting-date->weekday (first meeting-dates)) "s")))
+                  (tr (td (b "Time: ")) (td start-time " - " end-time))
+                  (tr (td (b "Start Date: ")) (td (first meeting-dates)))
+                  (tr (td (b "Location: ")) (td location (br) (a target:"_blank" href: address-link address)))
+                  (tr (td (b "Price: ")) (td (~a "$" price)))
+                  (tr (td (b "Schedule: ")) (td (print-dates meeting-dates)))))
+                (col-lg-6 class: "col-xs-12 d-flex flex-column justify-content-between"
+                 (div (h5 "Course Description:")
+                      (p description))
+                 quantity-spinner
+                 )))
+          (modal-footer class: "text-center p-0"
+           (div class: "btn-group w-100"
+                (button-secondary class: "m-0 col-sm-6"
+                                  style: (properties border-radius: "0 0 0 0.18rem")
+                                  'data-dismiss: "modal"
+                   "Close")
+                buy-button))))))
+
+(define (camp->enroll-or-full-button camp)
+  (if (camp-open? camp)
+      (a href: "#"
+         class: "btn btn-primary btn-sm"
+         'data-toggle: "modal" 'data-target: (~a "#camp-enroll-modal-" (camp-sku camp))
+         ;(button-primary class: "btn-sm"
+                         "Enroll"
+                         ;)
+      )
+      (a href: "#"
+         class: "btn btn-secondary btn-sm"
+         'data-toggle: "modal" 'data-target: (~a "#camp-full-modal-" (camp-sku camp))
+         ;(button-secondary class: "btn-sm"
+                           "Full (click to join waitlist)"
+                           ;)
+      )))
+
+(define (camps->camp-calendar camps)
+  (define topics-list (remove-duplicates (map camp-topic camps)))
+
+  (define (topic->row topic)
+    (define topic-camps (filter (λ(c) (eq? (camp-topic c) topic)) camps))
+    (define grade-range (camp-age-range (first topic-camps)))
+    (tr (td class: "p-1 align-middle"
+            style: (properties border-right: "none"
+                               width: "1rem")
+            (img src: (camp-image-url (first topic-camps))
+                 class: "rounded"
+                 width: "100rem"
+                 height: "100rem"
+                 style: (properties object-fit: "cover")))
+        (td class: "text-left"
+            style: (properties border-left: "none")
+            (strong topic) (br)
+            "Grades: " grade-range (br)
+            (a href: "#"
+               'data-toggle: "modal" 'data-target: (~a "#topic-info-modal-" (camp-sku (first topic-camps)))
+               (button-secondary class: "btn-sm mt-2" "Camp Info"))
+            (camp->topic-info-modal (first topic-camps)))
+        (td (camp->enroll-or-full-button (first topic-camps)) (br)
+            (camp-camp-time (first topic-camps)) (br)
+            (~a "$" (camp-price (first topic-camps)))
+            (if (camp-open? (first topic-camps))
+                (camp->camp-enroll-modal (first topic-camps))
+                (camp->camp-full-modal  (first topic-camps))))
+        (td) (td) (td) (td)))
+
+  ;TODO: Make this a dynamic table
+  (div class: "table-responsive"
+   (apply (curry table class: "table table-striped table-bordered bg-white text-center"
+                (thead (tr (th class: "text-left"
+                               'scope: "col"
+                               'colspan: 2
+                               "Courses")
+                           (th 'scope: "col" "Jun 15 - 19") ;earliest date-range of camps
+                           (th 'scope: "col" "Jun 22 - 26")
+                           (th 'scope: "col" "Jun 29 - Jul 3")
+                           (th 'scope: "col" "July 6 - 10")
+                           (th 'scope: "col" "July 13 - 17") ;latest date-range of camps
+                           )))
+         (map topic->row topics-list)
+
+         ))
+  )
+
+(define (camp->camp-enroll-modal camp)
+  (define location  (camp-location camp))
+  (define topic     (camp-topic camp))
+  (define sku       (camp-sku camp))
+  (define age-range (camp-age-range camp))
+  (define image-url (camp-image-url camp))
+  (define check-in-time (camp-check-in-time camp))
+  (define camp-time (camp-camp-time camp))
+  (define lunch-time (camp-lunch-time camp))
+  (define pickup-time (camp-pickup-time camp))
+  (define meeting-dates (camp-meeting-dates camp))
+  (define price (camp-price camp))
+  (define description (camp-description camp))
+  (define address (camp-address camp))
+  (define address-link (camp-address-link camp))
+  (define modal-id (~a "camp-enroll-modal-" sku))
+  
+  (define modal-buy-button (camp-buy-button price sku "pk_test_Jd6aRCVssUu8YfSvltaT3tvU00je9fQbkA"))
+  
+  (modal id: modal-id 'tabindex: "-1" role: "dialog"
+     (modal-dialog class: "modal-lg modal-dialog-centered"
+        (modal-content
+          (modal-header class: "bg-primary p-2 pl-3 pr-3 text-white h5 m-0" (~a location " - " topic " (" age-range ")"))
+          (modal-body
+           (row class: "text-left"
+                (col-lg-6 class: "col-xs-12"
+                 (img src: image-url
+                      class: "img-fluid rounded")
+                 (h5 class: "mt-4" "Camp Schedule")
+                 (table class: "table table-striped table-bordered"
+                   (tr (td (b "Check-in:")) (td check-in-time))
+                   (tr (td (b "Camp Activities:")) (td camp-time)
+                   (tr (td (b "Lunchtime:")) (td lunch-time))
+                   (tr (td (b "Pick-up:")) (td pickup-time))
+                   (tr (td (b "Grades: ")) (td age-range))
+                   (tr (td (b "Start Date: ")) (td (first meeting-dates)))
+                   (tr (td (b "Location: ")) (td location (br) (a target:"_blank" href: address-link address)))
+                   (tr (td (b "Price: ")) (td (~a "$" price)))
+                   (tr (td (b "Dates: ")) (td (print-dates meeting-dates)))))
+                 )
+                (col-lg-6 class: "col-xs-12"
+                 (h5 "Camp Description")
+                 (p description)
+                 (h5 "What's Included?")
+                 (ul (li "6:1 student-to-instructor ratio")
+                     (li "A week full of coding fun!")
+                     (if lunch-time (li "All-you-can-eat lunch at the campus dining hall") '())
+                     (li "Outdoor time, team-building, & teamerwork excercises"))
+                 (h5 "How to Purchase")
+                 (p "To purchase this one half-day camp, use the Enroll Now button below. Alternatively, if you plan to purchase multiple half-day camps, download our registration form below to receive additional discounts! The registration form is best if you plan to purchase both a morning & afternoon camp to make a full-day camp OR if you plan to purchase multiple camp weeks.")
+                 (br)
+                 (p "By enrolling in any of these sessions, you agree to the " (link-to terms-and-conditions-path
+                                                                                      "terms and conditions") ".")
+                 )))
+          (modal-footer class: "text-center p-0"
+           (div class: "btn-group w-100"
+                (button-secondary class: "m-0 col-sm-4"
+                                  style: (properties border-radius: "0 0 0 0.20rem")
+                                  'data-dismiss: "modal"
+                   "Close")
+                (a href: "registration-form.pdf"
+                   class: "btn btn-warning m-0 col-sm-4"
+                   style: (properties border-radius: "0 0 0 0")
+                   "Download Form")
+                modal-buy-button))))))
+
+(define (camp->camp-full-modal camp)
+  (define location  (camp-location camp))
+  (define topic     (camp-topic camp))
+  (define sku       (camp-sku camp))
+  (define age-range (camp-age-range camp))
+  (define image-url (camp-image-url camp))
+  (define check-in-time (camp-check-in-time camp))
+  (define camp-time (camp-camp-time camp))
+  (define lunch-time (camp-lunch-time camp))
+  (define pickup-time (camp-pickup-time camp))
+  (define meeting-dates (camp-meeting-dates camp))
+  (define price (camp-price camp))
+  (define description (camp-description camp))
+  (define address (camp-address camp))
+  (define address-link (camp-address-link camp))
+  (define modal-id (~a "camp-full-modal-" sku))
+  
+  ;(define modal-buy-button (camp-buy-button price sku "pk_test_Jd6aRCVssUu8YfSvltaT3tvU00je9fQbkA"))
+  (define camp-full-button (a href: "waitlist.html"
+                              class: "btn btn-primary m-0 col-sm-6"
+                              ;(button-primary
+                              id:(~a "waitlist-button-") ;TODO: pass in info to a dynamic form if possible
+                              ;class: "m-0 col-sm-6" 
+                              style: (properties border-radius: "0 0 0.20rem 0")
+                              (~a "Join Waitlist")
+                              ;)
+                              ))
+  
+  (modal id: modal-id 'tabindex: "-1" role: "dialog"
+     (modal-dialog class: "modal-lg modal-dialog-centered"
+        (modal-content
+          (modal-header class: "bg-primary p-2 pl-3 pr-3 text-white h5 m-0" (~a location " - " topic " (" age-range ")"))
+          (modal-body
+           (row class: "text-left"
+                (col-lg-6 class: "col-xs-12"
+                 (img src: image-url
+                      class: "img-fluid rounded")
+                 (h5 class: "mt-4" "Camp Schedule")
+                 (table class: "table table-striped table-bordered"
+                   (tr (td (b "Check-in:")) (td check-in-time))
+                   (tr (td (b "Camp Activities:")) (td camp-time)
+                   (tr (td (b "Lunchtime:")) (td lunch-time))
+                   (tr (td (b "Pick-up:")) (td pickup-time))
+                   (tr (td (b "Grades: ")) (td age-range))
+                   (tr (td (b "Start Date: ")) (td (first meeting-dates)))
+                   (tr (td (b "Location: ")) (td location (br) (a target:"_blank" href: address-link address)))
+                   (tr (td (b "Price: ")) (td (~a "$" price)))
+                   (tr (td (b "Dates: ")) (td (print-dates meeting-dates)))))
+                 )
+                (col-lg-6 class: "col-xs-12"
+                 (h5 "Camp Description")
+                 (p description)
+                 (h5 "What's Included?")
+                 (ul (li "6:1 student-to-instructor ratio")
+                     (li "A week full of coding fun!")
+                     (if lunch-time (li "All-you-can-eat lunch at the campus dining hall") '())
+                     (li "Outdoor time, team-building, & teamerwork excercises"))
+                 (h5 "How to Purchase")
+                 (p "Unfortunately, this camp is full. To join the waitlist, click the button below.")
+                 (br)
+                 (p "By enrolling in any of these sessions, you agree to the " (link-to terms-and-conditions-path
+                                                                                      "terms and conditions") ".")
+                 )))
+          (modal-footer class: "text-center p-0"
+           (div class: "btn-group w-100"
+                (button-secondary class: "m-0 col-sm-6"
+                                  style: (properties border-radius: "0 0 0 0.20rem")
+                                  'data-dismiss: "modal"
+                   "Close")
+                camp-full-button))))))
+
+(define (camp->topic-info-modal camp)
+  (define location  (camp-location camp))
+  (define topic     (camp-topic camp))
+  (define sku       (camp-sku camp))
+  (define age-range (camp-age-range camp))
+  (define image-url (camp-image-url camp))
+  
+  (define description (camp-description camp))
+  (define address (camp-address camp))
+  (define address-link (camp-address-link camp))
+  (define modal-id (~a "topic-info-modal-" sku))
+  
+  (modal id: modal-id 'tabindex: "-1" role: "dialog"
+     (modal-dialog class: "modal-lg modal-dialog-centered"
+        (modal-content
+          (modal-header class: "bg-primary p-2 pl-3 pr-3 text-white h5 m-0" (~a location " - " topic " (" age-range ")"))
+          (modal-body
+           (row class: "text-left"
+                (col-lg-6 class: "col-xs-12"
+                 (img src: image-url
+                      class: "img-fluid rounded mb-4")
+                 ;(h5 class: "mt-4" topic)
+                 (table class: "table table-striped table-bordered"
+                   (tr (td (b "Grades: ")) (td age-range))
+                   (tr (td (b "Location: ")) (td location (br) (a target:"_blank" href: address-link address))))
+                 (h5 "What's Included?")
+                 (ul (li "6:1 student-to-instructor ratio")
+                     (li "A week full of coding fun!")
+                     (li "All-you-can-eat lunch at the campus dining hall (morning camps only)")
+                     (li "Outdoor time, team-building, & teamerwork excercises"))
+                 )
+                (col-lg-6 class: "col-xs-12"
+                 (h5 "Camp Description")
+                 (p description)
+                 (h5 "How to Purchase")
+                 (p "To purchase a half-day camp, choose a week from the schedule and click on Enroll.")
+                 (p "Alternatively, if you plan to purchase multiple half-day camps, download our registration form below to receive additional discounts! The registration form is best if you plan to purchase both a morning & afternoon camp to make a full-day camp OR if you plan to purchase multiple camp weeks.")
+                 (br)
+                 (p "By enrolling in any of these sessions, you agree to the " (link-to terms-and-conditions-path
+                                                                                      "terms and conditions") ".")
+                 )))
+          (modal-footer class: "text-center p-0"
+           (div class: "btn-group w-100"
+                (button-secondary class: "m-0 col-sm-6"
+                                  style: (properties border-radius: "0 0 0 0.20rem")
+                                  'data-dismiss: "modal"
+                   "Close")
+                (a href: "registration-form.pdf"
+                   class: "btn btn-warning m-0 col-sm-6"
+                   style: (properties border-radius: "0 0 0.20rem 0")
+                   "Download Form")))))))
