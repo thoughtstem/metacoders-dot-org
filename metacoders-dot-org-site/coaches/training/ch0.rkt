@@ -170,8 +170,7 @@
   (ring
     (node 0 0
           #:id "intro-video"
-          (video-card "You found it!"
-                      "TODO"))
+          (video-card "Welcome" "_HrFOOFGGrg"))
     
     (easter-egg-node 400 0
                      (now-some-tips))))
@@ -222,7 +221,7 @@
               #:id "assessment-video"
               (video-card
                 "Learn how to test yourself"  
-                "TODO"))))))
+                "2E8EaVZDFPM"))))))
 
 (define (the-end)
   (ring
@@ -267,7 +266,7 @@
             "tips"))))
 
 (define (assess)
- (flash-cards 'intro-deck))
+ (flash-cards 'intro))
 
 
 
