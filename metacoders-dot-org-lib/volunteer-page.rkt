@@ -2,32 +2,22 @@
 
 (provide volunteer-page)
 
-(require website/bootstrap)
+(require website/bootstrap
+         "./html-helpers.rkt")
 
 (define (volunteer-page
-  #:position-title      [position-title "JOB TITLE"]
-  #:image-path          [image-path ""]   
-  #:jumbotron-tagline   [tagline "TAGLINE"]
-  #:locations-hiring    [locations-hiring '("TBD" "TBD")]
-  #:volunteer-description     [description '(h6 "Volunteer Position Description goes here")]
-          )
+  #:position-title        [position-title "JOB TITLE"]
+  #:image-path            [image-path ""]   
+  #:jumbotron-tagline     [tagline "TAGLINE"]
+  #:percent-height        [percent-height "80%"]
+  #:locations-hiring      [locations-hiring '("TBD" "TBD")]
+  #:volunteer-description [description '(h6 "Volunteer Position Description goes here")])
   (div
-    (jumbotron style: (properties
-                        text-align: "center"
-                        margin-bottom: 0
-                        background-image: (string-append "url(" (prefix/pathify image-path) ")")
-                        background-size: "cover"
-                        background-position: "center"
-                        height: "60%")
-                class: "d-flex align-items-center"
-      (container
-        (div style: (properties
-                        display: "inline-block"
-                        padding: 15
-                        color: "white"
-                        background: "rgba(0, 0, 0, 0.5)")
-            (h1 (string-append "Become a " position-title))
-            (h6 tagline))))
+    (mc-jumbotron-header
+      #:title (string-append "Become a " position-title)
+      #:tagline tagline
+      #:percent-height percent-height
+      #:image-path image-path)
     (br)
     (container
       (h1 position-title)

@@ -2,6 +2,7 @@
 
 (provide normal-content
          normal-content-wide
+         mc-jumbotron-header
          staff-modal
          course-modal
          meeting-date->weekday
@@ -15,21 +16,58 @@
          gregor)
 
 
-(define (normal-content . more)
-  (content
+(define (normal-content #:head (h (void)) . more)
+  (content #:head h
     (normal-navbar)
     (container 
       id: "main"
       more)
     (normal-footer)))
 
-(define (normal-content-wide . more)
-  (content
+(define (normal-content-wide #:head (h (void)) . more)
+  (content #:head h
     (jumbotron-navbar)
     (div 
       id: "main"
       more)
     (normal-footer)))
+
+
+(define (mc-jumbotron-header
+          #:title [title "Title"]
+          #:tagline [tagline "Tagline"]
+          #:percent-height [percent-height "80%"]
+          #:image-path [image-path learn-more-banner-path]
+          . more)
+  (jumbotron style: (properties
+                      text-align: "center"
+                      margin-bottom: 0
+                      background-image: (string-append "url(" (prefix/pathify image-path) ")")
+                      background-position: "center"
+                      background-size: "cover"
+                      height: percent-height
+                      position: "relative")
+              class: "d-flex align-items-center"
+    (div class: "overlay"
+         style: (properties
+                  background-color: "rgba(0, 0, 0, 0.6)"
+                  width: "100%"
+                  position: "absolute"
+                  top: 0
+                  left: 0
+                  bottom: 0
+                  right: 0
+                  float: "left"))
+    (container
+      (div style: (properties
+                      display: "inline-block"
+                      padding: 15
+                      color: "white"
+                      position: "relative"
+                      z-index: "10")
+                  (h1 title)
+                  (h6 tagline)))
+                  more))
 
 
 (define (normal-footer)
@@ -49,7 +87,6 @@
       }
     })
     (footer class: "pt-4 bg-dark"
-            style: (properties margin-top:"20vh")
       (container 
         (row
           (col-md-3 class: "text-white"
