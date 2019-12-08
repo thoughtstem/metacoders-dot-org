@@ -74,7 +74,7 @@
                   padding: 15
                   color: "white"
                   position: "relative")
-        (h1 (string-append "Coding Classes & Camps in" city-name)))))
+        (h1 (string-append "Coding Classes & Camps in " city-name)))))
    (city-page-links-section)
    (city-page-fold-section)
    
