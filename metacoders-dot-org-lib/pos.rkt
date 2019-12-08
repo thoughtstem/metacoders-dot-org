@@ -46,7 +46,6 @@
                                                            "it! We want to inspire the next generation of engineers, web developers, and computer scientists.")))
                     ))))))
 
-
 (define (city-page
          #:city-name [city-name ""]
          #:banner-url [img-url ""]
@@ -59,15 +58,23 @@
             background-image: (string-append "url(" img-url ")")
             background-size: "cover"
             background-position: "center"
-            height: "60%")
+            height: "60%"
+            position: "relative")
+    (div style: (properties background-color: "rgba(0,0,0,0.6)"
+                            width: "100%"
+                            position: "absolute"
+                            top: 0
+                            left: 0
+                            bottom: 0
+                            right: 0
+                            float: "left"))
     (container
-     (div style: (properties
+      (div style: (properties
                   display: "inline-block"
                   padding: 15
                   color: "white"
-                  background: "rgba(0, 0, 0, 0.5)")
-          (h1 "Coding Classes & Camps in")
-          (h1 city-name))))
+                  position: "relative")
+        (h1 (string-append "Coding Classes & Camps in" city-name)))))
    (city-page-links-section)
    (city-page-fold-section)
    
