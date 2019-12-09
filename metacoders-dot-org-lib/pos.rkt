@@ -33,11 +33,11 @@
       (h2 "MetaCoders Classes and Camps Inspire Students to Create with Technology")
       (row class: "align-items-center" ;abstract to responsive-row-lg?
            (div class: "col-lg-6 col-xs-12 p-4"
-                (img src: (prefix/pathify takes-a-village-path) 
+                (img src: (prefix/pathify city-weekly-class-img-path) 
                      class: "img-fluid rounded"))
            (div class: "col-lg-6 col-xs-12 p-4 text-left"
                 (ul class: "pl-4"
-                    (li (p (b "Technolgy Is The Future: ") (~a "More than ever, K-12 students need to prepare for the future by "
+                    (li (p (b "Technology Is The Future: ") (~a "More than ever, K-12 students need to prepare for the future by "
                                                                "becoming fluent in coding, and they're not being taught enough coding in schools!")))
                     (li (p (b "Awesome Instructors: ") (~a "MetaCoders instructors teach computer science year-round. We strive for a 1:10 mentor:student "
                                                            "ratio that ensures students get the hands-on attention they deserve.")))
@@ -503,14 +503,14 @@
                                                        "attention they deserve.")))
                 ))
        (div class: "col-lg-6 col-xs-12 p-4"
-            (img src: (prefix/pathify takes-a-village-path) 
+            (img src: (prefix/pathify city-summer-camp-img-path) 
                  class: "img-fluid rounded"))
        ))
 
 (define (summer-camp-pricing-at location-name)
   (row class: "align-items-center"
        (div class: "col-lg-4 col-xs-12 p-4"
-            (img src: (prefix/pathify takes-a-village-path)
+            (img src: (prefix/pathify city-summer-camp-pricing-img-path)
                  class: "img-fluid rounded"))
        (div class: "col-lg-8 col-xs-12 p-4 text-left"
             (h2 class: "mb-4" "Summer Camp Pricing at " location-name)
