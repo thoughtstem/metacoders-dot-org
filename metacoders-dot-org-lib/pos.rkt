@@ -1,11 +1,10 @@
 #lang at-exp racket 
 
 (provide city-page
-         course-card
-         location-courses
+         ;course->course-card
          donate-card
-         school-year-courses
-         summer-courses
+         (except-out (struct-out course) course)
+         (rename-out (make-course course))
          (except-out (struct-out camp) camp)
          (rename-out (make-camp camp)))
 
@@ -96,7 +95,7 @@
                                                   (container
                                                    (h2 "Register for Summer Camps")
                                                    (p "Coming Soon!"))))]
-         [else (list school-year-courses
+         [else (list (courses->course-registration school-year-courses)
                      (camps->camp-registration summer-camps))
           ])
    (have-questions-section)
@@ -107,6 +106,39 @@
                         class: "m-0 col-sm-6" 
                         style: (properties border-radius: "0 0 0.18rem 0")
                           (~a "Enroll Now for $" price))
+        (div id:(~a "error-message" sku))
+        (script src:"https://js.stripe.com/v3")
+        @script/inline{
+ (function() {
+  var stripe = Stripe('@key');
+
+  var checkoutButton = document.getElementById('checkout-button-@sku');
+  checkoutButton.addEventListener('click', function () {
+
+   var quantity = parseInt(
+          document.getElementById("student-quantity-@sku").value
+        );
+        
+   stripe.redirectToCheckout({
+    items: [{sku: '@sku', quantity: quantity}],
+    successUrl: 'https://metacoders-dot-org/checkout-success.html',
+    cancelUrl: 'https://metacoders-dot-org/checkout-fail.html',
+    billingAddressCollection: 'required',
+    })
+   .then(function (result) {
+    if (result.error) {
+     var displayError = document.getElementById('error-message@sku');
+     displayError.textContent = result.error.message;
+    }
+    });
+   });
+  })();}))
+
+(define (course-buy-button price sku key #:suffix [suffix ""])
+  (list (button-primary id:(~a "checkout-button-" sku)
+                        class: "m-0 col-sm-6" 
+                        style: (properties border-radius: "0 0 0.18rem 0")
+                          (~a "Enroll Now for $" price suffix))
         (div id:(~a "error-message" sku))
         (script src:"https://js.stripe.com/v3")
         @script/inline{
@@ -198,6 +230,39 @@
    });
   })();}))
 
+(define (course-modal-buy-button price sku key #:suffix [suffix ""])
+  (list (button-primary id:(~a "modal-checkout-button-" sku)
+                        class: "m-0 col-sm-6" 
+                        style: (properties border-radius: "0 0 0.18rem 0")
+                          (~a "Enroll Now for $" price suffix))
+        (div id:(~a "error-message" sku))
+        (script src:"https://js.stripe.com/v3")
+        @script/inline{
+ (function() {
+  var stripe = Stripe('@key');
+        
+  var checkoutButton = document.getElementById('modal-checkout-button-@sku');
+  checkoutButton.addEventListener('click', function () {
+
+   var quantity = parseInt(
+          document.getElementById("modal-student-quantity-@sku").value
+        );
+        
+   stripe.redirectToCheckout({
+    items: [{sku: '@sku', quantity: quantity}],
+    successUrl: 'https://metacoders-dot-org/checkout-success.html',
+    cancelUrl: 'https://metacoders-dot-org/checkout-fail.html',
+    billingAddressCollection: 'required',
+    })
+   .then(function (result) {
+    if (result.error) {
+     var displayError = document.getElementById('error-message@sku');
+     displayError.textContent = result.error.message;
+    }
+    });
+   });
+  })();}))
+
 (define (print-dates dates [s ""])   
   (if (> (length dates) 1)
       (begin (set! s (~a s (first dates) ", "))
@@ -231,10 +296,10 @@
   inputEl.value = quantity;
   document.getElementById("checkout-button-@sku").textContent = "Enroll Now for $" + quantity * @price;
   // Disable the button if the customers hits the max or min
-  if (quantity === 1) {
+  if (quantity <= 1) {
    document.getElementById("student-subtract-@sku").disabled = true;
   }
-  if (quantity === 10) {
+  if (quantity >= 5) {
    document.getElementById("student-add-@sku").disabled = true;
   }
 }}
@@ -266,45 +331,106 @@
   inputEl.value = quantity;
   document.getElementById("modal-checkout-button-@sku").textContent = "Enroll Now for $" + quantity * @price;
   // Disable the button if the customers hits the max or min
-  if (quantity === 1) {
+  if (quantity <= 1) {
    document.getElementById("modal-student-subtract-@sku").disabled = true;
   }
-  if (quantity === 10) {
+  if (quantity >= 5) {
    document.getElementById("modal-student-add-@sku").disabled = true;
   }
 }}
          (p class: "m-0 text-secondary text-center" "Number of Students")))
 
-(define (course-card
-         #:title         [title "NEW COURSE"]
-         #:image-url     [image-url ""]
-         #:topic         [topic "TBA"]
-         #:description   [description "TBA"]
-         #:age-range     [age-range "TBA"]
-         #:meeting-dates [meeting-dates '("10/1/2012")]
-         #:start-time    [start-time "TBA"]
-         #:end-time      [end-time "TBA"]
-         #:location      [location "TBA"]
-         #:address       [address "TBA"]
-         #:address-link  [address-link (~a "https://www.google.com/maps/place/" (string-replace address " " "+"))]
-         #:price         [price "TBA"]
-         #:sku           [sku ""]
-         #:key           [key ""])
-  (if (eq? title "NEW COURSE")
-      (p "Coming Soon")
-      (card class: "h-100 text-center"
+
+(struct course (topic
+                sku
+                image-url
+                description
+                grade-range
+                location
+                address
+                address-link
+                price
+                start-time
+                end-time
+                meeting-dates
+                status       ; 'open 'almost-full 'full
+                ))
+
+(define (make-course #:topic         [topic "TBA"]
+                     #:sku           [sku   ""]
+                     #:image-url     [image-url ""]
+                     #:description   [description "TBA"]
+                     #:grade-range   [grade-range "TBA"]
+                     #:location      [location "TBA"]
+                     #:address       [address "TBA"]
+                     #:address-link  [address-link (~a "https://www.google.com/maps/place/" (string-replace address " " "+"))]
+                     #:price         [price "TBA"]
+                     #:start-time    [start-time "TBA"]
+                     #:end-time      [end-time "TBA"]
+                     #:meeting-dates [meeting-dates '()]
+                     #:status        [status 'open])
+  (course topic sku image-url description grade-range location address address-link price start-time end-time meeting-dates status))
+
+(define (course->waitlist-link course)
+  (~a "mailto:contact@thoughtstem.com?subject=Waitlist - " (course-location course)
+      ": " (course-topic course) " (" (course-grade-range course) ") starting on " (first (course-meeting-dates course))
+      "&body=Hello, please add me to the waitlist for this class."))
+
+(define (course->enroll-or-full-button course)
+  (define key "pk_test_Jd6aRCVssUu8YfSvltaT3tvU00je9fQbkA")
+  
+  (define price (course-price course))
+  (define sku (course-sku course))
+  
+  (cond [(eq? (course-status course) 'open) (course-buy-button price sku key)]
+        [(eq? (course-status course) 'almost-full) (course-buy-button price sku key #:suffix " (Almost Full)")]
+        [(eq? (course-status course) 'full) (a href: (course->waitlist-link course)
+                                          class: "btn btn-secondary col-sm-6"
+                                          style: (properties border-radius: "0 0 0.18rem 0")
+                                          "Full (click to join waitlist)"
+                                          )]))
+
+(define (course->modal-enroll-or-full-button course)
+  (define key "pk_test_Jd6aRCVssUu8YfSvltaT3tvU00je9fQbkA")
+  
+  (define price (course-price course))
+  (define sku (course-sku course))
+  
+  (cond [(eq? (course-status course) 'open) (course-modal-buy-button price sku key)]
+        [(eq? (course-status course) 'almost-full) (course-modal-buy-button price sku key #:suffix " (Almost Full)")]
+        [(eq? (course-status course) 'full) (a href: (course->waitlist-link course)
+                                          class: "btn btn-secondary col-sm-6"
+                                          style: (properties border-radius: "0 0 0.18rem 0")
+                                          "Full (click to join waitlist)"
+                                          )]))
+
+(define (course->course-card c)
+  (define key "pk_test_Jd6aRCVssUu8YfSvltaT3tvU00je9fQbkA")
+
+  (define topic (course-topic c))
+  (define sku (course-sku c))
+  (define image-url (course-image-url c))
+  (define description (course-description c))
+  (define grade-range (course-grade-range c))
+  (define location (course-location c))
+  (define address (course-address c))
+  (define address-link (course-address-link c))
+  (define price (course-price c))
+  (define start-time (course-start-time c))
+  (define end-time (course-end-time c))
+  (define meeting-dates (course-meeting-dates c))
+  (define status (course-status c))
+  
+  (card class: "h-100 text-center"
         (img src: image-url
              class: "card-img-top")
-        ;(card-header (h5 class: "m-0 p-0" (~a topic " (" age-range ")")))
         (card-body
-         (h5 class: "card-title" (~a topic " (" age-range ")"))
-         ;(img src: image-url
-         ;     class: "img-fluid rounded")
-         (table class: "table table-sm table-borderless text-left"  ;class: "text-left mt-3 pl-0" style: (properties 'list-style-type: "none")
-              (tr (td (strong "Start Date: ")) (td (first meeting-dates) " @ " start-time))
-              (tr (td (strong "Schedule: ") (td (~a (meeting-date->weekday (first meeting-dates)) "s, "
-                                                    (length meeting-dates) " weeks"))))
-              (tr (td (strong "Location: ") (td location (br) (a target:"_blank" href: address-link address)))))
+         (h5 class: "card-title" (~a topic " (" grade-range ")"))
+         (table class: "table table-sm table-borderless text-left"
+                (tr (td (strong "Start Date: ")) (td (first meeting-dates) " @ " start-time))
+                (tr (td (strong "Schedule: ") (td (~a (meeting-date->weekday (first meeting-dates)) "s, "
+                                                      (length meeting-dates) " weeks"))))
+                (tr (td (strong "Location: ") (td location (br) (a target:"_blank" href: address-link address)))))
          (student-spinner sku price)
          )
         (card-footer class: "text-center"
@@ -312,38 +438,31 @@
                                         background-color: "transparent"
                                         ;border-top: "none"
                                         )
-         (div class: "btn-group w-100"
-              (a href: "#" class: "col-sm-6 m-0 p-0"
-                 'data-toggle: "modal" 'data-target: (~a "#details-modal-" sku)
-                 (button-secondary class: "w-100" 
-                                   style: (properties border-radius: "0 0 0 0.18rem")
-                                   "Class Details"))
-              (buy-button price sku key))
-         (course-modal #:id (~a "details-modal-" sku)
-                       #:topic         topic
-                       #:description   description
-                       #:age-range     age-range
-                       #:meeting-dates meeting-dates
-                       #:start-time    start-time
-                       #:end-time      end-time
-                       #:location      location
-                       #:address       address
-                       #:address-link  address-link
-                       #:price         price
-                       #:quantity-spinner (modal-student-spinner sku price)
-                       #:buy-button (modal-buy-button price sku key)))
-        ))
+                     (div class: "btn-group w-100"
+                          (a href: "#" class: "col-sm-6 m-0 p-0"
+                             'data-toggle: "modal" 'data-target: (~a "#details-modal-" sku)
+                             (button-secondary class: "w-100" 
+                                               style: (properties border-radius: "0 0 0 0.18rem")
+                                               "Class Details"))
+                          (course->enroll-or-full-button c))
+                     (course-modal #:id (~a "details-modal-" sku)
+                                   #:topic         topic
+                                   #:description   description
+                                   #:grade-range     grade-range
+                                   #:meeting-dates meeting-dates
+                                   #:start-time    start-time
+                                   #:end-time      end-time
+                                   #:location      location
+                                   #:address       address
+                                   #:address-link  address-link
+                                   #:price         price
+                                   #:quantity-spinner (modal-student-spinner sku price)
+                                   #:buy-button (course->modal-enroll-or-full-button c)))
+        )
   )
 
-(define (location-courses
-         #:location-name [name "TBA"]
-         #:course-1 [course-1 (p "Coming soon!")]
-         #:course-2 [course-2 (p "Coming soon!")])
-  (list (school-year-courses course-1)
-        (summer-courses #:location-name name course-2)
-        ))
-
-(define (school-year-courses . course-cards)
+(define (courses->course-registration courses)
+  (define course-cards (map course->course-card courses))
   (jumbotron  id: "school-year-classes"
               class: "mb-0 pt-5 pb-5 text-center"
               (container
@@ -419,9 +538,9 @@
   (define location-name (camp-location (first camps)))
   
   (define (k-2-camp? c)
-    (string-contains? (camp-age-range c) "K - 2nd"))
+    (string-contains? (camp-grade-range c) "K - 2nd"))
   (define (3-6-camp? c)
-    (string-contains? (camp-age-range c) "3rd - 6th"))
+    (string-contains? (camp-grade-range c) "3rd - 6th"))
   
   (define k-2-camps (filter k-2-camp? camps))
   (define 3-6-camps (filter 3-6-camp? camps))
@@ -441,29 +560,6 @@
                (h5 class: "mt-5"
                    "Summer Camp Schedule for Students Entering 3rd-6th")
                (camps->camp-calendar 3-6-camps)
-               (summer-camp-pricing-at location-name)
-               (p "By enrolling in any of these sessions, you agree to the " (link-to terms-and-conditions-path
-                                                                                      "terms and conditions") ".")
-               ))
-        ))
-
-(define (summer-courses #:location-name [location-name "TBA"]
-                        . course-cards)
-  (list (jumbotron  id: "summer-camps"
-              class: "mb-0 pt-5 pb-5 text-center bg-white"
-              (container
-               (h2  "Register for Summer Camps")
-               (summer-camps-info-section location-name)
-               (summer-camps-links-section)
-     
-               (h5 class: "mt-5"
-                   "Summer Camp Schedule for K-2nd")
-               (first course-cards)
-               (br id: "3-6-summer-options")
-               (h5 class: "mt-5"
-                   "Summer Camp Schedule for 3rd-6th")
-               (first course-cards)
-
                (summer-camp-pricing-at location-name)
                (p "By enrolling in any of these sessions, you agree to the " (link-to terms-and-conditions-path
                                                                                       "terms and conditions") ".")
@@ -637,7 +733,7 @@ function setMonthlyDonate@amount() {
               sku
               image-url
               description
-              age-range
+              grade-range
               location
               address
               address-link
@@ -647,13 +743,13 @@ function setMonthlyDonate@amount() {
               lunch-time
               pickup-time
               meeting-dates
-              open?))
+              status))
 
 (define (make-camp #:topic         [topic ""]
                    #:sku           [sku   ""]
                    #:image-url     [image-url ""]
                    #:description   [description ""]
-                   #:age-range     [age-range ""]
+                   #:grade-range   [grade-range ""]
                    #:location      [location ""]
                    #:address       [address ""]
                    #:address-link  [address-link ""]
@@ -663,13 +759,13 @@ function setMonthlyDonate@amount() {
                    #:lunch-time    [lunch-time  ""]
                    #:pickup-time   [pickup-time ""]
                    #:meeting-dates [meeting-dates '()]
-                   #:open?         [open? #t])
-  (camp topic sku image-url description age-range location address address-link price check-in-time camp-time lunch-time pickup-time meeting-dates open?))
+                   #:status        [status 'open])
+  (camp topic sku image-url description grade-range location address address-link price check-in-time camp-time lunch-time pickup-time meeting-dates status))
 
 (define (course-modal #:id modal-id
                       #:topic topic
                       #:description   description
-                      #:age-range     age-range
+                      #:grade-range   grade-range
                       #:meeting-dates meeting-dates
                       #:start-time    start-time
                       #:end-time      end-time
@@ -682,12 +778,12 @@ function setMonthlyDonate@amount() {
   (modal id: modal-id 'tabindex: "-1" role: "dialog"
      (modal-dialog class: "modal-lg modal-dialog-centered"
         (modal-content
-          (modal-header class: "bg-primary p-2 pl-3 pr-3 text-white h5 m-0" (~a location " - " topic " (" age-range ")"))
+          (modal-header class: "bg-primary p-2 pl-3 pr-3 text-white h5 m-0" (~a location " - " topic " (" grade-range ")"))
           (modal-body
            (row class: "text-left"
                 (col-lg-6 class: "col-xs-12"
                  (table class: "table table-striped table-bordered"
-                  (tr (td (b "Grades: ")) (td age-range))
+                  (tr (td (b "Grades: ")) (td grade-range))
                   (tr (td (b "Total Meetings: ")) (td (length meeting-dates)))
                   (tr (td (b "Meets on: ")) (td (~a (meeting-date->weekday (first meeting-dates)) "s")))
                   (tr (td (b "Time: ")) (td start-time " - " end-time))
@@ -709,28 +805,34 @@ function setMonthlyDonate@amount() {
                 buy-button))))))
 
 (define (camp->enroll-or-full-button camp)
-  (if (camp-open? camp)
-      (a href: "#"
-         class: "btn btn-primary btn-sm"
-         'data-toggle: "modal" 'data-target: (~a "#camp-enroll-modal-" (camp-sku camp))
-         ;(button-primary class: "btn-sm"
-                         "Enroll"
-                         ;)
-      )
-      (a href: "#"
-         class: "btn btn-secondary btn-sm"
-         'data-toggle: "modal" 'data-target: (~a "#camp-full-modal-" (camp-sku camp))
-         ;(button-secondary class: "btn-sm"
-                           "Full (click to join waitlist)"
-                           ;)
-      )))
+  (cond [(eq? (camp-status camp) 'open) (a href: "#"
+                                           class: "btn btn-primary btn-sm"
+                                           'data-toggle: "modal" 'data-target: (~a "#camp-enroll-modal-" (camp-sku camp))
+                                           ;(button-primary class: "btn-sm"
+                                           "Enroll"
+                                           ;)
+                                           )]
+        [(eq? (camp-status camp) 'almost-full) (a href: "#"
+                                                  class: "btn btn-primary btn-sm"
+                                                  'data-toggle: "modal" 'data-target: (~a "#camp-enroll-modal-" (camp-sku camp))
+                                                  ;(button-primary class: "btn-sm"
+                                                  "Enroll (Almost Full)"
+                                                  ;)
+                                                  )]
+        [(eq? (camp-status camp) 'full) (a href: "#"
+                                          class: "btn btn-secondary btn-sm"
+                                          'data-toggle: "modal" 'data-target: (~a "#camp-full-modal-" (camp-sku camp))
+                                          ;(button-secondary class: "btn-sm"
+                                          "Full (click to join waitlist)"
+                                          ;)
+                                          )]))
 
 (define (camps->camp-calendar camps)
   (define topics-list (remove-duplicates (map camp-topic camps)))
 
   (define (topic->row topic)
     (define topic-camps (filter (λ(c) (eq? (camp-topic c) topic)) camps))
-    (define grade-range (camp-age-range (first topic-camps)))
+    (define grade-range (camp-grade-range (first topic-camps)))
     (tr (td class: "p-1 align-middle"
             style: (properties border-right: "none"
                                width: "1rem")
@@ -750,9 +852,9 @@ function setMonthlyDonate@amount() {
         (td (camp->enroll-or-full-button (first topic-camps)) (br)
             (camp-camp-time (first topic-camps)) (br)
             (~a "$" (camp-price (first topic-camps)))
-            (if (camp-open? (first topic-camps))
-                (camp->camp-enroll-modal (first topic-camps))
-                (camp->camp-full-modal  (first topic-camps))))
+            (if (eq? (camp-status (first topic-camps)) 'full)
+                (camp->camp-full-modal  (first topic-camps))
+                (camp->camp-enroll-modal (first topic-camps))))
         (td) (td) (td) (td)))
 
   ;TODO: Make this a dynamic table
@@ -777,7 +879,7 @@ function setMonthlyDonate@amount() {
   (define location  (camp-location camp))
   (define topic     (camp-topic camp))
   (define sku       (camp-sku camp))
-  (define age-range (camp-age-range camp))
+  (define grade-range (camp-grade-range camp))
   (define image-url (camp-image-url camp))
   (define check-in-time (camp-check-in-time camp))
   (define camp-time (camp-camp-time camp))
@@ -795,7 +897,7 @@ function setMonthlyDonate@amount() {
   (modal id: modal-id 'tabindex: "-1" role: "dialog"
      (modal-dialog class: "modal-lg modal-dialog-centered"
         (modal-content
-          (modal-header class: "bg-primary p-2 pl-3 pr-3 text-white h5 m-0" (~a location " - " topic " (" age-range ")"))
+          (modal-header class: "bg-primary p-2 pl-3 pr-3 text-white h5 m-0" (~a location " - " topic " (" grade-range ")"))
           (modal-body
            (row class: "text-left"
                 (col-lg-6 class: "col-xs-12"
@@ -807,7 +909,7 @@ function setMonthlyDonate@amount() {
                    (tr (td (b "Camp Activities:")) (td camp-time)
                    (tr (td (b "Lunchtime:")) (td lunch-time))
                    (tr (td (b "Pick-up:")) (td pickup-time))
-                   (tr (td (b "Grades: ")) (td age-range))
+                   (tr (td (b "Grades: ")) (td grade-range))
                    (tr (td (b "Start Date: ")) (td (first meeting-dates)))
                    (tr (td (b "Location: ")) (td location (br) (a target:"_blank" href: address-link address)))
                    (tr (td (b "Price: ")) (td (~a "$" price)))
@@ -839,11 +941,16 @@ function setMonthlyDonate@amount() {
                    "Download Form")
                 modal-buy-button))))))
 
+(define (camp->waitlist-link camp)
+  (~a "mailto:contact@thoughtstem.com?subject=Waitlist - " (camp-location camp)
+      ": " (camp-topic camp) " (" (camp-grade-range camp) ") starting on " (first (camp-meeting-dates camp))
+      "&body=Hello, please add me to the waitlist for this class."))
+
 (define (camp->camp-full-modal camp)
   (define location  (camp-location camp))
   (define topic     (camp-topic camp))
   (define sku       (camp-sku camp))
-  (define age-range (camp-age-range camp))
+  (define grade-range (camp-grade-range camp))
   (define image-url (camp-image-url camp))
   (define check-in-time (camp-check-in-time camp))
   (define camp-time (camp-camp-time camp))
@@ -857,7 +964,7 @@ function setMonthlyDonate@amount() {
   (define modal-id (~a "camp-full-modal-" sku))
   
   ;(define modal-buy-button (camp-buy-button price sku "pk_test_Jd6aRCVssUu8YfSvltaT3tvU00je9fQbkA"))
-  (define camp-full-button (a href: "waitlist.html"
+  (define camp-full-button (a href: (camp->waitlist-link camp)
                               class: "btn btn-primary m-0 col-sm-6"
                               ;(button-primary
                               id:(~a "waitlist-button-") ;TODO: pass in info to a dynamic form if possible
@@ -870,7 +977,7 @@ function setMonthlyDonate@amount() {
   (modal id: modal-id 'tabindex: "-1" role: "dialog"
      (modal-dialog class: "modal-lg modal-dialog-centered"
         (modal-content
-          (modal-header class: "bg-primary p-2 pl-3 pr-3 text-white h5 m-0" (~a location " - " topic " (" age-range ")"))
+          (modal-header class: "bg-primary p-2 pl-3 pr-3 text-white h5 m-0" (~a location " - " topic " (" grade-range ")"))
           (modal-body
            (row class: "text-left"
                 (col-lg-6 class: "col-xs-12"
@@ -882,7 +989,7 @@ function setMonthlyDonate@amount() {
                    (tr (td (b "Camp Activities:")) (td camp-time)
                    (tr (td (b "Lunchtime:")) (td lunch-time))
                    (tr (td (b "Pick-up:")) (td pickup-time))
-                   (tr (td (b "Grades: ")) (td age-range))
+                   (tr (td (b "Grades: ")) (td grade-range))
                    (tr (td (b "Start Date: ")) (td (first meeting-dates)))
                    (tr (td (b "Location: ")) (td location (br) (a target:"_blank" href: address-link address)))
                    (tr (td (b "Price: ")) (td (~a "$" price)))
@@ -914,7 +1021,7 @@ function setMonthlyDonate@amount() {
   (define location  (camp-location camp))
   (define topic     (camp-topic camp))
   (define sku       (camp-sku camp))
-  (define age-range (camp-age-range camp))
+  (define grade-range (camp-grade-range camp))
   (define image-url (camp-image-url camp))
   
   (define description (camp-description camp))
@@ -925,7 +1032,7 @@ function setMonthlyDonate@amount() {
   (modal id: modal-id 'tabindex: "-1" role: "dialog"
      (modal-dialog class: "modal-lg modal-dialog-centered"
         (modal-content
-          (modal-header class: "bg-primary p-2 pl-3 pr-3 text-white h5 m-0" (~a location " - " topic " (" age-range ")"))
+          (modal-header class: "bg-primary p-2 pl-3 pr-3 text-white h5 m-0" (~a location " - " topic " (" grade-range ")"))
           (modal-body
            (row class: "text-left"
                 (col-lg-6 class: "col-xs-12"
@@ -933,7 +1040,7 @@ function setMonthlyDonate@amount() {
                       class: "img-fluid rounded mb-4")
                  ;(h5 class: "mt-4" topic)
                  (table class: "table table-striped table-bordered"
-                   (tr (td (b "Grades: ")) (td age-range))
+                   (tr (td (b "Grades: ")) (td grade-range))
                    (tr (td (b "Location: ")) (td location (br) (a target:"_blank" href: address-link address))))
                  (h5 "What's Included?")
                  (ul (li "6:1 student-to-instructor ratio")
