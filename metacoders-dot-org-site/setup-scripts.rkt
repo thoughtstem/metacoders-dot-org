@@ -32,7 +32,7 @@
         (page healer-animal.rkt
               (code-from-path "healer-animal.rkt"))
         (page healer-zoo.rkt
-              (code-from-path "healer-zoo.rkt")))
+              (code-from-path "healer-zoo.rkt"))
         ;Helper Packages
         (page fandom-sprites.rkt
-              (code-from-path "fandom-sprites.rkt")))
+              (code-from-path "fandom-sprites.rkt"))))
