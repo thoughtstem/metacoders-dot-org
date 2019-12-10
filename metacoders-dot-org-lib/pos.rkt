@@ -1,7 +1,7 @@
 #lang at-exp racket 
 
 (provide city-page
-         ;course->course-card
+         summer-camp-pricing-at
          donate-card
          (except-out (struct-out course) course)
          (rename-out (make-course course))
@@ -9,6 +9,7 @@
          (rename-out (make-camp camp)))
 
 (require website/bootstrap
+         net/uri-codec
          "./html-helpers.rkt"
          "./imgs.rkt"
          "./paths.rkt")
@@ -49,7 +50,14 @@
          #:city-name [city-name ""]
          #:banner-url [img-url ""]
          #:school-year-courses [school-year-courses '()]
-         #:summer-camps [summer-camps '()])
+         #:summer-camps [summer-camps '()]
+         #:camp-pricing [camp-pricing (summer-camp-pricing-at #:location "TBA"
+                                                              #:am-camp-time "9am - 1pm"
+                                                              #:pm-camp-time "1pm - 4pm"
+                                                              #:full-day-time "9am - 4pm"
+                                                              #:am-price "TBA"
+                                                              #:pm-price "TBA"
+                                                              #:full-day-price "TBA")])
   (normal-content-wide
    (section class: "jumbotron d-flex align-items-center mb-0 text-center"
     style: (properties
@@ -76,9 +84,6 @@
    (city-page-links-section)
    (city-page-fold-section)
    
-   ;l
-   
-   ;TODO: Use a course-struct and write (courses->course-registration ...)
    (cond [(and (empty? school-year-courses)
                (empty? summer-camps))  (jumbotron class: "mb-0 pt-5 pb-5 text-center"
                                                   (container (h2 "Coming Soon!")))]
@@ -87,7 +92,7 @@
                                                          (container
                                                           (h2 "Register for School-Year Classes")
                                                           (p "Coming Soon!")))
-                                             (camps->camp-registration summer-camps))]
+                                             (camps->camp-registration summer-camps camp-pricing))]
          [(empty? summer-camps) (list (courses->course-registration school-year-courses)
                                       (jumbotron  id: "summer-camps"
                                                   class: "mb-0 pt-5 pb-5 text-center bg-white"
@@ -95,7 +100,7 @@
                                                    (h2 "Register for Summer Camps")
                                                    (p "Coming Soon!"))))]
          [else (list (courses->course-registration school-year-courses)
-                     (camps->camp-registration summer-camps))
+                     (camps->camp-registration summer-camps camp-pricing))
           ])
    (have-questions-section)
    ))
@@ -103,7 +108,8 @@
 (define (buy-button price sku key)
   (list (button-primary id:(~a "checkout-button-" sku)
                         class: "m-0 col-sm-6" 
-                        style: (properties border-radius: "0 0 0.18rem 0")
+                        style: (properties border-radius: "0 0 0.18rem 0"
+                                           white-space: "normal")
                           (~a "Enroll Now for $" price))
         (div id:(~a "error-message" sku))
         (script src:"https://js.stripe.com/v3")
@@ -136,7 +142,8 @@
 (define (course-buy-button price sku key #:suffix [suffix ""])
   (list (button-primary id:(~a "checkout-button-" sku)
                         class: "m-0 col-sm-6" 
-                        style: (properties border-radius: "0 0 0.18rem 0")
+                        style: (properties border-radius: "0 0 0.18rem 0"
+                                           white-space: "normal")
                           (~a "Enroll Now for $" price suffix))
         (div id:(~a "error-message" sku))
         (script src:"https://js.stripe.com/v3")
@@ -232,7 +239,8 @@
 (define (course-modal-buy-button price sku key #:suffix [suffix ""])
   (list (button-primary id:(~a "modal-checkout-button-" sku)
                         class: "m-0 col-sm-6" 
-                        style: (properties border-radius: "0 0 0.18rem 0")
+                        style: (properties border-radius: "0 0 0.18rem 0"
+                                           white-space: "normal")
                           (~a "Enroll Now for $" price suffix))
         (div id:(~a "error-message" sku))
         (script src:"https://js.stripe.com/v3")
@@ -272,6 +280,7 @@
 (define (student-spinner sku price)
   (div (div class: "btn-group d-flex justify-content-center"
               (button-warning id: (~a "student-subtract-" sku)
+                              class: "btn-sm"
                               'onclick: (~a "updateStudents" sku "(event);")
                               "-")
               (input type: "text"
@@ -279,6 +288,7 @@
                      id: (~a "student-quantity-" sku)
                      'value: 1)
               (button-warning id: (~a "student-add-" sku)
+                              class: "btn-sm"
                               'onclick: (~a "updateStudents" sku "(event);")
                                "+"))
 @script/inline{
@@ -292,8 +302,11 @@
   document.getElementById("student-add-@sku").disabled = false;
   document.getElementById("student-subtract-@sku").disabled = false;
   var quantity = isAdding ? currentQuantity + 1 : currentQuantity - 1;
+  quanity = Math.min(5, Math.max(1,quantity));
   inputEl.value = quantity;
-  document.getElementById("checkout-button-@sku").textContent = "Enroll Now for $" + quantity * @price;
+  if (document.getElementById("checkout-button-@sku")) {
+   document.getElementById("checkout-button-@sku").textContent = "Enroll Now for $" + quantity * @price;
+  }
   // Disable the button if the customers hits the max or min
   if (quantity <= 1) {
    document.getElementById("student-subtract-@sku").disabled = true;
@@ -307,6 +320,7 @@
 (define (modal-student-spinner sku price)
   (div (div class: "btn-group d-flex justify-content-center"
               (button-warning id: (~a "modal-student-subtract-" sku)
+                              class: "btn-sm"
                               'onclick: (~a "modalUpdateStudents" sku "(event);")
                               "-")
               (input type: "text"
@@ -314,6 +328,7 @@
                      id: (~a "modal-student-quantity-" sku)
                      'value: 1)
               (button-warning id: (~a "modal-student-add-" sku)
+                              class: "btn-sm"
                               'onclick: (~a "modalUpdateStudents" sku "(event);")
                                "+"))
 @script/inline{
@@ -327,8 +342,11 @@
   document.getElementById("modal-student-add-@sku").disabled = false;
   document.getElementById("modal-student-subtract-@sku").disabled = false;
   var quantity = isAdding ? currentQuantity + 1 : currentQuantity - 1;
+  quanity = Math.min(5, Math.max(1,quantity));
   inputEl.value = quantity;
-  document.getElementById("modal-checkout-button-@sku").textContent = "Enroll Now for $" + quantity * @price;
+  if (document.getElementById("modal-checkout-button-@sku")) {
+   document.getElementById("modal-checkout-button-@sku").textContent = "Enroll Now for $" + quantity * @price;
+  }
   // Disable the button if the customers hits the max or min
   if (quantity <= 1) {
    document.getElementById("modal-student-subtract-@sku").disabled = true;
@@ -371,9 +389,17 @@
   (course topic sku image-url description grade-range location address address-link price start-time end-time meeting-dates status))
 
 (define (course->waitlist-link course)
-  (~a "mailto:contact@thoughtstem.com?subject=Waitlist - " (course-location course)
-      ": " (course-topic course) " (" (course-grade-range course) ") starting on " (first (course-meeting-dates course))
-      "&body=Hello, please add me to the waitlist for this class."))
+  (~a "mailto:contact@thoughtstem.com?subject="
+      (uri-encode (~a "Waitlist - " (course-location course)
+                      ": " (course-topic course)
+                      " (" (course-grade-range course)
+                      ") starting on " (first (course-meeting-dates course))))
+      "&body="
+      (uri-encode (~a "Hello, please add me to the waitlist for this class.\n\n"
+                      "My contact information is:\n"
+                      "Name: ________\n"
+                      "Phone Number: ________\n"
+                      "Student Name: ________\n\n"))))
 
 (define (course->enroll-or-full-button course)
   (define key "pk_test_Jd6aRCVssUu8YfSvltaT3tvU00je9fQbkA")
@@ -382,11 +408,12 @@
   (define sku (course-sku course))
   
   (cond [(eq? (course-status course) 'open) (course-buy-button price sku key)]
-        [(eq? (course-status course) 'almost-full) (course-buy-button price sku key #:suffix " (Almost Full)")]
+        [(eq? (course-status course) 'almost-full) (course-buy-button price sku key #:suffix " (Almost Full)")] ;not used
         [(eq? (course-status course) 'full) (a href: (course->waitlist-link course)
-                                          class: "btn btn-secondary col-sm-6"
-                                          style: (properties border-radius: "0 0 0.18rem 0")
-                                          "Full (click to join waitlist)"
+                                          class: "btn btn-danger col-sm-6"
+                                          style: (properties border-radius: "0 0 0.18rem 0"
+                                                             white-space: "normal")
+                                          "Full (Click to Join Waitlist)"
                                           )]))
 
 (define (course->modal-enroll-or-full-button course)
@@ -396,11 +423,12 @@
   (define sku (course-sku course))
   
   (cond [(eq? (course-status course) 'open) (course-modal-buy-button price sku key)]
-        [(eq? (course-status course) 'almost-full) (course-modal-buy-button price sku key #:suffix " (Almost Full)")]
+        [(eq? (course-status course) 'almost-full) (course-modal-buy-button price sku key #:suffix " (Almost Full)")] ;not used
         [(eq? (course-status course) 'full) (a href: (course->waitlist-link course)
-                                          class: "btn btn-secondary col-sm-6"
-                                          style: (properties border-radius: "0 0 0.18rem 0")
-                                          "Full (click to join waitlist)"
+                                          class: "btn btn-danger col-sm-6"
+                                          style: (properties border-radius: "0 0 0.18rem 0"
+                                                             white-space: "normal")
+                                          "Full (Click to Join Waitlist)"
                                           )]))
 
 (define (course->course-card c)
@@ -422,7 +450,9 @@
   
   (card class: "h-100 text-center"
         (img src: image-url
-             class: "card-img-top")
+             class: "card-img-top"
+             height:"280px"
+             style: (properties object-fit: "cover"))
         (card-body
          (h5 class: "card-title" (~a topic " (" grade-range ")"))
          (table class: "table table-sm table-borderless text-left"
@@ -440,7 +470,7 @@
                      (div class: "btn-group w-100"
                           (a href: "#" class: "col-sm-6 m-0 p-0"
                              'data-toggle: "modal" 'data-target: (~a "#details-modal-" sku)
-                             (button-secondary class: "w-100" 
+                             (button-secondary class: "w-100 h-100" 
                                                style: (properties border-radius: "0 0 0 0.18rem")
                                                "Class Details"))
                           (course->enroll-or-full-button c))
@@ -506,7 +536,13 @@
                  class: "img-fluid rounded"))
        ))
 
-(define (summer-camp-pricing-at location-name)
+(define (summer-camp-pricing-at #:location location-name
+                                #:am-camp-time am-camp-time
+                                #:pm-camp-time pm-camp-time
+                                #:full-day-time full-day-time
+                                #:am-price am-price
+                                #:pm-price pm-price
+                                #:full-day-price full-day-price)
   (row class: "align-items-center"
        (div class: "col-lg-4 col-xs-12 p-4"
             (img src: (prefix/pathify city-summer-camp-pricing-img-path)
@@ -515,13 +551,13 @@
             (h2 class: "mb-4" "Summer Camp Pricing at " location-name)
             (strong "Purchasing 1 Half-Day Morning or Afternoon Camp? Purchase using the table above.")
             (ul
-             (li "Morning Only (9am - 1pm): $370, includes lunch at the dining hall")
-             (li "Afternoon Only (1pm - 4pm): $290"))
+             (li "Morning Only (" am-camp-time " ): $" am-price ", includes lunch at the dining hall")
+             (li "Afternoon Only (" pm-camp-time "): $" pm-price ""))
             (strong "Purchasing More than 1 Half-Day Camp? Fill out the registration form "
                     (link-to "form.pdf" "here") ", and email it to "
                     (a href: "mailto:contact@metacoders.org" "contact@metacoders.org"))
             (ul
-             (li "Full Day, 1-week (9am - 4pm): $594, includes lunch at the dining hall")
+             (li "Full Day, 1-week (" full-day-time "): $" full-day-price ", includes lunch at the dining hall")
              (li "Want to buy more than 1 week of camp? We'll take an extra 10% off your entire order")))))
 
 
@@ -533,7 +569,7 @@
                  (a href: "mailto:contact@metacoders.org" "contact@metacoders.org")
                  " or call " (strong "858-869-9430")))))
 
-(define (camps->camp-registration camps)
+(define (camps->camp-registration camps camp-pricing)
   (define location-name (camp-location (first camps)))
   
   (define (k-2-camp? c)
@@ -559,7 +595,8 @@
                (h5 class: "mt-5"
                    "Summer Camp Schedule for Students Entering 3rd-6th")
                (camps->camp-calendar 3-6-camps)
-               (summer-camp-pricing-at location-name)
+               camp-pricing
+               ;(summer-camp-pricing-at location-name)
                (p "By enrolling in any of these sessions, you agree to the " (link-to terms-and-conditions-path
                                                                                       "terms and conditions") ".")
                ))
@@ -807,23 +844,17 @@ function setMonthlyDonate@amount() {
   (cond [(eq? (camp-status camp) 'open) (a href: "#"
                                            class: "btn btn-primary btn-sm"
                                            'data-toggle: "modal" 'data-target: (~a "#camp-enroll-modal-" (camp-sku camp))
-                                           ;(button-primary class: "btn-sm"
                                            "Enroll"
-                                           ;)
                                            )]
         [(eq? (camp-status camp) 'almost-full) (a href: "#"
-                                                  class: "btn btn-primary btn-sm"
+                                                  class: "btn btn-warning btn-sm"
                                                   'data-toggle: "modal" 'data-target: (~a "#camp-enroll-modal-" (camp-sku camp))
-                                                  ;(button-primary class: "btn-sm"
                                                   "Enroll (Almost Full)"
-                                                  ;)
                                                   )]
         [(eq? (camp-status camp) 'full) (a href: "#"
-                                          class: "btn btn-secondary btn-sm"
+                                          class: "btn btn-danger btn-sm"
                                           'data-toggle: "modal" 'data-target: (~a "#camp-full-modal-" (camp-sku camp))
-                                          ;(button-secondary class: "btn-sm"
-                                          "Full (click to join waitlist)"
-                                          ;)
+                                          "Full (Click to Join Waitlist)"
                                           )]))
 
 (define (camps->camp-calendar camps)
@@ -964,7 +995,7 @@ function setMonthlyDonate@amount() {
   
   ;(define modal-buy-button (camp-buy-button price sku "pk_test_Jd6aRCVssUu8YfSvltaT3tvU00je9fQbkA"))
   (define camp-full-button (a href: (camp->waitlist-link camp)
-                              class: "btn btn-primary m-0 col-sm-6"
+                              class: "btn btn-danger m-0 col-sm-6"
                               ;(button-primary
                               id:(~a "waitlist-button-") ;TODO: pass in info to a dynamic form if possible
                               ;class: "m-0 col-sm-6" 
