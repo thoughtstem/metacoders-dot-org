@@ -18,7 +18,7 @@
 
 (define quest (make-parameter '()))
 
-(define all-stories (make-parameter stories:all))
+(define all-stories (make-parameter '()))
 
 
 (define (place->div w h pl)
@@ -104,12 +104,17 @@
   (define reader-id
     (~a "story-reader-" (place-id pl)))
 
+  (define stories-here
+   (filter-stories-by-place (all-stories) pl))
+
   (define story-nav-node
     (node 600 200
           (content-window
-            (h2 "Story Table of Contents")
+           (h2 "Story Table of Contents")
+           (if (empty? stories-here)
+            (p "No stories here at this time.  Look elsewhere!")
             (map (curryr story->story-preview reader-id)
-                 (filter-stories-by-place (all-stories) pl)))))
+             stories-here)))))
 
   (define story-reader-node
     (node 1300 200
