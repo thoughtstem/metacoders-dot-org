@@ -19,6 +19,7 @@
     (normal-navbar)
     (container 
       id: "main"
+      style: (properties 'min-height: "80vh")
       more)
     (normal-footer)))
 
@@ -27,6 +28,7 @@
     (jumbotron-navbar)
     (div 
       id: "main"
+      style: (properties 'min-height: "80vh")
       more)
     (normal-footer)))
 
