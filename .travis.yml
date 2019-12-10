@@ -43,7 +43,7 @@ script:
  - bash build.sh
 
 after_success:
- - racket metacoders-dot-org/main.rkt && bash deploy.sh
+ - echo "DEPLOYED"
 
 notifications:
   email:
