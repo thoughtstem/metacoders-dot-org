@@ -19,7 +19,7 @@ raco pkg install --deps search-auto --no-setup https://github.com/thoughtstem/me
 echo "**************************"
 echo "RUNNING raco setup mode-lambda"
 echo "**************************"
-raco setup mode-lambda
+raco setup --no-docs --fail-fast mode-lambda
 
 echo "**************************"
 echo "RUNNING raco setup metacoders-dot-org-site"
