@@ -36,7 +36,7 @@
 (define (mc-jumbotron-header
           #:title [title "Title"]
           #:tagline [tagline "Tagline"]
-          #:percent-height [percent-height "80%"]
+          #:percent-height [percent-height "80vh"]
           #:image-path [image-path learn-more-banner-path]
           . more)
   (jumbotron style: (properties
