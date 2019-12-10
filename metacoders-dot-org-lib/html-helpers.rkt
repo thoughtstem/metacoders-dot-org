@@ -43,7 +43,7 @@
                       background-image: (string-append "url(" (prefix/pathify image-path) ")")
                       background-position: "center"
                       background-size: "cover"
-                      min-height: percent-height
+                      'min-height: percent-height
                       position: "relative")
               class: "d-flex align-items-center"
     (div class: "overlay"
