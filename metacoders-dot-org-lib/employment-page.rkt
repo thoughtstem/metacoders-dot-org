@@ -1,4 +1,4 @@
-#lang at-exp racket 
+#lang at-exp racket
 
 (provide employment-page)
 
@@ -12,6 +12,7 @@
           #:percent-height      [percent-height "80%"]
           #:locations-hiring    [locations-hiring '("TBD" "TBD")]
           #:job-description     [description '(h6 "Job Description goes here")]
+          #:job-link            [job-link ""]
           )
   (div
     (mc-jumbotron-header
@@ -29,6 +30,6 @@
         (map li locations-hiring)) 
       description    
       (p "Learn more about employment duties, requirements, or take the next step here:")
-      (button-primary class: "mb-4"
-                      id: "main-button" 
-                      "Apply Here"))))
+      (a href: job-link target: "_blank" (button-primary class: "mb-4"
+                      id: "main-button"
+                      "Apply Here")))))

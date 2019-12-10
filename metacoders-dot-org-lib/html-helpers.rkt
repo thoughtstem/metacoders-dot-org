@@ -45,7 +45,7 @@
                       background-image: (string-append "url(" (prefix/pathify image-path) ")")
                       background-position: "center"
                       background-size: "cover"
-                      height: percent-height
+                      min-height: percent-height
                       position: "relative")
               class: "d-flex align-items-center"
     (div class: "overlay"
@@ -112,12 +112,12 @@
               (li 
                 (row
                   (col-12
-                    (a href: "https://www.facebook.com/thoughtstem"
+                    (a href: "https://www.facebook.com/MetaCoders-108389097301677/"
                        style: (properties padding-left: "0px")
                        class: "fab fa-facebook-square fa-2x")
-                    (a href: "https://www.twitter.com/thoughtstem" class: "fab fa-twitter-square fa-2x")
-                    (a href: "https://www.linkedin.com/company/thoughtstem" class: "fab fa-linkedin fa-2x")
-                    (a href: "https://www.instagram.com/thoughtstem" class: "fab fa-instagram fa-2x"))))
+                    (a href: "https://twitter.com/metacoders" class: "fab fa-twitter-square fa-2x")
+                    (a href: "https://www.linkedin.com/company/34648496" class: "fab fa-linkedin fa-2x")
+                    (a href: "https://www.instagram.com/metacoders/" class: "fab fa-instagram fa-2x"))))
               (li (br))
               (li (small "MetaCoders, Inc. Copyright 2020"))
               (li (small "All Rights Reserved"))

@@ -26,6 +26,9 @@
          tech-coordinator-img-path
          tech-coordinator-banner-path
          in-school-img-path
+         city-summer-camp-img-path
+         city-summer-camp-pricing-img-path
+         city-weekly-class-img-path
          weekly-classes-img-path
          donate-banner-path
          world-img-path
@@ -89,6 +92,12 @@
   (list "img" "tech-coordinator-banner.jpg"))
 (define in-school-img-path
   (list "img" "in-school.jpg"))
+(define city-summer-camp-img-path
+  (list "img" "city-summer-camp.jpg"))
+(define city-summer-camp-pricing-img-path
+  (list "img" "city-summer-camp-pricing.jpg"))
+(define city-weekly-class-img-path
+  (list "img" "city-weekly-class.jpg"))
 (define weekly-classes-img-path
   (list "img" "weekly-classes.jpg"))
 (define donate-banner-path
@@ -160,6 +169,12 @@
           (bitmap/file (build-path img "donation-banner.jpg")))
     (page in-school-img-path
           (bitmap/file (build-path img "in-school.jpg")))
+    (page city-summer-camp-img-path
+          (bitmap/file (build-path img "city-summer-camp.jpg")))
+    (page city-summer-camp-pricing-img-path
+          (bitmap/file (build-path img "city-summer-camp-pricing.jpg")))
+    (page city-weekly-class-img-path
+          (bitmap/file (build-path img "city-weekly-class.jpg")))
 
     (page river-img-path
           (bitmap/file (build-path img "river.png")))

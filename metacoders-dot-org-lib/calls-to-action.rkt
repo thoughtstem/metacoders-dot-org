@@ -15,7 +15,7 @@
          "./paths.rkt")
 
 (define (learn-more-button)
-  (button-info class: "btn-block"
+  (button-primary class: "btn-block"
                   style: (properties display: "inline-block"
                                      border-radius: "0 0 0.18rem 0.18rem"
                                      )

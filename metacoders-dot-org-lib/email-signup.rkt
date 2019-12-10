@@ -5,12 +5,14 @@
 (require website/bootstrap)
 
 (define (email-signup
-          #:class [classes ""]
+          #:class  [classes ""]
+          #:title  [title ""]
           )
   (card class: classes
-   ;(card-header "Reach Out To Us")
     (card-body
-      ;(card-title "Reach out for more information:")
+      (if (string=? title "")
+        (void)
+        (card-title title)) 
       (form action: "https://docs.google.com/forms/u/1/d/e/1FAIpQLScqxPx0LO9PLJF0mltgUlWbUv7t1urtmsWa3UN6om-XYAYcqw/formResponse"
         (div class:"form-group"
           (label "Email")
