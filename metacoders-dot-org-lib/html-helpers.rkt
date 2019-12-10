@@ -19,6 +19,7 @@
     (normal-navbar)
     (container 
       id: "main"
+      style: (properties 'min-height: "80vh")
       more)
     (normal-footer)))
 
@@ -27,6 +28,7 @@
     (jumbotron-navbar)
     (div 
       id: "main"
+      style: (properties 'min-height: "80vh")
       more)
     (normal-footer)))
 
@@ -34,7 +36,7 @@
 (define (mc-jumbotron-header
           #:title [title "Title"]
           #:tagline [tagline "Tagline"]
-          #:percent-height [percent-height "80%"]
+          #:percent-height [percent-height "80vh"]
           #:image-path [image-path learn-more-banner-path]
           . more)
   (jumbotron style: (properties
@@ -84,7 +86,7 @@
         opacity: 0.7;
       }
     })
-    (footer class: "pt-4 bg-dark"
+    (footer class: "pt-4 mt-4 bg-dark"
       (container 
         (row
           (col-md-3 class: "text-white"
