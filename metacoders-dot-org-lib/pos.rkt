@@ -48,7 +48,6 @@
 (define (city-page
          #:city-name [city-name ""]
          #:banner-url [img-url ""]
-         #:locations-list [l '()]
          #:school-year-courses [school-year-courses '()]
          #:summer-camps [summer-camps '()])
   (normal-content-wide
@@ -89,7 +88,7 @@
                                                           (h2 "Register for School-Year Classes")
                                                           (p "Coming Soon!")))
                                              (camps->camp-registration summer-camps))]
-         [(empty? summer-camps) (list school-year-courses
+         [(empty? summer-camps) (list (courses->course-registration school-year-courses)
                                       (jumbotron  id: "summer-camps"
                                                   class: "mb-0 pt-5 pb-5 text-center bg-white"
                                                   (container
