@@ -8,7 +8,7 @@ raco pkg install --deps search-auto --no-setup https://github.com/thoughtstem/me
 raco setup --no-docs --fail-fast metacoders-dot-org-lib
 
 echo "**************************"
-echo "INSTALLING metacoders-dot-org-lib"
+echo "INSTALLING metacoders-dot-org-site"
 echo "**************************"
 raco pkg install --deps search-auto --no-setup https://github.com/thoughtstem/metacoders-dot-org.git?path=metacoders-dot-org-site#$TRAVIS_BRANCH
 raco setup --no-docs --fail-fast metacoders-dot-org-site

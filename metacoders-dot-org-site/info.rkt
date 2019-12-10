@@ -13,5 +13,6 @@
                "https://github.com/thoughtstem/metacoders-dot-org-core-pages.git"
                ; --------------
                "https://github.com/thoughtstem/website.git"
-               "https://github.com/thoughtstem/impress.git"))
+               "https://github.com/thoughtstem/impress.git"
+               "https://github.com/thoughtstem/mc-classmaps.git"))
 (define compile-omit-paths '("scripts/"))
