@@ -45,9 +45,6 @@ script:
  - cd $TRAVIS_BUILD_DIR 
  - racket main.rkt
 
-after_success:
- - echo "DEPLOYED"
-
 notifications:
   email:
     recipients:
