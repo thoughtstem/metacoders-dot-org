@@ -43,7 +43,7 @@ before_script:
 # packages without it getting stuck on a confirmation prompt.
 script:
  - cd $TRAVIS_BUILD_DIR 
- - racket main.rkt && ./deploy.sh
+ - racket main.rkt && [ "$TRAVIS_BRANCH" = "master" ] && ./deploy.sh
 
 notifications:
   email:
