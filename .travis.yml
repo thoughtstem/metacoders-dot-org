@@ -33,8 +33,8 @@ before_install:
 
 install:
  - cd $TRAVIS_BUILD_DIR
- - raco pkg install --auto --name metacoders-dot-org-lib
- - raco pkg install --auto --name metacoders-dot-org-site
+ - raco pkg install --auto metacoders-dot-org-lib/
+ - raco pkg install --auto metacoders-dot-org-site/
 
 before_script:
 
