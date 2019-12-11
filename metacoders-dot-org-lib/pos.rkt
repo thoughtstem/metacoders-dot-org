@@ -87,7 +87,11 @@
    
    (cond [(and (empty? school-year-courses)
                (empty? summer-camps))  (jumbotron class: "mb-0 pt-5 pb-5 text-center"
-                                                  (container (h2 "Coming Soon!")))]
+                                                  (container (h2 "Coming Soon!")
+                                                             (p "Click " (a href: (~a "https://docs.google.com/forms/d/e/1FAIpQLSfS5L8lP3vLUYhMi7lB5l6ikv4_ZOhejPVf8yjk9uuSiolRIA/viewform?usp=pp_url&entry.162480533="
+                                                                                      (string-replace city-name " " "+"))
+                                                                            "here")
+                                                                " to join the waitlist for MetaCoders classes and camps in " city-name ".")))]
          [(empty? school-year-courses) (list (jumbotron  id: "school-year-classes"
                                                          class: "mb-0 pt-5 pb-5 text-center"
                                                          (container
