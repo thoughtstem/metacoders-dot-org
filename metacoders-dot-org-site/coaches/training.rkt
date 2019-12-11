@@ -8,7 +8,8 @@
          website/impress
          (only-in stories/base place-name)
          "./common.rkt"
-         mc-classmaps)
+         mc-classmaps
+         mc-languages)
 
 ;TODO: This file combines some stuff that could be separated to make things clearer.
 ; The (book) function is assembled here, but there's also a bunch of stuff about how it gets displayed.
@@ -16,9 +17,11 @@
 
 (define (training)
   (list 
+    (language-pages)
     (page coaches/maps.html
       (normal-content
        (page-content (classmaps-index))))
+    (impress-files)
     (training-top)
     (training-ch 1)
     (training-ch 2)
@@ -30,6 +33,10 @@
     (training-ch 8)
     (training-ch 9)
     (appendix)))
+
+(define (language-pages)
+ (sub-site "languages"
+   (languages-pages #:wrap-content normal-content)))
 
 
 ;Move to lib...
@@ -177,11 +184,21 @@
              (h3 "Appendix")
              (p "Helpful resources:")
              (ul
-              @li{@b{How do I start training?}  Our training materials are open and available to anyone.  Simply start reading this digital book, starting at the beginning.  However, if you want us to assess your knowledge, grade your submissions, and grant you the certification, you'll need to contact us at @(a href: "mailto:training@metacoders.org" "training@metacoders.org").  Usually, we only do this for coaches employed by MetaCoders.  We occasionally make exceptions for enthusiastic people who are fighting to bring coding education to their city.}
-              @li{@b{How can I find the MetaCoders curriculum?} Here's a link to the basic building blocks of a MetaCoders classroom:  
+              @li{@b{How do I start training?}  Our training materials are open and available to anyone.  Simply start reading this digital book, starting at the beginning.}
+
+              @li{@b{How do I get an official MetaCoders certification?}  Usually, this is by invitation only -- i.e. we've hired you as a MetaCoders coach.  We'll assess your knowledge, grade your submissions, coach you along the way, and grant you a certification at the end. }
+
+              @li{@b{How do I submit my assessments to MetaCoders}  If you've been accepted as a MetaCoders coach-in-training, you will upload your assessment video to YouTube and email us a link at @(a href: "mailto:training@metacoders.org" "training@metacoders.org").}
+
+              @li{@b{How do I get a certification if I'm @i{not} employed by MetaCoders?} You'll need to contact us at @(a href: "mailto:training@metacoders.org" "training@metacoders.org").  We occasionally make exceptions for enthusiastic people who are trying to bring MetaCoders to their city and are training in advance of an official application.}
+
+              @li{@b{How can I find the MetaCoders in-class curriculum?} Here's a link to the basic building blocks of a MetaCoders classroom:  
                 @(link-to (list "coaches" "maps.html") 
-                         "Classmaps, Story Modes, and Game Modes")})
-                         )))))
+                         "Classmaps, Story Modes, and Game Modes")}
+
+              @li{@b{How can I find the MetaCoders in-class programming languages?} Here's a link to our currently released languages:  
+                @(link-to (list "languages" "index.html") 
+                         "Languages")}))))))
 
 
 
