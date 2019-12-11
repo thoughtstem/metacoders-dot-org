@@ -14,6 +14,7 @@
          "./imgs.rkt"
          "./paths.rkt")
 
+(define KEY "pk_live_Kd7tDKVnPMvyCyk5oAuSkbju00pa0xJPPL")
 
 (define (city-page-links-section)
   (jumbotron class: "mb-0 pt-4 pb-4 text-center"
@@ -86,7 +87,11 @@
    
    (cond [(and (empty? school-year-courses)
                (empty? summer-camps))  (jumbotron class: "mb-0 pt-5 pb-5 text-center"
-                                                  (container (h2 "Coming Soon!")))]
+                                                  (container (h2 "Coming Soon!")
+                                                             (p "Click " (a href: (~a "https://docs.google.com/forms/d/e/1FAIpQLSfS5L8lP3vLUYhMi7lB5l6ikv4_ZOhejPVf8yjk9uuSiolRIA/viewform?usp=pp_url&entry.162480533="
+                                                                                      (string-replace city-name " " "+"))
+                                                                            "here")
+                                                                " to join the waitlist for MetaCoders classes and camps in " city-name ".")))]
          [(empty? school-year-courses) (list (jumbotron  id: "school-year-classes"
                                                          class: "mb-0 pt-5 pb-5 text-center"
                                                          (container
@@ -302,7 +307,7 @@
   document.getElementById("student-add-@sku").disabled = false;
   document.getElementById("student-subtract-@sku").disabled = false;
   var quantity = isAdding ? currentQuantity + 1 : currentQuantity - 1;
-  quanity = Math.min(5, Math.max(1,quantity));
+  quantity = Math.min(5, Math.max(1,quantity));
   inputEl.value = quantity;
   if (document.getElementById("checkout-button-@sku")) {
    document.getElementById("checkout-button-@sku").textContent = "Enroll Now for $" + quantity * @price;
@@ -342,7 +347,7 @@
   document.getElementById("modal-student-add-@sku").disabled = false;
   document.getElementById("modal-student-subtract-@sku").disabled = false;
   var quantity = isAdding ? currentQuantity + 1 : currentQuantity - 1;
-  quanity = Math.min(5, Math.max(1,quantity));
+  quantity = Math.min(5, Math.max(1,quantity));
   inputEl.value = quantity;
   if (document.getElementById("modal-checkout-button-@sku")) {
    document.getElementById("modal-checkout-button-@sku").textContent = "Enroll Now for $" + quantity * @price;
@@ -402,7 +407,7 @@
                       "Student Name: ________\n\n"))))
 
 (define (course->enroll-or-full-button course)
-  (define key "pk_test_Jd6aRCVssUu8YfSvltaT3tvU00je9fQbkA")
+  (define key KEY)
   
   (define price (course-price course))
   (define sku (course-sku course))
@@ -417,7 +422,7 @@
                                           )]))
 
 (define (course->modal-enroll-or-full-button course)
-  (define key "pk_test_Jd6aRCVssUu8YfSvltaT3tvU00je9fQbkA")
+  (define key KEY)
   
   (define price (course-price course))
   (define sku (course-sku course))
@@ -432,7 +437,7 @@
                                           )]))
 
 (define (course->course-card c)
-  (define key "pk_test_Jd6aRCVssUu8YfSvltaT3tvU00je9fQbkA")
+  (define key KEY)
 
   (define topic (course-topic c))
   (define sku (course-sku c))
@@ -448,9 +453,9 @@
   (define meeting-dates (course-meeting-dates c))
   (define status (course-status c))
   
-  (card class: "h-100 text-center"
+  (card class: "border-secondary h-100 text-center"
         (img src: image-url
-             class: "card-img-top"
+             class: "card-img-top border-secondary border-bottom"
              height:"280px"
              style: (properties object-fit: "cover"))
         (card-body
@@ -462,7 +467,7 @@
                 (tr (td (strong "Location: ") (td location (br) (a target:"_blank" href: address-link address)))))
          (student-spinner sku price)
          )
-        (card-footer class: "text-center"
+        (card-footer class: "border-secondary text-center"
                      style: (properties padding: 0
                                         background-color: "transparent"
                                         ;border-top: "none"
@@ -625,7 +630,7 @@ function setDonate@amount() {
                       (rest items)))))
 
 (define (donate-button items #:mode [mode 'give-once])
-  (define key "pk_test_Jd6aRCVssUu8YfSvltaT3tvU00je9fQbkA")  ;MetaCoders Stripe
+  (define key KEY)  ;MetaCoders Stripe
   ;(define key "pk_test_BZvU77rH9zfNQvab1EpKB7GK00ZxANulPE") ;Sonny's Stripe
   (define button-id (if (eq? mode 'monthly)
                         "monthly-donate-button"
@@ -972,9 +977,17 @@ function setMonthlyDonate@amount() {
                 modal-buy-button))))))
 
 (define (camp->waitlist-link camp)
-  (~a "mailto:contact@thoughtstem.com?subject=Waitlist - " (camp-location camp)
-      ": " (camp-topic camp) " (" (camp-grade-range camp) ") starting on " (first (camp-meeting-dates camp))
-      "&body=Hello, please add me to the waitlist for this class."))
+  (~a "mailto:contact@thoughtstem.com?subject="
+      (uri-encode (~a "Waitlist - " (camp-location camp)
+                      ": " (camp-topic camp)
+                      " (" (camp-grade-range camp)
+                      ") starting on " (first (camp-meeting-dates camp))))
+      "&body="
+      (uri-encode (~a "Hello, please add me to the waitlist for this camp.\n\n"
+                      "My contact information is:\n"
+                      "Name: ________\n"
+                      "Phone Number: ________\n"
+                      "Student Name: ________\n\n"))))
 
 (define (camp->camp-full-modal camp)
   (define location  (camp-location camp))
