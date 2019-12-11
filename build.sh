@@ -26,4 +26,8 @@ echo "RUNNING raco setup metacoders-dot-org-site"
 echo "**************************"
 raco setup --no-docs --fail-fast metacoders-dot-org-site
 
+echo "**************************"
+echo "RUNNING main.rkt and deploying"
+echo "**************************"
+
 racket metacoders-dot-org/main.rkt && bash deploy.sh
