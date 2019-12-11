@@ -45,8 +45,9 @@
       
       (card class: "show-on-present"
         style: (properties height: h
-                           'min-width: 200
-                           'min-height: 250)
+                           min-width: 200
+                           min-height: 250
+                           max-height: 400)
         (card-header class: "text-truncate" (h5 (place-name pl)))
         (card-body class: "h-100"
           (card-text 
