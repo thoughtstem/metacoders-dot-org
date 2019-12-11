@@ -29,5 +29,5 @@ raco setup --no-docs --fail-fast metacoders-dot-org-site
 echo "**************************"
 echo "RUNNING main.rkt and deploying"
 echo "**************************"
-
+export DISPLAY=:0
 racket metacoders-dot-org/main.rkt && bash deploy.sh
