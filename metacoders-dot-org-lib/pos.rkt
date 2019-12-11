@@ -302,7 +302,7 @@
   document.getElementById("student-add-@sku").disabled = false;
   document.getElementById("student-subtract-@sku").disabled = false;
   var quantity = isAdding ? currentQuantity + 1 : currentQuantity - 1;
-  quanity = Math.min(5, Math.max(1,quantity));
+  quantity = Math.min(5, Math.max(1,quantity));
   inputEl.value = quantity;
   if (document.getElementById("checkout-button-@sku")) {
    document.getElementById("checkout-button-@sku").textContent = "Enroll Now for $" + quantity * @price;
@@ -342,7 +342,7 @@
   document.getElementById("modal-student-add-@sku").disabled = false;
   document.getElementById("modal-student-subtract-@sku").disabled = false;
   var quantity = isAdding ? currentQuantity + 1 : currentQuantity - 1;
-  quanity = Math.min(5, Math.max(1,quantity));
+  quantity = Math.min(5, Math.max(1,quantity));
   inputEl.value = quantity;
   if (document.getElementById("modal-checkout-button-@sku")) {
    document.getElementById("modal-checkout-button-@sku").textContent = "Enroll Now for $" + quantity * @price;
@@ -448,9 +448,9 @@
   (define meeting-dates (course-meeting-dates c))
   (define status (course-status c))
   
-  (card class: "h-100 text-center"
+  (card class: "border-secondary h-100 text-center"
         (img src: image-url
-             class: "card-img-top"
+             class: "card-img-top border-secondary border-bottom"
              height:"280px"
              style: (properties object-fit: "cover"))
         (card-body
@@ -462,7 +462,7 @@
                 (tr (td (strong "Location: ") (td location (br) (a target:"_blank" href: address-link address)))))
          (student-spinner sku price)
          )
-        (card-footer class: "text-center"
+        (card-footer class: "border-secondary text-center"
                      style: (properties padding: 0
                                         background-color: "transparent"
                                         ;border-top: "none"
@@ -972,9 +972,17 @@ function setMonthlyDonate@amount() {
                 modal-buy-button))))))
 
 (define (camp->waitlist-link camp)
-  (~a "mailto:contact@thoughtstem.com?subject=Waitlist - " (camp-location camp)
-      ": " (camp-topic camp) " (" (camp-grade-range camp) ") starting on " (first (camp-meeting-dates camp))
-      "&body=Hello, please add me to the waitlist for this class."))
+  (~a "mailto:contact@thoughtstem.com?subject="
+      (uri-encode (~a "Waitlist - " (camp-location camp)
+                      ": " (camp-topic camp)
+                      " (" (camp-grade-range camp)
+                      ") starting on " (first (camp-meeting-dates camp))))
+      "&body="
+      (uri-encode (~a "Hello, please add me to the waitlist for this camp.\n\n"
+                      "My contact information is:\n"
+                      "Name: ________\n"
+                      "Phone Number: ________\n"
+                      "Student Name: ________\n\n"))))
 
 (define (camp->camp-full-modal camp)
   (define location  (camp-location camp))
