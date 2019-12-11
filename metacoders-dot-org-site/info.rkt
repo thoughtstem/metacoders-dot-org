@@ -1,4 +1,5 @@
 #lang info
+(define collection "metacoders-dot-org-lib")
 (define deps '("base"
                "threading"
                "https://github.com/thoughtstem/metacoders-dot-org.git?path=metacoders-dot-org-lib"

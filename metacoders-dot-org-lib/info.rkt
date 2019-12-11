@@ -1,4 +1,5 @@
 #lang info
+(define collection "metacoders-dot-org-lib")
 (define deps '("base"
                "reprovide-lang"
                "gregor"
