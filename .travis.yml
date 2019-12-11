@@ -2,6 +2,9 @@ language: c
 
 # Based on: https://github.com/greghendershott/travis-racket
 
+# Optional: Remove to use Travis CI's older infrastructure.
+sudo: false
+
 env:
   global:
     # Supply a global RACKET_DIR environment variable. This is where
@@ -29,7 +32,7 @@ before_install:
 - export PATH="${RACKET_DIR}/bin:${PATH}" #install-racket.sh can't set for us
 
 install:
- - raco pkg install --auto --name MC-HomeSite2
+ - git clone https://github.com/thoughtstem/metacoders-dot-org.git
 
 before_script:
 
@@ -37,9 +40,18 @@ before_script:
 # `raco pkg install --deps search-auto` to install any required
 # packages without it getting stuck on a confirmation prompt.
 script:
- - raco test -x -p MC-HomeSite2
+ - bash build.sh
 
 after_success:
- - raco setup --check-pkg-deps --pkgs MC-HomeSite2
- - raco pkg install --auto cover cover-coveralls
- - raco cover -b -f coveralls -d $TRAVIS_BUILD_DIR/coverage .
+ - echo "DEPLOYED"
+
+notifications:
+  email:
+    recipients:
+      - stephen@thoughtstem.com
+      - jason@thoughtstem.com
+      - sonny@thoughtstem.com
+      - sara@thoughtstem.com
+      - lindsey@thoughtstem.com
+  on_success: always 
+  on_failure: always 
