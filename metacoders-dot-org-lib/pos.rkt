@@ -14,6 +14,7 @@
          "./imgs.rkt"
          "./paths.rkt")
 
+(define KEY "pk_live_Kd7tDKVnPMvyCyk5oAuSkbju00pa0xJPPL")
 
 (define (city-page-links-section)
   (jumbotron class: "mb-0 pt-4 pb-4 text-center"
@@ -402,7 +403,7 @@
                       "Student Name: ________\n\n"))))
 
 (define (course->enroll-or-full-button course)
-  (define key "pk_test_Jd6aRCVssUu8YfSvltaT3tvU00je9fQbkA")
+  (define key KEY)
   
   (define price (course-price course))
   (define sku (course-sku course))
@@ -417,7 +418,7 @@
                                           )]))
 
 (define (course->modal-enroll-or-full-button course)
-  (define key "pk_test_Jd6aRCVssUu8YfSvltaT3tvU00je9fQbkA")
+  (define key KEY)
   
   (define price (course-price course))
   (define sku (course-sku course))
@@ -432,7 +433,7 @@
                                           )]))
 
 (define (course->course-card c)
-  (define key "pk_test_Jd6aRCVssUu8YfSvltaT3tvU00je9fQbkA")
+  (define key KEY)
 
   (define topic (course-topic c))
   (define sku (course-sku c))
@@ -625,7 +626,7 @@ function setDonate@amount() {
                       (rest items)))))
 
 (define (donate-button items #:mode [mode 'give-once])
-  (define key "pk_test_Jd6aRCVssUu8YfSvltaT3tvU00je9fQbkA")  ;MetaCoders Stripe
+  (define key KEY)  ;MetaCoders Stripe
   ;(define key "pk_test_BZvU77rH9zfNQvab1EpKB7GK00ZxANulPE") ;Sonny's Stripe
   (define button-id (if (eq? mode 'monthly)
                         "monthly-donate-button"
