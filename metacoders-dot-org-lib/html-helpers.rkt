@@ -13,9 +13,20 @@
          "./paths.rkt"
          gregor)
 
+(define (google-analytics)
+  (list 
+    (script 'async: "true" src: "https://www.googletagmanager.com/gtag/js?id=UA-154491265-1")
+    (script/inline
+      @~a{
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'UA-154491265-1');})))
+
 
 (define (normal-content #:head (h (void)) . more)
-  (content #:head h
+  (content #:head (list h
+                        (google-analytics))
     (normal-navbar)
     (container 
       id: "main"
@@ -24,7 +35,8 @@
     (normal-footer)))
 
 (define (normal-content-wide #:head (h (void)) . more)
-  (content #:head h
+  (content #:head (list h
+                        (google-analytics)) 
     (jumbotron-navbar)
     (div 
       id: "main"
@@ -112,7 +124,7 @@
               (li 
                 (row
                   (col-12
-                    (a href: "https://www.facebook.com/MetaCoders-108389097301677/"
+                    (a href: "https://www.facebook.com/metacoders.org/"
                        style: (properties padding-left: "0px")
                        class: "fab fa-facebook-square fa-2x")
                     (a href: "https://twitter.com/metacoders" class: "fab fa-twitter-square fa-2x")
@@ -204,8 +216,7 @@
         (modal-footer
           (button type: "button" class: "btn btn-secondary" `data-dismiss: "modal"
                   "Close")
-          (button type: "button" class: "btn btn-primary"   
-                  "Save Changes"))))))
+          )))))
 
 (define (print-dates dates [s ""])   
   (if (> (length dates) 1)
