@@ -5,8 +5,6 @@ dist: xenial
 services:
 - xvfb
 
-# Based on: https://github.com/greghendershott/travis-racket
-
 # Optional: Remove to use Travis CI's older infrastructure.
 sudo: false
 
@@ -31,15 +29,15 @@ matrix:
 #   - env: RACKET_VERSION=HEAD
   fast_finish: true
 
-before_install:
-- git clone https://github.com/greghendershott/travis-racket.git ~/travis-racket
-- cat ~/travis-racket/install-racket.sh | bash # pipe to bash not sh!
-- export PATH="${RACKET_DIR}/bin:${PATH}" #install-racket.sh can't set for us
+#before_install:
+#- git clone https://github.com/greghendershott/travis-racket.git ~/travis-racket
+#- cat ~/travis-racket/install-racket.sh | bash # pipe to bash not sh!
+#- export PATH="${RACKET_DIR}/bin:${PATH}" #install-racket.sh can't set for us
 
-install:
- - cd $TRAVIS_BUILD_DIR
- - raco pkg install --auto metacoders-dot-org-lib/
- - raco pkg install --auto metacoders-dot-org-site/
+#install:
+# - cd $TRAVIS_BUILD_DIR
+# - raco pkg install --auto metacoders-dot-org-lib/
+# - raco pkg install --auto metacoders-dot-org-site/
 
 before_script:
 
@@ -48,7 +46,7 @@ before_script:
 # packages without it getting stuck on a confirmation prompt.
 script:
  - cd $TRAVIS_BUILD_DIR 
- - racket main.rkt && [ "$TRAVIS_BRANCH" = "master" ] && [ "$TRAVIS_EVENT_TYPE" != "pull_request" ] && ./deploy.sh
+ - ./travis-deploy.sh
 
 notifications:
   email:
@@ -60,3 +58,7 @@ notifications:
       - lindsey@thoughtstem.com
   on_success: always 
   on_failure: always
+
+
+
+
