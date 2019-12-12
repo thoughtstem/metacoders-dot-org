@@ -36,10 +36,10 @@ before_install:
 - cat ~/travis-racket/install-racket.sh | bash # pipe to bash not sh!
 - export PATH="${RACKET_DIR}/bin:${PATH}" #install-racket.sh can't set for us
 
-#install:
-# - cd $TRAVIS_BUILD_DIR
-# - raco pkg install --auto metacoders-dot-org-lib/
-# - raco pkg install --auto metacoders-dot-org-site/
+install:
+ - cd $TRAVIS_BUILD_DIR
+ - raco pkg install --auto metacoders-dot-org-lib/
+ - raco pkg install --auto metacoders-dot-org-site/
 
 before_script:
 
