@@ -1,5 +1,10 @@
 language: c
 
+dist: xenial
+
+services:
+- xvfb
+
 # Based on: https://github.com/greghendershott/travis-racket
 
 # Optional: Remove to use Travis CI's older infrastructure.
@@ -43,7 +48,7 @@ before_script:
 # packages without it getting stuck on a confirmation prompt.
 script:
  - cd $TRAVIS_BUILD_DIR 
- - racket main.rkt && ./deploy.sh
+ - racket main.rkt && [ "$TRAVIS_BRANCH" = "master" ] && [ "$TRAVIS_EVENT_TYPE" != "pull_request" ] && ./deploy.sh
 
 notifications:
   email:
