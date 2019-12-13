@@ -192,11 +192,11 @@
 
               @li{@b{How do I get a certification if I'm @i{not} employed by MetaCoders?} You'll need to contact us at @(a href: "mailto:training@metacoders.org" "training@metacoders.org").  We occasionally make exceptions for enthusiastic people who are trying to bring MetaCoders to their city and are training in advance of an official application.}
 
-              @li{@b{How can I find the MetaCoders in-class curriculum?} Here's a link to the basic building blocks of a MetaCoders classroom:  
+              @li{@b{How can I find the MetaCoders in-class curriculum?} Here is a link to the basic building blocks of a MetaCoders classroom:  
                 @(link-to (list "coaches" "maps.html") 
                          "Classmaps, Story Modes, and Game Modes")}
 
-              @li{@b{How can I find the MetaCoders in-class programming languages?} Here's a link to our currently released languages:  
+              @li{@b{How can I find the MetaCoders in-class programming languages?} Here is a link to our currently released languages:  
                 @(link-to (list "languages" "index.html") 
                          "Languages")}))))))
 

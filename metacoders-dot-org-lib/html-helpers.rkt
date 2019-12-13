@@ -86,7 +86,7 @@
         opacity: 0.7;
       }
     })
-    (footer class: "pt-4 mt-4 bg-dark"
+    (footer class: "pt-4 bg-dark"
       (container 
         (row
           (col-md-3 class: "text-white"

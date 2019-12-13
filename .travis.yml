@@ -1,5 +1,10 @@
 language: c
 
+dist: xenial
+
+services:
+- xvfb
+
 # Based on: https://github.com/greghendershott/travis-racket
 
 # Optional: Remove to use Travis CI's older infrastructure.
@@ -32,7 +37,9 @@ before_install:
 - export PATH="${RACKET_DIR}/bin:${PATH}" #install-racket.sh can't set for us
 
 install:
- - git clone https://github.com/thoughtstem/metacoders-dot-org.git
+ - cd $TRAVIS_BUILD_DIR
+ - raco pkg install --auto metacoders-dot-org-lib/
+ - raco pkg install --auto metacoders-dot-org-site/
 
 before_script:
 
@@ -40,10 +47,8 @@ before_script:
 # `raco pkg install --deps search-auto` to install any required
 # packages without it getting stuck on a confirmation prompt.
 script:
- - bash build.sh
-
-after_success:
- - echo "DEPLOYED"
+ - cd $TRAVIS_BUILD_DIR 
+ - ./travis-deploy.sh
 
 notifications:
   email:
@@ -54,4 +59,8 @@ notifications:
       - sara@thoughtstem.com
       - lindsey@thoughtstem.com
   on_success: always 
-  on_failure: always 
+  on_failure: always
+
+
+
+

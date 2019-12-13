@@ -44,7 +44,7 @@
       (summer-interns)
       (partners) 
       (terms-and-conditions)
-      (setup-scripts)
-
+      (sub-site "scripts"
+                (setup-scripts))
       (checkout-success)
       (checkout-fail))))
