@@ -82,7 +82,10 @@
                   color: "white"
                   position: "relative")
         (h1 (string-append "Coding Classes & Camps in " city-name)))))
-   (city-page-links-section)
+   (if (and (empty? school-year-courses)
+            (empty? summer-camps))
+       '()
+       (city-page-links-section))
    (city-page-fold-section)
    
    (cond [(and (empty? school-year-courses)

@@ -33,6 +33,15 @@
          donate-banner-path
          world-img-path
          partners-img-path
+
+         chula-vista-banner-path
+         dallas-banner-path
+         minneapolis-banner-path
+         poway-banner-path
+         reno-banner-path
+         temecula-banner-path
+         washington-dc-banner-path
+
          )
 
 (require website/bootstrap
@@ -112,6 +121,28 @@
 (define partners-img-path
   (list "img" "partners-banner.jpg"))
 
+; ==== CITY BANNER PATHS ====
+(define chula-vista-banner-path
+  (list "img" "city-chula-vista-banner.jpg"))
+
+(define dallas-banner-path
+  (list "img" "city-dallas-banner.jpg"))
+
+(define minneapolis-banner-path
+  (list "img" "city-minneapolis-banner.jpg"))
+
+(define poway-banner-path
+  (list "img" "city-poway-banner.jpg"))
+
+(define reno-banner-path
+  (list "img" "city-reno-banner.jpg"))
+
+(define temecula-banner-path
+  (list "img" "city-temecula-banner.jpg"))
+
+(define washington-dc-banner-path
+  (list "img" "city-washington-dc-banner.jpg"))
+
 (define (imgs)
   (list 
     (page lindsey-img-path
@@ -182,5 +213,20 @@
           (bitmap/file (build-path img "world-map.jpg")))
     (page partners-img-path
           (bitmap/file (build-path img "partners-banner.jpg")))
+
+    (page chula-vista-banner-path
+      (bitmap/file (build-path img  "city-chula-vista-banner.jpg")))
+    (page dallas-banner-path
+      (bitmap/file (build-path img  "city-dallas-banner.jpg")))
+    (page minneapolis-banner-path
+      (bitmap/file (build-path img  "city-minneapolis-banner.jpg")))
+    (page poway-banner-path
+      (bitmap/file (build-path img  "city-poway-banner.jpg")))
+    (page reno-banner-path
+      (bitmap/file (build-path img  "city-reno-banner.jpg")))
+    (page temecula-banner-path
+      (bitmap/file (build-path img  "city-temecula-banner.jpg")))
+    (page washington-dc-banner-path
+      (bitmap/file (build-path img  "city-washington-dc-banner.jpg")))
 
     ))
