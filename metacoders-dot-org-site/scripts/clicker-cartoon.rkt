@@ -1,6 +1,7 @@
 #lang at-exp racket
 
- (require mc-scripts)
+(require mc-scripts)
+(require pkg/name pkg/lib pkg setup/setup)
 
  ;--- Define pkg(s) test(s)
  (define clicker-cartoon-collect-test
@@ -21,6 +22,19 @@
 
  ;--- Check pkg(s)
  (system "raco pkg remove --force reprovide-lang") ;<--- remove old pkg
+
+
+(define (installed? s)
+ (pkg-directory s))
+
+(if (installed? "racket-chipmunk")
+ (begin
+  (displayln "racket-chipmunk detected.  Fixing the version.")
+  (pkg-update-command
+   "https://github.com/thoughtstem/racket-chipmunk.git#master"
+    #:deps 'search-auto #:no-setup #t))
+ (displayln "No racket-chipmunk.  No need to fix things."))
+
 
  (check-pkg (list "clicker-cartoon-collect"
                   "clicker-cartoon-avoid"
