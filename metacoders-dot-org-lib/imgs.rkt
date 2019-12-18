@@ -146,87 +146,87 @@
 (define (imgs)
   (list 
     (page lindsey-img-path
-          (bitmap/file (build-path img "lindsey.jpg"))) 
+          (build-path img "lindsey.jpg")) 
     (page judith-img-path
-          (bitmap/file (build-path img "judith.jpg"))) 
+          (build-path img "judith.jpg")) 
     (page sara-img-path
-          (bitmap/file (build-path img "sara.jpg"))) 
+          (build-path img "sara.jpg")) 
     (page sonny-img-path
-          (bitmap/file (build-path img "sonny.jpg"))) 
+          (build-path img "sonny.jpg")) 
     (page games-svg-path
-          (file->string (build-path img "games.svg")))
+          (build-path img "games.svg"))
     (page brain-svg-path
-          (file->string (build-path img "brain.svg")))
+          (build-path img "brain.svg"))
     (page story-svg-path
-          (file->string (build-path img "story.svg")))
+          (build-path img "story.svg"))
     (page takes-a-village-path
-          (bitmap/file (build-path img "takes-a-village.jpg")))
+          (build-path img "takes-a-village.jpg"))
     (page takes-a-village-2-path
-          (bitmap/file (build-path img "takes-a-village-2.jpg")))
+          (build-path img "takes-a-village-2.jpg"))
     (page takes-a-village-3-path
-          (bitmap/file (build-path img "takes-a-village-3.jpg")))
+          (build-path img "takes-a-village-3.jpg"))
     (page summer-camps-img-path
-          (bitmap/file (build-path img "summer-camps.jpg")))
+          (build-path img "summer-camps.jpg"))
     (page homepage-banner-path
-          (bitmap/file (build-path img "homepage-banner.jpg")))
+          (build-path img "homepage-banner.jpg"))
     (page logo-img-path
-          (bitmap/file (build-path img "logo.png")))
+          (build-path img "logo.png"))
     (page join-our-team-banner-path
-          (bitmap/file (build-path img "join-our-team-banner.jpg")))
+          (build-path img "join-our-team-banner.jpg"))
     (page learn-more-banner-path
-          (bitmap/file (build-path img "learn-more-banner.jpg")))
+          (build-path img "learn-more-banner.jpg"))
     (page coding-coach-img-path
-          (bitmap/file (build-path img "coding-coach.jpg")))
+          (build-path img "coding-coach.jpg"))
     (page coding-coach-banner-path
-          (bitmap/file (build-path img "coding-coach-banner-2.jpg")))
+          (build-path img "coding-coach-banner-2.jpg"))
     (page volunteer-scientist-img-path
-          (bitmap/file (build-path img "volunteer-scientist.jpg")))
+          (build-path img "volunteer-scientist.jpg"))
     (page volunteer-scientist-banner-path
-          (bitmap/file (build-path img "volunteer-scientist-banner.jpg")))
+          (build-path img "volunteer-scientist-banner.jpg"))
     (page summer-camp-intern-img-path
-          (bitmap/file (build-path img "summer-camp-intern.jpg")))
+          (build-path img "summer-camp-intern.jpg"))
     (page summer-camp-intern-banner-path
-          (bitmap/file (build-path img "summer-camp-intern-banner.jpg")))
+          (build-path img "summer-camp-intern-banner.jpg"))
 
     (page volunteer-coder-img-path
-          (bitmap/file (build-path img "volunteer-coder.jpg")))
+          (build-path img "volunteer-coder.jpg"))
     (page tech-coordinator-img-path
-          (bitmap/file (build-path img "tech-coordinator.jpg")))
+          (build-path img "tech-coordinator.jpg"))
     (page tech-coordinator-banner-path
-          (bitmap/file (build-path img "tech-coordinator-banner.jpg")))
+          (build-path img "tech-coordinator-banner.jpg"))
     (page weekly-classes-img-path
-          (bitmap/file (build-path img "weekly-classes.jpg")))
+          (build-path img "weekly-classes.jpg"))
     (page donate-banner-path
-          (bitmap/file (build-path img "donation-banner.jpg")))
+          (build-path img "donation-banner.jpg"))
     (page in-school-img-path
-          (bitmap/file (build-path img "in-school.jpg")))
+          (build-path img "in-school.jpg"))
     (page city-summer-camp-img-path
-          (bitmap/file (build-path img "city-summer-camp.jpg")))
+          (build-path img "city-summer-camp.jpg"))
     (page city-summer-camp-pricing-img-path
-          (bitmap/file (build-path img "city-summer-camp-pricing.jpg")))
+          (build-path img "city-summer-camp-pricing.jpg"))
     (page city-weekly-class-img-path
-          (bitmap/file (build-path img "city-weekly-class.jpg")))
+          (build-path img "city-weekly-class.jpg"))
 
     (page river-img-path
-          (bitmap/file (build-path img "river.png")))
+          (build-path img "river.png"))
     (page world-img-path
-          (bitmap/file (build-path img "world-map.jpg")))
+          (build-path img "world-map.jpg"))
     (page partners-img-path
-          (bitmap/file (build-path img "partners-banner.jpg")))
+          (build-path img "partners-banner.jpg"))
 
     (page chula-vista-banner-path
-      (bitmap/file (build-path img  "city-chula-vista-banner.jpg")))
+      (build-path img  "city-chula-vista-banner.jpg"))
     (page dallas-banner-path
-      (bitmap/file (build-path img  "city-dallas-banner.jpg")))
+      (build-path img  "city-dallas-banner.jpg"))
     (page minneapolis-banner-path
-      (bitmap/file (build-path img  "city-minneapolis-banner.jpg")))
+      (build-path img  "city-minneapolis-banner.jpg"))
     (page poway-banner-path
-      (bitmap/file (build-path img  "city-poway-banner.jpg")))
+      (build-path img  "city-poway-banner.jpg"))
     (page reno-banner-path
-      (bitmap/file (build-path img  "city-reno-banner.jpg")))
+      (build-path img  "city-reno-banner.jpg"))
     (page temecula-banner-path
-      (bitmap/file (build-path img  "city-temecula-banner.jpg")))
+      (build-path img  "city-temecula-banner.jpg"))
     (page washington-dc-banner-path
-      (bitmap/file (build-path img  "city-washington-dc-banner.jpg")))
+      (build-path img  "city-washington-dc-banner.jpg"))
 
     ))
