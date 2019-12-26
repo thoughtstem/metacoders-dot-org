@@ -42,3 +42,4 @@ Then, make changes in `metacoders-dot-org-lib`.
 - Re-size and compress (lossy compression when possible) images to reduce file size but without reducing quality too much. You can use Photoshop's "Save for Web" feature.
   - Jumbotron images should be 2000 pixels wide
   - Other images should be no larger than 600 pixels (or whatever the max size the image is in your browser)
+
