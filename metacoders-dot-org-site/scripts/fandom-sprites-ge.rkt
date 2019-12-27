@@ -3,9 +3,9 @@
 (require mc-scripts)
  
  ;--- Define pkg(s) test(s)
- (define fandom-sprites-test
+ (define fandom-sprites-ge-test
    @~a{#lang battlearena
-       (require fandom-sprites)
+       (require fandom-sprites-ge)
        (battlearena-game
          #:avatar (basic-avatar
                     #:sprite pikachu-sprite)
@@ -22,6 +22,6 @@
 })
 
  ;--- Check pkg(s)
- (check-pkg "fandom-sprites"
-            "https://github.com/thoughtstem/fandom-sprites.git"
-            fandom-sprites-test)
+ (check-pkg "fandom-sprites-ge"
+            "https://github.com/thoughtstem/fandom-sprites-ge.git"
+            fandom-sprites-ge-test)

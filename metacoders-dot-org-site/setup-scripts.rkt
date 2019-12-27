@@ -34,5 +34,5 @@
         (page healer-zoo.rkt
               (code-from-path "healer-zoo.rkt"))
         ;Helper Packages
-        (page fandom-sprites.rkt
-              (code-from-path "fandom-sprites.rkt"))))
+        (page fandom-sprites-ge.rkt
+              (code-from-path "fandom-sprites-ge.rkt"))))
