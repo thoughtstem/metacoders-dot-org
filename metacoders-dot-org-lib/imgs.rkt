@@ -41,6 +41,7 @@
          reno-banner-path
          temecula-banner-path
          washington-dc-banner-path
+         new-orleans-banner-path
 
          )
 
@@ -143,6 +144,9 @@
 (define washington-dc-banner-path
   (list "img" "city-washington-dc-banner.jpg"))
 
+(define new-orleans-banner-path
+  (list "img" "city-new-orleans-banner.jpg"))
+
 (define (imgs)
   (list 
     (page lindsey-img-path
@@ -228,5 +232,7 @@
       (build-path img  "city-temecula-banner.jpg"))
     (page washington-dc-banner-path
       (build-path img  "city-washington-dc-banner.jpg"))
+    (page new-orleans-banner-path
+      (build-path img  "city-new-orleans-banner.jpg"))
 
     ))

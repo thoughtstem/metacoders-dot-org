@@ -6,10 +6,16 @@
          (except-out (struct-out course) course)
          (rename-out (make-course course))
          (except-out (struct-out camp) camp)
-         (rename-out (make-camp camp)))
+         (rename-out (make-camp camp))
+         generate-random-sku
+         generate-random-product-id
+         )
 
 (require website/bootstrap
          net/uri-codec
+         uuid
+         net/base64
+         binaryio/integer
          "./html-helpers.rkt"
          "./imgs.rkt"
          "./paths.rkt")
@@ -1114,3 +1120,21 @@ function setMonthlyDonate@amount() {
                    class: "btn btn-warning m-0 col-sm-6"
                    style: (properties border-radius: "0 0 0.20rem 0")
                    "Download Form")))))))
+
+; ==== UUID SKU GENERATOR ====
+(define (uuid->base64 str)
+  (bytes->string/utf-8 (base64-encode (integer->bytes (string->number (~a "#x" (string-replace str "-" "")))
+                                                    16 #f) "")))
+
+(define (base64->uuid str)
+  (number->string (bytes->integer (base64-decode (string->bytes/utf-8 str)) #f) 16))
+
+(define (generate-random-sku)
+  (~a "sku_" ((compose (curryr string-replace "=" "")
+                       (curryr string-replace "/" "")
+                       (curryr string-replace "+" "")) (uuid->base64 (uuid-string)))))
+
+(define (generate-random-product-id)
+  (~a "prod_" ((compose (curryr string-replace "=" "")
+                       (curryr string-replace "/" "")
+                       (curryr string-replace "+" "")) (uuid->base64 (uuid-string)))))
