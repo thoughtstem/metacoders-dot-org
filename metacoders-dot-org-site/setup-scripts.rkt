@@ -13,6 +13,9 @@
 
 (define (setup-scripts)
   (list config.sh
+        ;ME Langs
+        (page cutscene.rkt
+              (code-from-path "cutscene.rkt"))
         ;GE Langs
         (page survival.rkt
               (code-from-path "survival.rkt"))
@@ -23,7 +26,7 @@
         ;VR Langs
         (page 3d-exploration.rkt
               (code-from-path "3d-exploration.rkt"))
-        ;MIS Langs
+        ;MISC Langs
         (page data-sci.rkt
               (code-from-path "data-sci.rkt"))
         ;K2 Langs
