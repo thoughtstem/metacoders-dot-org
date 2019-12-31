@@ -10,7 +10,7 @@
            harrypotter-sprite
            "Harry walks slow in the snow."
            #:bg snow-bg
-           #:mode 'scroll-top-right
+           #:mode 90
            #:scroll-speed 30))})
 
  ;--- Check pkg(s)
