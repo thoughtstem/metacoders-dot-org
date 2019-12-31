@@ -10,14 +10,14 @@
  (define healer-zoo-friends-test
    @~a{#lang healer-zoo-friends
        (start
-         (rand orange)
+         (hippo orange)
          ((fish yellow) (tomato green) (apple 2))
          ((monkey 2) (rand purple)))})
 
  (define healer-zoo-enemies-test
    @~a{#lang healer-zoo-enemies 
        (start
-         rand
+         hippo
          ((apple yellow 5))
          ((apple blue 5))
          ((apple green 5)))})
