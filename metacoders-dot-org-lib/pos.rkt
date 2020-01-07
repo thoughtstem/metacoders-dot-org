@@ -3,6 +3,8 @@
 (provide city-page
          summer-camp-pricing-at
          donate-card
+         define/provide-course
+         define/provide-camp
          (except-out (struct-out course) course)
          (rename-out (make-course course))
          (except-out (struct-out camp) camp)
@@ -371,6 +373,18 @@
 }}
          (p class: "m-0 text-secondary text-center" "Number of Students")))
 
+
+(define-syntax-rule
+  (define/provide-course id course)
+  (begin
+    (provide id)
+    (define id course)))
+
+(define-syntax-rule
+  (define/provide-camp id camp)
+  (begin
+    (provide id)
+    (define id camp)))
 
 (struct course (topic
                 sku
