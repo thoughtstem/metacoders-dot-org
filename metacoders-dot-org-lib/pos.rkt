@@ -18,11 +18,14 @@
          uuid
          net/base64
          binaryio/integer
+         gregor
          "./html-helpers.rkt"
          "./imgs.rkt"
          "./paths.rkt")
 
-(define KEY "pk_live_Kd7tDKVnPMvyCyk5oAuSkbju00pa0xJPPL")
+(define KEY ;"pk_live_Kd7tDKVnPMvyCyk5oAuSkbju00pa0xJPPL"
+             "pk_test_Jd6aRCVssUu8YfSvltaT3tvU00je9fQbkA"
+  )
 
 (define (city-page-links-section)
   (jumbotron class: "mb-0 pt-4 pb-4 text-center"
@@ -121,46 +124,18 @@
    (have-questions-section)
    ))
 
-(define (buy-button price sku key)
+(define (course-buy-button price discount sku key #:suffix [suffix ""])
   (list (button-primary id:(~a "checkout-button-" sku)
                         class: "m-0 col-sm-6" 
                         style: (properties border-radius: "0 0 0.18rem 0"
                                            white-space: "normal")
-                          (~a "Enroll Now for $" price))
-        (div id:(~a "error-message" sku))
-        (script src:"https://js.stripe.com/v3")
-        @script/inline{
- (function() {
-  var stripe = Stripe('@key');
-
-  var checkoutButton = document.getElementById('checkout-button-@sku');
-  checkoutButton.addEventListener('click', function () {
-
-   var quantity = parseInt(
-          document.getElementById("student-quantity-@sku").value
-        );
-        
-   stripe.redirectToCheckout({
-    items: [{sku: '@sku', quantity: quantity}],
-    successUrl: 'https://metacoders-dot-org/checkout-success.html',
-    cancelUrl: 'https://metacoders-dot-org/checkout-fail.html',
-    billingAddressCollection: 'required',
-    })
-   .then(function (result) {
-    if (result.error) {
-     var displayError = document.getElementById('error-message@sku');
-     displayError.textContent = result.error.message;
-    }
-    });
-   });
-  })();}))
-
-(define (course-buy-button price sku key #:suffix [suffix ""])
-  (list (button-primary id:(~a "checkout-button-" sku)
-                        class: "m-0 col-sm-6" 
-                        style: (properties border-radius: "0 0 0.18rem 0"
-                                           white-space: "normal")
-                          (~a "Enroll Now for $" price suffix))
+                        (if (> discount 0)
+                              (list "Enroll Now for "
+                                    (s class: "text-danger"
+                                       (~a "$" price))
+                                    " $" (- price discount)
+                                    suffix)
+                              (~a "Enroll Now for $" price suffix)))
         (div id:(~a "error-message" sku))
         (script src:"https://js.stripe.com/v3")
         @script/inline{
@@ -218,46 +193,18 @@
    });
   })();}))
 
-
-(define (modal-buy-button price sku key)
-  (list (button-primary id:(~a "modal-checkout-button-" sku)
-                        class: "m-0 col-sm-6" 
-                        style: (properties border-radius: "0 0 0.18rem 0")
-                          (~a "Enroll Now for $" price))
-        (div id:(~a "error-message" sku))
-        (script src:"https://js.stripe.com/v3")
-        @script/inline{
- (function() {
-  var stripe = Stripe('@key');
-        
-  var checkoutButton = document.getElementById('modal-checkout-button-@sku');
-  checkoutButton.addEventListener('click', function () {
-
-   var quantity = parseInt(
-          document.getElementById("modal-student-quantity-@sku").value
-        );
-        
-   stripe.redirectToCheckout({
-    items: [{sku: '@sku', quantity: quantity}],
-    successUrl: 'https://metacoders-dot-org/checkout-success.html',
-    cancelUrl: 'https://metacoders-dot-org/checkout-fail.html',
-    billingAddressCollection: 'required',
-    })
-   .then(function (result) {
-    if (result.error) {
-     var displayError = document.getElementById('error-message@sku');
-     displayError.textContent = result.error.message;
-    }
-    });
-   });
-  })();}))
-
-(define (course-modal-buy-button price sku key #:suffix [suffix ""])
+(define (course-modal-buy-button price discount sku key #:suffix [suffix ""])
   (list (button-primary id:(~a "modal-checkout-button-" sku)
                         class: "m-0 col-sm-6" 
                         style: (properties border-radius: "0 0 0.18rem 0"
                                            white-space: "normal")
-                          (~a "Enroll Now for $" price suffix))
+                          (if (> discount 0)
+                              (list "Enroll Now for "
+                                    (s class: "text-danger"
+                                       (~a "$" price))
+                                    " $" (- price discount)
+                                    suffix)
+                              (~a "Enroll Now for $" price suffix)))
         (div id:(~a "error-message" sku))
         (script src:"https://js.stripe.com/v3")
         @script/inline{
@@ -293,7 +240,7 @@
       (begin (set! s (~a s (first dates) "."))
              s)))
 
-(define (student-spinner sku price)
+(define (student-spinner sku price discount)
   (div (div class: "btn-group d-flex justify-content-center"
               (button-warning id: (~a "student-subtract-" sku)
                               class: "btn-sm"
@@ -321,7 +268,11 @@
   quantity = Math.min(5, Math.max(1,quantity));
   inputEl.value = quantity;
   if (document.getElementById("checkout-button-@sku")) {
-   document.getElementById("checkout-button-@sku").textContent = "Enroll Now for $" + quantity * @price;
+   @;document.getElementById("checkout-button-@sku").textContent = "Enroll Now for $" + quantity * @price;
+   document.getElementById("checkout-button-@sku").innerHTML = @(if (> discount 0)
+                                                                    (~a "'Enroll Now for <s class=\"text-danger\">$' + quantity * " price
+                                                                        "+ '</s> $' + quantity * " (- price discount) ";")
+                                                                    (~a "'Enroll Now for $' + quantity * " price ";"))
   }
   // Disable the button if the customers hits the max or min
   if (quantity <= 1) {
@@ -333,7 +284,7 @@
 }}
          (p class: "m-0 text-secondary text-center" "Number of Students")))
 
-(define (modal-student-spinner sku price)
+(define (modal-student-spinner sku price discount)
   (div (div class: "btn-group d-flex justify-content-center"
               (button-warning id: (~a "modal-student-subtract-" sku)
                               class: "btn-sm"
@@ -361,7 +312,11 @@
   quantity = Math.min(5, Math.max(1,quantity));
   inputEl.value = quantity;
   if (document.getElementById("modal-checkout-button-@sku")) {
-   document.getElementById("modal-checkout-button-@sku").textContent = "Enroll Now for $" + quantity * @price;
+   @;document.getElementById("modal-checkout-button-@sku").textContent = "Enroll Now for $" + quantity * @price;
+   document.getElementById("modal-checkout-button-@sku").innerHTML = @(if (> discount 0)
+                                                                          (~a "'Enroll Now for <s class=\"text-danger\">$' + quantity * " price
+                                                                              "+ '</s> $' + quantity * " (- price discount) ";")
+                                                                          (~a "'Enroll Now for $' + quantity * " price ";"))
   }
   // Disable the button if the customers hits the max or min
   if (quantity <= 1) {
@@ -395,6 +350,7 @@
                 address
                 address-link
                 price
+                discount
                 start-time
                 end-time
                 meeting-dates
@@ -409,12 +365,13 @@
                      #:location      [location "TBA"]
                      #:address       [address "TBA"]
                      #:address-link  [address-link (~a "https://www.google.com/maps/place/" (string-replace address " " "+"))]
-                     #:price         [price "TBA"]
+                     #:price         [price 210]
+                     #:discount      [discount 0]
                      #:start-time    [start-time "TBA"]
                      #:end-time      [end-time "TBA"]
                      #:meeting-dates [meeting-dates '()]
                      #:status        [status 'open])
-  (course topic sku image-url description grade-range location address address-link price start-time end-time meeting-dates status))
+  (course topic sku image-url description grade-range location address address-link price discount start-time end-time meeting-dates status))
 
 (define (course->waitlist-link course)
   (~a "mailto:contact@thoughtstem.com?subject="
@@ -433,10 +390,11 @@
   (define key KEY)
   
   (define price (course-price course))
+  (define discount (course-discount course))
   (define sku (course-sku course))
   
-  (cond [(eq? (course-status course) 'open) (course-buy-button price sku key)]
-        [(eq? (course-status course) 'almost-full) (course-buy-button price sku key #:suffix " (Almost Full)")] ;not used
+  (cond [(eq? (course-status course) 'open) (course-buy-button price discount sku key)]
+        [(eq? (course-status course) 'almost-full) (course-buy-button price discount sku key #:suffix " (Almost Full)")] ;not used
         [(eq? (course-status course) 'full) (a href: (course->waitlist-link course)
                                           class: "btn btn-danger col-sm-6"
                                           style: (properties border-radius: "0 0 0.18rem 0"
@@ -448,10 +406,11 @@
   (define key KEY)
   
   (define price (course-price course))
+  (define discount (course-discount course))
   (define sku (course-sku course))
   
-  (cond [(eq? (course-status course) 'open) (course-modal-buy-button price sku key)]
-        [(eq? (course-status course) 'almost-full) (course-modal-buy-button price sku key #:suffix " (Almost Full)")] ;not used
+  (cond [(eq? (course-status course) 'open) (course-modal-buy-button price discount sku key)]
+        [(eq? (course-status course) 'almost-full) (course-modal-buy-button price discount sku key #:suffix " (Almost Full)")] ;not used
         [(eq? (course-status course) 'full) (a href: (course->waitlist-link course)
                                           class: "btn btn-danger col-sm-6"
                                           style: (properties border-radius: "0 0 0.18rem 0"
@@ -471,6 +430,7 @@
   (define address (course-address c))
   (define address-link (course-address-link c))
   (define price (course-price c))
+  (define discount (course-discount c))
   (define start-time (course-start-time c))
   (define end-time (course-end-time c))
   (define meeting-dates (course-meeting-dates c))
@@ -488,7 +448,7 @@
                 (tr (td (strong "Schedule: ") (td (~a (meeting-date->weekday (first meeting-dates)) "s, "
                                                       (length meeting-dates) " weeks"))))
                 (tr (td (strong "Location: ") (td location (br) (a target:"_blank" href: address-link address)))))
-         (student-spinner sku price)
+         (student-spinner sku price discount)
          )
         (card-footer class: "border-secondary text-center"
                      style: (properties padding: 0
@@ -513,7 +473,8 @@
                                    #:address       address
                                    #:address-link  address-link
                                    #:price         price
-                                   #:quantity-spinner (modal-student-spinner sku price)
+                                   #:discount      discount
+                                   #:quantity-spinner (modal-student-spinner sku price discount)
                                    #:buy-button (course->modal-enroll-or-full-button c)))
         )
   )
@@ -837,6 +798,7 @@ function setMonthlyDonate@amount() {
                       #:address       address
                       #:address-link  address-link
                       #:price         price
+                      #:discount      discount
                       #:quantity-spinner quantity-spinner
                       #:buy-button    buy-button)
   (modal id: modal-id 'tabindex: "-1" role: "dialog"
@@ -853,7 +815,11 @@ function setMonthlyDonate@amount() {
                   (tr (td (b "Time: ")) (td start-time " - " end-time))
                   (tr (td (b "Start Date: ")) (td (first meeting-dates)))
                   (tr (td (b "Location: ")) (td location (br) (a target:"_blank" href: address-link address)))
-                  (tr (td (b "Price: ")) (td (~a "$" price)))
+                  (tr (td (b "Price: ")) (td (if (> discount 0)
+                                                 (list (s class: "text-danger"
+                                                          (~a "$" price))
+                                                       " $" (- price discount))
+                                                 (~a "$" price))))
                   (tr (td (b "Schedule: ")) (td (print-dates meeting-dates)))))
                 (col-lg-6 class: "col-xs-12 d-flex flex-column justify-content-between"
                  (div (h5 "Course Description:")
@@ -884,10 +850,78 @@ function setMonthlyDonate@amount() {
                                           'data-toggle: "modal" 'data-target: (~a "#camp-full-modal-" (camp-sku camp))
                                           "Full (Click to Join Waitlist)"
                                           )]))
-
+; Get earliest meeting-date and the latest meeting-date
 (define (camps->camp-calendar camps)
   (define topics-list (remove-duplicates (map camp-topic camps)))
+  
+  (define (topic->row topic)
+    (define topic-camps (filter (λ(c) (eq? (camp-topic c) topic)) camps))
+    ;Todo: order camps by date and pad missing weeks
+    
+    (define grade-range (camp-grade-range (first topic-camps)))
+    
+    (define (camp->table-cell camp)
+      (td (camp->enroll-or-full-button camp) (br)
+          (camp-camp-time camp) (br)
+          (~a "$" (camp-price camp))
+          (if (eq? (camp-status camp) 'full)
+              (camp->camp-full-modal  camp)
+              (camp->camp-enroll-modal camp))))
+    
+    (define table-data
+      (append (list (td class: "p-1 align-middle"
+                        style: (properties border-right: "none"
+                                           width: "1rem")
+                        (img src: (camp-image-url (first topic-camps))
+                             class: "rounded"
+                             width: "100rem"
+                             height: "100rem"
+                             style: (properties object-fit: "cover")))
+                    (td class: "text-left"
+                        style: (properties border-left: "none")
+                        (strong topic) (br)
+                        "Grades: " grade-range (br)
+                        (a href: "#"
+                           'data-toggle: "modal" 'data-target: (~a "#topic-info-modal-" (camp-sku (first topic-camps)))
+                           (button-secondary class: "btn-sm mt-2" "Camp Info"))
+                        (camp->topic-info-modal (first topic-camps))))
+              (map camp->table-cell topic-camps)))
+                    
+    (apply tr table-data))
+  
+  (define camp-start-dates
+    (remove-duplicates (map (compose meeting-date->date
+                                first
+                                camp-meeting-dates) camps)))
 
+  (define (date->date-range date)
+    (define end-date (+days date 4))
+    (if (= (->month date) (->month end-date))
+        (~a (~t date "MMM d") " - " (~t end-date "d"))
+        (~a (~t date "MMM d") " - " (~t end-date "MMM d")))
+    )
+    
+  (define (camps->schedule-header camps)
+    (thead (apply tr
+                  (list (th class: "text-left"
+                               'scope: "col"
+                               'colspan: 2
+                               "Courses"))
+                  (map (compose (curry th 'scope: "col")
+                                date->date-range)
+                       camp-start-dates)
+                  )))
+
+  ;TODO: Make this a dynamic table
+  (div class: "table-responsive"
+   (apply (curry table class: "table table-striped table-bordered bg-white text-center"
+                (camps->schedule-header camps))
+         (map topic->row topics-list)
+         ))
+  )
+
+#;(define (camps->camp-calendar camps)
+  (define topics-list (remove-duplicates (map camp-topic camps)))
   (define (topic->row topic)
     (define topic-camps (filter (λ(c) (eq? (camp-topic c) topic)) camps))
     (define grade-range (camp-grade-range (first topic-camps)))

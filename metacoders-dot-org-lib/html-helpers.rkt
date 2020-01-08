@@ -4,6 +4,7 @@
          normal-content-wide
          mc-jumbotron-header
          staff-modal
+         meeting-date->date
          meeting-date->weekday)
 
 (require website/bootstrap
@@ -213,6 +214,10 @@
              (print-dates (rest dates) s))
       (begin (set! s (~a s (first dates) "."))
              s)))
+
+(define (meeting-date->date meeting-date)
+  (define date (parse-date meeting-date "M/d/yyyy"))
+  date)
 
 (define (meeting-date->weekday meeting-date)
   (define date (parse-date meeting-date "M/d/yyyy"))
