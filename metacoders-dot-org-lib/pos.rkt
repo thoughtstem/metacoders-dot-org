@@ -23,8 +23,8 @@
          "./imgs.rkt"
          "./paths.rkt")
 
-(define KEY "pk_live_Kd7tDKVnPMvyCyk5oAuSkbju00pa0xJPPL"
-            ;"pk_test_Jd6aRCVssUu8YfSvltaT3tvU00je9fQbkA"
+(define KEY ;"pk_live_Kd7tDKVnPMvyCyk5oAuSkbju00pa0xJPPL"
+            "pk_test_Jd6aRCVssUu8YfSvltaT3tvU00je9fQbkA"
   )
 
 (define (city-page-links-section)
@@ -151,8 +151,8 @@
         
    stripe.redirectToCheckout({
     items: [{sku: '@sku', quantity: quantity}],
-    successUrl: 'https://metacoders-dot-org/checkout-success.html',
-    cancelUrl: 'https://metacoders-dot-org/checkout-fail.html',
+    successUrl: 'https://metacoders.org@(prefix/pathify checkout-success-top-path)',
+    cancelUrl: 'https://metacoders.org@(prefix/pathify checkout-fail-top-path)',
     billingAddressCollection: 'required',
     })
    .then(function (result) {
@@ -164,24 +164,35 @@
    });
   })();}))
 
-(define (camp-buy-button price sku key)
-  (list (button-primary id:(~a "checkout-button-" sku)
+(define (camp-modal-buy-button price discount sku key)
+  (list (button-primary id:(~a "modal-checkout-button-" sku)
                         class: "m-0 col-sm-4" 
                         style: (properties border-radius: "0 0 0.20rem 0")
-                          (~a "Enroll Now for $" price))
+                          ;(~a "Enroll Now for $" price)
+                          (if (> discount 0)
+                              (list "Enroll Now for "
+                                    (s class: "text-danger"
+                                       (~a "$" price))
+                                    " $" (- price discount))
+                              (~a "Enroll Now for $" price))
+                          )
         (div id:(~a "error-message" sku))
         (script src:"https://js.stripe.com/v3")
         @script/inline{
  (function() {
   var stripe = Stripe('@key');
 
-  var checkoutButton = document.getElementById('checkout-button-@sku');
+  var checkoutButton = document.getElementById('modal-checkout-button-@sku');
   checkoutButton.addEventListener('click', function () {
-
+                                                        
+   var quantity = parseInt(
+          document.getElementById("modal-student-quantity-@sku").value
+        );
+        
    stripe.redirectToCheckout({
-    items: [{sku: '@sku', quantity: 1}],
-    successUrl: 'https://metacoders-dot-org/checkout-success.html',
-    cancelUrl: 'https://metacoders-dot-org/checkout-fail.html',
+    items: [{sku: '@sku', quantity: quantity}],
+    successUrl: 'https://metacoders.org@(prefix/pathify checkout-success-top-path)',
+    cancelUrl: 'https://metacoders.org@(prefix/pathify checkout-fail-top-path)',
     billingAddressCollection: 'required',
     })
    .then(function (result) {
@@ -220,8 +231,8 @@
         
    stripe.redirectToCheckout({
     items: [{sku: '@sku', quantity: quantity}],
-    successUrl: 'https://metacoders-dot-org/checkout-success.html',
-    cancelUrl: 'https://metacoders-dot-org/checkout-fail.html',
+    successUrl: 'https://metacoders.org@(prefix/pathify checkout-success-top-path)',
+    cancelUrl: 'https://metacoders.org@(prefix/pathify checkout-fail-top-path)',
     billingAddressCollection: 'required',
     })
    .then(function (result) {
@@ -655,8 +666,8 @@ function setDonate@amount() {
    
    stripe.redirectToCheckout({
     items: [{plan: donateSku, quantity: 1}],
-    successUrl: 'https://metacoders-dot-org/checkout-success.html',
-    cancelUrl: 'https://metacoders-dot-org/checkout-fail.html',
+    successUrl: 'https://metacoders.org@(prefix/pathify checkout-success-top-path)',
+    cancelUrl: 'https://metacoders.org@(prefix/pathify checkout-fail-top-path)',
     billingAddressCollection: 'required',
     })
    .then(function (result) {
@@ -686,8 +697,8 @@ function setDonate@amount() {
    
    stripe.redirectToCheckout({
     items: [{sku: donateSku, quantity: 1}],
-    successUrl: 'https://metacoders-dot-org/checkout-success.html',
-    cancelUrl: 'https://metacoders-dot-org/checkout-fail.html',
+    successUrl: 'https://metacoders.org@(prefix/pathify checkout-success-top-path)',
+    cancelUrl: 'https://metacoders.org@(prefix/pathify checkout-fail-top-path)',
     billingAddressCollection: 'required',
     submitType: 'donate',
     })
@@ -763,6 +774,7 @@ function setMonthlyDonate@amount() {
               address
               address-link
               price
+              discount
               check-in-time
               camp-time
               lunch-time
@@ -779,13 +791,14 @@ function setMonthlyDonate@amount() {
                    #:address       [address ""]
                    #:address-link  [address-link ""]
                    #:price         [price 300]
+                   #:discount      [discount 0]
                    #:check-in-time [check-in-time ""]
                    #:camp-time     [camp-time ""]
                    #:lunch-time    [lunch-time  ""]
                    #:pickup-time   [pickup-time ""]
                    #:meeting-dates [meeting-dates '()]
                    #:status        [status 'open])
-  (camp topic sku image-url description grade-range location address address-link price check-in-time camp-time lunch-time pickup-time meeting-dates status))
+  (camp topic sku image-url description grade-range location address address-link price discount check-in-time camp-time lunch-time pickup-time meeting-dates status))
 
 (define (course-modal #:id modal-id
                       #:topic topic
@@ -852,28 +865,61 @@ function setMonthlyDonate@amount() {
                                           )]))
 ; Get earliest meeting-date and the latest meeting-date
 (define (camps->camp-calendar camps)
+  (define sorted-camps
+    (sort camps date<? #:key (compose meeting-date->date
+                                      first
+                                      camp-meeting-dates)))
+  (define camp-start-dates
+    (remove-duplicates (map (compose meeting-date->date
+                                first
+                                camp-meeting-dates) sorted-camps)))
+  
+  (define min-iso-week (apply min (map ->iso-week camp-start-dates)))
+  (define max-iso-week (apply max (map ->iso-week camp-start-dates)))
+
+  (define range-iso-week (range min-iso-week (add1 max-iso-week)))
+
+  ;sort this by definition, topic, or date?
   (define topics-list (remove-duplicates (map camp-topic camps)))
   
   (define (topic->row topic)
-    (define topic-camps (filter (λ(c) (eq? (camp-topic c) topic)) camps))
+    (define topic-camps (filter (λ(c) (eq? (camp-topic c) topic)) sorted-camps))
     ;Todo: order camps by date and pad missing weeks
     
     (define grade-range (camp-grade-range (first topic-camps)))
     
     (define (camp->table-cell camp)
+      (define price (camp-price camp))
+      (define discount (camp-discount camp))
       (td (camp->enroll-or-full-button camp) (br)
           (camp-camp-time camp) (br)
-          (~a "$" (camp-price camp))
+          ;(~a "$" (camp-price camp))
+          (if (> discount 0)
+              (list (s class: "text-danger"
+                       (~a "$" price))
+                    " $" (- price discount))
+              (~a "$" price))
           (if (eq? (camp-status camp) 'full)
               (camp->camp-full-modal  camp)
               (camp->camp-enroll-modal camp))))
+
+    (define (camp-or-no-camp iso-week)
+      (define camp
+        (findf (λ (c) (eq? iso-week
+                           (->iso-week
+                            (meeting-date->date
+                             (first (camp-meeting-dates c)))))) topic-camps))
+      (if camp
+          (camp->table-cell camp)
+          (td class: "align-middle" "No Camp")
+          ))
     
     (define table-data
       (append (list (td class: "p-1 align-middle"
                         style: (properties border-right: "none"
                                            width: "1rem")
                         (img src: (camp-image-url (first topic-camps))
-                             class: "rounded"
+                             class: "rounded border border-secondary"
                              width: "100rem"
                              height: "100rem"
                              style: (properties object-fit: "cover")))
@@ -885,15 +931,10 @@ function setMonthlyDonate@amount() {
                            'data-toggle: "modal" 'data-target: (~a "#topic-info-modal-" (camp-sku (first topic-camps)))
                            (button-secondary class: "btn-sm mt-2" "Camp Info"))
                         (camp->topic-info-modal (first topic-camps))))
-              (map camp->table-cell topic-camps)))
+              (map camp-or-no-camp range-iso-week)))
                     
     (apply tr table-data))
   
-  (define camp-start-dates
-    (remove-duplicates (map (compose meeting-date->date
-                                first
-                                camp-meeting-dates) camps)))
-
   (define (date->date-range date)
     (define end-date (+days date 4))
     (if (= (->month date) (->month end-date))
@@ -901,69 +942,29 @@ function setMonthlyDonate@amount() {
         (~a (~t date "MMM d") " - " (~t end-date "MMM d")))
     )
     
-  (define (camps->schedule-header camps)
+  (define (camps-schedule-header)
+    (define range-camp-week (range (length range-iso-week))) ;starting at 0
+    (define first-date (first camp-start-dates))
+    
+    (define (camp-week->header index)
+      (th 'scope: "col"
+          (date->date-range
+           (+weeks first-date index))))
+    
     (thead (apply tr
                   (list (th class: "text-left"
                                'scope: "col"
                                'colspan: 2
                                "Courses"))
-                  (map (compose (curry th 'scope: "col")
-                                date->date-range)
-                       camp-start-dates)
+                  (map camp-week->header
+                       range-camp-week)
                   )))
 
   ;TODO: Make this a dynamic table
   (div class: "table-responsive"
    (apply (curry table class: "table table-striped table-bordered bg-white text-center"
-                (camps->schedule-header camps))
+                (camps-schedule-header))
          (map topic->row topics-list)
-         ))
-  )
-
-#;(define (camps->camp-calendar camps)
-  (define topics-list (remove-duplicates (map camp-topic camps)))
-  (define (topic->row topic)
-    (define topic-camps (filter (λ(c) (eq? (camp-topic c) topic)) camps))
-    (define grade-range (camp-grade-range (first topic-camps)))
-    (tr (td class: "p-1 align-middle"
-            style: (properties border-right: "none"
-                               width: "1rem")
-            (img src: (camp-image-url (first topic-camps))
-                 class: "rounded"
-                 width: "100rem"
-                 height: "100rem"
-                 style: (properties object-fit: "cover")))
-        (td class: "text-left"
-            style: (properties border-left: "none")
-            (strong topic) (br)
-            "Grades: " grade-range (br)
-            (a href: "#"
-               'data-toggle: "modal" 'data-target: (~a "#topic-info-modal-" (camp-sku (first topic-camps)))
-               (button-secondary class: "btn-sm mt-2" "Camp Info"))
-            (camp->topic-info-modal (first topic-camps)))
-        (td (camp->enroll-or-full-button (first topic-camps)) (br)
-            (camp-camp-time (first topic-camps)) (br)
-            (~a "$" (camp-price (first topic-camps)))
-            (if (eq? (camp-status (first topic-camps)) 'full)
-                (camp->camp-full-modal  (first topic-camps))
-                (camp->camp-enroll-modal (first topic-camps))))
-        (td) (td) (td) (td)))
-
-  ;TODO: Make this a dynamic table
-  (div class: "table-responsive"
-   (apply (curry table class: "table table-striped table-bordered bg-white text-center"
-                (thead (tr (th class: "text-left"
-                               'scope: "col"
-                               'colspan: 2
-                               "Courses")
-                           (th 'scope: "col" "Jun 15 - 19") ;earliest date-range of camps
-                           (th 'scope: "col" "Jun 22 - 26")
-                           (th 'scope: "col" "Jun 29 - Jul 3")
-                           (th 'scope: "col" "July 6 - 10")
-                           (th 'scope: "col" "July 13 - 17") ;latest date-range of camps
-                           )))
-         (map topic->row topics-list)
-
          ))
   )
 
@@ -979,12 +980,13 @@ function setMonthlyDonate@amount() {
   (define pickup-time (camp-pickup-time camp))
   (define meeting-dates (camp-meeting-dates camp))
   (define price (camp-price camp))
+  (define discount (camp-discount camp))
   (define description (camp-description camp))
   (define address (camp-address camp))
   (define address-link (camp-address-link camp))
   (define modal-id (~a "camp-enroll-modal-" sku))
   
-  (define modal-buy-button (camp-buy-button price sku "pk_test_Jd6aRCVssUu8YfSvltaT3tvU00je9fQbkA"))
+  (define modal-buy-button (camp-modal-buy-button price discount sku "pk_test_Jd6aRCVssUu8YfSvltaT3tvU00je9fQbkA"))
   
   (modal id: modal-id 'tabindex: "-1" role: "dialog"
      (modal-dialog class: "modal-lg modal-dialog-centered"
@@ -1016,10 +1018,11 @@ function setMonthlyDonate@amount() {
                      (if lunch-time (li "All-you-can-eat lunch at the campus dining hall") '())
                      (li "Outdoor time, team-building, & teamerwork excercises"))
                  (h5 "How to Purchase")
-                 (p "To purchase this one half-day camp, use the Enroll Now button below. Alternatively, if you plan to purchase multiple half-day camps, download our registration form below to receive additional discounts! The registration form is best if you plan to purchase both a morning & afternoon camp to make a full-day camp OR if you plan to purchase multiple camp weeks.")
+                 (p "To purchase this one half-day camp, set the number of students and use the Enroll Now button below. Alternatively, if you plan to purchase multiple half-day camps, download our registration form below to receive additional discounts! The registration form is best if you plan to purchase both a morning & afternoon camp to make a full-day camp OR if you plan to purchase multiple camp weeks.")
                  (br)
                  (p "By enrolling in any of these sessions, you agree to the " (link-to terms-and-conditions-path
                                                                                       "terms and conditions") ".")
+                 (modal-student-spinner sku price discount)
                  )))
           (modal-footer class: "text-center p-0"
            (div class: "btn-group w-100"
@@ -1082,7 +1085,7 @@ function setMonthlyDonate@amount() {
            (row class: "text-left"
                 (col-lg-6 class: "col-xs-12"
                  (img src: image-url
-                      class: "img-fluid rounded")
+                      class: "img-fluid rounded border border-secondary")
                  (h5 class: "mt-4" "Camp Schedule")
                  (table class: "table table-striped table-bordered"
                    (tr (td (b "Check-in:")) (td check-in-time))
