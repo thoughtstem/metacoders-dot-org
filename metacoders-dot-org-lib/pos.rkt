@@ -23,8 +23,8 @@
          "./imgs.rkt"
          "./paths.rkt")
 
-(define KEY ;"pk_live_Kd7tDKVnPMvyCyk5oAuSkbju00pa0xJPPL"
-            "pk_test_Jd6aRCVssUu8YfSvltaT3tvU00je9fQbkA"
+(define KEY "pk_live_Kd7tDKVnPMvyCyk5oAuSkbju00pa0xJPPL"
+            ;"pk_test_Jd6aRCVssUu8YfSvltaT3tvU00je9fQbkA"
   )
 
 (define (city-page-links-section)
