@@ -831,8 +831,8 @@ function setMonthlyDonate@amount() {
                   (tr (td (b "Price: ")) (td (if (> discount 0)
                                                  (list (s class: "text-danger"
                                                           (~a "$" price))
-                                                       " $" (- price discount))
-                                                 (~a "$" price))))
+                                                       " $" (- price discount) "/student")
+                                                 (~a "$" price "/student"))))
                   (tr (td (b "Schedule: ")) (td (print-dates meeting-dates)))))
                 (col-lg-6 class: "col-xs-12 d-flex flex-column justify-content-between"
                  (div (h5 "Course Description:")
@@ -1006,7 +1006,11 @@ function setMonthlyDonate@amount() {
                    (tr (td (b "Grades: ")) (td grade-range))
                    (tr (td (b "Start Date: ")) (td (first meeting-dates)))
                    (tr (td (b "Location: ")) (td location (br) (a target:"_blank" href: address-link address)))
-                   (tr (td (b "Price: ")) (td (~a "$" price)))
+                   (tr (td (b "Price: ")) (td (if (> discount 0)
+                                                 (list (s class: "text-danger"
+                                                          (~a "$" price))
+                                                       " $" (- price discount) "/student")
+                                                 (~a "$" price "/student"))))
                    (tr (td (b "Dates: ")) (td (print-dates meeting-dates)))))
                  )
                 (col-lg-6 class: "col-xs-12"
@@ -1061,6 +1065,7 @@ function setMonthlyDonate@amount() {
   (define pickup-time (camp-pickup-time camp))
   (define meeting-dates (camp-meeting-dates camp))
   (define price (camp-price camp))
+  (define discount (camp-discount camp))
   (define description (camp-description camp))
   (define address (camp-address camp))
   (define address-link (camp-address-link camp))
@@ -1095,7 +1100,11 @@ function setMonthlyDonate@amount() {
                    (tr (td (b "Grades: ")) (td grade-range))
                    (tr (td (b "Start Date: ")) (td (first meeting-dates)))
                    (tr (td (b "Location: ")) (td location (br) (a target:"_blank" href: address-link address)))
-                   (tr (td (b "Price: ")) (td (~a "$" price)))
+                   (tr (td (b "Price: ")) (td (if (> discount 0)
+                                                 (list (s class: "text-danger"
+                                                          (~a "$" price))
+                                                       " $" (- price discount) "/student")
+                                                 (~a "$" price "/student"))))
                    (tr (td (b "Dates: ")) (td (print-dates meeting-dates)))))
                  )
                 (col-lg-6 class: "col-xs-12"
