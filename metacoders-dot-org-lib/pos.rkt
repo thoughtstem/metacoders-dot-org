@@ -111,20 +111,20 @@
                                                          (container
                                                           (h2 "Register for School-Year Classes")
                                                           (p "Coming Soon!")))
-                                             (camps->camp-registration summer-camps camp-pricing))]
-         [(empty? summer-camps) (list (courses->course-registration school-year-courses)
+                                             (camps->camp-registration city-name summer-camps camp-pricing))]
+         [(empty? summer-camps) (list (courses->course-registration city-name school-year-courses)
                                       (jumbotron  id: "summer-camps"
                                                   class: "mb-0 pt-5 pb-5 text-center bg-white"
                                                   (container
                                                    (h2 "Register for Summer Camps")
                                                    (p "Coming Soon!"))))]
-         [else (list (courses->course-registration school-year-courses)
-                     (camps->camp-registration summer-camps camp-pricing))
+         [else (list (courses->course-registration city-name school-year-courses)
+                     (camps->camp-registration city-name summer-camps camp-pricing))
           ])
    (have-questions-section)
    ))
 
-(define (course-buy-button price discount sku key #:suffix [suffix ""])
+(define (course-buy-button price discount sku key url-suffix #:suffix [suffix ""])
   (list (button-primary id:(~a "checkout-button-" sku)
                         class: "m-0 col-sm-6" 
                         style: (properties border-radius: "0 0 0.18rem 0"
@@ -151,7 +151,7 @@
         
    stripe.redirectToCheckout({
     items: [{sku: '@sku', quantity: quantity}],
-    successUrl: 'https://metacoders.org@(prefix/pathify checkout-success-top-path)',
+    successUrl: 'https://metacoders.org@(prefix/pathify checkout-success-top-path)@url-suffix',
     cancelUrl: 'https://metacoders.org@(prefix/pathify checkout-fail-top-path)',
     billingAddressCollection: 'required',
     })
@@ -164,7 +164,7 @@
    });
   })();}))
 
-(define (camp-modal-buy-button price discount sku key)
+(define (camp-modal-buy-button price discount sku key url-suffix)
   (list (button-primary id:(~a "modal-checkout-button-" sku)
                         class: "m-0 col-sm-4" 
                         style: (properties border-radius: "0 0 0.20rem 0")
@@ -191,7 +191,7 @@
         
    stripe.redirectToCheckout({
     items: [{sku: '@sku', quantity: quantity}],
-    successUrl: 'https://metacoders.org@(prefix/pathify checkout-success-top-path)',
+    successUrl: 'https://metacoders.org@(prefix/pathify checkout-success-top-path)@url-suffix',
     cancelUrl: 'https://metacoders.org@(prefix/pathify checkout-fail-top-path)',
     billingAddressCollection: 'required',
     })
@@ -204,7 +204,7 @@
    });
   })();}))
 
-(define (course-modal-buy-button price discount sku key #:suffix [suffix ""])
+(define (course-modal-buy-button price discount sku key url-suffix #:suffix [suffix ""])
   (list (button-primary id:(~a "modal-checkout-button-" sku)
                         class: "m-0 col-sm-6" 
                         style: (properties border-radius: "0 0 0.18rem 0"
@@ -231,7 +231,7 @@
         
    stripe.redirectToCheckout({
     items: [{sku: '@sku', quantity: quantity}],
-    successUrl: 'https://metacoders.org@(prefix/pathify checkout-success-top-path)',
+    successUrl: 'https://metacoders.org@(prefix/pathify checkout-success-top-path)@url-suffix',
     cancelUrl: 'https://metacoders.org@(prefix/pathify checkout-fail-top-path)',
     billingAddressCollection: 'required',
     })
@@ -397,15 +397,18 @@
                       "Phone Number: ________\n"
                       "Student Name: ________\n\n"))))
 
-(define (course->enroll-or-full-button course)
+(define (course->enroll-or-full-button city course)
   (define key KEY)
   
   (define price (course-price course))
   (define discount (course-discount course))
   (define sku (course-sku course))
+  (define url-suffix (~a "?city=" (uri-encode city)
+                         "&location=" (uri-encode (course-location course))
+                         "&topic=" (uri-encode (course-topic course))))
   
-  (cond [(eq? (course-status course) 'open) (course-buy-button price discount sku key)]
-        [(eq? (course-status course) 'almost-full) (course-buy-button price discount sku key #:suffix " (Almost Full)")] ;not used
+  (cond [(eq? (course-status course) 'open) (course-buy-button price discount sku key url-suffix)]
+        [(eq? (course-status course) 'almost-full) (course-buy-button price discount sku key url-suffix #:suffix " (Almost Full)")] ;not used
         [(eq? (course-status course) 'full) (a href: (course->waitlist-link course)
                                           class: "btn btn-danger col-sm-6"
                                           style: (properties border-radius: "0 0 0.18rem 0"
@@ -413,15 +416,18 @@
                                           "Full (Click to Join Waitlist)"
                                           )]))
 
-(define (course->modal-enroll-or-full-button course)
+(define (course->modal-enroll-or-full-button city course)
   (define key KEY)
   
   (define price (course-price course))
   (define discount (course-discount course))
   (define sku (course-sku course))
+  (define url-suffix (~a "?city=" (uri-encode city)
+                         "&location=" (uri-encode (course-location course))
+                         "&topic=" (uri-encode (course-topic course))))
   
-  (cond [(eq? (course-status course) 'open) (course-modal-buy-button price discount sku key)]
-        [(eq? (course-status course) 'almost-full) (course-modal-buy-button price discount sku key #:suffix " (Almost Full)")] ;not used
+  (cond [(eq? (course-status course) 'open) (course-modal-buy-button price discount sku key url-suffix)]
+        [(eq? (course-status course) 'almost-full) (course-modal-buy-button price discount sku key url-suffix #:suffix " (Almost Full)")] ;not used
         [(eq? (course-status course) 'full) (a href: (course->waitlist-link course)
                                           class: "btn btn-danger col-sm-6"
                                           style: (properties border-radius: "0 0 0.18rem 0"
@@ -429,7 +435,7 @@
                                           "Full (Click to Join Waitlist)"
                                           )]))
 
-(define (course->course-card c)
+(define (course->course-card city c)
   (define key KEY)
 
   (define topic (course-topic c))
@@ -472,7 +478,7 @@
                              (button-secondary class: "w-100 h-100" 
                                                style: (properties border-radius: "0 0 0 0.18rem")
                                                "Class Details"))
-                          (course->enroll-or-full-button c))
+                          (course->enroll-or-full-button city c))
                      (course-modal #:id (~a "details-modal-" sku)
                                    #:topic         topic
                                    #:description   description
@@ -486,12 +492,12 @@
                                    #:price         price
                                    #:discount      discount
                                    #:quantity-spinner (modal-student-spinner sku price discount)
-                                   #:buy-button (course->modal-enroll-or-full-button c)))
+                                   #:buy-button (course->modal-enroll-or-full-button city c)))
         )
   )
 
-(define (courses->course-registration courses)
-  (define course-cards (map course->course-card courses))
+(define (courses->course-registration city courses)
+  (define course-cards (map (curry course->course-card city) courses))
   (jumbotron  id: "school-year-classes"
               class: "mb-0 pt-5 pb-5 text-center"
               (container
@@ -569,7 +575,7 @@
                  (a href: "mailto:contact@metacoders.org" "contact@metacoders.org")
                  " or call " (strong "858-869-9430")))))
 
-(define (camps->camp-registration camps camp-pricing)
+(define (camps->camp-registration city camps camp-pricing)
   (define location-name (camp-location (first camps)))
   
   (define (k-2-camp? c)
@@ -590,11 +596,11 @@
                (br id: "k-2-summer-options")
                (h5 class: "mt-5"
                    "Summer Camp Schedule for Students Entering K-2nd")
-               (camps->camp-calendar k-2-camps)
+               (camps->camp-calendar city k-2-camps)
                (br id: "3-6-summer-options")
                (h5 class: "mt-5"
                    "Summer Camp Schedule for Students Entering 3rd-6th")
-               (camps->camp-calendar 3-6-camps)
+               (camps->camp-calendar city 3-6-camps)
                camp-pricing
                ;(summer-camp-pricing-at location-name)
                (p "By enrolling in any of these sessions, you agree to the " (link-to terms-and-conditions-path
@@ -625,8 +631,7 @@ function setDonate@amount() {
                       (rest items)))))
 
 (define (donate-button items #:mode [mode 'give-once])
-  (define key KEY)  ;MetaCoders Stripe
-  ;(define key "pk_test_BZvU77rH9zfNQvab1EpKB7GK00ZxANulPE") ;Sonny's Stripe
+  (define key KEY)
   (define button-id (if (eq? mode 'monthly)
                         "monthly-donate-button"
                         "donate-button"))
@@ -864,7 +869,7 @@ function setMonthlyDonate@amount() {
                                           "Full (Click to Join Waitlist)"
                                           )]))
 ; Get earliest meeting-date and the latest meeting-date
-(define (camps->camp-calendar camps)
+(define (camps->camp-calendar city camps)
   (define sorted-camps
     (sort camps date<? #:key (compose meeting-date->date
                                       first
@@ -901,7 +906,7 @@ function setMonthlyDonate@amount() {
               (~a "$" price))
           (if (eq? (camp-status camp) 'full)
               (camp->camp-full-modal  camp)
-              (camp->camp-enroll-modal camp))))
+              (camp->camp-enroll-modal city camp))))
 
     (define (camp-or-no-camp iso-week)
       (define camp
@@ -968,7 +973,7 @@ function setMonthlyDonate@amount() {
          ))
   )
 
-(define (camp->camp-enroll-modal camp)
+(define (camp->camp-enroll-modal city camp)
   (define location  (camp-location camp))
   (define topic     (camp-topic camp))
   (define sku       (camp-sku camp))
@@ -985,8 +990,12 @@ function setMonthlyDonate@amount() {
   (define address (camp-address camp))
   (define address-link (camp-address-link camp))
   (define modal-id (~a "camp-enroll-modal-" sku))
+
+  (define url-suffix (~a "?city=" (uri-encode city)
+                         "&location=" (uri-encode (camp-location course))
+                         "&topic=" (uri-encode (camp-topic course))))
   
-  (define modal-buy-button (camp-modal-buy-button price discount sku "pk_test_Jd6aRCVssUu8YfSvltaT3tvU00je9fQbkA"))
+  (define modal-buy-button (camp-modal-buy-button price discount sku KEY url-suffix))
   
   (modal id: modal-id 'tabindex: "-1" role: "dialog"
      (modal-dialog class: "modal-lg modal-dialog-centered"
@@ -1071,7 +1080,6 @@ function setMonthlyDonate@amount() {
   (define address-link (camp-address-link camp))
   (define modal-id (~a "camp-full-modal-" sku))
   
-  ;(define modal-buy-button (camp-buy-button price sku "pk_test_Jd6aRCVssUu8YfSvltaT3tvU00je9fQbkA"))
   (define camp-full-button (a href: (camp->waitlist-link camp)
                               class: "btn btn-danger m-0 col-sm-6"
                               ;(button-primary
