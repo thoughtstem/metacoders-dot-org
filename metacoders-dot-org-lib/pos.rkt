@@ -403,9 +403,22 @@
   (define price (course-price course))
   (define discount (course-discount course))
   (define sku (course-sku course))
-  (define url-suffix (~a "?city=" (uri-encode city)
-                         "&location=" (uri-encode (course-location course))
-                         "&topic=" (uri-encode (course-topic course))))
+  
+  (define url-suffix (~a "?city="     (form-urlencoded-encode city)
+                         "&location=" (form-urlencoded-encode (course-location course))
+                         "&topic="    (form-urlencoded-encode (course-topic course))
+                         
+                         "&grades="            (form-urlencoded-encode (course-grade-range course))
+                         "&total-meetings="    (form-urlencoded-encode (~a (length (course-meeting-dates course))))
+                         "&meets-on="          (form-urlencoded-encode (~a (meeting-date->weekday (first (course-meeting-dates course))) "s"))
+                         "&time="              (form-urlencoded-encode (~a (course-start-time course) " - " (course-end-time course)))
+                         "&start-date="        (form-urlencoded-encode (first (course-meeting-dates course)))
+                         "&address="           (form-urlencoded-encode (course-address course))
+                         "&address-link="      (form-urlencoded-encode (course-address-link course))
+                         "&price="             (form-urlencoded-encode (~a "$" (- price discount) "/student"))
+                         "&meeting-dates="     (form-urlencoded-encode (print-dates (course-meeting-dates course)))
+                         "&description="       (form-urlencoded-encode (course-description course))
+                         ))
   
   (cond [(eq? (course-status course) 'open) (course-buy-button price discount sku key url-suffix)]
         [(eq? (course-status course) 'almost-full) (course-buy-button price discount sku key url-suffix #:suffix " (Almost Full)")] ;not used
@@ -422,9 +435,22 @@
   (define price (course-price course))
   (define discount (course-discount course))
   (define sku (course-sku course))
-  (define url-suffix (~a "?city=" (uri-encode city)
-                         "&location=" (uri-encode (course-location course))
-                         "&topic=" (uri-encode (course-topic course))))
+  
+  (define url-suffix (~a "?city="     (form-urlencoded-encode city)
+                         "&location=" (form-urlencoded-encode (course-location course))
+                         "&topic="    (form-urlencoded-encode (course-topic course))
+                         
+                         "&grades="            (form-urlencoded-encode (course-grade-range course))
+                         "&total-meetings="    (form-urlencoded-encode (~a (length (course-meeting-dates course))))
+                         "&meets-on="          (form-urlencoded-encode (~a (meeting-date->weekday (first (course-meeting-dates course))) "s"))
+                         "&time="              (form-urlencoded-encode (~a (course-start-time course) " - " (course-end-time course)))
+                         "&start-date="        (form-urlencoded-encode (first (course-meeting-dates course)))
+                         "&address="           (form-urlencoded-encode (course-address course))
+                         "&address-link="      (form-urlencoded-encode (course-address-link course))
+                         "&price="             (form-urlencoded-encode (~a "$" (- price discount) "/student"))
+                         "&meeting-dates="     (form-urlencoded-encode (print-dates (course-meeting-dates course)))
+                         "&description="       (form-urlencoded-encode (course-description course))
+                         ))
   
   (cond [(eq? (course-status course) 'open) (course-modal-buy-button price discount sku key url-suffix)]
         [(eq? (course-status course) 'almost-full) (course-modal-buy-button price discount sku key url-suffix #:suffix " (Almost Full)")] ;not used
@@ -991,9 +1017,21 @@ function setMonthlyDonate@amount() {
   (define address-link (camp-address-link camp))
   (define modal-id (~a "camp-enroll-modal-" sku))
 
-  (define url-suffix (~a "?city=" (uri-encode city)
-                         "&location=" (uri-encode (camp-location course))
-                         "&topic=" (uri-encode (camp-topic course))))
+  (define url-suffix (~a "?city="     (form-urlencoded-encode city)
+                         "&location=" (form-urlencoded-encode location)
+                         "&topic="    (form-urlencoded-encode topic)
+                         
+                         "&grades="            (form-urlencoded-encode grade-range)
+                         "&total-meetings="    (form-urlencoded-encode (~a (length meeting-dates)))
+                         "&meets-on="          (form-urlencoded-encode "Weekdays")
+                         "&time="              (form-urlencoded-encode camp-time)
+                         "&start-date="        (form-urlencoded-encode (first meeting-dates))
+                         "&address="           (form-urlencoded-encode address)
+                         "&address-link="      (form-urlencoded-encode address-link)
+                         "&price="             (form-urlencoded-encode (~a "$" (- price discount) "/student"))
+                         "&meeting-dates="     (form-urlencoded-encode (print-dates meeting-dates))
+                         "&description="       (form-urlencoded-encode description)
+                         ))
   
   (define modal-buy-button (camp-modal-buy-button price discount sku KEY url-suffix))
   
