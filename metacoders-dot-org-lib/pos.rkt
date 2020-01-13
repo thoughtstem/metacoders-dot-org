@@ -191,7 +191,7 @@
         
    stripe.redirectToCheckout({
     items: [{sku: '@sku', quantity: quantity}],
-    successUrl: 'https://metacoders.org@(prefix/pathify checkout-success-top-path)@url-suffix',
+    successUrl: 'https://metacoders.org@(prefix/pathify camp-checkout-success-top-path)@url-suffix',
     cancelUrl: 'https://metacoders.org@(prefix/pathify checkout-fail-top-path)',
     billingAddressCollection: 'required',
     })
@@ -697,7 +697,7 @@ function setDonate@amount() {
    
    stripe.redirectToCheckout({
     items: [{plan: donateSku, quantity: 1}],
-    successUrl: 'https://metacoders.org@(prefix/pathify checkout-success-top-path)',
+    successUrl: 'https://metacoders.org@(prefix/pathify donate-success-top-path)',
     cancelUrl: 'https://metacoders.org@(prefix/pathify checkout-fail-top-path)',
     billingAddressCollection: 'required',
     })
@@ -728,7 +728,7 @@ function setDonate@amount() {
    
    stripe.redirectToCheckout({
     items: [{sku: donateSku, quantity: 1}],
-    successUrl: 'https://metacoders.org@(prefix/pathify checkout-success-top-path)',
+    successUrl: 'https://metacoders.org@(prefix/pathify donate-success-top-path)',
     cancelUrl: 'https://metacoders.org@(prefix/pathify checkout-fail-top-path)',
     billingAddressCollection: 'required',
     submitType: 'donate',
@@ -1022,8 +1022,8 @@ function setMonthlyDonate@amount() {
                          "&topic="    (form-urlencoded-encode topic)
                          
                          "&grades="            (form-urlencoded-encode grade-range)
-                         "&total-meetings="    (form-urlencoded-encode (~a (length meeting-dates)))
-                         "&meets-on="          (form-urlencoded-encode "Weekdays")
+                         ;"&total-meetings="    (form-urlencoded-encode (~a (length meeting-dates)))
+                         ;"&meets-on="          (form-urlencoded-encode "Weekdays")
                          "&time="              (form-urlencoded-encode camp-time)
                          "&start-date="        (form-urlencoded-encode (first meeting-dates))
                          "&address="           (form-urlencoded-encode address)

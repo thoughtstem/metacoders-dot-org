@@ -47,4 +47,7 @@
       (sub-site "scripts"
                 (setup-scripts))
       (checkout-success)
-      (checkout-fail))))
+      (checkout-fail)
+      (camp-checkout-success)
+      (donate-success)
+      )))
