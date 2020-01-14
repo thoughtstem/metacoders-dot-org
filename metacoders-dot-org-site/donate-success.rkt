@@ -2,5 +2,5 @@
 
 (require metacoders-dot-org-core-pages)
 
-(provide checkout-success)
+(provide donate-success)
 

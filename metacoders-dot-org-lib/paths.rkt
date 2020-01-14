@@ -31,8 +31,9 @@
 (define coaches-top-path          (list "coaches.html"))
 (define terms-and-conditions-path          (list "terms-and-conditions.html"))
 
-(define checkout-success-top-path        (list "checkout-success.html"))
+(define checkout-success-top-path      (list "checkout-success.html"))
+(define camp-checkout-success-top-path (list "camp-checkout-success.html"))
+(define donate-success-top-path        (list "donate-success.html"))
+
 (define checkout-fail-top-path        (list "checkout-fail.html"))
 
-(define camp-checkout-success-top-path        (list "camp-checkout-success.html"))
-(define donate-success-top-path        (list "donate-success.html"))

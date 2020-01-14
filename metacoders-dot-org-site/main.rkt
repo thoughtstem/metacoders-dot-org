@@ -21,7 +21,11 @@
          "./setup-scripts.rkt"
 
          "./checkout-success.rkt"
-         "./checkout-fail.rkt")
+         "./camp-checkout-success.rkt"
+         "./donate-success.rkt"
+         
+         "./checkout-fail.rkt"
+         )
 
 (define (metacoders.org)
   (flatten
@@ -47,7 +51,7 @@
       (sub-site "scripts"
                 (setup-scripts))
       (checkout-success)
-      (checkout-fail)
       (camp-checkout-success)
       (donate-success)
+      (checkout-fail)
       )))
