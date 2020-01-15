@@ -13,7 +13,10 @@
          summer-camp-intern-top-path
          terms-and-conditions-path
          checkout-success-top-path
-         checkout-fail-top-path)
+         checkout-fail-top-path
+         camp-checkout-success-top-path
+         donate-success-top-path
+         )
 
 (define index-path                (list "index.html"))
 (define city-search-path          (list "city-search.html"))
@@ -28,5 +31,9 @@
 (define coaches-top-path          (list "coaches.html"))
 (define terms-and-conditions-path          (list "terms-and-conditions.html"))
 
-(define checkout-success-top-path        (list "checkout-success.html"))
+(define checkout-success-top-path      (list "checkout-success.html"))
+(define camp-checkout-success-top-path (list "camp-checkout-success.html"))
+(define donate-success-top-path        (list "donate-success.html"))
+
 (define checkout-fail-top-path        (list "checkout-fail.html"))
+
