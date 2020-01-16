@@ -1,7 +1,6 @@
 #lang racket
 
 (provide imgs
-         logo-img-path
          lindsey-img-path
          judith-img-path
          sonny-img-path
@@ -23,6 +22,7 @@
          volunteer-scientist-img-path
          volunteer-scientist-banner-path
          volunteer-coder-img-path
+         volunteer-coder-banner-path
          tech-coordinator-img-path
          tech-coordinator-banner-path
          in-school-img-path
@@ -51,188 +51,178 @@
 
 (define-runtime-path img "img")
 
-(define logo-img-path
-  (list "img" "logo.png"))
-
-(define lindsey-img-path
-  (list "img" "lindsey.jpg"))
-(define judith-img-path
-  (list "img" "judith.jpg"))
-(define sara-img-path
-  (list "img" "sara.jpg"))
-(define sonny-img-path
-  (list "img" "sonny.jpg"))
-(define games-svg-path
-  (list "img" "games.svg"))
-(define brain-svg-path
-  (list "img" "brain.svg"))
-(define story-svg-path
-  (list "img" "story.svg"))
-(define takes-a-village-path
-  (list "img" "takes-a-village.jpg"))
-(define takes-a-village-2-path
-  (list "img" "takes-a-village-2.jpg"))
-(define takes-a-village-3-path
-  (list "img" "takes-a-village-3.jpg"))
-(define summer-camps-img-path
-  (list "img" "summer-camps.jpg"))
 (define homepage-banner-path
-  (list "img" "homepage-banner.jpg"))
+  (list "img" "home" "child-coding-in-weekly-class-camp.jpg"))
+(define lindsey-img-path
+  (list "img" "home" "lindsey-handley-metacoders-co-founder-vice-president.jpg"))
+(define judith-img-path
+  (list "img" "home" "judith-eisenberg-coding-educator.jpg"))
+(define sara-img-path
+  (list "img" "home" "sara-lucchini-computer-science-curriculum-developer.jpg"))
+(define sonny-img-path
+  (list "img" "home" "sonny-najar-programming-language-developer.jpg"))
+(define games-svg-path
+  (list "img" "home" "games-classroom-gamification.svg"))
+(define brain-svg-path
+  (list "img" "home" "brain-metacognition.svg"))
+(define story-svg-path
+  (list "img" "home" "storytelling-for-education.svg"))
+(define takes-a-village-path
+  (list "img" "home" "coding-summer-camp-interns-fun.jpg"))
+(define takes-a-village-2-path
+  (list "img" "home" "computer-science-summer-educators-collage.jpg"))
+(define takes-a-village-3-path
+  (list "img" "home" "coding-coaches-for-grassroots-education.jpg"))
+(define summer-camps-img-path
+  (list "img" "learn-more" "summer-computer-science-camps-for-students.jpg"))
 (define join-our-team-banner-path
-  (list "img" "join-our-team-banner.jpg"))
-(define learn-more-banner-path
-  (list "img" "learn-more-banner.jpg"))
-(define coding-coach-img-path
-  (list "img" "coding-coach.jpg"))
-(define coding-coach-banner-path
-  (list "img" "coding-coach-banner-2.jpg"))
-(define volunteer-scientist-img-path
-  (list "img" "volunteer-scientist.jpg"))
-(define volunteer-scientist-banner-path
-  (list "img" "volunteer-scientist-banner.jpg"))
-(define volunteer-coder-img-path
-  (list "img" "volunteer-coder.jpg"))
-(define summer-camp-intern-img-path
-  (list "img" "summer-camp-intern.jpg"))
-(define summer-camp-intern-banner-path
-  (list "img" "summer-camp-intern-banner.jpg"))
-(define tech-coordinator-img-path
-  (list "img" "tech-coordinator.jpg"))
-(define tech-coordinator-banner-path
-  (list "img" "tech-coordinator-banner.jpg"))
+  (list "img" "learn-more" "fun-at-coding-camps-for-k-12-lg.jpg"))
 (define in-school-img-path
-  (list "img" "in-school.jpg"))
-(define city-summer-camp-img-path
-  (list "img" "city-summer-camp.jpg"))
-(define city-summer-camp-pricing-img-path
-  (list "img" "city-summer-camp-pricing.jpg"))
-(define city-weekly-class-img-path
-  (list "img" "city-weekly-class.jpg"))
+  (list "img" "learn-more" "in-school-coding-educators-for-k-12.jpg"))
 (define weekly-classes-img-path
-  (list "img" "weekly-classes.jpg"))
+  (list "img" "learn-more" "weekly-coding-classes-for-kids-k-12.jpg"))
+(define coding-coach-img-path
+  (list "img" "join-our-team" "jobs-teaching-kids-coding-computer-science.jpg"))
+(define learn-more-banner-path
+  (list "img" "join-our-team" "coding-coach-teaches-computer-science-to-kids.jpg"))
+(define volunteer-scientist-img-path
+  (list "img" "join-our-team" "volunteer-learning-scientist-position-improving-classrooms.jpg"))
+(define volunteer-coder-img-path
+  (list "img" "join-our-team" "volunteer-position-coding-computer-science-curriculum.jpg"))
+(define summer-camp-intern-img-path
+  (list "img" "join-our-team" "summer-coding-education-intern-bonding-with-student.jpg"))
+(define tech-coordinator-img-path
+  (list "img" "join-our-team" "tech-coordinator-managing-computers.jpg"))
+(define coding-coach-banner-path
+  (list "img" "coaches" "coding-coach-teaching-students.jpg"))
+(define volunteer-scientist-banner-path
+  (list "img" "scientists" "volunteer-learning-scientist-studying-coding-classroom.jpg"))
+(define volunteer-coder-banner-path
+  (list "img" "coders" "volunteer-coding-computer-science-curriculum-for-students.jpg"))
+(define summer-camp-intern-banner-path
+  (list "img" "summer-interns" "summer-coding-education-intern-leadership-opportunity.jpg"))
+(define tech-coordinator-banner-path
+  (list "img" "tech-coordinators" "tech-coordinator-at-home-with-hardware.jpg"))
+(define partners-img-path
+  (list "img" "partners" "girls-making-friends-at-coding-camp.jpg"))
+(define world-img-path
+  (list "img" "locations" "metacoders-camps-classes-across-us-world.jpg"))
+(define city-summer-camp-img-path
+  (list "img" "locations" "coding-summer-camp-for-k-12.jpg"))
+(define city-summer-camp-pricing-img-path
+  (list "img" "locations" "coding-student-learning-video-game-design.jpg"))
+(define city-weekly-class-img-path
+  (list "img" "locations" "young-girl-learning-computer-science.jpg"))
 (define donate-banner-path
-  (list "img" "donation-banner.jpg"))
+  (list "img" "donate" "donate-to-support-coding-camps-for-k-12.jpg"))
 
 (define river-img-path
   (list "img" "river.png"))
 
-(define world-img-path
-  (list "img" "world-map.jpg"))
-
-(define partners-img-path
-  (list "img" "partners-banner.jpg"))
 
 ; ==== CITY BANNER PATHS ====
 (define chula-vista-banner-path
-  (list "img" "city-chula-vista-banner.jpg"))
-
+  (list "img" "locations" "banners" "city-chula-vista-ca.jpg"))
 (define dallas-banner-path
-  (list "img" "city-dallas-banner.jpg"))
-
+  (list "img" "locations" "banners" "city-dallas-tx.jpg"))
 (define minneapolis-banner-path
-  (list "img" "city-minneapolis-banner.jpg"))
-
+  (list "img" "locations" "banners" "city-minneapolis-mn.jpg"))
 (define poway-banner-path
-  (list "img" "city-poway-banner.jpg"))
-
+  (list "img" "locations" "banners" "city-poway-ca.jpg"))
 (define reno-banner-path
-  (list "img" "city-reno-banner.jpg"))
-
+  (list "img" "locations" "banners" "city-reno-nv.jpg"))
 (define temecula-banner-path
-  (list "img" "city-temecula-banner.jpg"))
-
+  (list "img" "locations" "banners" "city-temecula-ca.jpg"))
 (define washington-dc-banner-path
-  (list "img" "city-washington-dc-banner.jpg"))
-
+  (list "img" "locations" "banners" "city-washington-dc.jpg"))
 (define new-orleans-banner-path
-  (list "img" "city-new-orleans-banner.jpg"))
+  (list "img" "locations" "banners" "city-new-orleans-la.jpg"))
 
 (define (imgs)
   (list 
-    (page lindsey-img-path
-          (build-path img "lindsey.jpg")) 
-    (page judith-img-path
-          (build-path img "judith.jpg")) 
-    (page sara-img-path
-          (build-path img "sara.jpg")) 
-    (page sonny-img-path
-          (build-path img "sonny.jpg")) 
-    (page games-svg-path
-          (build-path img "games.svg"))
-    (page brain-svg-path
-          (build-path img "brain.svg"))
-    (page story-svg-path
-          (build-path img "story.svg"))
-    (page takes-a-village-path
-          (build-path img "takes-a-village.jpg"))
-    (page takes-a-village-2-path
-          (build-path img "takes-a-village-2.jpg"))
-    (page takes-a-village-3-path
-          (build-path img "takes-a-village-3.jpg"))
-    (page summer-camps-img-path
-          (build-path img "summer-camps.jpg"))
     (page homepage-banner-path
-          (build-path img "homepage-banner.jpg"))
-    (page logo-img-path
-          (build-path img "logo.png"))
-    (page join-our-team-banner-path
-          (build-path img "join-our-team-banner.jpg"))
+          (build-path img "home" "child-coding-in-weekly-class-camp.jpg"))
+    (page lindsey-img-path
+          (build-path img "home" "lindsey-handley-metacoders-co-founder-vice-president.jpg")) 
+    (page judith-img-path
+          (build-path img "home" "judith-eisenberg-coding-educator.jpg")) 
+    (page sara-img-path
+          (build-path img "home" "sara-lucchini-computer-science-curriculum-developer.jpg")) 
+    (page sonny-img-path
+          (build-path img "home" "sonny-najar-programming-language-developer.jpg")) 
+    (page games-svg-path
+          (build-path img "home" "games-classroom-gamification.svg"))
+    (page brain-svg-path
+          (build-path img "home" "brain-metacognition.svg"))
+    (page story-svg-path
+          (build-path img "home" "storytelling-for-education.svg"))
+    (page takes-a-village-path
+          (build-path img "home" "coding-summer-camp-interns-fun.jpg"))
+    (page takes-a-village-2-path
+          (build-path img "home" "computer-science-summer-educators-collage.jpg"))
+    (page takes-a-village-3-path
+          (build-path img "home" "coding-coaches-for-grassroots-education.jpg"))
+    (page summer-camps-img-path
+          (build-path img "learn-more" "summer-computer-science-camps-for-students.jpg"))
     (page learn-more-banner-path
-          (build-path img "learn-more-banner.jpg"))
-    (page coding-coach-img-path
-          (build-path img "coding-coach.jpg"))
-    (page coding-coach-banner-path
-          (build-path img "coding-coach-banner-2.jpg"))
-    (page volunteer-scientist-img-path
-          (build-path img "volunteer-scientist.jpg"))
-    (page volunteer-scientist-banner-path
-          (build-path img "volunteer-scientist-banner.jpg"))
-    (page summer-camp-intern-img-path
-          (build-path img "summer-camp-intern.jpg"))
-    (page summer-camp-intern-banner-path
-          (build-path img "summer-camp-intern-banner.jpg"))
-
-    (page volunteer-coder-img-path
-          (build-path img "volunteer-coder.jpg"))
-    (page tech-coordinator-img-path
-          (build-path img "tech-coordinator.jpg"))
-    (page tech-coordinator-banner-path
-          (build-path img "tech-coordinator-banner.jpg"))
+          (build-path img "learn-more" "fun-at-coding-camps-for-k-12-lg.jpg"))
     (page weekly-classes-img-path
-          (build-path img "weekly-classes.jpg"))
-    (page donate-banner-path
-          (build-path img "donation-banner.jpg"))
+          (build-path img "learn-more" "weekly-coding-classes-for-kids-k-12.jpg"))
     (page in-school-img-path
-          (build-path img "in-school.jpg"))
+          (build-path img "learn-more" "in-school-coding-educators-for-k-12.jpg"))
+    (page join-our-team-banner-path
+          (build-path img "join-our-team" "jobs-teaching-kids-coding-computer-science.jpg"))
+    (page coding-coach-img-path
+          (build-path img "join-our-team" "coding-coach-teaches-computer-science-to-kids.jpg"))
+    (page volunteer-scientist-img-path
+          (build-path img "join-our-team" "volunteer-learning-scientist-position-improving-classrooms.jpg"))
+    (page summer-camp-intern-img-path
+          (build-path img "join-our-team" "summer-coding-education-intern-bonding-with-student.jpg"))
+    (page volunteer-coder-img-path
+          (build-path img "join-our-team" "volunteer-position-coding-computer-science-curriculum.jpg"))
+    (page tech-coordinator-img-path
+          (build-path img "join-our-team" "tech-coordinator-managing-computers.jpg"))
+    (page coding-coach-banner-path
+          (build-path img "coaches" "coding-coach-teaching-students.jpg"))
+    (page volunteer-scientist-banner-path
+          (build-path img "scientists" "volunteer-learning-scientist-studying-coding-classroom.jpg"))
+    (page summer-camp-intern-banner-path
+          (build-path img "summer-interns" "summer-coding-education-intern-leadership-opportunity.jpg"))
+    (page volunteer-coder-banner-path
+          (build-path img "coders" "volunteer-coding-computer-science-curriculum-for-students.jpg"))
+    (page tech-coordinator-banner-path
+          (build-path img "tech-coordinators" "tech-coordinator-at-home-with-hardware.jpg"))
+    (page partners-img-path
+          (build-path img "partners" "girls-making-friends-at-coding-camp.jpg"))
+    (page donate-banner-path
+          (build-path img "donate" "donate-to-support-coding-camps-for-k-12.jpg"))
+    (page world-img-path
+          (build-path img "locations" "metacoders-camps-classes-across-us-world.jpg"))
     (page city-summer-camp-img-path
-          (build-path img "city-summer-camp.jpg"))
+          (build-path img "locations" "coding-summer-camp-for-k-12.jpg"))
     (page city-summer-camp-pricing-img-path
-          (build-path img "city-summer-camp-pricing.jpg"))
+          (build-path img "locations" "coding-student-learning-video-game-design.jpg"))
     (page city-weekly-class-img-path
-          (build-path img "city-weekly-class.jpg"))
-
+          (build-path img "locations" "young-girl-learning-computer-science.jpg"))
     (page river-img-path
           (build-path img "river.png"))
-    (page world-img-path
-          (build-path img "world-map.jpg"))
-    (page partners-img-path
-          (build-path img "partners-banner.jpg"))
 
+; ==== CITY BANNER PATHS ====
     (page chula-vista-banner-path
-      (build-path img  "city-chula-vista-banner.jpg"))
+      (build-path img "locations" "banners" "city-chula-vista-ca.jpg"))
     (page dallas-banner-path
-      (build-path img  "city-dallas-banner.jpg"))
+      (build-path img "locations" "banners" "city-dallas-tx.jpg"))
     (page minneapolis-banner-path
-      (build-path img  "city-minneapolis-banner.jpg"))
+      (build-path img "locations" "banners" "city-minneapolis-mn.jpg"))
     (page poway-banner-path
-      (build-path img  "city-poway-banner.jpg"))
+      (build-path img "locations" "banners" "city-poway-ca.jpg"))
     (page reno-banner-path
-      (build-path img  "city-reno-banner.jpg"))
+      (build-path img "locations" "banners" "city-reno-nv.jpg"))
     (page temecula-banner-path
-      (build-path img  "city-temecula-banner.jpg"))
+      (build-path img "locations" "banners" "city-temecula-ca.jpg"))
     (page washington-dc-banner-path
-      (build-path img  "city-washington-dc-banner.jpg"))
+      (build-path img "locations" "banners" "city-washington-dc.jpg"))
     (page new-orleans-banner-path
-      (build-path img  "city-new-orleans-banner.jpg"))
+      (build-path img "locations" "banners" "city-new-orleans-la.jpg"))
 
     ))
