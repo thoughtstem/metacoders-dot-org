@@ -62,7 +62,7 @@
     (container
       (div style: (properties
                       display: "inline-block"
-                      padding: 15
+                      ;padding: 15
                       color: "white"
                       position: "relative"
                       z-index: "10")
@@ -87,7 +87,7 @@
         opacity: 0.7;
       }
     })
-    (footer class: "pt-4 bg-dark"
+    (footer class: "px-3 pt-4 bg-dark"
       (container 
         (row
           (col-md-3 class: "text-white"
@@ -149,8 +149,10 @@
         $(document).ready(function() {
                 // Transition effect for navbar
                 $(window).scroll(function() {
+                  var navContent = document.getElementById('navbarSupportedContent');
                   // checks if window is scrolled more than 5% of screen width, adds/removes solid class
-                  if($(this).scrollTop() > (.05 * window.innerHeight)) {
+                  if($(this).scrollTop() > (.05 * window.innerHeight) ||
+                      navContent.classList.contains("show")) {
                       $('.navbar').addClass('solid');
                   } else {
                       $('.navbar').removeClass('solid');
@@ -163,8 +165,18 @@
        href: (pathify (add-path-prefix index-path)) ;"/index.html"
        style: (properties color: "white")
        "MetaCoders")
-    (button class: "navbar-toggler" type: "button" `data-toggle: "collapse" `data-target: "#navbarSupportedContent" `aria-controls: "navbarSupportedContent" `aria-expanded: "false" `aria-label: "Toggle navigation"
-        (span class: "navbar-toggler-icon"))
+    (button id: "navbarToggler" 'onclick: "toggleNavbarSolid();" class: "navbar-toggler" type: "button" `data-toggle: "collapse" `data-target: "#navbarSupportedContent" `aria-controls: "navbarSupportedContent" `aria-expanded: "false" `aria-label: "Toggle navigation"
+        (span class: "navbar-toggler-icon")
+        @script/inline{
+ function toggleNavbarSolid() {
+  var navContent = document.getElementById('navbarSupportedContent');
+  if($(this).scrollTop() <= (.05 * window.innerHeight) &&
+     navContent.classList.contains("show")) {
+     $('.navbar').removeClass('solid');
+   } else {
+     $('.navbar').addClass('solid');
+  }
+  }})
     (div class: "collapse navbar-collapse" id: "navbarSupportedContent"
       (ul class: "navbar-nav ml-auto"
         (my-nav-link learn-more-path  "Learn More")
@@ -187,10 +199,10 @@
                      #:position [position "Position goes here"]
                      #:quote [quote "Quote goes here"])
   (modal id: modal-id `tabindex: "-1" `role: "dialog" `aria-labelledby: "exampleModalLabel" `aria-hidden: "true"
-    (modal-dialog class: "modal-dialog-centered"
+    (modal-dialog class: "modal-dialog-centered text-left"
       (modal-content
         (modal-header class: "bg-primary"
-          (button type: "button" class: "close" `data-dismiss: "modal" `aria-label: "Close"
+          (button type: "button" class: "close p-2" `data-dismiss: "modal" `aria-label: "Close"
             (span class: "text-white" `aria-hidden: "true" 
                   "×")))
         (modal-body 
@@ -202,7 +214,7 @@
               (h3 name)
               (p (strong "Position: ") position)
               (p (i quote)))))
-        (modal-footer
+        (modal-footer class: "p-2"
           (button type: "button" class: "btn btn-secondary" `data-dismiss: "modal"
                   "Close")
           (button type: "button" class: "btn btn-primary"   
