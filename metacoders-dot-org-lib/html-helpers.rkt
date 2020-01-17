@@ -116,7 +116,7 @@
               (li (link-to partners-top-path (small "Start a New Location"))))
             (h6 "Contact Us")
             (ul class: "list-unstyled"
-              (li (small "(858) 869-9430"))
+              (li (small "(858) 375-4097"))
               (li (a href:"mailto: contact@metacoders.org" (small "contact@metacoders.org")))
               (li (small "Monday - Friday, 9am-5pm PT"))))
           (col-md-3 class: "text-white"
