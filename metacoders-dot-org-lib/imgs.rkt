@@ -43,6 +43,15 @@
          washington-dc-banner-path
          new-orleans-banner-path
 
+         battlearena-mp4-path
+         k2-animal-mp4-path
+         k2-clicker-cartoon-mp4-path
+         survival-mp4-path
+
+         battlearena-webm-path
+         k2-animal-webm-path
+         k2-clicker-cartoon-webm-path
+         survival-webm-path
          )
 
 (require website/bootstrap
@@ -138,6 +147,25 @@
 (define new-orleans-banner-path
   (list "img" "locations" "banners" "city-new-orleans-la.jpg"))
 
+; ==== COURSE VIDEO PATHS ====
+(define battlearena-mp4-path
+  (list "img" "videos" "battlearena.mp4"))
+(define k2-animal-mp4-path
+  (list "img" "videos" "k2-animal.mp4"))
+(define k2-clicker-cartoon-mp4-path
+  (list "img" "videos" "k2-clicker-cartoon.mp4"))
+(define survival-mp4-path
+  (list "img" "videos" "survival.mp4"))
+
+(define battlearena-webm-path
+  (list "img" "videos" "battlearena.webm"))
+(define k2-animal-webm-path
+  (list "img" "videos" "k2-animal.webm"))
+(define k2-clicker-cartoon-webm-path
+  (list "img" "videos" "k2-clicker-cartoon.webm"))
+(define survival-webm-path
+  (list "img" "videos" "survival.webm"))
+
 (define (imgs)
   (list 
     (page homepage-banner-path
@@ -209,20 +237,38 @@
 
 ; ==== CITY BANNER PATHS ====
     (page chula-vista-banner-path
-      (build-path img "locations" "banners" "city-chula-vista-ca.jpg"))
+          (build-path img "locations" "banners" "city-chula-vista-ca.jpg"))
     (page dallas-banner-path
-      (build-path img "locations" "banners" "city-dallas-tx.jpg"))
+          (build-path img "locations" "banners" "city-dallas-tx.jpg"))
     (page minneapolis-banner-path
-      (build-path img "locations" "banners" "city-minneapolis-mn.jpg"))
+          (build-path img "locations" "banners" "city-minneapolis-mn.jpg"))
     (page poway-banner-path
-      (build-path img "locations" "banners" "city-poway-ca.jpg"))
+          (build-path img "locations" "banners" "city-poway-ca.jpg"))
     (page reno-banner-path
-      (build-path img "locations" "banners" "city-reno-nv.jpg"))
+          (build-path img "locations" "banners" "city-reno-nv.jpg"))
     (page temecula-banner-path
-      (build-path img "locations" "banners" "city-temecula-ca.jpg"))
+          (build-path img "locations" "banners" "city-temecula-ca.jpg"))
     (page washington-dc-banner-path
-      (build-path img "locations" "banners" "city-washington-dc.jpg"))
+          (build-path img "locations" "banners" "city-washington-dc.jpg"))
     (page new-orleans-banner-path
-      (build-path img "locations" "banners" "city-new-orleans-la.jpg"))
+          (build-path img "locations" "banners" "city-new-orleans-la.jpg"))
+
+    (page battlearena-mp4-path
+          (build-path img "videos" "battlearena.mp4"))
+    (page k2-animal-mp4-path
+          (build-path img "videos" "k2-animal.mp4"))
+    (page k2-clicker-cartoon-mp4-path
+          (build-path img "videos" "k2-clicker-cartoon.mp4"))
+    (page survival-mp4-path
+          (build-path img "videos" "survival.mp4"))
+
+    (page battlearena-webm-path
+          (build-path img "videos" "battlearena.webm"))
+    (page k2-animal-webm-path
+          (build-path img "videos" "k2-animal.webm"))
+    (page k2-clicker-cartoon-webm-path
+          (build-path img "videos" "k2-clicker-cartoon.webm"))
+    (page survival-webm-path
+          (build-path img "videos" "survival.webm"))
 
     ))
