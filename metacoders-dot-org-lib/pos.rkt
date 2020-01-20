@@ -70,7 +70,8 @@
                                                               #:am-price "TBA"
                                                               #:pm-price "TBA"
                                                               #:full-day-price "TBA")])
-  (normal-content-wide #:head (list (link 'rel: "preconnect" href:"https://q.stripe.com")
+  (normal-content-wide #:head (list (title (string-append city-name " | Coding Classes and Camps for K-12 | MetaCoders"))
+                                    (link 'rel: "preconnect" href:"https://q.stripe.com")
                                     (link 'rel: "preconnect" href:"https://m.stripe.com")
                                     (script src:"https://js.stripe.com/v3"))
    (section class: "jumbotron d-flex align-items-center mb-0 text-center"
