@@ -70,7 +70,10 @@
                                                               #:am-price "TBA"
                                                               #:pm-price "TBA"
                                                               #:full-day-price "TBA")])
-  (normal-content-wide
+  (normal-content-wide #:head (list (title (string-append city-name " | Coding Classes and Camps for K-12 | MetaCoders"))
+                                    (link 'rel: "preconnect" href:"https://q.stripe.com")
+                                    (link 'rel: "preconnect" href:"https://m.stripe.com")
+                                    (script src:"https://js.stripe.com/v3"))
    (section class: "jumbotron d-flex align-items-center mb-0 text-center"
     style: (properties
             background-image: (string-append "url(" img-url ")")
@@ -137,7 +140,7 @@
                                     suffix)
                               (~a "Enroll Now for $" price suffix)))
         (div id:(~a "error-message" sku))
-        (script src:"https://js.stripe.com/v3")
+        ;(script src:"https://js.stripe.com/v3")
         @script/inline{
  (function() {
   var stripe = Stripe('@key');
@@ -177,7 +180,7 @@
                               (~a "Enroll Now for $" price))
                           )
         (div id:(~a "error-message" sku))
-        (script src:"https://js.stripe.com/v3")
+        ;(script src:"https://js.stripe.com/v3")
         @script/inline{
  (function() {
   var stripe = Stripe('@key');
@@ -217,7 +220,7 @@
                                     suffix)
                               (~a "Enroll Now for $" price suffix)))
         (div id:(~a "error-message" sku))
-        (script src:"https://js.stripe.com/v3")
+        ;(script src:"https://js.stripe.com/v3")
         @script/inline{
  (function() {
   var stripe = Stripe('@key');
@@ -354,7 +357,7 @@
 
 (struct course (topic
                 sku
-                image-url
+                video-path
                 description
                 grade-range
                 location
@@ -370,7 +373,7 @@
 
 (define (make-course #:topic         [topic "TBA"]
                      #:sku           [sku   ""]
-                     #:image-url     [image-url ""]
+                     #:video-path     [video-path ""]
                      #:description   [description "TBA"]
                      #:grade-range   [grade-range "TBA"]
                      #:location      [location "TBA"]
@@ -382,7 +385,7 @@
                      #:end-time      [end-time "TBA"]
                      #:meeting-dates [meeting-dates '()]
                      #:status        [status 'open])
-  (course topic sku image-url description grade-range location address address-link price discount start-time end-time meeting-dates status))
+  (course topic sku video-path description grade-range location address address-link price discount start-time end-time meeting-dates status))
 
 (define (course->waitlist-link course)
   (~a "mailto:contact@thoughtstem.com?subject="
@@ -466,7 +469,7 @@
 
   (define topic (course-topic c))
   (define sku (course-sku c))
-  (define image-url (course-image-url c))
+  (define video-path (course-video-path c))
   (define description (course-description c))
   (define grade-range (course-grade-range c))
   (define location (course-location c))
@@ -478,12 +481,23 @@
   (define end-time (course-end-time c))
   (define meeting-dates (course-meeting-dates c))
   (define status (course-status c))
+
+  (define mp4-url video-path)
+  (define webm-url (list (first mp4-url)
+                         (second mp4-url)
+                         (string-replace (third mp4-url) "mp4" "webm")))
   
   (card class: "border-secondary h-100 text-center"
-        (img src: image-url
+        #;(img src: video-path
              class: "card-img-top border-secondary border-bottom"
              height:"280px"
              style: (properties object-fit: "cover"))
+        (video 'autoplay: "" 'loop: "" 'muted: "" 'playsinline: ""
+               class: "card-img-top border-secondary border-bottom"
+               height: "280px"
+               style: (properties object-fit: "cover")
+               (source src: (prefix/pathify webm-url) type: "video/webm")
+               (source src: (prefix/pathify mp4-url) type: "video/mp4"))
         (card-body
          (h5 class: "card-title" (~a topic " (" grade-range ")"))
          (table class: "table table-sm table-borderless text-left"
@@ -676,7 +690,7 @@ function setDonate@amount() {
                         (if (eq? mode 'monthly)
                             (~a "Donate $" (car (first items)) "/mo")
                             (~a "Donate $" (car (first items)))))
-        (script src:"https://js.stripe.com/v3")
+        ;(script src:"https://js.stripe.com/v3")
         (if (eq? mode 'monthly)
             @script/inline{
  (function() {
@@ -798,7 +812,7 @@ function setMonthlyDonate@amount() {
 
 (struct camp (topic
               sku
-              image-url
+              video-path
               description
               grade-range
               location
@@ -815,7 +829,7 @@ function setMonthlyDonate@amount() {
 
 (define (make-camp #:topic         [topic ""]
                    #:sku           [sku   ""]
-                   #:image-url     [image-url ""]
+                   #:video-path     [video-path ""]
                    #:description   [description ""]
                    #:grade-range   [grade-range ""]
                    #:location      [location ""]
@@ -829,7 +843,7 @@ function setMonthlyDonate@amount() {
                    #:pickup-time   [pickup-time ""]
                    #:meeting-dates [meeting-dates '()]
                    #:status        [status 'open])
-  (camp topic sku image-url description grade-range location address address-link price discount check-in-time camp-time lunch-time pickup-time meeting-dates status))
+  (camp topic sku video-path description grade-range location address address-link price discount check-in-time camp-time lunch-time pickup-time meeting-dates status))
 
 (define (course-modal #:id modal-id
                       #:topic topic
@@ -944,16 +958,29 @@ function setMonthlyDonate@amount() {
           (camp->table-cell camp)
           (td class: "align-middle" "No Camp")
           ))
+
+    (define mp4-url (camp-video-path (first topic-camps)))
+    (define webm-url (list (first mp4-url)
+                           (second mp4-url)
+                           (string-replace (third mp4-url) "mp4" "webm")))
     
     (define table-data
       (append (list (td class: "p-1 align-middle"
                         style: (properties border-right: "none"
                                            width: "1rem")
-                        (img src: (camp-image-url (first topic-camps))
+                        #;(img src: (camp-video-path (first topic-camps))
                              class: "rounded border border-secondary"
                              width: "100rem"
                              height: "100rem"
-                             style: (properties object-fit: "cover")))
+                             style: (properties object-fit: "cover"))
+                        (video 'autoplay: "" 'loop: "" 'muted: "" 'playsinline: ""
+                               class: "rounded border border-secondary"
+                               width: "100rem"
+                               height: "100rem"
+                               style: (properties object-fit: "cover")
+                               (source src: (prefix/pathify webm-url) type: "video/webm")
+                               (source src: (prefix/pathify mp4-url) type: "video/mp4"))
+                        )
                     (td class: "text-left"
                         style: (properties border-left: "none")
                         (strong topic) (br)
@@ -1004,7 +1031,7 @@ function setMonthlyDonate@amount() {
   (define topic     (camp-topic camp))
   (define sku       (camp-sku camp))
   (define grade-range (camp-grade-range camp))
-  (define image-url (camp-image-url camp))
+  (define video-path (camp-video-path camp))
   (define check-in-time (camp-check-in-time camp))
   (define camp-time (camp-camp-time camp))
 
@@ -1039,6 +1066,11 @@ function setMonthlyDonate@amount() {
                          ))
   
   (define modal-buy-button (camp-modal-buy-button price discount sku KEY url-suffix))
+
+  (define mp4-url video-path)
+  (define webm-url (list (first mp4-url)
+                         (second mp4-url)
+                         (string-replace (third mp4-url) "mp4" "webm")))
   
   (modal id: modal-id 'tabindex: "-1" role: "dialog"
      (modal-dialog class: "modal-lg modal-dialog-centered"
@@ -1047,8 +1079,12 @@ function setMonthlyDonate@amount() {
           (modal-body
            (row class: "text-left"
                 (col-lg-6 class: "col-xs-12"
-                 (img src: image-url
+                 #;(img src: video-path
                       class: "img-fluid rounded")
+                 (video 'autoplay: "" 'loop: "" 'muted: "" 'playsinline: ""
+                        class: "img-fluid rounded border border-secondary"
+                        (source src: (prefix/pathify webm-url) type: "video/webm")
+                        (source src: (prefix/pathify mp4-url) type: "video/mp4"))
                  (h5 class: "mt-4" "Camp Schedule")
                  (table class: "table table-striped table-bordered"
                    (tr (td (b "Check-in")) (td check-in-time))
@@ -1112,7 +1148,7 @@ function setMonthlyDonate@amount() {
   (define topic     (camp-topic camp))
   (define sku       (camp-sku camp))
   (define grade-range (camp-grade-range camp))
-  (define image-url (camp-image-url camp))
+  (define video-path (camp-video-path camp))
   (define check-in-time (camp-check-in-time camp))
   (define camp-time (camp-camp-time camp))
   (define lunch-time (camp-lunch-time camp))
@@ -1134,6 +1170,10 @@ function setMonthlyDonate@amount() {
                               (~a "Join Waitlist")
                               ;)
                               ))
+  (define mp4-url video-path)
+  (define webm-url (list (first mp4-url)
+                         (second mp4-url)
+                         (string-replace (third mp4-url) "mp4" "webm")))
   
   (modal id: modal-id 'tabindex: "-1" role: "dialog"
      (modal-dialog class: "modal-lg modal-dialog-centered"
@@ -1142,8 +1182,12 @@ function setMonthlyDonate@amount() {
           (modal-body
            (row class: "text-left"
                 (col-lg-6 class: "col-xs-12"
-                 (img src: image-url
+                 #;(img src: video-path
                       class: "img-fluid rounded border border-secondary")
+                 (video 'autoplay: "" 'loop: "" 'muted: "" 'playsinline: ""
+                        class: "img-fluid rounded border border-secondary"
+                        (source src: (prefix/pathify webm-url) type: "video/webm")
+                        (source src: (prefix/pathify mp4-url) type: "video/mp4"))
                  (h5 class: "mt-4" "Camp Schedule")
                  (table class: "table table-striped table-bordered"
                    (tr (td (b "Check-in")) (td check-in-time))
@@ -1187,12 +1231,17 @@ function setMonthlyDonate@amount() {
   (define topic     (camp-topic camp))
   (define sku       (camp-sku camp))
   (define grade-range (camp-grade-range camp))
-  (define image-url (camp-image-url camp))
+  (define video-path (camp-video-path camp))
   
   (define description (camp-description camp))
   (define address (camp-address camp))
   (define address-link (camp-address-link camp))
   (define modal-id (~a "topic-info-modal-" sku))
+
+  (define mp4-url video-path)
+  (define webm-url (list (first mp4-url)
+                         (second mp4-url)
+                         (string-replace (third mp4-url) "mp4" "webm")))
   
   (modal id: modal-id 'tabindex: "-1" role: "dialog"
      (modal-dialog class: "modal-lg modal-dialog-centered"
@@ -1201,8 +1250,12 @@ function setMonthlyDonate@amount() {
           (modal-body
            (row class: "text-left"
                 (col-lg-6 class: "col-xs-12"
-                 (img src: image-url
+                 #;(img src: video-path
                       class: "img-fluid rounded mb-4")
+                 (video 'autoplay: "" 'loop: "" 'muted: "" 'playsinline: ""
+                        class: "img-fluid rounded mb-4 border border-secondary"
+                        (source src: (prefix/pathify webm-url) type: "video/webm")
+                        (source src: (prefix/pathify mp4-url) type: "video/mp4"))
                  ;(h5 class: "mt-4" topic)
                  (table class: "table table-striped table-bordered"
                    (tr (td (b "Grades")) (td grade-range))
