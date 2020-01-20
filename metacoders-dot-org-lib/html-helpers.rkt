@@ -14,20 +14,27 @@
          "./paths.rkt"
          gregor)
 
-(define (google-analytics)
-  (list 
-    (script 'async: "true" src: "https://www.googletagmanager.com/gtag/js?id=UA-154491265-1")
-    (script/inline
-      @~a{
-        window.dataLayer = window.dataLayer || [];
-        function gtag(){dataLayer.push(arguments);}
-        gtag('js', new Date());
-        gtag('config', 'UA-154491265-1');})))
+(define (google-tag-manager)
+ (list
+  (script/inline
+   @~a{
+   function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+       new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+   j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+   'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+   })(window,document,'script','dataLayer','GTM-MZ2K628'
+     })))
 
+(define (google-tag-manager-2)
+  (list
+    (noscript
+      (iframe src:"https://www.googletagmanager.com/ns.html?id=GTM-MZ2K628" height:"0" width:"0" style: "display:none;visibility:hidden"))))
 
 (define (normal-content #:head (h (void)) . more)
   (content #:head (list h
-                        (google-analytics))
+                        (google-tag-manager)
+                        )
+    (google-tag-manager-2)
     (normal-navbar)
     (container 
       id: "main"
@@ -37,7 +44,9 @@
 
 (define (normal-content-wide #:head (h (void)) . more)
   (content #:head (list h
-                        (google-analytics)) 
+                        (google-tag-manager)
+                        )
+    (google-tag-manager-2) 
     (jumbotron-navbar)
     (div 
       id: "main"
