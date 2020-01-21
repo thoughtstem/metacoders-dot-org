@@ -52,6 +52,10 @@
          k2-animal-webm-path
          k2-clicker-cartoon-webm-path
          survival-webm-path
+
+         navbar-logo-path
+         navbar-logo2-path
+         navbar-logo2-wide-path
          )
 
 (require website/bootstrap
@@ -128,6 +132,14 @@
 (define river-img-path
   (list "img" "river.png"))
 
+(define navbar-logo-path
+  (list "img" "navbar-logo.png"))
+
+(define navbar-logo2-path
+  (list "img" "navbar-logo-2.png"))
+
+(define navbar-logo2-wide-path
+  (list "img" "logo2-wide.svg"))
 
 ; ==== CITY BANNER PATHS ====
 (define chula-vista-banner-path
@@ -234,6 +246,15 @@
           (build-path img "locations" "young-girl-learning-computer-science.jpg"))
     (page river-img-path
           (build-path img "river.png"))
+
+    (page navbar-logo-path
+          (build-path img "navbar-logo.png"))
+
+    (page navbar-logo2-path
+          (build-path img "navbar-logo-2.png"))
+
+    (page navbar-logo2-wide-path
+          (build-path img "logo2-wide.svg"))
 
 ; ==== CITY BANNER PATHS ====
     (page chula-vista-banner-path
