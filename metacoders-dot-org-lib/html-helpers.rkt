@@ -5,14 +5,145 @@
          mc-jumbotron-header
          staff-modal
          meeting-date->date
-         meeting-date->weekday)
+         meeting-date->weekday
+         
+         primary
+         primary-dark-1
+         primary-dark-2
+         primary-dark-3
+         primary-dark-4
+         primary-shadow
+
+         warning
+         warning-dark-1
+         warning-dark-2
+         warning-dark-3
+         warning-dark-4
+         warning-shadow)
 
 (require website/bootstrap
          racket/runtime-path
          "./css.rkt"
          "./imgs.rkt"
          "./paths.rkt"
-         gregor)
+         gregor
+         
+         (only-in 2htdp/image color-alpha)
+         image-coloring
+         )
+
+(define (darken-color color amount)
+  (change-color-brightness (- amount) color ))
+
+(define (darken-hex-color num-or-string amount)
+  (define color (hex->color num-or-string))
+  (if (= (color-alpha color) 255)
+      (color->hex-string (darken-color color amount))
+      (color->hex-string #:alpha? #t (darken-color color amount))))
+
+(define primary "#1581c2") ; blue-green: 10b1a2, blue: 1581c2, light-blue: 589edb, purple: 8d3aa2
+(define primary-base-color (hex->color primary))
+(define primary-dark-1 (~a "#" (color->hex-string (darken-color primary-base-color 15))))
+(define primary-dark-2 (~a "#" (color->hex-string (darken-color primary-base-color 20))))
+(define primary-dark-3 (~a "#" (color->hex-string (darken-color primary-base-color 25))))
+(define primary-dark-4 (~a "#" (color->hex-string (darken-color primary-base-color 30))))
+(define primary-shadow (~a "#" (color->hex-string (change-color-alpha -128 primary-base-color) #:alpha? #t)))
+
+(define warning "#f37a1f") ; light-orange: f9a21d, orange: f37a1f, yellow: f6c41d, light-teal: 6bced0
+(define warning-base-color (hex->color warning))
+(define warning-dark-1 (~a "#" (color->hex-string (darken-color warning-base-color 15))))
+(define warning-dark-2 (~a "#" (color->hex-string (darken-color warning-base-color 20))))
+(define warning-dark-3 (~a "#" (color->hex-string (darken-color warning-base-color 25))))
+(define warning-dark-4 (~a "#" (color->hex-string (darken-color warning-base-color 30))))
+(define warning-shadow (~a "#" (color->hex-string (change-color-alpha -128 warning-base-color) #:alpha? #t)))
+
+(define (custom-css-colors)
+  
+  (literal
+   @style/inline[type: "text/css"]{
+ .bg-primary {
+  background-color: @primary !important;
+ }
+ .bg-warning {
+  background-color: @warning !important;
+ }
+ .text-primary {
+  color: @primary !important;
+ }
+ .text-warning {
+  color: @warning !important;
+ }
+ .border-primary {
+    border-color: @primary !important;
+ }
+ .border-warning {
+    border-color: @warning !important;
+ }
+ a {
+  color: @primary;
+  text-decoration: none;
+  background-color: transparent;
+  -webkit-text-decoration-skip: objects
+ }
+ a:hover {
+  color: @primary-dark-4;
+  text-decoration: underline
+ }
+ .btn-primary {
+    color: #fff;
+    background-color: @primary;
+    border-color: @primary;
+ }
+ .btn-primary:hover {
+    color: #fff;
+    background-color: @primary-dark-1;
+    border-color: @primary-dark-2;
+ }
+ .btn-primary.focus, .btn-primary:focus {
+    box-shadow: 0 0 0 0.2rem @primary-shadow;
+ }
+ .btn-primary.disabled, .btn-primary:disabled {
+  color: #fff;
+  background-color: @primary-dark-1;
+  border-color: @primary-dark-1;
+ }
+ .btn-primary:not(:disabled):not(.disabled).active, .btn-primary:not(:disabled):not(.disabled):active, .show > .btn-primary.dropdown-toggle {
+  color: #fff;
+  background-color: @primary-dark-2;
+  border-color: @primary-dark-3;
+ }
+ .btn-primary:not(:disabled):not(.disabled).active:focus, .btn-primary:not(:disabled):not(.disabled):active:focus, .show > .btn-primary.dropdown-toggle:focus {
+    box-shadow: 0 0 0 0.2rem @primary-shadow;
+ }
+
+ .btn-warning {
+    color: #fff;
+    background-color: @warning;
+    border-color: @warning;
+ }
+ .btn-warning:hover {
+    color: #fff;
+    background-color: @warning-dark-1;
+    border-color: @warning-dark-2;
+ }
+ .btn-warning.focus, .btn-warning:focus {
+    box-shadow: 0 0 0 0.2rem @warning-shadow;
+ }
+ .btn-warning.disabled, .btn-warning:disabled {
+  color: #fff;
+  background-color: @warning-dark-1;
+  border-color: @warning-dark-1;
+ }
+ .btn-warning:not(:disabled):not(.disabled).active, .btn-warning:not(:disabled):not(.disabled):active, .show > .btn-warning.dropdown-toggle {
+  color: #fff;
+  background-color: @warning-dark-2;
+  border-color: @warning-dark-3;
+ }
+ .btn-warning:not(:disabled):not(.disabled).active:focus, .btn-warning:not(:disabled):not(.disabled):active:focus, .show > .btn-warning.dropdown-toggle:focus {
+    box-shadow: 0 0 0 0.2rem @warning-shadow;
+ }
+ 
+}))
 
 (define (google-tag-manager)
  (list
@@ -31,6 +162,7 @@
 
 (define (normal-content #:head (h (void)) . more)
   (content #:head (list h
+                        (custom-css-colors)
                         (google-tag-manager)
                         )
     (google-tag-manager-2)
@@ -43,9 +175,10 @@
 
 (define (normal-content-wide #:head (h (void)) . more)
   (content #:head (list h
+                        (custom-css-colors)
                         (google-tag-manager)
                         )
-    (google-tag-manager-2) 
+    (google-tag-manager-2)
     (jumbotron-navbar)
     (div 
       id: "main"
@@ -149,6 +282,9 @@
 (define (normal-navbar)
   (navbar
     #:brand "MetaCoders"
+             #;(img src: (prefix/pathify navbar-logo7-wide-path)
+                 height: 40
+                 'alt: "MetaCoders") 
     (my-nav-link learn-more-path  "Learn More")
     (my-nav-link city-search-path "Locations")
     (my-nav-link join-our-team-path "Join Our Team")
@@ -158,12 +294,25 @@
 
   (list
    (style/inline
-     @~a{
-      .navbar.solid {
-          background-color: #343a40 !important; 
-          transition: background-color 1s ease 0s;
-        }
-     })
+    @~a{
+ .navbar:before{
+  background: #343a40;
+  @;background: linear-gradient(-45deg, #542E85, #f8f9fa);
+  @;background: linear-gradient(-45deg, #542E85, #f8f9fa);
+  content: '';
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  position: absolute;
+  z-index: -1;
+  opacity: 0;
+  transition: opacity 1s ease 0s;
+ }
+ .navbar.solid:before {
+  opacity: 1;
+ }
+ })
    (script/inline
      @~a{
         $(document).ready(function() {
@@ -184,7 +333,11 @@
     (a class: "navbar-brand"
        href: (pathify (add-path-prefix index-path)) ;"/index.html"
        style: (properties color: "white")
-       "MetaCoders")
+       "MetaCoders"
+       #;(img src: (prefix/pathify navbar-logo7-wide-path)
+                 height: 40
+                 'alt: "MetaCoders")
+       )
     (button id: "navbarToggler" 'onclick: "toggleNavbarSolid();" class: "navbar-toggler" type: "button" `data-toggle: "collapse" `data-target: "#navbarSupportedContent" `aria-controls: "navbarSupportedContent" `aria-expanded: "false" `aria-label: "Toggle navigation"
         (span class: "navbar-toggler-icon")
         @script/inline{

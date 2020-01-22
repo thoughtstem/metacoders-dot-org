@@ -683,7 +683,7 @@ function setDonate@amount() {
                              "break; "))
                        items))
         "} "))
-  (list (button-success id: button-id
+  (list (button-primary id: button-id
                         class: "btn-block"
                         style: (properties display: "inline-block"
                                            border-radius: "0 0 0.18rem 0.18rem")
