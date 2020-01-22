@@ -159,12 +159,14 @@
     (noscript
       (iframe src:"https://www.googletagmanager.com/ns.html?id=GTM-MZ2K628" height:"0" width:"0" style: "display:none;visibility:hidden"))))
 
-(define (normal-content #:head (h (void)) . more)
+(define (normal-content #:head [h (void)]
+                        #:defer-css [defer #f]
+                        . more)
   (content #:head (list h
                         (custom-css-colors)
                         (google-tag-manager)
                         )
-	   #:defer-css #t
+	   #:defer-css defer
     (google-tag-manager-2)
     (normal-navbar)
     (container 
@@ -173,12 +175,14 @@
       more)
     (normal-footer)))
 
-(define (normal-content-wide #:head (h (void)) . more)
+(define (normal-content-wide #:head [h (void)]
+                             #:defer-css [defer #f]
+                             . more)
   (content #:head (list h
                         (custom-css-colors)
                         (google-tag-manager)
                         )
-	   #:defer-css #t
+	   #:defer-css defer
     (google-tag-manager-2) 
     (jumbotron-navbar)
     (div 
