@@ -34,6 +34,7 @@
   (content #:head (list h
                         (google-tag-manager)
                         )
+	   #:defer-css #t
     (google-tag-manager-2)
     (normal-navbar)
     (container 
@@ -46,6 +47,7 @@
   (content #:head (list h
                         (google-tag-manager)
                         )
+	   #:defer-css #t
     (google-tag-manager-2) 
     (jumbotron-navbar)
     (div 
