@@ -164,6 +164,7 @@
                         (custom-css-colors)
                         (google-tag-manager)
                         )
+	   #:defer-css #t
     (google-tag-manager-2)
     (normal-navbar)
     (container 
@@ -177,7 +178,8 @@
                         (custom-css-colors)
                         (google-tag-manager)
                         )
-    (google-tag-manager-2)
+	   #:defer-css #t
+    (google-tag-manager-2) 
     (jumbotron-navbar)
     (div 
       id: "main"
