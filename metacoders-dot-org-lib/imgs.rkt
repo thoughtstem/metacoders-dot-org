@@ -53,9 +53,12 @@
          k2-clicker-cartoon-webm-path
          survival-webm-path
 
-         navbar-logo-path
-         navbar-logo2-path
-         navbar-logo2-wide-path
+         navbar-logo7-wide-path
+         navbar-logo9-wide-path
+         navbar-logo10-wide-path
+         navbar-logo12-wide-path
+         navbar-logo13-wide-path
+         navbar-logo14-wide-path
          )
 
 (require website/bootstrap
@@ -132,14 +135,19 @@
 (define river-img-path
   (list "img" "river.png"))
 
-(define navbar-logo-path
-  (list "img" "navbar-logo.png"))
 
-(define navbar-logo2-path
-  (list "img" "navbar-logo-2.png"))
-
-(define navbar-logo2-wide-path
-  (list "img" "logo2-wide.svg"))
+(define navbar-logo7-wide-path
+  (list "img" "logo7-wide.svg"))
+(define navbar-logo9-wide-path
+  (list "img" "logo9-wide.svg"))
+(define navbar-logo10-wide-path
+  (list "img" "logo10-wide.svg"))
+(define navbar-logo12-wide-path
+  (list "img" "logo12-wide.svg"))
+(define navbar-logo13-wide-path
+  (list "img" "logo13-wide.svg"))
+(define navbar-logo14-wide-path
+  (list "img" "logo14-wide.svg"))
 
 ; ==== CITY BANNER PATHS ====
 (define chula-vista-banner-path
@@ -247,14 +255,19 @@
     (page river-img-path
           (build-path img "river.png"))
 
-    (page navbar-logo-path
-          (build-path img "navbar-logo.png"))
 
-    (page navbar-logo2-path
-          (build-path img "navbar-logo-2.png"))
-
-    (page navbar-logo2-wide-path
-          (build-path img "logo2-wide.svg"))
+    (page navbar-logo7-wide-path
+          (build-path img "logo7-wide.svg"))
+    (page navbar-logo9-wide-path
+          (build-path img "logo9-wide.svg"))
+    (page navbar-logo10-wide-path
+          (build-path img "logo10-wide.svg"))
+    (page navbar-logo12-wide-path
+          (build-path img "logo12-wide.svg"))
+    (page navbar-logo13-wide-path
+          (build-path img "logo13-wide.svg"))
+    (page navbar-logo14-wide-path
+          (build-path img "logo14-wide.svg"))
 
 ; ==== CITY BANNER PATHS ====
     (page chula-vista-banner-path

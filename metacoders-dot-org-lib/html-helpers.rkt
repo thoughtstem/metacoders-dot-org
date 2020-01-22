@@ -41,7 +41,7 @@
       (color->hex-string (darken-color color amount))
       (color->hex-string #:alpha? #t (darken-color color amount))))
 
-(define primary "#10B1A2")
+(define primary "#1581c2") ; blue-green: 10b1a2, blue: 1581c2, light-blue: 589edb, purple: 8d3aa2
 (define primary-base-color (hex->color primary))
 (define primary-dark-1 (~a "#" (color->hex-string (darken-color primary-base-color 15))))
 (define primary-dark-2 (~a "#" (color->hex-string (darken-color primary-base-color 20))))
@@ -49,7 +49,7 @@
 (define primary-dark-4 (~a "#" (color->hex-string (darken-color primary-base-color 30))))
 (define primary-shadow (~a "#" (color->hex-string (change-color-alpha -128 primary-base-color) #:alpha? #t)))
 
-(define warning "#F9A21D")
+(define warning "#f37a1f") ; light-orange: f9a21d, orange: f37a1f, yellow: f6c41d, light-teal: 6bced0
 (define warning-base-color (hex->color warning))
 (define warning-dark-1 (~a "#" (color->hex-string (darken-color warning-base-color 15))))
 (define warning-dark-2 (~a "#" (color->hex-string (darken-color warning-base-color 20))))
@@ -114,6 +114,33 @@
  }
  .btn-primary:not(:disabled):not(.disabled).active:focus, .btn-primary:not(:disabled):not(.disabled):active:focus, .show > .btn-primary.dropdown-toggle:focus {
     box-shadow: 0 0 0 0.2rem @primary-shadow;
+ }
+
+ .btn-warning {
+    color: #fff;
+    background-color: @warning;
+    border-color: @warning;
+ }
+ .btn-warning:hover {
+    color: #fff;
+    background-color: @warning-dark-1;
+    border-color: @warning-dark-2;
+ }
+ .btn-warning.focus, .btn-warning:focus {
+    box-shadow: 0 0 0 0.2rem @warning-shadow;
+ }
+ .btn-warning.disabled, .btn-warning:disabled {
+  color: #fff;
+  background-color: @warning-dark-1;
+  border-color: @warning-dark-1;
+ }
+ .btn-warning:not(:disabled):not(.disabled).active, .btn-warning:not(:disabled):not(.disabled):active, .show > .btn-warning.dropdown-toggle {
+  color: #fff;
+  background-color: @warning-dark-2;
+  border-color: @warning-dark-3;
+ }
+ .btn-warning:not(:disabled):not(.disabled).active:focus, .btn-warning:not(:disabled):not(.disabled):active:focus, .show > .btn-warning.dropdown-toggle:focus {
+    box-shadow: 0 0 0 0.2rem @warning-shadow;
  }
  
 }))
@@ -255,9 +282,10 @@
 
 (define (normal-navbar)
   (navbar
-    #:brand (img src: (prefix/pathify navbar-logo2-wide-path)
+    #:brand "MetaCoders"
+             #;(img src: (prefix/pathify navbar-logo7-wide-path)
                  height: 40
-                 'alt: "MetaCoders") ;"MetaCoders"
+                 'alt: "MetaCoders") 
     (my-nav-link learn-more-path  "Learn More")
     (my-nav-link city-search-path "Locations")
     (my-nav-link join-our-team-path "Join Our Team")
@@ -306,8 +334,8 @@
     (a class: "navbar-brand"
        href: (pathify (add-path-prefix index-path)) ;"/index.html"
        style: (properties color: "white")
-       ;"MetaCoders"
-       (img src: (prefix/pathify navbar-logo2-wide-path)
+       "MetaCoders"
+       #;(img src: (prefix/pathify navbar-logo7-wide-path)
                  height: 40
                  'alt: "MetaCoders")
        )
