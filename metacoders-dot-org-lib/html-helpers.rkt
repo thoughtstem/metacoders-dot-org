@@ -47,7 +47,7 @@
 (define primary-dark-2 (~a "#" (color->hex-string (darken-color primary-base-color 20))))
 (define primary-dark-3 (~a "#" (color->hex-string (darken-color primary-base-color 25))))
 (define primary-dark-4 (~a "#" (color->hex-string (darken-color primary-base-color 30))))
-(define primary-shadow (~a "#" (color->hex-string (change-color-alpha -128 primary-base-color) #:alpha? #t)))
+(define primary-shadow (~a "#" (color->hex-string (change-color-alpha -128 primary-base-color) #:alpha? #t))) ;Bootstrap 4.4 also reduces sat by 15%
 
 (define warning "#f37a1f") ; light-orange: f9a21d, orange: f37a1f, yellow: f6c41d, light-teal: 6bced0
 (define warning-base-color (hex->color warning))
@@ -99,7 +99,16 @@
     background-color: @primary-dark-1;
     border-color: @primary-dark-2;
  }
+ @; BOOTSTRAP 4.0
+ @;.btn-primary.focus, .btn-primary:focus {
+ @;   box-shadow: 0 0 0 0.2rem @primary-shadow;
+ @;}
+ 
+ @; BOOTSTRAP 4.4
  .btn-primary.focus, .btn-primary:focus {
+    color: #fff;
+    background-color: @primary-dark-1;
+    border-color: @primary-dark-2;
     box-shadow: 0 0 0 0.2rem @primary-shadow;
  }
  .btn-primary.disabled, .btn-primary:disabled {
