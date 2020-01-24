@@ -255,19 +255,20 @@
              s)))
 
 (define (student-spinner sku price discount)
-  (div (div class: "btn-group d-flex justify-content-center"
+  (div class: "text-center"
+       (div class: "btn-group justify-content-center"
               (button-warning id: (~a "student-subtract-" sku)
-                              class: "btn-sm"
+                              class: "btn-sm col-2"
                               'onclick: (~a "updateStudents" sku "(event);")
-                              "-")
+                              (i class: "fas fa-minus fa-xs"))
               (input type: "text"
-                     class: "text-center col-2"
+                     class: "text-center col-3"
                      id: (~a "student-quantity-" sku)
                      'value: 1)
               (button-warning id: (~a "student-add-" sku)
-                              class: "btn-sm"
+                              class: "btn-sm col-2"
                               'onclick: (~a "updateStudents" sku "(event);")
-                               "+"))
+                               (i class: "fas fa-plus fa-xs")))
 @script/inline{
  var updateStudents@sku = function(evt) {
   if (evt && evt.type === "keypress" && evt.keyCode !== 13) {
@@ -299,19 +300,20 @@
          (p class: "m-0 text-secondary text-center" "Number of Students")))
 
 (define (modal-student-spinner sku price discount)
-  (div (div class: "btn-group d-flex justify-content-center"
+  (div class: "text-center"
+       (div class: "btn-group justify-content-center"
               (button-warning id: (~a "modal-student-subtract-" sku)
-                              class: "btn-sm"
+                              class: "btn-sm col-2"
                               'onclick: (~a "modalUpdateStudents" sku "(event);")
-                              "-")
+                              (i class: "fas fa-minus fa-xs"))
               (input type: "text"
-                     class: "text-center col-2"
+                     class: "text-center col-3"
                      id: (~a "modal-student-quantity-" sku)
                      'value: 1)
               (button-warning id: (~a "modal-student-add-" sku)
-                              class: "btn-sm"
+                              class: "btn-sm col-2"
                               'onclick: (~a "modalUpdateStudents" sku "(event);")
-                               "+"))
+                               (i class: "fas fa-plus fa-xs")))
 @script/inline{
  var modalUpdateStudents@sku = function(evt) {
   if (evt && evt.type === "keypress" && evt.keyCode !== 13) {
@@ -885,7 +887,7 @@ function setMonthlyDonate@amount() {
                  quantity-spinner
                  )))
           (modal-footer class: "text-center p-0"
-           (div class: "btn-group w-100"
+           (div class: "btn-group w-100 m-0"
                 (button-secondary class: "m-0 col-sm-6"
                                   style: (properties border-radius: "0 0 0 0.18rem")
                                   'data-dismiss: "modal"
@@ -1119,7 +1121,7 @@ function setMonthlyDonate@amount() {
                  (modal-student-spinner sku price discount)
                  )))
           (modal-footer class: "text-center p-0"
-           (div class: "btn-group w-100"
+           (div class: "btn-group w-100 m-0"
                 (button-secondary class: "m-0 col-sm-4"
                                   style: (properties border-radius: "0 0 0 0.20rem")
                                   'data-dismiss: "modal"
@@ -1219,7 +1221,7 @@ function setMonthlyDonate@amount() {
                                                                                       "terms and conditions") ".")
                  )))
           (modal-footer class: "text-center p-0"
-           (div class: "btn-group w-100"
+           (div class: "btn-group w-100 m-0"
                 (button-secondary class: "m-0 col-sm-6"
                                   style: (properties border-radius: "0 0 0 0.20rem")
                                   'data-dismiss: "modal"
@@ -1277,7 +1279,7 @@ function setMonthlyDonate@amount() {
                                                                                       "terms and conditions") ".")
                  )))
           (modal-footer class: "text-center p-0"
-           (div class: "btn-group w-100"
+           (div class: "btn-group w-100 m-0"
                 (button-secondary class: "m-0 col-sm-6"
                                   style: (properties border-radius: "0 0 0 0.20rem")
                                   'data-dismiss: "modal"
