@@ -59,6 +59,8 @@
          navbar-logo12-wide-path
          navbar-logo13-wide-path
          navbar-logo14-wide-path
+
+         jpg-path->webp-path
          )
 
 (require website/bootstrap
@@ -66,6 +68,14 @@
          racket/runtime-path)
 
 (define-runtime-path img "img")
+
+(define games-svg-path
+  (list "img" "home" "games-classroom-gamification.svg"))
+(define brain-svg-path
+  (list "img" "home" "brain-metacognition.svg"))
+(define story-svg-path
+  (list "img" "home" "storytelling-for-education.svg"))
+
 
 (define homepage-banner-path
   (list "img" "home" "child-coding-in-weekly-class-camp.jpg"))
@@ -77,12 +87,6 @@
   (list "img" "home" "sara-lucchini-computer-science-curriculum-developer.jpg"))
 (define sonny-img-path
   (list "img" "home" "sonny-najar-programming-language-developer.jpg"))
-(define games-svg-path
-  (list "img" "home" "games-classroom-gamification.svg"))
-(define brain-svg-path
-  (list "img" "home" "brain-metacognition.svg"))
-(define story-svg-path
-  (list "img" "home" "storytelling-for-education.svg"))
 (define takes-a-village-path
   (list "img" "home" "coding-summer-camp-interns-fun.jpg"))
 (define takes-a-village-2-path
@@ -132,6 +136,65 @@
 (define donate-banner-path
   (list "img" "donate" "donate-to-support-coding-camps-for-k-12.jpg"))
 
+(define homepage-banner-webp-path
+  (list "img" "home" "child-coding-in-weekly-class-camp.webp"))
+(define lindsey-img-webp-path
+  (list "img" "home" "lindsey-handley-metacoders-co-founder-vice-president.webp"))
+(define judith-img-webp-path
+  (list "img" "home" "judith-eisenberg-coding-educator.webp"))
+(define sara-img-webp-path
+  (list "img" "home" "sara-lucchini-computer-science-curriculum-developer.webp"))
+(define sonny-img-webp-path
+  (list "img" "home" "sonny-najar-programming-language-developer.webp"))
+(define takes-a-village-webp-path
+  (list "img" "home" "coding-summer-camp-interns-fun.webp"))
+(define takes-a-village-2-webp-path
+  (list "img" "home" "computer-science-summer-educators-collage.webp"))
+(define takes-a-village-3-webp-path
+  (list "img" "home" "coding-coaches-for-grassroots-education.webp"))
+(define summer-camps-img-webp-path
+  (list "img" "learn-more" "summer-computer-science-camps-for-students.webp"))
+(define join-our-team-banner-webp-path
+  (list "img" "learn-more" "fun-at-coding-camps-for-k-12-lg.webp"))
+(define in-school-img-webp-path
+  (list "img" "learn-more" "in-school-coding-educators-for-k-12.webp"))
+(define weekly-classes-img-webp-path
+  (list "img" "learn-more" "weekly-coding-classes-for-kids-k-12.webp"))
+(define coding-coach-img-webp-path
+  (list "img" "join-our-team" "jobs-teaching-kids-coding-computer-science.webp"))
+(define learn-more-banner-webp-path
+  (list "img" "join-our-team" "coding-coach-teaches-computer-science-to-kids.webp"))
+(define volunteer-scientist-img-webp-path
+  (list "img" "join-our-team" "volunteer-learning-scientist-position-improving-classrooms.webp"))
+(define volunteer-coder-img-webp-path
+  (list "img" "join-our-team" "volunteer-position-coding-computer-science-curriculum.webp"))
+(define summer-camp-intern-img-webp-path
+  (list "img" "join-our-team" "summer-coding-education-intern-bonding-with-student.webp"))
+(define tech-coordinator-img-webp-path
+  (list "img" "join-our-team" "tech-coordinator-managing-computers.webp"))
+(define coding-coach-banner-webp-path
+  (list "img" "coaches" "coding-coach-teaching-students.webp"))
+(define volunteer-scientist-banner-webp-path
+  (list "img" "scientists" "volunteer-learning-scientist-studying-coding-classroom.webp"))
+(define volunteer-coder-banner-webp-path
+  (list "img" "coders" "volunteer-coding-computer-science-curriculum-for-students.webp"))
+(define summer-camp-intern-banner-webp-path
+  (list "img" "summer-interns" "summer-coding-education-intern-leadership-opportunity.webp"))
+(define tech-coordinator-banner-webp-path
+  (list "img" "tech-coordinators" "tech-coordinator-at-home-with-hardware.webp"))
+(define partners-img-webp-path
+  (list "img" "partners" "girls-making-friends-at-coding-camp.webp"))
+(define world-img-webp-path
+  (list "img" "locations" "metacoders-camps-classes-across-us-world.webp"))
+(define city-summer-camp-img-webp-path
+  (list "img" "locations" "coding-summer-camp-for-k-12.webp"))
+(define city-summer-camp-pricing-img-webp-path
+  (list "img" "locations" "coding-student-learning-video-game-design.webp"))
+(define city-weekly-class-img-webp-path
+  (list "img" "locations" "young-girl-learning-computer-science.webp"))
+(define donate-banner-webp-path
+  (list "img" "donate" "donate-to-support-coding-camps-for-k-12.webp"))
+
 (define river-img-path
   (list "img" "river.png"))
 
@@ -166,6 +229,23 @@
   (list "img" "locations" "banners" "city-washington-dc.jpg"))
 (define new-orleans-banner-path
   (list "img" "locations" "banners" "city-new-orleans-la.jpg"))
+
+(define chula-vista-banner-webp-path
+  (list "img" "locations" "banners" "city-chula-vista-ca.webp"))
+(define dallas-banner-webp-path
+  (list "img" "locations" "banners" "city-dallas-tx.webp"))
+(define minneapolis-banner-webp-path
+  (list "img" "locations" "banners" "city-minneapolis-mn.webp"))
+(define poway-banner-webp-path
+  (list "img" "locations" "banners" "city-poway-ca.webp"))
+(define reno-banner-webp-path
+  (list "img" "locations" "banners" "city-reno-nv.webp"))
+(define temecula-banner-webp-path
+  (list "img" "locations" "banners" "city-temecula-ca.webp"))
+(define washington-dc-banner-webp-path
+  (list "img" "locations" "banners" "city-washington-dc.webp"))
+(define new-orleans-banner-webp-path
+  (list "img" "locations" "banners" "city-new-orleans-la.webp"))
 
 ; ==== COURSE VIDEO PATHS ====
 (define battlearena-mp4-path
@@ -252,6 +332,69 @@
           (build-path img "locations" "coding-student-learning-video-game-design.jpg"))
     (page city-weekly-class-img-path
           (build-path img "locations" "young-girl-learning-computer-science.jpg"))
+
+    ; ==== WEBP IMAGES ====
+    (page homepage-banner-webp-path
+          (build-path img "home" "child-coding-in-weekly-class-camp.jpg"))
+    (page lindsey-img-webp-path
+          (build-path img "home" "lindsey-handley-metacoders-co-founder-vice-president.jpg")) 
+    (page judith-img-path
+          (build-path img "home" "judith-eisenberg-coding-educator.jpg")) 
+    (page sara-img-path
+          (build-path img "home" "sara-lucchini-computer-science-curriculum-developer.jpg")) 
+    (page sonny-img-path
+          (build-path img "home" "sonny-najar-programming-language-developer.jpg"))
+    
+    (page takes-a-village-webp-path
+          (build-path img "home" "coding-summer-camp-interns-fun.webp"))
+    (page takes-a-village-2-webp-path
+          (build-path img "home" "computer-science-summer-educators-collage.webp"))
+    (page takes-a-village-3-webp-path
+          (build-path img "home" "coding-coaches-for-grassroots-education.webp"))
+    (page summer-camps-img-webp-path
+          (build-path img "learn-more" "summer-computer-science-camps-for-students.webp"))
+    (page learn-more-banner-webp-path
+          (build-path img "learn-more" "fun-at-coding-camps-for-k-12-lg.webp"))
+    (page weekly-classes-img-webp-path
+          (build-path img "learn-more" "weekly-coding-classes-for-kids-k-12.webp"))
+    (page in-school-img-webp-path
+          (build-path img "learn-more" "in-school-coding-educators-for-k-12.webp"))
+    (page join-our-team-banner-webp-path
+          (build-path img "join-our-team" "jobs-teaching-kids-coding-computer-science.webp"))
+    (page coding-coach-img-webp-path
+          (build-path img "join-our-team" "coding-coach-teaches-computer-science-to-kids.webp"))
+    (page volunteer-scientist-img-webp-path
+          (build-path img "join-our-team" "volunteer-learning-scientist-position-improving-classrooms.webp"))
+    (page summer-camp-intern-img-webp-path
+          (build-path img "join-our-team" "summer-coding-education-intern-bonding-with-student.webp"))
+    (page volunteer-coder-img-webp-path
+          (build-path img "join-our-team" "volunteer-position-coding-computer-science-curriculum.webp"))
+    (page tech-coordinator-img-webp-path
+          (build-path img "join-our-team" "tech-coordinator-managing-computers.webp"))
+    (page coding-coach-banner-webp-path
+          (build-path img "coaches" "coding-coach-teaching-students.webp"))
+    (page volunteer-scientist-banner-webp-path
+          (build-path img "scientists" "volunteer-learning-scientist-studying-coding-classroom.webp"))
+    (page summer-camp-intern-banner-webp-path
+          (build-path img "summer-interns" "summer-coding-education-intern-leadership-opportunity.webp"))
+    (page volunteer-coder-banner-webp-path
+          (build-path img "coders" "volunteer-coding-computer-science-curriculum-for-students.webp"))
+    (page tech-coordinator-banner-webp-path
+          (build-path img "tech-coordinators" "tech-coordinator-at-home-with-hardware.webp"))
+    (page partners-img-webp-path
+          (build-path img "partners" "girls-making-friends-at-coding-camp.webp"))
+    (page donate-banner-webp-path
+          (build-path img "donate" "donate-to-support-coding-camps-for-k-12.webp"))
+    (page world-img-webp-path
+          (build-path img "locations" "metacoders-camps-classes-across-us-world.webp"))
+    (page city-summer-camp-img-webp-path
+          (build-path img "locations" "coding-summer-camp-for-k-12.webp"))
+    (page city-summer-camp-pricing-img-webp-path
+          (build-path img "locations" "coding-student-learning-video-game-design.webp"))
+    (page city-weekly-class-img-webp-path
+          (build-path img "locations" "young-girl-learning-computer-science.webp"))
+
+    
     (page river-img-path
           (build-path img "river.png"))
 
@@ -287,6 +430,23 @@
     (page new-orleans-banner-path
           (build-path img "locations" "banners" "city-new-orleans-la.jpg"))
 
+    (page chula-vista-banner-webp-path
+          (build-path img "locations" "banners" "city-chula-vista-ca.webp"))
+    (page dallas-banner-webp-path
+          (build-path img "locations" "banners" "city-dallas-tx.webp"))
+    (page minneapolis-banner-webp-path
+          (build-path img "locations" "banners" "city-minneapolis-mn.webp"))
+    (page poway-banner-webp-path
+          (build-path img "locations" "banners" "city-poway-ca.webp"))
+    (page reno-banner-webp-path
+          (build-path img "locations" "banners" "city-reno-nv.webp"))
+    (page temecula-banner-webp-path
+          (build-path img "locations" "banners" "city-temecula-ca.webp"))
+    (page washington-dc-banner-webp-path
+          (build-path img "locations" "banners" "city-washington-dc.webp"))
+    (page new-orleans-banner-webp-path
+          (build-path img "locations" "banners" "city-new-orleans-la.webp"))
+
     (page battlearena-mp4-path
           (build-path img "videos" "battlearena.mp4"))
     (page k2-animal-mp4-path
@@ -306,3 +466,9 @@
           (build-path img "videos" "survival.webm"))
 
     ))
+
+(define (jpg-path->webp-path jpg-path)
+  (and (list? jpg-path)
+       (list (first jpg-path)
+             (second jpg-path)
+             (string-replace (third jpg-path) "jpg" "webp"))))
