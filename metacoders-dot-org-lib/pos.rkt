@@ -81,13 +81,14 @@
   (define webp-url (string-replace jpg-url "jpg" "webp"))
   
   (normal-content-wide #:head (list (title (string-append city-name " | Coding Classes and Camps for K-12 | MetaCoders"))
+                                    (meta name: "description" content: (string-append "Learn more about coding classes and camps for kids in " city-name ". MetaCoders doesn’t just teach kids how to code, but how to learn new programming languages!"))
                                     (link 'rel: "preconnect" href:"https://q.stripe.com")
                                     (link 'rel: "preconnect" href:"https://m.stripe.com")
                                     (script src:"https://js.stripe.com/v3"))
                        #:defer-css #t
    (section id: "city-banner" class: "jumbotron d-flex align-items-center mb-0 text-center"
             style: (properties
-                    background-image: (string-append "url(" webp-url ")")
+                    background-image: (string-append "url(" img-url ")")
                     background-size: "cover"
                     background-position: "center"
                     height: "60%"
@@ -100,7 +101,6 @@
   background-image: url('@webp-url') !important;
  }
 }
-
     (div style: (properties background-color: "rgba(0,0,0,0.6)"
                             width: "100%"
                             position: "absolute"
