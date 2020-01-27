@@ -44,4 +44,5 @@
                   "https://github.com/thoughtstem/TS-K2-Languages.git?path=clicker-cartoon-special")
             (list clicker-cartoon-collect-test
                   clicker-cartoon-avoid-test
-                  clicker-cartoon-special-test))
+                  clicker-cartoon-special-test)
+            "setup-ratchet")

@@ -40,15 +40,21 @@
                (button-primary class: "btn-lg btn-block"
                                "Enroll in Summer Camps")))))))
 
+
 (define (city-page-fold-section)
+  (define jpg-path city-weekly-class-img-path)
+  (define webp-path (jpg-path->webp-path jpg-path))
+  
   (jumbotron class: "mb-0 pt-5 pb-5 text-center bg-white"
     (container
       (h2 "MetaCoders Classes and Camps Inspire Students to Create with Technology")
       (row class: "align-items-center" ;abstract to responsive-row-lg?
            (div class: "col-lg-6 col-xs-12 p-4"
-                (img src: (prefix/pathify city-weekly-class-img-path) 
-                     class: "img-fluid rounded"
-                     'alt: "Young girl shows off her code in a computer science camp for elementary school students"))
+                (picture 
+                 (source type: "image/webp" 'srcset: (prefix/pathify webp-path))
+                 (source type: "image/jpeg" 'srcset: (prefix/pathify jpg-path))
+                 (img class: "img-fluid rounded" src: (prefix/pathify jpg-path) 'alt: "Young girl shows off her code in a computer science camp for elementary school students"))        
+                )
            (div class: "col-lg-6 col-xs-12 p-4 text-left"
                 (ul class: "pl-4"
                     (li (p (b "Technology Is The Future: ") (~a "More than ever, K-12 students need to prepare for the future by "
@@ -72,20 +78,32 @@
                                                               #:am-price "TBA"
                                                               #:pm-price "TBA"
                                                               #:full-day-price "TBA")])
+  (define jpg-url img-url)
+  (define webp-url (string-replace jpg-url "jpg" "webp"))
+  
   (normal-content-wide #:head (list (title (string-append city-name " | Coding Classes and Camps for K-12 | MetaCoders"))
-                                    (meta name: "description" content: (string-append "Learn more about coding classes and camps for kids in " city-name ". MetaCoders doesn’t just teach kids how to code, but how to learn new programming languages!")))
+                                    (meta name: "description" content: (string-append "Learn more about coding classes and camps for kids in " city-name ". MetaCoders doesn’t just teach kids how to code, but how to learn new programming languages!"))
                                     (link 'rel: "preconnect" href:"https://q.stripe.com")
                                     (link 'rel: "preconnect" href:"https://m.stripe.com")
-                                    (script src:"https://js.stripe.com/v3")
-   (section class: "jumbotron d-flex align-items-center mb-0 text-center"
-    style: (properties
-            background-image: (string-append "url(" img-url ")")
-            background-size: "cover"
-            background-position: "center"
-            height: "60%"
-            position: "relative")
-    role: "img"
-    'alt: alt-tag
+                                    (script src:"https://js.stripe.com/v3"))
+                       #:defer-css #t
+   (section id: "city-banner" class: "jumbotron d-flex align-items-center mb-0 text-center"
+            style: (properties
+                    background-image: (string-append "url(" img-url ")")
+                    background-size: "cover"
+                    background-position: "center"
+                    height: "60%"
+                    position: "relative")
+            role: "img"
+            'alt: alt-tag
+            @style/inline[type: "text/css"]{
+ .no-webp #city-banner{
+  background-image: url('@jpg-url') !important;
+ }
+ .webp #city-banner{
+  background-image: url('@webp-url') !important;
+ }
+}
     (div style: (properties background-color: "rgba(0,0,0,0.6)"
                             width: "100%"
                             position: "absolute"
@@ -495,6 +513,7 @@
                          (string-replace (third mp4-url) "mp4" "webm")))
   
   (card class: "border-secondary h-100 text-center"
+        style: (properties overflow: "hidden")
         #;(img src: video-path
              class: "card-img-top border-secondary border-bottom"
              height:"280px"
@@ -585,9 +604,12 @@
                                                        "attention they deserve.")))
                 ))
        (div class: "col-lg-6 col-xs-12 p-4"
-            (img src: (prefix/pathify city-summer-camp-img-path) 
-                 class: "img-fluid rounded"
-                 'alt: "Students and instructors of a computer science, coding, and technology summer camp"))
+            (picture 
+             (source type: "image/webp" 'srcset: (prefix/pathify (jpg-path->webp-path city-summer-camp-img-path)))
+             (source type: "image/jpeg" 'srcset: (prefix/pathify city-summer-camp-img-path))
+             (img src: (prefix/pathify city-summer-camp-img-path) 
+                  class: "img-fluid rounded"
+                  'alt: "Students and instructors of a computer science, coding, and technology summer camp")))
        ))
 
 (define (summer-camp-pricing-at #:location location-name
@@ -599,9 +621,12 @@
                                 #:full-day-price full-day-price)
   (row class: "align-items-center"
        (div class: "col-lg-4 col-xs-12 p-4"
-            (img src: (prefix/pathify city-summer-camp-pricing-img-path)
-                 class: "img-fluid rounded"
-                 'alt: "Happy young boy building and coding his own video game in a summer camp"))
+            (picture 
+             (source type: "image/webp" 'srcset: (prefix/pathify (jpg-path->webp-path city-summer-camp-pricing-img-path)))
+             (source type: "image/jpeg" 'srcset: (prefix/pathify city-summer-camp-pricing-img-path))
+             (img src: (prefix/pathify city-summer-camp-pricing-img-path)
+                  class: "img-fluid rounded"
+                  'alt: "Happy young boy building and coding his own video game in a summer camp")))
        (div class: "col-lg-8 col-xs-12 p-4 text-left"
             (h2 class: "mb-4" "Summer Camp Pricing at " location-name)
             (strong "Purchasing 1 Half-Day Morning or Afternoon Camp? Purchase using the table above.")

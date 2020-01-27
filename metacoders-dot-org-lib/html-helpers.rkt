@@ -208,10 +208,13 @@
           #:image-path [image-path learn-more-banner-path]
           #:alt-tag [alt-tag ""]
           . more)
-  (jumbotron style: (properties
+  (define jpg-url (prefix/pathify image-path))
+  (define webp-url (prefix/pathify (jpg-path->webp-path image-path)))
+  (jumbotron id: "main-banner"
+             style: (properties
                       text-align: "center"
                       margin-bottom: 0
-                      background-image: (string-append "url(" (prefix/pathify image-path) ")")
+                      ;background-image: (string-append "url(" (prefix/pathify image-path) ")")
                       background-position: "center"
                       background-size: "cover"
                       'min-height: percent-height
@@ -219,6 +222,14 @@
               class: "d-flex align-items-center"
               role: "img"
               `aria-label: alt-tag
+              @style/inline[type: "text/css"]{
+ .no-webp #main-banner{
+  background-image: url('@jpg-url') !important;
+ }
+ .webp #main-banner{
+  background-image: url('@webp-url') !important;
+ }
+}
     (div class: "overlay"
          style: (properties
                   background-color: "rgba(0, 0, 0, 0.6)"
@@ -298,10 +309,10 @@
 
 (define (normal-navbar)
   (navbar
-    #:brand "MetaCoders"
-             #;(img src: (prefix/pathify navbar-logo7-wide-path)
+    #:brand ;"MetaCoders"
+             (img src: (prefix/pathify navbar-logo7-wide-path)
                  height: 40
-                 'alt: "MetaCoders") 
+                 'alt: "MetaCoders")
     (my-nav-link learn-more-path  "Learn More")
     (my-nav-link city-search-path "Locations")
     (my-nav-link join-our-team-path "Join Our Team")
@@ -350,8 +361,8 @@
     (a class: "navbar-brand"
        href: (pathify (add-path-prefix index-path)) ;"/index.html"
        style: (properties color: "white")
-       "MetaCoders"
-       #;(img src: (prefix/pathify navbar-logo7-wide-path)
+       ;"MetaCoders"
+       (img src: (prefix/pathify navbar-logo7-wide-path)
                  height: 40
                  'alt: "MetaCoders")
        )

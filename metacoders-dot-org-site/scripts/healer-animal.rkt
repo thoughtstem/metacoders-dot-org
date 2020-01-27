@@ -33,4 +33,5 @@
                   "https://github.com/thoughtstem/TS-K2-Languages.git?path=healer-animal-enemies")
             (list healer-animal-foods-test
                   healer-animal-friends-test
-                  healer-animal-enemies-test))
+                  healer-animal-enemies-test)
+            "setup-ratchet")
