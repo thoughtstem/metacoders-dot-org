@@ -206,6 +206,7 @@
           #:tagline [tagline "Tagline"]
           #:percent-height [percent-height "80vh"]
           #:image-path [image-path learn-more-banner-path]
+          #:alt-tag [alt-tag ""]
           . more)
   (jumbotron style: (properties
                       text-align: "center"
@@ -216,6 +217,8 @@
                       'min-height: percent-height
                       position: "relative")
               class: "d-flex align-items-center"
+              role: "img"
+              `aria-label: alt-tag
     (div class: "overlay"
          style: (properties
                   background-color: "rgba(0, 0, 0, 0.6)"

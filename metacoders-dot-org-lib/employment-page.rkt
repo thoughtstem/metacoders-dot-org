@@ -9,6 +9,7 @@
 (define (employment-page
           #:position-title      [position-title "JOB TITLE"]
           #:image-path          [image-path ""]   
+          #:alt-tag             [alt-tag ""]
           #:jumbotron-tagline   [tagline "TAGLINE"]
           #:percent-height      [percent-height "80%"]
           #:locations-hiring    [locations-hiring '("TBD" "TBD")]
@@ -21,7 +22,8 @@
       #:title (string-append "Become a " position-title)
       #:tagline tagline
       #:percent-height percent-height
-      #:image-path image-path)
+      #:image-path image-path
+      #:alt-tag alt-tag)
     (br)
     (container
       (h1 position-title)

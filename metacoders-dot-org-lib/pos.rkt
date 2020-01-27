@@ -47,7 +47,8 @@
       (row class: "align-items-center" ;abstract to responsive-row-lg?
            (div class: "col-lg-6 col-xs-12 p-4"
                 (img src: (prefix/pathify city-weekly-class-img-path) 
-                     class: "img-fluid rounded"))
+                     class: "img-fluid rounded"
+                     'alt: "Young girl shows off her code in a computer science camp for elementary school students"))
            (div class: "col-lg-6 col-xs-12 p-4 text-left"
                 (ul class: "pl-4"
                     (li (p (b "Technology Is The Future: ") (~a "More than ever, K-12 students need to prepare for the future by "
@@ -61,6 +62,7 @@
 (define (city-page
          #:city-name [city-name ""]
          #:banner-url [img-url ""]
+         #:alt-tag    [alt-tag ""]
          #:school-year-courses [school-year-courses '()]
          #:summer-camps [summer-camps '()]
          #:camp-pricing [camp-pricing (summer-camp-pricing-at #:location "TBA"
@@ -82,6 +84,8 @@
             background-position: "center"
             height: "60%"
             position: "relative")
+    role: "img"
+    'alt: alt-tag
     (div style: (properties background-color: "rgba(0,0,0,0.6)"
                             width: "100%"
                             position: "absolute"
@@ -582,7 +586,8 @@
                 ))
        (div class: "col-lg-6 col-xs-12 p-4"
             (img src: (prefix/pathify city-summer-camp-img-path) 
-                 class: "img-fluid rounded"))
+                 class: "img-fluid rounded"
+                 'alt: "Students and instructors of a computer science, coding, and technology summer camp"))
        ))
 
 (define (summer-camp-pricing-at #:location location-name
@@ -595,7 +600,8 @@
   (row class: "align-items-center"
        (div class: "col-lg-4 col-xs-12 p-4"
             (img src: (prefix/pathify city-summer-camp-pricing-img-path)
-                 class: "img-fluid rounded"))
+                 class: "img-fluid rounded"
+                 'alt: "Happy young boy building and coding his own video game in a summer camp"))
        (div class: "col-lg-8 col-xs-12 p-4 text-left"
             (h2 class: "mb-4" "Summer Camp Pricing at " location-name)
             (strong "Purchasing 1 Half-Day Morning or Afternoon Camp? Purchase using the table above.")
