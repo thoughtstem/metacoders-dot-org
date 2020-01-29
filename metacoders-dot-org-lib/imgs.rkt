@@ -342,15 +342,15 @@
 
     ; ==== WEBP IMAGES ====
     (page homepage-banner-webp-path
-          (build-path img "home" "child-coding-in-weekly-class-camp.jpg"))
+          (build-path img "home" "child-coding-in-weekly-class-camp.webp"))
     (page lindsey-img-webp-path
-          (build-path img "home" "lindsey-handley-metacoders-co-founder-vice-president.jpg")) 
+          (build-path img "home" "lindsey-handley-metacoders-co-founder-vice-president.webp")) 
     (page judith-img-path
-          (build-path img "home" "judith-eisenberg-coding-educator.jpg")) 
+          (build-path img "home" "judith-eisenberg-coding-educator.webp")) 
     (page sara-img-path
-          (build-path img "home" "sara-lucchini-computer-science-curriculum-developer.jpg")) 
+          (build-path img "home" "sara-lucchini-computer-science-curriculum-developer.webp")) 
     (page sonny-img-path
-          (build-path img "home" "sonny-najar-programming-language-developer.jpg"))
+          (build-path img "home" "sonny-najar-programming-language-developer.webp"))
     
     (page takes-a-village-webp-path
           (build-path img "home" "coding-summer-camp-interns-fun.webp"))
