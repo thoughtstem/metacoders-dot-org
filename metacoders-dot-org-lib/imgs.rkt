@@ -61,6 +61,8 @@
          navbar-logo14-wide-path
 
          jpg-path->webp-path
+
+         camp-form-path
          )
 
 (require website/bootstrap
@@ -68,6 +70,7 @@
          racket/runtime-path)
 
 (define-runtime-path img "img")
+(define-runtime-path files "files")
 
 (define games-svg-path
   (list "img" "home" "games-classroom-gamification.svg"))
@@ -266,6 +269,10 @@
 (define survival-webm-path
   (list "img" "videos" "survival.webm"))
 
+; ==== OTHER FILE PATHS ====
+(define camp-form-path
+  (list "files" "metacoders-summer-camp-registration-form.pdf"))
+
 (define (imgs)
   (list 
     (page homepage-banner-path
@@ -335,15 +342,15 @@
 
     ; ==== WEBP IMAGES ====
     (page homepage-banner-webp-path
-          (build-path img "home" "child-coding-in-weekly-class-camp.jpg"))
+          (build-path img "home" "child-coding-in-weekly-class-camp.webp"))
     (page lindsey-img-webp-path
-          (build-path img "home" "lindsey-handley-metacoders-co-founder-vice-president.jpg")) 
+          (build-path img "home" "lindsey-handley-metacoders-co-founder-vice-president.webp")) 
     (page judith-img-path
-          (build-path img "home" "judith-eisenberg-coding-educator.jpg")) 
+          (build-path img "home" "judith-eisenberg-coding-educator.webp")) 
     (page sara-img-path
-          (build-path img "home" "sara-lucchini-computer-science-curriculum-developer.jpg")) 
+          (build-path img "home" "sara-lucchini-computer-science-curriculum-developer.webp")) 
     (page sonny-img-path
-          (build-path img "home" "sonny-najar-programming-language-developer.jpg"))
+          (build-path img "home" "sonny-najar-programming-language-developer.webp"))
     
     (page takes-a-village-webp-path
           (build-path img "home" "coding-summer-camp-interns-fun.webp"))
@@ -464,6 +471,9 @@
           (build-path img "videos" "k2-clicker-cartoon.webm"))
     (page survival-webm-path
           (build-path img "videos" "survival.webm"))
+
+    (page camp-form-path
+          (build-path files "metacoders-summer-camp-registration-form.pdf"))
 
     ))
 
