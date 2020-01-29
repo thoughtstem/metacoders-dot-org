@@ -61,6 +61,8 @@
          navbar-logo14-wide-path
 
          jpg-path->webp-path
+
+         camp-form-path
          )
 
 (require website/bootstrap
@@ -68,6 +70,7 @@
          racket/runtime-path)
 
 (define-runtime-path img "img")
+(define-runtime-path files "files")
 
 (define games-svg-path
   (list "img" "home" "games-classroom-gamification.svg"))
@@ -265,6 +268,10 @@
   (list "img" "videos" "k2-clicker-cartoon.webm"))
 (define survival-webm-path
   (list "img" "videos" "survival.webm"))
+
+; ==== OTHER FILE PATHS ====
+(define camp-form-path
+  (list "files" "metacoders-summer-camp-registration-form.pdf"))
 
 (define (imgs)
   (list 
@@ -464,6 +471,9 @@
           (build-path img "videos" "k2-clicker-cartoon.webm"))
     (page survival-webm-path
           (build-path img "videos" "survival.webm"))
+
+    (page camp-form-path
+          (build-path files "metacoders-summer-camp-registration-form.pdf"))
 
     ))
 

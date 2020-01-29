@@ -53,7 +53,7 @@
                 (picture 
                  (source type: "image/webp" 'srcset: (prefix/pathify webp-path))
                  (source type: "image/jpeg" 'srcset: (prefix/pathify jpg-path))
-                 (img class: "img-fluid rounded" src: (prefix/pathify jpg-path) 'alt: "Young girl shows off her code in a computer science camp for elementary school students"))        
+                 (img class: "img-fluid rounded" src: (prefix/pathify jpg-path) alt: "Young girl shows off her code in a computer science camp for elementary school students"))        
                 )
            (div class: "col-lg-6 col-xs-12 p-4 text-left"
                 (ul class: "pl-4"
@@ -85,17 +85,18 @@
                                     (meta name: "description" content: (string-append "Learn more about coding classes and camps for kids in " city-name ". MetaCoders doesn’t just teach kids how to code, but how to learn new programming languages!"))
                                     (link 'rel: "preconnect" href:"https://q.stripe.com")
                                     (link 'rel: "preconnect" href:"https://m.stripe.com")
-                                    (script src:"https://js.stripe.com/v3"))
+                                    (script src:"https://js.stripe.com/v3")
+                                    (common-critical-css))
                        #:defer-css #t
    (section id: "city-banner" class: "jumbotron d-flex align-items-center mb-0 text-center"
             style: (properties
-                    background-image: (string-append "url(" img-url ")")
+                    background-image: (string-append "url(" webp-url ")") ;pass in webp and fallback to jpg
                     background-size: "cover"
                     background-position: "center"
                     height: "60%"
                     position: "relative")
             role: "img"
-            'alt: alt-tag
+            alt: alt-tag
             @style/inline[type: "text/css"]{
  .no-webp #city-banner{
   background-image: url('@jpg-url') !important;
@@ -609,7 +610,7 @@
              (source type: "image/jpeg" 'srcset: (prefix/pathify city-summer-camp-img-path))
              (img src: (prefix/pathify city-summer-camp-img-path) 
                   class: "img-fluid rounded"
-                  'alt: "Students and instructors of a computer science, coding, and technology summer camp")))
+                  alt: "Students and instructors of a computer science, coding, and technology summer camp")))
        ))
 
 (define (summer-camp-pricing-at #:location location-name
@@ -626,7 +627,7 @@
              (source type: "image/jpeg" 'srcset: (prefix/pathify city-summer-camp-pricing-img-path))
              (img src: (prefix/pathify city-summer-camp-pricing-img-path)
                   class: "img-fluid rounded"
-                  'alt: "Happy young boy building and coding his own video game in a summer camp")))
+                  alt: "Happy young boy building and coding his own video game in a summer camp")))
        (div class: "col-lg-8 col-xs-12 p-4 text-left"
             (h2 class: "mb-4" "Summer Camp Pricing at " location-name)
             (strong "Purchasing 1 Half-Day Morning or Afternoon Camp? Purchase using the table above.")
@@ -634,7 +635,7 @@
              (li "Morning Only (" am-camp-time " ): $" am-price ", includes lunch at the dining hall")
              (li "Afternoon Only (" pm-camp-time "): $" pm-price ""))
             (strong "Purchasing More than 1 Half-Day Camp? Fill out the registration form "
-                    (link-to "form.pdf" "here") ", and email it to "
+                    (a href: (prefix/pathify camp-form-path)"here") ", and email it to "
                     (a href: "mailto:contact@metacoders.org" "contact@metacoders.org"))
             (ul
              (li "Full Day, 1-week (" full-day-time "): $" full-day-price ", includes lunch at the dining hall")
@@ -1158,7 +1159,7 @@ function setMonthlyDonate@amount() {
                                   style: (properties border-radius: "0 0 0 0.20rem")
                                   'data-dismiss: "modal"
                    "Close")
-                (a href: "registration-form.pdf"
+                (a href: (prefix/pathify camp-form-path)
                    class: "btn btn-warning m-0 col-sm-4"
                    style: (properties border-radius: "0 0 0 0")
                    "Download Form")
@@ -1316,7 +1317,7 @@ function setMonthlyDonate@amount() {
                                   style: (properties border-radius: "0 0 0 0.20rem")
                                   'data-dismiss: "modal"
                    "Close")
-                (a href: "registration-form.pdf"
+                (a href: (prefix/pathify camp-form-path)
                    class: "btn btn-warning m-0 col-sm-6"
                    style: (properties border-radius: "0 0 0.20rem 0")
                    "Download Form")))))))
