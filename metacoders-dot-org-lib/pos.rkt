@@ -51,8 +51,8 @@
       (row class: "align-items-center" ;abstract to responsive-row-lg?
            (div class: "col-lg-6 col-xs-12 p-4"
                 (picture 
-                 (source type: "image/webp" 'srcset: (prefix/pathify webp-path))
-                 (source type: "image/jpeg" 'srcset: (prefix/pathify jpg-path))
+                 (source type: "image/webp" srcset: (prefix/pathify webp-path))
+                 (source type: "image/jpeg" srcset: (prefix/pathify jpg-path))
                  (img class: "img-fluid rounded" src: (prefix/pathify jpg-path) alt: "Young girl shows off her code in a computer science camp for elementary school students"))        
                 )
            (div class: "col-lg-6 col-xs-12 p-4 text-left"
@@ -518,11 +518,13 @@
         #;(img src: video-path
              class: "card-img-top border-secondary border-bottom"
              height:"280px"
-             style: (properties object-fit: "cover"))
+             style: (properties object-fit: "cover"
+                                object-position: "0 0"))
         (video 'autoplay: "" 'loop: "" 'muted: "" 'playsinline: ""
                class: "card-img-top border-secondary border-bottom"
                height: "280px"
-               style: (properties object-fit: "cover")
+               style: (properties object-fit: "cover"
+                                  object-position: "0 0")
                (source src: (prefix/pathify webm-url) type: "video/webm")
                (source src: (prefix/pathify mp4-url) type: "video/mp4"))
         (card-body
@@ -606,8 +608,8 @@
                 ))
        (div class: "col-lg-6 col-xs-12 p-4"
             (picture 
-             (source type: "image/webp" 'srcset: (prefix/pathify (jpg-path->webp-path city-summer-camp-img-path)))
-             (source type: "image/jpeg" 'srcset: (prefix/pathify city-summer-camp-img-path))
+             (source type: "image/webp" srcset: (prefix/pathify (jpg-path->webp-path city-summer-camp-img-path)))
+             (source type: "image/jpeg" srcset: (prefix/pathify city-summer-camp-img-path))
              (img src: (prefix/pathify city-summer-camp-img-path) 
                   class: "img-fluid rounded"
                   alt: "Students and instructors of a computer science, coding, and technology summer camp")))
@@ -623,8 +625,8 @@
   (row class: "align-items-center"
        (div class: "col-lg-4 col-xs-12 p-4"
             (picture 
-             (source type: "image/webp" 'srcset: (prefix/pathify (jpg-path->webp-path city-summer-camp-pricing-img-path)))
-             (source type: "image/jpeg" 'srcset: (prefix/pathify city-summer-camp-pricing-img-path))
+             (source type: "image/webp" srcset: (prefix/pathify (jpg-path->webp-path city-summer-camp-pricing-img-path)))
+             (source type: "image/jpeg" srcset: (prefix/pathify city-summer-camp-pricing-img-path))
              (img src: (prefix/pathify city-summer-camp-pricing-img-path)
                   class: "img-fluid rounded"
                   alt: "Happy young boy building and coding his own video game in a summer camp")))
@@ -1007,12 +1009,14 @@ function setMonthlyDonate@amount() {
                              class: "rounded border border-secondary"
                              width: "100rem"
                              height: "100rem"
-                             style: (properties object-fit: "cover"))
+                             style: (properties object-fit: "cover"
+                                                object-position: "0 0"))
                         (video 'autoplay: "" 'loop: "" 'muted: "" 'playsinline: ""
                                class: "rounded border border-secondary"
                                width: "100rem"
                                height: "100rem"
-                               style: (properties object-fit: "cover")
+                               style: (properties object-fit: "cover"
+                                                  object-position: "0 0")
                                (source src: (prefix/pathify webm-url) type: "video/webm")
                                (source src: (prefix/pathify mp4-url) type: "video/mp4"))
                         )
