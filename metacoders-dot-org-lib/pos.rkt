@@ -134,14 +134,14 @@
                                                                             "here")
                                                                 " to join the waitlist for MetaCoders classes and camps in " city-name ".")))]
          [(empty? school-year-courses) (list (jumbotron  id: "school-year-classes"
-                                                         class: "mb-0 pt-5 pb-5 text-center"
+                                                         class: "mb-0 pt-6 pb-6 text-center"
                                                          (container
                                                           (h2 "Register for School-Year Classes")
                                                           (p "Coming Soon!")))
                                              (camps->camp-registration city-name summer-camps camp-pricing))]
          [(empty? summer-camps) (list (courses->course-registration city-name school-year-courses)
                                       (jumbotron  id: "summer-camps"
-                                                  class: "mb-0 pt-5 pb-5 text-center bg-white"
+                                                  class: "mb-0 pt-6 pb-6 text-center bg-white"
                                                   (container
                                                    (h2 "Register for Summer Camps")
                                                    (p "Coming Soon!"))))]
@@ -532,9 +532,9 @@
          (h5 class: "card-title" (~a topic " (" grade-range ")"))
          (table class: "table table-sm table-borderless text-left"
                 (tr (td (strong "Start Date: ")) (td (first meeting-dates) " @ " start-time))
-                (tr (td (strong "Schedule: ") (td (~a (meeting-date->weekday (first meeting-dates)) "s, "
-                                                      (length meeting-dates) " weeks"))))
-                (tr (td (strong "Location: ") (td location (br) (a target:"_blank" href: address-link address)))))
+                (tr (td (strong "Schedule: ")) (td (~a (meeting-date->weekday (first meeting-dates)) "s, "
+                                                       (length meeting-dates) " weeks")))
+                (tr (td (strong "Location: ")) (td location (br) (a target:"_blank" href: address-link address))))
          (student-spinner sku price discount)
          )
         (card-footer class: "border-secondary text-center"
@@ -571,7 +571,7 @@
 (define (courses->course-registration city courses)
   (define course-cards (map (curry course->course-card city) courses))
   (jumbotron  id: "school-year-classes"
-              class: "mb-0 pt-5 pb-5 text-center"
+              class: "mb-0 pt-6 pb-6 text-center"
               (container
                (h2 "Register for School-Year Classes")
                (if (> (length course-cards) 1)
@@ -667,7 +667,7 @@
   (define 3-6-camps (filter 3-6-camp? camps))
   
   (list (jumbotron  id: "summer-camps"
-              class: "mb-0 pt-5 pb-5 text-center bg-white"
+              class: "mb-0 pt-6 pb-6 text-center bg-white"
               (container
                (h2  "Register for Summer Camps")
                (summer-camps-links-section)
@@ -1130,7 +1130,7 @@ function setMonthlyDonate@amount() {
                  (h5 class: "mt-4" "Camp Schedule")
                  (table class: "table table-striped table-bordered"
                    (tr (td (b "Check-in")) (td check-in-time))
-                   (tr (td (b "Camp Activities")) (td camp-time)
+                   (tr (td (b "Camp Activities")) (td camp-time))
                    (if (eq? lunch-time "")
                        '()
                        (tr (td (b "Lunchtime")) (td lunch-time)))
@@ -1143,7 +1143,7 @@ function setMonthlyDonate@amount() {
                                                           (~a "$" price))
                                                        " $" (- price discount) "/student")
                                                  (~a "$" price "/student"))))
-                   (tr (td (b "Dates")) (td (print-dates meeting-dates)))))
+                   (tr (td (b "Dates")) (td (print-dates meeting-dates))))
                  )
                 (col-lg-6 class: "col-xs-12"
                  (h5 "Camp Description")
@@ -1233,7 +1233,7 @@ function setMonthlyDonate@amount() {
                  (h5 class: "mt-4" "Camp Schedule")
                  (table class: "table table-striped table-bordered"
                    (tr (td (b "Check-in")) (td check-in-time))
-                   (tr (td (b "Camp Activities")) (td camp-time)
+                   (tr (td (b "Camp Activities")) (td camp-time))
                    (tr (td (b "Lunchtime")) (td lunch-time))
                    (tr (td (b "Pick-up")) (td pickup-time))
                    (tr (td (b "Grades")) (td grade-range))
@@ -1244,7 +1244,7 @@ function setMonthlyDonate@amount() {
                                                           (~a "$" price))
                                                        " $" (- price discount) "/student")
                                                  (~a "$" price "/student"))))
-                   (tr (td (b "Dates")) (td (print-dates meeting-dates)))))
+                   (tr (td (b "Dates")) (td (print-dates meeting-dates))))
                  )
                 (col-lg-6 class: "col-xs-12"
                  (h5 "Camp Description")
