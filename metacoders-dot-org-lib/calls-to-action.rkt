@@ -24,7 +24,7 @@
 (define (call-to-action-card title 
                              pitch 
                              link)
-  (card class: "h-100"
+  (card style: (properties 'flex: 1) ;class: "h-100"
     ;style: (properties
     ;         margin: 10
     ;         height: 300)

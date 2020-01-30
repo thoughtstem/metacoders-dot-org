@@ -219,7 +219,7 @@
                       ;background-image: (string-append "url(" (prefix/pathify image-path) ")")
                       background-position: "center"
                       background-size: "cover"
-                      'min-height: percent-height
+                      height: percent-height
                       position: "relative")
               class: "d-flex align-items-center"
               role: "img"

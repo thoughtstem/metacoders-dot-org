@@ -513,8 +513,9 @@
                          (second mp4-url)
                          (string-replace (third mp4-url) "mp4" "webm")))
   
-  (card class: "border-secondary h-100 text-center"
-        style: (properties overflow: "hidden")
+  (card class: "border-secondary text-center"
+        style: (properties overflow: "hidden"
+                           'flex: 1)
         #;(img src: video-path
              class: "card-img-top border-secondary border-bottom"
              height:"280px"
@@ -542,10 +543,12 @@
                                         ;border-top: "none"
                                         )
                      (div class: "btn-group w-100"
-                          (a href: "#" class: "col-sm-6 m-0 p-0"
+                          (a href: "#" class: "d-flex col-sm-6 m-0 p-0"
+                             style: (properties 'text-decoration: "none")
                              'data-toggle: "modal" 'data-target: (~a "#details-modal-" sku)
-                             (button-secondary class: "w-100 h-100" 
-                                               style: (properties border-radius: "0 0 0 0.18rem")
+                             (button-secondary class: "w-100" 
+                                               style: (properties border-radius: "0 0 0 0.18rem"
+                                                                  'flex: 1)
                                                "Class Details"))
                           (course->enroll-or-full-button city c))
                      (course-modal #:id (~a "details-modal-" sku)
@@ -572,9 +575,9 @@
               (container
                (h2 "Register for School-Year Classes")
                (if (> (length course-cards) 1)
-                   (apply row (map (curry div class: "col-md-6 col-xs-12 my-3 mx-auto")
+                   (apply row (map (curry div class: "d-flex col-md-6 col-xs-12 my-3 mx-auto")
                                course-cards))
-                   (apply row (map (curry div class: "col-lg-6 col-md-8 col-xs-12 my-3 mx-auto")
+                   (apply row (map (curry div class: "d-flex col-lg-6 col-md-8 col-xs-12 my-3 mx-auto")
                                course-cards)))
                (p "By enrolling in any of these sessions, you agree to the " (link-to terms-and-conditions-path
                                                                                       "terms and conditions") ".")
