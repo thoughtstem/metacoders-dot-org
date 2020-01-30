@@ -219,7 +219,7 @@
                       ;background-image: (string-append "url(" (prefix/pathify image-path) ")")
                       background-position: "center"
                       background-size: "cover"
-                      'min-height: percent-height
+                      height: percent-height
                       position: "relative")
               class: "d-flex align-items-center"
               role: "img"
@@ -411,8 +411,11 @@
         (modal-body 
           (row 
             (col-4
+             (picture 
+              (source type: "image/webp" srcset: (prefix/pathify (jpg-path->webp-path the-path)))
+              (source type: "image/jpeg" srcset: (prefix/pathify the-path))
               (img src: (prefix/pathify the-path)
-                  class: "img-fluid rounded m-3"))
+                   class: "img-fluid rounded m-3")))
             (col-8 
               (h3 name)
               (p (strong "Position: ") position)
@@ -468,7 +471,10 @@
       (div class: (if right
                     "testimonial-quote group right"
                     "testimonial-quote group")
-           (img src: (pathify (add-path-prefix image-src)))
+           (picture 
+              (source type: "image/webp" srcset: (prefix/pathify (jpg-path->webp-path image-src)))
+              (source type: "image/jpeg" srcset: (prefix/pathify image-src))
+              (img src: (prefix/pathify image-src)))
            (div class: "quote-container"
                 (blockquote
                   content)

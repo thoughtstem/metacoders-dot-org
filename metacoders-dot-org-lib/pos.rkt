@@ -51,8 +51,8 @@
       (row class: "align-items-center" ;abstract to responsive-row-lg?
            (div class: "col-lg-6 col-xs-12 p-4"
                 (picture 
-                 (source type: "image/webp" 'srcset: (prefix/pathify webp-path))
-                 (source type: "image/jpeg" 'srcset: (prefix/pathify jpg-path))
+                 (source type: "image/webp" srcset: (prefix/pathify webp-path))
+                 (source type: "image/jpeg" srcset: (prefix/pathify jpg-path))
                  (img class: "img-fluid rounded" src: (prefix/pathify jpg-path) alt: "Young girl shows off her code in a computer science camp for elementary school students"))        
                 )
            (div class: "col-lg-6 col-xs-12 p-4 text-left"
@@ -134,14 +134,14 @@
                                                                             "here")
                                                                 " to join the waitlist for MetaCoders classes and camps in " city-name ".")))]
          [(empty? school-year-courses) (list (jumbotron  id: "school-year-classes"
-                                                         class: "mb-0 pt-5 pb-5 text-center"
+                                                         class: "mb-0 pt-6 pb-6 text-center"
                                                          (container
                                                           (h2 "Register for School-Year Classes")
                                                           (p "Coming Soon!")))
                                              (camps->camp-registration city-name summer-camps camp-pricing))]
          [(empty? summer-camps) (list (courses->course-registration city-name school-year-courses)
                                       (jumbotron  id: "summer-camps"
-                                                  class: "mb-0 pt-5 pb-5 text-center bg-white"
+                                                  class: "mb-0 pt-6 pb-6 text-center bg-white"
                                                   (container
                                                    (h2 "Register for Summer Camps")
                                                    (p "Coming Soon!"))))]
@@ -513,25 +513,28 @@
                          (second mp4-url)
                          (string-replace (third mp4-url) "mp4" "webm")))
   
-  (card class: "border-secondary h-100 text-center"
-        style: (properties overflow: "hidden")
+  (card class: "border-secondary text-center"
+        style: (properties overflow: "hidden"
+                           'flex: 1)
         #;(img src: video-path
              class: "card-img-top border-secondary border-bottom"
              height:"280px"
-             style: (properties object-fit: "cover"))
+             style: (properties object-fit: "cover"
+                                object-position: "0 0"))
         (video 'autoplay: "" 'loop: "" 'muted: "" 'playsinline: ""
                class: "card-img-top border-secondary border-bottom"
                height: "280px"
-               style: (properties object-fit: "cover")
+               style: (properties object-fit: "cover"
+                                  object-position: "0 0")
                (source src: (prefix/pathify webm-url) type: "video/webm")
                (source src: (prefix/pathify mp4-url) type: "video/mp4"))
         (card-body
          (h5 class: "card-title" (~a topic " (" grade-range ")"))
          (table class: "table table-sm table-borderless text-left"
                 (tr (td (strong "Start Date: ")) (td (first meeting-dates) " @ " start-time))
-                (tr (td (strong "Schedule: ") (td (~a (meeting-date->weekday (first meeting-dates)) "s, "
-                                                      (length meeting-dates) " weeks"))))
-                (tr (td (strong "Location: ") (td location (br) (a target:"_blank" href: address-link address)))))
+                (tr (td (strong "Schedule: ")) (td (~a (meeting-date->weekday (first meeting-dates)) "s, "
+                                                       (length meeting-dates) " weeks")))
+                (tr (td (strong "Location: ")) (td location (br) (a target:"_blank" href: address-link address))))
          (student-spinner sku price discount)
          )
         (card-footer class: "border-secondary text-center"
@@ -540,10 +543,12 @@
                                         ;border-top: "none"
                                         )
                      (div class: "btn-group w-100"
-                          (a href: "#" class: "col-sm-6 m-0 p-0"
+                          (a href: "#" class: "d-flex col-sm-6 m-0 p-0"
+                             style: (properties 'text-decoration: "none")
                              'data-toggle: "modal" 'data-target: (~a "#details-modal-" sku)
-                             (button-secondary class: "w-100 h-100" 
-                                               style: (properties border-radius: "0 0 0 0.18rem")
+                             (button-secondary class: "w-100" 
+                                               style: (properties border-radius: "0 0 0 0.18rem"
+                                                                  'flex: 1)
                                                "Class Details"))
                           (course->enroll-or-full-button city c))
                      (course-modal #:id (~a "details-modal-" sku)
@@ -566,13 +571,13 @@
 (define (courses->course-registration city courses)
   (define course-cards (map (curry course->course-card city) courses))
   (jumbotron  id: "school-year-classes"
-              class: "mb-0 pt-5 pb-5 text-center"
+              class: "mb-0 pt-6 pb-6 text-center"
               (container
                (h2 "Register for School-Year Classes")
                (if (> (length course-cards) 1)
-                   (apply row (map (curry div class: "col-md-6 col-xs-12 my-3 mx-auto")
+                   (apply row (map (curry div class: "d-flex col-md-6 col-xs-12 my-3 mx-auto")
                                course-cards))
-                   (apply row (map (curry div class: "col-lg-6 col-md-8 col-xs-12 my-3 mx-auto")
+                   (apply row (map (curry div class: "d-flex col-lg-6 col-md-8 col-xs-12 my-3 mx-auto")
                                course-cards)))
                (p "By enrolling in any of these sessions, you agree to the " (link-to terms-and-conditions-path
                                                                                       "terms and conditions") ".")
@@ -606,8 +611,8 @@
                 ))
        (div class: "col-lg-6 col-xs-12 p-4"
             (picture 
-             (source type: "image/webp" 'srcset: (prefix/pathify (jpg-path->webp-path city-summer-camp-img-path)))
-             (source type: "image/jpeg" 'srcset: (prefix/pathify city-summer-camp-img-path))
+             (source type: "image/webp" srcset: (prefix/pathify (jpg-path->webp-path city-summer-camp-img-path)))
+             (source type: "image/jpeg" srcset: (prefix/pathify city-summer-camp-img-path))
              (img src: (prefix/pathify city-summer-camp-img-path) 
                   class: "img-fluid rounded"
                   alt: "Students and instructors of a computer science, coding, and technology summer camp")))
@@ -623,8 +628,8 @@
   (row class: "align-items-center"
        (div class: "col-lg-4 col-xs-12 p-4"
             (picture 
-             (source type: "image/webp" 'srcset: (prefix/pathify (jpg-path->webp-path city-summer-camp-pricing-img-path)))
-             (source type: "image/jpeg" 'srcset: (prefix/pathify city-summer-camp-pricing-img-path))
+             (source type: "image/webp" srcset: (prefix/pathify (jpg-path->webp-path city-summer-camp-pricing-img-path)))
+             (source type: "image/jpeg" srcset: (prefix/pathify city-summer-camp-pricing-img-path))
              (img src: (prefix/pathify city-summer-camp-pricing-img-path)
                   class: "img-fluid rounded"
                   alt: "Happy young boy building and coding his own video game in a summer camp")))
@@ -662,7 +667,7 @@
   (define 3-6-camps (filter 3-6-camp? camps))
   
   (list (jumbotron  id: "summer-camps"
-              class: "mb-0 pt-5 pb-5 text-center bg-white"
+              class: "mb-0 pt-6 pb-6 text-center bg-white"
               (container
                (h2  "Register for Summer Camps")
                (summer-camps-links-section)
@@ -1007,12 +1012,14 @@ function setMonthlyDonate@amount() {
                              class: "rounded border border-secondary"
                              width: "100rem"
                              height: "100rem"
-                             style: (properties object-fit: "cover"))
+                             style: (properties object-fit: "cover"
+                                                object-position: "0 0"))
                         (video 'autoplay: "" 'loop: "" 'muted: "" 'playsinline: ""
                                class: "rounded border border-secondary"
                                width: "100rem"
                                height: "100rem"
-                               style: (properties object-fit: "cover")
+                               style: (properties object-fit: "cover"
+                                                  object-position: "0 0")
                                (source src: (prefix/pathify webm-url) type: "video/webm")
                                (source src: (prefix/pathify mp4-url) type: "video/mp4"))
                         )
@@ -1123,7 +1130,7 @@ function setMonthlyDonate@amount() {
                  (h5 class: "mt-4" "Camp Schedule")
                  (table class: "table table-striped table-bordered"
                    (tr (td (b "Check-in")) (td check-in-time))
-                   (tr (td (b "Camp Activities")) (td camp-time)
+                   (tr (td (b "Camp Activities")) (td camp-time))
                    (if (eq? lunch-time "")
                        '()
                        (tr (td (b "Lunchtime")) (td lunch-time)))
@@ -1136,7 +1143,7 @@ function setMonthlyDonate@amount() {
                                                           (~a "$" price))
                                                        " $" (- price discount) "/student")
                                                  (~a "$" price "/student"))))
-                   (tr (td (b "Dates")) (td (print-dates meeting-dates)))))
+                   (tr (td (b "Dates")) (td (print-dates meeting-dates))))
                  )
                 (col-lg-6 class: "col-xs-12"
                  (h5 "Camp Description")
@@ -1226,7 +1233,7 @@ function setMonthlyDonate@amount() {
                  (h5 class: "mt-4" "Camp Schedule")
                  (table class: "table table-striped table-bordered"
                    (tr (td (b "Check-in")) (td check-in-time))
-                   (tr (td (b "Camp Activities")) (td camp-time)
+                   (tr (td (b "Camp Activities")) (td camp-time))
                    (tr (td (b "Lunchtime")) (td lunch-time))
                    (tr (td (b "Pick-up")) (td pickup-time))
                    (tr (td (b "Grades")) (td grade-range))
@@ -1237,7 +1244,7 @@ function setMonthlyDonate@amount() {
                                                           (~a "$" price))
                                                        " $" (- price discount) "/student")
                                                  (~a "$" price "/student"))))
-                   (tr (td (b "Dates")) (td (print-dates meeting-dates)))))
+                   (tr (td (b "Dates")) (td (print-dates meeting-dates))))
                  )
                 (col-lg-6 class: "col-xs-12"
                  (h5 "Camp Description")

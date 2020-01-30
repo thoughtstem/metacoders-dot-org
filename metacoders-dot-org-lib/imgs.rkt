@@ -47,11 +47,35 @@
          k2-animal-mp4-path
          k2-clicker-cartoon-mp4-path
          survival-mp4-path
+         
+         adventure-harrypotter-mp4-path
+         adventure-mario-mp4-path
+         battlearena-avengers-mp4-path
+         battlearena-fortnite-mp4-path
+         battlearena-starwars-mp4-path
+         clicker-cartoon-mp4-path
+         clicker-pokemon-mp4-path
+         healer-animal-mp4-path
+         healer-zoo-mp4-path
+         survival-minecraft-mp4-path
+         survival-pokemon-mp4-path
 
          battlearena-webm-path
          k2-animal-webm-path
          k2-clicker-cartoon-webm-path
          survival-webm-path
+
+         adventure-harrypotter-webm-path
+         adventure-mario-webm-path
+         battlearena-avengers-webm-path
+         battlearena-fortnite-webm-path
+         battlearena-starwars-webm-path
+         clicker-cartoon-webm-path
+         clicker-pokemon-webm-path
+         healer-animal-webm-path
+         healer-zoo-webm-path
+         survival-minecraft-webm-path
+         survival-pokemon-webm-path
 
          navbar-logo7-wide-path
          navbar-logo9-wide-path
@@ -259,6 +283,28 @@
   (list "img" "videos" "k2-clicker-cartoon.mp4"))
 (define survival-mp4-path
   (list "img" "videos" "survival.mp4"))
+(define adventure-harrypotter-mp4-path
+  (list "img" "videos" "adventure-harrypotter.mp4"))
+(define adventure-mario-mp4-path
+  (list "img" "videos" "adventure-mario.mp4"))
+(define battlearena-avengers-mp4-path
+  (list "img" "videos" "battlearena-avengers.mp4"))
+(define battlearena-fortnite-mp4-path
+  (list "img" "videos" "battlearena-fortnite.mp4"))
+(define battlearena-starwars-mp4-path
+  (list "img" "videos" "battlearena-starwars.mp4"))
+(define clicker-cartoon-mp4-path
+  (list "img" "videos" "clicker-cartoon.mp4"))
+(define clicker-pokemon-mp4-path
+  (list "img" "videos" "clicker-pokemon.mp4"))
+(define healer-animal-mp4-path
+  (list "img" "videos" "healer-animal.mp4"))
+(define healer-zoo-mp4-path
+  (list "img" "videos" "healer-zoo.mp4"))
+(define survival-minecraft-mp4-path
+  (list "img" "videos" "survival-minecraft.mp4"))
+(define survival-pokemon-mp4-path
+  (list "img" "videos" "survival-pokemon.mp4"))
 
 (define battlearena-webm-path
   (list "img" "videos" "battlearena.webm"))
@@ -268,6 +314,28 @@
   (list "img" "videos" "k2-clicker-cartoon.webm"))
 (define survival-webm-path
   (list "img" "videos" "survival.webm"))
+(define adventure-harrypotter-webm-path
+  (list "img" "videos" "adventure-harrypotter.webm"))
+(define adventure-mario-webm-path
+  (list "img" "videos" "adventure-mario.webm"))
+(define battlearena-avengers-webm-path
+  (list "img" "videos" "battlearena-avengers.webm"))
+(define battlearena-fortnite-webm-path
+  (list "img" "videos" "battlearena-fortnite.webm"))
+(define battlearena-starwars-webm-path
+  (list "img" "videos" "battlearena-starwars.webm"))
+(define clicker-cartoon-webm-path
+  (list "img" "videos" "clicker-cartoon.webm"))
+(define clicker-pokemon-webm-path
+  (list "img" "videos" "clicker-pokemon.webm"))
+(define healer-animal-webm-path
+  (list "img" "videos" "healer-animal.webm"))
+(define healer-zoo-webm-path
+  (list "img" "videos" "healer-zoo.webm"))
+(define survival-minecraft-webm-path
+  (list "img" "videos" "survival-minecraft.webm"))
+(define survival-pokemon-webm-path
+  (list "img" "videos" "survival-pokemon.webm"))
 
 ; ==== OTHER FILE PATHS ====
 (define camp-form-path
@@ -345,11 +413,11 @@
           (build-path img "home" "child-coding-in-weekly-class-camp.webp"))
     (page lindsey-img-webp-path
           (build-path img "home" "lindsey-handley-metacoders-co-founder-vice-president.webp")) 
-    (page judith-img-path
+    (page judith-img-webp-path
           (build-path img "home" "judith-eisenberg-coding-educator.webp")) 
-    (page sara-img-path
+    (page sara-img-webp-path
           (build-path img "home" "sara-lucchini-computer-science-curriculum-developer.webp")) 
-    (page sonny-img-path
+    (page sonny-img-webp-path
           (build-path img "home" "sonny-najar-programming-language-developer.webp"))
     
     (page takes-a-village-webp-path
@@ -462,6 +530,28 @@
           (build-path img "videos" "k2-clicker-cartoon.mp4"))
     (page survival-mp4-path
           (build-path img "videos" "survival.mp4"))
+    (page adventure-harrypotter-mp4-path
+          (build-path img "videos" "adventure-harrypotter.mp4"))
+    (page adventure-mario-mp4-path
+          (build-path img "videos" "adventure-mario.mp4"))
+    (page battlearena-avengers-mp4-path
+          (build-path img "videos" "battlearena-avengers.mp4"))
+    (page battlearena-fortnite-mp4-path
+          (build-path img "videos" "battlearena-fortnite.mp4"))
+    (page battlearena-starwars-mp4-path
+          (build-path img "videos" "battlearena-starwars.mp4"))
+    (page clicker-cartoon-mp4-path
+          (build-path img "videos" "clicker-cartoon.mp4"))
+    (page clicker-pokemon-mp4-path
+          (build-path img "videos" "clicker-pokemon.mp4"))
+    (page healer-animal-mp4-path
+          (build-path img "videos" "healer-animal.mp4"))
+    (page healer-zoo-mp4-path
+          (build-path img "videos" "healer-zoo.mp4"))
+    (page survival-minecraft-mp4-path
+          (build-path img "videos" "survival-minecraft.mp4"))
+    (page survival-pokemon-mp4-path
+          (build-path img "videos" "survival-pokemon.mp4"))
 
     (page battlearena-webm-path
           (build-path img "videos" "battlearena.webm"))
@@ -471,6 +561,28 @@
           (build-path img "videos" "k2-clicker-cartoon.webm"))
     (page survival-webm-path
           (build-path img "videos" "survival.webm"))
+    (page adventure-harrypotter-webm-path
+          (build-path img "videos" "adventure-harrypotter.webm"))
+    (page adventure-mario-webm-path
+          (build-path img "videos" "adventure-mario.webm"))
+    (page battlearena-avengers-webm-path
+          (build-path img "videos" "battlearena-avengers.webm"))
+    (page battlearena-fortnite-webm-path
+          (build-path img "videos" "battlearena-fortnite.webm"))
+    (page battlearena-starwars-webm-path
+          (build-path img "videos" "battlearena-starwars.webm"))
+    (page clicker-cartoon-webm-path
+          (build-path img "videos" "clicker-cartoon.webm"))
+    (page clicker-pokemon-webm-path
+          (build-path img "videos" "clicker-pokemon.webm"))
+    (page healer-animal-webm-path
+          (build-path img "videos" "healer-animal.webm"))
+    (page healer-zoo-webm-path
+          (build-path img "videos" "healer-zoo.webm"))
+    (page survival-minecraft-webm-path
+          (build-path img "videos" "survival-minecraft.webm"))
+    (page survival-pokemon-webm-path
+          (build-path img "videos" "survival-pokemon.webm"))
 
     (page camp-form-path
           (build-path files "metacoders-summer-camp-registration-form.pdf"))
