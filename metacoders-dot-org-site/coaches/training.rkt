@@ -102,15 +102,15 @@
 
 
 (require (prefix-in ch0: "./training/ch0.rkt"))
-(require (prefix-in ch1: mc-coach-assess/books/book-1/chapter-1))
-(require (prefix-in ch2: mc-coach-assess/books/book-1/chapter-2))
-(require (prefix-in ch3: mc-coach-assess/books/book-1/chapter-3))
-(require (prefix-in ch4: mc-coach-assess/books/book-1/chapter-4))
-(require (prefix-in ch5: mc-coach-assess/books/book-1/chapter-5))
-(require (prefix-in ch6: mc-coach-assess/books/book-1/chapter-6))
-(require (prefix-in ch7: mc-coach-assess/books/book-1/chapter-7))
-(require (prefix-in ch8: mc-coach-assess/books/book-1/chapter-8))
-(require (prefix-in ch9: mc-coach-assess/books/book-1/chapter-9))
+(require (prefix-in ch1: mc-coach-training/books/book-1/chapter-1))
+(require (prefix-in ch2: mc-coach-training/books/book-1/chapter-2))
+(require (prefix-in ch3: mc-coach-training/books/book-1/chapter-3))
+(require (prefix-in ch4: mc-coach-training/books/book-1/chapter-4))
+(require (prefix-in ch5: mc-coach-training/books/book-1/chapter-5))
+(require (prefix-in ch6: mc-coach-training/books/book-1/chapter-6))
+(require (prefix-in ch7: mc-coach-training/books/book-1/chapter-7))
+(require (prefix-in ch8: mc-coach-training/books/book-1/chapter-8))
+(require (prefix-in ch9: mc-coach-training/books/book-1/chapter-9))
 
 (define (book)
   (quest/assess-book
