@@ -7,21 +7,33 @@
          impress
          "../common.rkt")
 
+(module+ main
+  (render (list
+            (impress-files)
+            (bootstrap-files)
+            (page index.html
+                  (normal-content
+                    (quest))))
+          #:to "out"))
+
 (define (half n) (/ n 2))
 
 
-(define (video-card title youtube-id)
+
+(define (video-card title youtube-id #:additional-resources [additional-resources #f]) ; 
   (card
     (card-text
       (card-body
         (card-title title)
-        (yt youtube-id)))))
+        (yt youtube-id)
+        additional-resources
+        ))))
 
 (define (click-me)
   (level
     (node 0 0
           (h5 
-            style: (properties width: 100)
+            style: (properties width: 200) ;testing, upped from 100
             "It begins with a click..."))
     (nice)))
 
@@ -30,7 +42,7 @@
     (node 0 0
           #:id "nice"
           (div
-            style: (properties width: 100)
+            style: (properties width: 200) ;testing, upped from 100
             (h5 "Nice!!")
             (p class: "show-on-present" 
                "Click me again to back up...")))
@@ -41,11 +53,11 @@
   (level
     (node 200 200
           (div
-            style: (properties width: 200) 
+            style: (properties width: 300) 
             (h5 "Click me to go on...")
             (p 
               class: "show-on-present"
-              "Great!  Now that you've centered on me.  Click again to enter." )))
+              "Great!  Now that you've centered on me, click again to enter." )))
    
     (clicking-explanation)
     
@@ -55,13 +67,13 @@
   (ring
     (tip-node 0 0
               (div
-                (p "After centering on a node, clicking again will always do one of three things:")
-                (ul
-                  (li "Nothing")
-                  (li "Zoom in to a new level")
-                  (li "Zoom out to the previous level"))
+                (p "Once centered on a node, clicking again will always do one of three things:")
+                (ol
+                  (li (b "Zoom in") " to a new level.")
+                  (li (b "Zoom out") " to the previous level.")
+                  (li "Nothing!"))
                 (hr)
-                (p "If you're not sure, just click and see.")))
+                (p "If you're not sure, just click to find out!")))
 
     (easter-egg-node 200 0
       (find-the-video))))
@@ -179,7 +191,7 @@
 (define (tip-node x y . content)
   (node x y
         (div
-          (h5 "Tip...")
+          (h5 "Here's a tip...")
           (div
             class: "show-on-present"
             style: 
@@ -191,17 +203,17 @@
   (ring
     (node 0 0
           #:id "tips"
-          (h5 "Now, some tips."))
+          (h5 "Now, some more advice..."))
 
     (tip-node 0 -200
-              (p "To jump back the top level of a quest, use the chapter nav -- which looks like this:")
+              (p "To jump back the top level of a quest, use the chapter navigation -- which looks like this:")
               (book-nav #:current 0
                         (range 2))
-              (p "Challenge.  Can you find your way back here after clicking \"Intro\"?"))
+              (p "Challenge! Can you find your way back here after clicking \"Intro\"?"))
 
     (tip-node -200 0
               (p
-                "The browser's back button moves backward in time."))
+                "Your browser's back button moves backward in time to the location you were last."))
 
     (easter-egg-node 200 0
                      (the-end))
@@ -220,8 +232,24 @@
         (node 0 0
               #:id "assessment-video"
               (video-card
-                "Learn how to test yourself"  
-                "2E8EaVZDFPM"))))))
+                "Learn How to Assess"  
+                "2E8EaVZDFPM"
+                ))
+
+        
+        (node 0 260
+              #:id "assessment-video-tips"
+              (div
+               style: (properties width: 500)
+               (h5 "Steps to Assess:")
+               (ol
+                (li "Install & open DrRacket")
+                (li "Open Package Manager (File > Package Manager)")
+                (li "Install " (i (b "mc-coach-assess")))
+                (li "Copy & paste the Assess code on the bottom of the chapter page into the left (or top) panel")
+                (li "Run the " (inline-pre "view-deck") " line until ready to test")
+                (li "Record your screen and voice as you run and talk through the " (inline-pre "test-with-deck"))
+                (li "When completed successfully, submit your video by emailing a youtube link or google drive upload to your training coach!"))))))))
 
 (define (the-end)
   (ring

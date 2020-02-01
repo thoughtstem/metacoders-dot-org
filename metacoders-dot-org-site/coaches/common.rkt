@@ -21,7 +21,7 @@
 (define (book-nav book #:current n)
   (container
     (page-nav #:active n 
-              #:label "Chapters"
+              #:label "CHAPTERS"
               (link-to #:element page-link
                 (list "coaches" "training.html")
                 "Intro")
