@@ -203,7 +203,7 @@
   (ring
     (node 0 0
           #:id "tips"
-          (h5 "Now, some more advice..."))
+          (h5 style: (properties width: 200) "Now, some more advice..."))
 
     (tip-node 0 -200
               (p "To jump back the top level of a quest, use the chapter navigation -- which looks like this:")
@@ -232,12 +232,13 @@
         (node 0 0
               #:id "assessment-video"
               (video-card
-                "Learn How to Assess"  
+                "Learn How to Complete an Assessment"  
                 "2E8EaVZDFPM"
+                #:additional-resources (p "Check out Steps to Assess on the right for a review of the video's content.")
                 ))
 
         
-        (node 0 260
+        (node 430 0
               #:id "assessment-video-tips"
               (div
                style: (properties width: 500)
@@ -263,7 +264,7 @@
               (p "Ready for Chapter 1? Do it!")
               (book-nav #:current 1 (range 2))
               (p  "Worried you missed something? Assess yourself.")
-              (p "Don't know how to assess yourself? You missed something. :)")     
+              (p "Don't know how to assess yourself? You missed something! Make sure you checked out all the TIPS!")
               )))
 
 (define (quest)
