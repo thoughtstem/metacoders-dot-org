@@ -3,8 +3,8 @@
 .\#*
 .DS_Store
 compiled/
-/doc/
-/out
+doc/
+out/
 *.bak
 *.html
 *.swp
