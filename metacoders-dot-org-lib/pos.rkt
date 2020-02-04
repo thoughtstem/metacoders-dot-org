@@ -509,9 +509,7 @@
   (define status (course-status c))
 
   (define mp4-url video-path)
-  (define webm-url (list (first mp4-url)
-                         (second mp4-url)
-                         (string-replace (third mp4-url) "mp4" "webm")))
+  (define webm-url (mp4-path->webm-path mp4-url))
   
   (card class: "border-secondary text-center"
         style: (properties overflow: "hidden"
@@ -1000,9 +998,7 @@ function setMonthlyDonate@amount() {
           ))
 
     (define mp4-url (camp-video-path (first topic-camps)))
-    (define webm-url (list (first mp4-url)
-                           (second mp4-url)
-                           (string-replace (third mp4-url) "mp4" "webm")))
+    (define webm-url (mp4-path->webm-path mp4-url))
     
     (define table-data
       (append (list (td class: "p-1 align-middle"
@@ -1110,9 +1106,7 @@ function setMonthlyDonate@amount() {
   (define modal-buy-button (camp-modal-buy-button price discount sku KEY url-suffix))
 
   (define mp4-url video-path)
-  (define webm-url (list (first mp4-url)
-                         (second mp4-url)
-                         (string-replace (third mp4-url) "mp4" "webm")))
+  (define webm-url (mp4-path->webm-path mp4-url))
   
   (modal id: modal-id 'tabindex: "-1" role: "dialog"
      (modal-dialog class: "modal-lg modal-dialog-centered"
@@ -1213,9 +1207,7 @@ function setMonthlyDonate@amount() {
                               ;)
                               ))
   (define mp4-url video-path)
-  (define webm-url (list (first mp4-url)
-                         (second mp4-url)
-                         (string-replace (third mp4-url) "mp4" "webm")))
+  (define webm-url (mp4-path->webm-path mp4-url))
   
   (modal id: modal-id 'tabindex: "-1" role: "dialog"
      (modal-dialog class: "modal-lg modal-dialog-centered"
@@ -1281,9 +1273,7 @@ function setMonthlyDonate@amount() {
   (define modal-id (~a "topic-info-modal-" sku))
 
   (define mp4-url video-path)
-  (define webm-url (list (first mp4-url)
-                         (second mp4-url)
-                         (string-replace (third mp4-url) "mp4" "webm")))
+  (define webm-url (mp4-path->webm-path mp4-url))
   
   (modal id: modal-id 'tabindex: "-1" role: "dialog"
      (modal-dialog class: "modal-lg modal-dialog-centered"
