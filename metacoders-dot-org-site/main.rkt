@@ -25,13 +25,15 @@
          "./donate-success.rkt"
          
          "./checkout-fail.rkt"
-         )
+
+	 mc-social-media/blog)
 
 (define (metacoders.org)
   (flatten
     (list
       (sub-site "metapolis"
                 (metapolis-stories:site))
+      (sub-site "blog" (blog))
       (bootstrap-files)    
       (css)
       (imgs)
