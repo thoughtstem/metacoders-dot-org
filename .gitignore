@@ -4,7 +4,7 @@
 .DS_Store
 compiled/
 /doc/
-/out
+*/out
 *.bak
 *.html
 *.swp
