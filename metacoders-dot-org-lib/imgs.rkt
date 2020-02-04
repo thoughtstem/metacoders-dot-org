@@ -87,6 +87,14 @@
          jpg-path->webp-path
 
          camp-form-path
+         
+         stripe-k-2-course-img-path
+         stripe-3-6-course-img-path
+         stripe-7-10-course-img-path
+         
+         stripe-k-2-camp-img-path
+         stripe-3-6-camp-img-path
+         stripe-7-10-camp-img-path
          )
 
 (require website/bootstrap
@@ -225,6 +233,19 @@
 (define river-img-path
   (list "img" "river.png"))
 
+(define stripe-k-2-course-img-path
+  (list "img" "stripe" "stripe-k-2-course.jpg"))
+(define stripe-3-6-course-img-path
+  (list "img" "stripe" "stripe-3-6-course.jpg"))
+(define stripe-7-10-course-img-path
+  (list "img" "stripe" "stripe-7-10-course.jpg"))
+
+(define stripe-k-2-camp-img-path
+  (list "img" "stripe" "stripe-k-2-camp.jpg"))
+(define stripe-3-6-camp-img-path
+  (list "img" "stripe" "stripe-3-6-camp.jpg"))
+(define stripe-7-10-camp-img-path
+  (list "img" "stripe" "stripe-7-10-camp.jpg"))
 
 (define navbar-logo7-wide-path
   (list "img" "logo7-wide.svg"))
@@ -586,6 +607,20 @@
 
     (page camp-form-path
           (build-path files "metacoders-summer-camp-registration-form.pdf"))
+
+    (page stripe-k-2-course-img-path
+          (build-path img "stripe" "stripe-k-2-course.jpg"))
+    (page stripe-3-6-course-img-path
+          (build-path img "stripe" "stripe-3-6-course.jpg"))
+    (page stripe-7-10-course-img-path
+          (build-path img "stripe" "stripe-7-10-course.jpg"))
+
+    (page stripe-k-2-camp-img-path
+          (build-path img "stripe" "stripe-k-2-camp.jpg"))
+    (page stripe-3-6-camp-img-path
+          (build-path img "stripe" "stripe-3-6-camp.jpg"))
+    (page stripe-7-10-camp-img-path
+          (build-path img "stripe" "stripe-7-10-camp.jpg"))
 
     ))
 
