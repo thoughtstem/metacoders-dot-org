@@ -6,10 +6,23 @@
 (require metacoders-dot-org-lib
          (except-in metapolis-stories site)
          website/impress
+         website/bootstrap
          (only-in stories/base place-name)
          "./common.rkt"
          mc-classmaps
          mc-languages)
+
+;TESTING -- run this file to see training live
+;does not work currently
+
+#|(module+ main
+  (render (list
+            (impress-files)
+            (bootstrap-files)
+            (page index.html
+                  (normal-content
+                    (training))))
+          #:to "out"))|#
 
 ;TODO: This file combines some stuff that could be separated to make things clearer.
 ; The (book) function is assembled here, but there's also a bunch of stuff about how it gets displayed.
@@ -155,7 +168,8 @@
       (li "Find the green icons in order: "
           (span class: "badge badge-pill badge-success"
                 (~a "1 of " (length stops))))
-      (li "Things without icons will not be on the test."))))
+      (li "There are " (b (/ (length stops) 2)) (b " stories") " to find in this Chapter.")
+      (li "Stories without these icons will not be on the test."))))
 
 
 (define (training-top)
