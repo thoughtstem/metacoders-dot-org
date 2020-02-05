@@ -151,18 +151,23 @@
    (have-questions-section)
    ))
 
+(define (~p price)
+  (if (integer? price)
+      (~a "$" price)
+      (~a "$" (~r price #:precision '(= 2)))))
+
 (define (course-buy-button price discount sku key url-suffix #:suffix [suffix ""])
   (list (button-primary id:(~a "checkout-button-" sku)
                         class: "m-0 col-sm-6" 
                         style: (properties border-radius: "0 0 0.18rem 0"
                                            white-space: "normal")
                         (if (> discount 0)
-                              (list "Enroll Now for "
+                              (list "Enroll for "
                                     (s class: "text-danger"
-                                       (~a "$" price))
-                                    " $" (- price discount)
+                                       (~p price))
+                                    " " (~p (- price discount))
                                     suffix)
-                              (~a "Enroll Now for $" price suffix)))
+                              (~a "Enroll for " (~p price) suffix)))
         (div id:(~a "error-message" sku))
         ;(script src:"https://js.stripe.com/v3")
         @script/inline{
@@ -193,15 +198,14 @@
 
 (define (camp-modal-buy-button price discount sku key url-suffix)
   (list (button-primary id:(~a "modal-checkout-button-" sku)
-                        class: "m-0 col-sm-4" 
+                        class: "m-0 col-sm-6 px-2" 
                         style: (properties border-radius: "0 0 0.20rem 0")
-                          ;(~a "Enroll Now for $" price)
                           (if (> discount 0)
-                              (list "Enroll Now for "
+                              (list "Enroll for "
                                     (s class: "text-danger"
-                                       (~a "$" price))
-                                    " $" (- price discount))
-                              (~a "Enroll Now for $" price))
+                                       (~p price))
+                                    " " (~p (- price discount)))
+                              (~a "Enroll for " (~p price)))
                           )
         (div id:(~a "error-message" sku))
         ;(script src:"https://js.stripe.com/v3")
@@ -233,16 +237,16 @@
 
 (define (course-modal-buy-button price discount sku key url-suffix #:suffix [suffix ""])
   (list (button-primary id:(~a "modal-checkout-button-" sku)
-                        class: "m-0 col-sm-6" 
+                        class: "m-0 col-sm-6 px-2" 
                         style: (properties border-radius: "0 0 0.18rem 0"
                                            white-space: "normal")
                           (if (> discount 0)
-                              (list "Enroll Now for "
+                              (list "Enroll for "
                                     (s class: "text-danger"
-                                       (~a "$" price))
-                                    " $" (- price discount)
+                                       (~p price))
+                                    " " (~p (- price discount))
                                     suffix)
-                              (~a "Enroll Now for $" price suffix)))
+                              (~a "Enroll for " (~p price) suffix)))
         (div id:(~a "error-message" sku))
         ;(script src:"https://js.stripe.com/v3")
         @script/inline{
@@ -295,6 +299,13 @@
                                (i class: "fas fa-plus fa-xs")))
 @script/inline{
  var updateStudents@sku = function(evt) {
+  function formatPrice(price){
+   if (Number.isInteger(price)){
+    return "$" + price;
+    } else {
+    return new Intl.NumberFormat('en-US', {style: 'currency', currency: 'USD'}).format(price);
+   }
+  }
   if (evt && evt.type === "keypress" && evt.keyCode !== 13) {
    return;
   }
@@ -307,11 +318,11 @@
   quantity = Math.min(5, Math.max(1,quantity));
   inputEl.value = quantity;
   if (document.getElementById("checkout-button-@sku")) {
-   @;document.getElementById("checkout-button-@sku").textContent = "Enroll Now for $" + quantity * @price;
+   @;document.getElementById("checkout-button-@sku").textContent = "Enroll for $" + quantity * @price;
    document.getElementById("checkout-button-@sku").innerHTML = @(if (> discount 0)
-                                                                    (~a "'Enroll Now for <s class=\"text-danger\">$' + quantity * " price
-                                                                        "+ '</s> $' + quantity * " (- price discount) ";")
-                                                                    (~a "'Enroll Now for $' + quantity * " price ";"))
+                                                                    (~a "'Enroll for <s class=\"text-danger\">' + formatPrice(quantity * " price
+                                                                        ") + '</s> ' + formatPrice(quantity * " (- price discount) ");")
+                                                                    (~a "'Enroll for ' + formatPrice(quantity * " price ");"))
   }
   // Disable the button if the customers hits the max or min
   if (quantity <= 1) {
@@ -340,6 +351,13 @@
                                (i class: "fas fa-plus fa-xs")))
 @script/inline{
  var modalUpdateStudents@sku = function(evt) {
+  function formatPrice(price){
+   if (Number.isInteger(price)){
+    return "$" + price;
+    } else {
+    return new Intl.NumberFormat('en-US', {style: 'currency', currency: 'USD'}).format(price);
+   }
+  }
   if (evt && evt.type === "keypress" && evt.keyCode !== 13) {
    return;
   }
@@ -352,11 +370,11 @@
   quantity = Math.min(5, Math.max(1,quantity));
   inputEl.value = quantity;
   if (document.getElementById("modal-checkout-button-@sku")) {
-   @;document.getElementById("modal-checkout-button-@sku").textContent = "Enroll Now for $" + quantity * @price;
+   @;document.getElementById("modal-checkout-button-@sku").textContent = "Enroll for $" + quantity * @price;
    document.getElementById("modal-checkout-button-@sku").innerHTML = @(if (> discount 0)
-                                                                          (~a "'Enroll Now for <s class=\"text-danger\">$' + quantity * " price
-                                                                              "+ '</s> $' + quantity * " (- price discount) ";")
-                                                                          (~a "'Enroll Now for $' + quantity * " price ";"))
+                                                                          (~a "'Enroll for <s class=\"text-danger\">' + formatPrice(quantity * " price
+                                                                              ") + '</s> ' + formatPrice(quantity * " (- price discount) ");")
+                                                                          (~a "'Enroll for ' + formatPrice(quantity * " price ");"))
   }
   // Disable the button if the customers hits the max or min
   if (quantity <= 1) {
@@ -444,7 +462,7 @@
                          "&start-date="        (form-urlencoded-encode (first (course-meeting-dates course)))
                          "&address="           (form-urlencoded-encode (course-address course))
                          "&address-link="      (form-urlencoded-encode (course-address-link course))
-                         "&price="             (form-urlencoded-encode (~a "$" (- price discount) "/student"))
+                         "&price="             (form-urlencoded-encode (~a (~p (- price discount)) "/student"))
                          "&meeting-dates="     (form-urlencoded-encode (print-dates (course-meeting-dates course)))
                          "&description="       (form-urlencoded-encode (course-description course))
                          ))
@@ -476,7 +494,7 @@
                          "&start-date="        (form-urlencoded-encode (first (course-meeting-dates course)))
                          "&address="           (form-urlencoded-encode (course-address course))
                          "&address-link="      (form-urlencoded-encode (course-address-link course))
-                         "&price="             (form-urlencoded-encode (~a "$" (- price discount) "/student"))
+                         "&price="             (form-urlencoded-encode (~a (~p (- price discount)) "/student"))
                          "&meeting-dates="     (form-urlencoded-encode (print-dates (course-meeting-dates course)))
                          "&description="       (form-urlencoded-encode (course-description course))
                          ))
@@ -913,9 +931,9 @@ function setMonthlyDonate@amount() {
                   (tr (td (b "Location")) (td location (br) (a target:"_blank" href: address-link address)))
                   (tr (td (b "Price")) (td (if (> discount 0)
                                                  (list (s class: "text-danger"
-                                                          (~a "$" price))
-                                                       " $" (- price discount) "/student")
-                                                 (~a "$" price "/student"))))
+                                                          (~p price))
+                                                       " " (~p (- price discount)) "/student")
+                                                 (~a (~p price) "/student"))))
                   (tr (td (b "Schedule")) (td (print-dates meeting-dates)))))
                 (col-lg-6 class: "col-xs-12 d-flex flex-column justify-content-between"
                  (div (h5 "Course Description:")
@@ -924,7 +942,7 @@ function setMonthlyDonate@amount() {
                  )))
           (modal-footer class: "text-center p-0"
            (div class: "btn-group w-100 m-0"
-                (button-secondary class: "m-0 col-sm-6"
+                (button-secondary class: "m-0 col-sm-6 px-2"
                                   style: (properties border-radius: "0 0 0 0.18rem")
                                   'data-dismiss: "modal"
                    "Close")
@@ -979,9 +997,9 @@ function setMonthlyDonate@amount() {
           ;(~a "$" (camp-price camp))
           (if (> discount 0)
               (list (s class: "text-danger"
-                       (~a "$" price))
-                    " $" (- price discount))
-              (~a "$" price))
+                       (~p price))
+                    " " (~p (- price discount)))
+              (~p price))
           (if (eq? (camp-status camp) 'full)
               (camp->camp-full-modal  camp)
               (camp->camp-enroll-modal city camp))))
@@ -1134,9 +1152,9 @@ function setMonthlyDonate@amount() {
                    (tr (td (b "Location")) (td location (br) (a target:"_blank" href: address-link address)))
                    (tr (td (b "Price")) (td (if (> discount 0)
                                                  (list (s class: "text-danger"
-                                                          (~a "$" price))
-                                                       " $" (- price discount) "/student")
-                                                 (~a "$" price "/student"))))
+                                                          (~p price))
+                                                       " " (~p (- price discount)) "/student")
+                                                 (~a (~p price) "/student"))))
                    (tr (td (b "Dates")) (td (print-dates meeting-dates))))
                  )
                 (col-lg-6 class: "col-xs-12"
@@ -1148,7 +1166,7 @@ function setMonthlyDonate@amount() {
                      (if (eq? lunch-time "") '() (li "All-you-can-eat lunch at the campus dining hall"))
                      (li "Outdoor time, team-building, & teamerwork excercises"))
                  (h5 "How to Purchase")
-                 (p "To purchase this one half-day camp, set the number of students and use the Enroll Now button below. Alternatively, if you plan to purchase multiple half-day camps, download our registration form below to receive additional discounts! The registration form is best if you plan to purchase both a morning & afternoon camp to make a full-day camp OR if you plan to purchase multiple camp weeks.")
+                 (p "To purchase this one half-day camp, set the number of students and use the Enroll button below. Alternatively, if you plan to purchase multiple half-day camps, download our registration form below to receive additional discounts! The registration form is best if you plan to purchase both a morning & afternoon camp to make a full-day camp OR if you plan to purchase multiple camp weeks.")
                  (br)
                  (p "By enrolling in any of these sessions, you agree to the " (link-to terms-and-conditions-path
                                                                                       "terms and conditions") ".")
@@ -1156,12 +1174,12 @@ function setMonthlyDonate@amount() {
                  )))
           (modal-footer class: "text-center p-0"
            (div class: "btn-group w-100 m-0"
-                (button-secondary class: "m-0 col-sm-4"
+                (button-secondary class: "m-0 col-sm-2 px-2"
                                   style: (properties border-radius: "0 0 0 0.20rem")
                                   'data-dismiss: "modal"
                    "Close")
                 (a href: (prefix/pathify camp-form-path)
-                   class: "btn btn-warning m-0 col-sm-4"
+                   class: "btn btn-warning m-0 col-sm-4 px-2"
                    style: (properties border-radius: "0 0 0 0")
                    "Download Form")
                 modal-buy-button))))))
@@ -1198,7 +1216,7 @@ function setMonthlyDonate@amount() {
   (define modal-id (~a "camp-full-modal-" sku))
   
   (define camp-full-button (a href: (camp->waitlist-link camp)
-                              class: "btn btn-danger m-0 col-sm-6"
+                              class: "btn btn-danger m-0 col-sm-6 px-2"
                               ;(button-primary
                               id:(~a "waitlist-button-") ;TODO: pass in info to a dynamic form if possible
                               ;class: "m-0 col-sm-6" 
@@ -1233,9 +1251,9 @@ function setMonthlyDonate@amount() {
                    (tr (td (b "Location")) (td location (br) (a target:"_blank" href: address-link address)))
                    (tr (td (b "Price")) (td (if (> discount 0)
                                                  (list (s class: "text-danger"
-                                                          (~a "$" price))
-                                                       " $" (- price discount) "/student")
-                                                 (~a "$" price "/student"))))
+                                                          (~p price))
+                                                       " " (~p (- price discount)) "/student")
+                                                 (~a (~p price) "/student"))))
                    (tr (td (b "Dates")) (td (print-dates meeting-dates))))
                  )
                 (col-lg-6 class: "col-xs-12"
@@ -1254,7 +1272,7 @@ function setMonthlyDonate@amount() {
                  )))
           (modal-footer class: "text-center p-0"
            (div class: "btn-group w-100 m-0"
-                (button-secondary class: "m-0 col-sm-6"
+                (button-secondary class: "m-0 col-sm-6 px-2"
                                   style: (properties border-radius: "0 0 0 0.20rem")
                                   'data-dismiss: "modal"
                    "Close")
@@ -1310,12 +1328,12 @@ function setMonthlyDonate@amount() {
                  )))
           (modal-footer class: "text-center p-0"
            (div class: "btn-group w-100 m-0"
-                (button-secondary class: "m-0 col-sm-6"
+                (button-secondary class: "m-0 col-sm-6 px-2"
                                   style: (properties border-radius: "0 0 0 0.20rem")
                                   'data-dismiss: "modal"
                    "Close")
                 (a href: (prefix/pathify camp-form-path)
-                   class: "btn btn-warning m-0 col-sm-6"
+                   class: "btn btn-warning m-0 col-sm-6 px-2"
                    style: (properties border-radius: "0 0 0.20rem 0")
                    "Download Form")))))))
 
