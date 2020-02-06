@@ -937,7 +937,7 @@ function setMonthlyDonate@amount() {
                   (tr (td (b "Schedule")) (td (print-dates meeting-dates)))))
                 (col-lg-6 class: "col-xs-12 d-flex flex-column justify-content-between"
                  (div (h5 "Course Description:")
-                      (p description))
+                      (p (html/inline description)))
                  quantity-spinner
                  )))
           (modal-footer class: "text-center p-0"
@@ -1159,7 +1159,7 @@ function setMonthlyDonate@amount() {
                  )
                 (col-lg-6 class: "col-xs-12"
                  (h5 "Camp Description")
-                 (p description)
+                 (p (html/inline description))
                  (h5 "What's Included?")
                  (ul (li "6:1 student-to-instructor ratio")
                      (li "A week full of coding fun!")
@@ -1258,7 +1258,7 @@ function setMonthlyDonate@amount() {
                  )
                 (col-lg-6 class: "col-xs-12"
                  (h5 "Camp Description")
-                 (p description)
+                 (p (html/inline description))
                  (h5 "What's Included?")
                  (ul (li "6:1 student-to-instructor ratio")
                      (li "A week full of coding fun!")
@@ -1318,7 +1318,7 @@ function setMonthlyDonate@amount() {
                  )
                 (col-lg-6 class: "col-xs-12"
                  (h5 "Camp Description")
-                 (p description)
+                 (p (html/inline description))
                  (h5 "How to Purchase")
                  (p "To purchase a half-day camp, choose a week from the schedule and click on Enroll.")
                  (p "Alternatively, if you plan to purchase multiple half-day camps, download our registration form below to receive additional discounts! The registration form is best if you plan to purchase both a morning & afternoon camp to make a full-day camp OR if you plan to purchase multiple camp weeks.")
