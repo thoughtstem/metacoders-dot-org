@@ -8,10 +8,10 @@
        (define (earth) 
          (basic-sphere 
            #:position (position 25 0 0) 
-           #:texture earth-bg)) 
+           #:texture earth-tex)) 
        (define (sun) 
          (basic-sphere 
-           #:texture sun-bg 
+           #:texture sun-tex 
            #:radius 5 
            #:animations-list (do-many (animate-rotation)) 
            #:components-list (list (earth)))) 
