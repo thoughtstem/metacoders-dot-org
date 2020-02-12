@@ -208,6 +208,8 @@
   (list "img" "locations" "banners" "city-dallas-tx.jpg"))
 (define/provide/image minneapolis-banner-path minneapolis-banner-webp-path
   (list "img" "locations" "banners" "city-minneapolis-mn.jpg"))
+(define/provide/image phoenix-banner-path phoenix-banner-webp-path
+  (list "img" "locations" "banners" "city-phoenix-az.jpg"))
 (define/provide/image poway-banner-path poway-banner-webp-path
   (list "img" "locations" "banners" "city-poway-ca.jpg"))
 (define/provide/image reno-banner-path reno-banner-webp-path
