@@ -640,7 +640,7 @@
                 (li (p (b "Flexible: ") (~a "Choose between half-day camps or full-day camps"
                                             (if (string=? lunch-info "")
                                                 "."
-                                                (~a "; morning-only camps include " (string-downcase lunch-info) ".")))))
+                                                (~a "; morning camps include " (string-downcase lunch-info) ".")))))
                 (li (p (b "Prestigous Location: ") (~a "Students receive an authentic college experience on the beautiful " location-name " campus.")))
                 (li (p (b "Awesome Instructors: ") (~a "MetaCoders instructors teach computer science year-round. We strive for a 1:5 "
                                                        "mentor:student ratio during the summer, which ensures students get the hands-on "
