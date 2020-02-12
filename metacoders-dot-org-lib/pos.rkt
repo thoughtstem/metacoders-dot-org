@@ -77,7 +77,8 @@
                                                               #:full-day-time "9am - 4pm"
                                                               #:am-price "TBA"
                                                               #:pm-price "TBA"
-                                                              #:full-day-price "TBA")])
+                                                              #:full-day-price "TBA")]
+         #:camp-lunch-info [camp-lunch-info "All-you-can-eat lunch at the campus dining hall"])
   (define jpg-url img-url)
   (define webp-url (string-replace jpg-url "jpg" "webp"))
   
@@ -138,7 +139,7 @@
                                                          (container
                                                           (h2 "Register for School-Year Classes")
                                                           (p "Coming Soon!")))
-                                             (camps->camp-registration city-name summer-camps camp-pricing))]
+                                             (camps->camp-registration city-name summer-camps camp-pricing camp-lunch-info))]
          [(empty? summer-camps) (list (courses->course-registration city-name school-year-courses)
                                       (jumbotron  id: "summer-camps"
                                                   class: "mb-0 pt-6 pb-6 text-center bg-white"
@@ -146,7 +147,7 @@
                                                    (h2 "Register for Summer Camps")
                                                    (p "Coming Soon!"))))]
          [else (list (courses->course-registration city-name school-year-courses)
-                     (camps->camp-registration city-name summer-camps camp-pricing))
+                     (camps->camp-registration city-name summer-camps camp-pricing camp-lunch-info))
           ])
    (have-questions-section)
    ))
@@ -600,26 +601,46 @@
                )
               ))
 
-(define (summer-camps-links-section)
+(define (summer-camps-links-section #:k-2?  k-2?
+                                    #:3-5?  3-5?
+                                    #:7-10? 7-10?)
+  (define num-of-age-groups (length (filter identity (list k-2? 3-5? 7-10?))))
+  (define btn-class (cond [(eq? num-of-age-groups 1) "col-md-12"]
+                          [(eq? num-of-age-groups 2) "col-md-6"]
+                          [(eq? num-of-age-groups 3) "col-md-4"]
+                          [else                      ""]))
   (row id: "summer-buttons" ;abstract to responsive-row-md?
-   (div class: "col-md-6 col-xs-12 my-2"
+   (if k-2?
+       (div class: (~a btn-class " col-xs-12 my-2")
         (a href: "#k-2-summer-options" style: (properties 'text-decoration: "none")
            (button-primary class: "btn-lg btn-block"
                            "K-2nd Summer Options")))
-   (div class: "col-md-6 col-xs-12 my-2"
+       '())
+   (if 3-5?
+       (div class: (~a btn-class " col-xs-12 my-2")
         (a href: "#3-6-summer-options" style: (properties 'text-decoration: "none")
            (button-primary class: "btn-lg btn-block"
-                           "3rd-6th Summer Options")))))
+                           "3rd-6th Summer Options")))
+       '())
+   (if 7-10?
+       (div class: (~a btn-class " col-xs-12 my-2")
+        (a href: "#7-10-summer-options" style: (properties 'text-decoration: "none")
+           (button-primary class: "btn-lg btn-block"
+                           "7th-10th Summer Options")))
+       '())
+   ))
 
-(define (summer-camps-info-section location-name)
+(define (summer-camps-info-section location-name lunch-info)
   (row class: "align-items-center" ;abstract to responsive-row-lg?
        (div class: "col-lg-6 col-xs-12 p-4 text-left"
             (h5 class: "text-center" "What Makes MetaCoders Camps Different?")
             (ul class: "pl-4"
                 (li (p (b "Affordable: ") (~a "We bring summer technology education to local students at a more affordable price. "
                                               "Additional discoutns are available for multiple registrations.")))
-                (li (p (b "Flexible: ") (~a "Choose between half-day camps or full-day camps; morning-only  camps include lunch in "
-                                            location-name "'s delicious dining halls. ") (strong "Extended daycare") " also available!"))
+                (li (p (b "Flexible: ") (~a "Choose between half-day camps or full-day camps"
+                                            (if (string=? lunch-info "")
+                                                "."
+                                                (~a "; morning camps include " (string-downcase lunch-info) ".")))))
                 (li (p (b "Prestigous Location: ") (~a "Students receive an authentic college experience on the beautiful " location-name " campus.")))
                 (li (p (b "Awesome Instructors: ") (~a "MetaCoders instructors teach computer science year-round. We strive for a 1:5 "
                                                        "mentor:student ratio during the summer, which ensures students get the hands-on "
@@ -640,7 +661,8 @@
                                 #:full-day-time full-day-time
                                 #:am-price am-price
                                 #:pm-price pm-price
-                                #:full-day-price full-day-price)
+                                #:full-day-price full-day-price
+                                #:lunch-info [lunch-info "All-you-can-eat lunch at the campus dining hall"])
   (row class: "align-items-center"
        (div class: "col-lg-4 col-xs-12 p-4"
             (picture 
@@ -653,13 +675,17 @@
             (h2 class: "mb-4" "Summer Camp Pricing at " location-name)
             (strong "Purchasing 1 Half-Day Morning or Afternoon Camp? Purchase using the table above.")
             (ul
-             (li "Morning Only (" am-camp-time " ): $" am-price ", includes lunch at the dining hall")
+             (li "Morning Only (" am-camp-time " ): $" am-price (if lunch-info
+                                                                    (~a ", includes " (string-downcase lunch-info))
+                                                                    ""))
              (li "Afternoon Only (" pm-camp-time "): $" pm-price ""))
             (strong "Purchasing More than 1 Half-Day Camp? Fill out the registration form "
                     (a href: (prefix/pathify camp-form-path)"here") ", and email it to "
                     (a href: "mailto:contact@metacoders.org" "contact@metacoders.org"))
             (ul
-             (li "Full Day, 1-week (" full-day-time "): $" full-day-price ", includes lunch at the dining hall")
+             (li "Full Day, 1-week (" full-day-time "): $" full-day-price (if (string=? lunch-info "")
+                                                                              ""
+                                                                              (~a ", includes " (string-downcase lunch-info))))
              (li "Want to buy more than 1 week of camp? We'll take an extra 10% off your entire order")))))
 
 
@@ -671,32 +697,52 @@
                  (a href: "mailto:contact@metacoders.org" "contact@metacoders.org")
                  " or call " (strong "858-869-9430")))))
 
-(define (camps->camp-registration city camps camp-pricing)
+(define (camps->camp-registration city camps camp-pricing lunch-info)
   (define location-name (camp-location (first camps)))
   
   (define (k-2-camp? c)
     (string-contains? (camp-grade-range c) "K - 2nd"))
   (define (3-6-camp? c)
     (string-contains? (camp-grade-range c) "3rd - 6th"))
+  (define (7-10-camp? c)
+    (string-contains? (camp-grade-range c) "7th - 10th"))
   
   (define k-2-camps (filter k-2-camp? camps))
   (define 3-6-camps (filter 3-6-camp? camps))
+  (define 7-10-camps (filter 7-10-camp? camps))
   
   (list (jumbotron  id: "summer-camps"
               class: "mb-0 pt-6 pb-6 text-center bg-white"
               (container
                (h2  "Register for Summer Camps")
-               (summer-camps-links-section)
-               (summer-camps-info-section location-name)
+               (summer-camps-links-section #:k-2?  (not (empty? k-2-camps))
+                                           #:3-5?  (not (empty? 3-6-camps))
+                                           #:7-10? (not (empty? 7-10-camps))
+                                           )
+               (summer-camps-info-section location-name lunch-info)
                
-               (br id: "k-2-summer-options")
-               (h5 class: "mt-5"
+               (if (empty? k-2-camps)
+                   '()
+                   (list
+                    (br id: "k-2-summer-options")
+                    (h5 class: "mt-5"
                    "Summer Camp Schedule for Students Entering K-2nd")
-               (camps->camp-calendar city k-2-camps)
-               (br id: "3-6-summer-options")
-               (h5 class: "mt-5"
-                   "Summer Camp Schedule for Students Entering 3rd-6th")
-               (camps->camp-calendar city 3-6-camps)
+                    (camps->camp-calendar city k-2-camps lunch-info)))
+               (if (empty? 3-6-camps)
+                   '()
+                   (list
+                    (br id: "3-6-summer-options")
+                    (h5 class: "mt-5"
+                        "Summer Camp Schedule for Students Entering 3rd-6th")
+                    (camps->camp-calendar city 3-6-camps lunch-info)))
+               (if (empty? 7-10-camps)
+                   '()
+                   (list
+                    (br id: "7-10-summer-options")
+                    (h5 class: "mt-5"
+                        "Summer Camp Schedule for Students Entering 7th-10th")
+                    (camps->camp-calendar city 7-10-camps lunch-info)))
+               
                camp-pricing
                ;(summer-camp-pricing-at location-name)
                (p "By enrolling in any of these sessions, you agree to the " (link-to terms-and-conditions-path
@@ -965,7 +1011,7 @@ function setMonthlyDonate@amount() {
                                           "Full (Click to Join Waitlist)"
                                           )]))
 ; Get earliest meeting-date and the latest meeting-date
-(define (camps->camp-calendar city camps)
+(define (camps->camp-calendar city camps lunch-info)
   (define sorted-camps
     (sort camps date<? #:key (compose meeting-date->date
                                       first
@@ -1001,8 +1047,8 @@ function setMonthlyDonate@amount() {
                     " " (~p (- price discount)))
               (~p price))
           (if (eq? (camp-status camp) 'full)
-              (camp->camp-full-modal  camp)
-              (camp->camp-enroll-modal city camp))))
+              (camp->camp-full-modal camp lunch-info)
+              (camp->camp-enroll-modal city camp lunch-info))))
 
     (define (camp-or-no-camp iso-week)
       (define camp
@@ -1044,7 +1090,7 @@ function setMonthlyDonate@amount() {
                         (a href: "#"
                            'data-toggle: "modal" 'data-target: (~a "#topic-info-modal-" (camp-sku (first topic-camps)))
                            (button-secondary class: "btn-sm mt-2" "Camp Info"))
-                        (camp->topic-info-modal (first topic-camps))))
+                        (camp->topic-info-modal (first topic-camps) lunch-info)))
               (map camp-or-no-camp range-iso-week)))
                     
     (apply tr table-data))
@@ -1082,7 +1128,7 @@ function setMonthlyDonate@amount() {
          ))
   )
 
-(define (camp->camp-enroll-modal city camp)
+(define (camp->camp-enroll-modal city camp lunch-info)
   (define location  (camp-location camp))
   (define topic     (camp-topic camp))
   (define sku       (camp-sku camp))
@@ -1092,9 +1138,9 @@ function setMonthlyDonate@amount() {
   (define camp-time (camp-camp-time camp))
 
   (define lunch-time (camp-lunch-time camp))
-  (define lunch? (if (eq? lunch-time "")
+  (define lunch? (if (string=? lunch-time "")
                      "No"
-                     "Yes"))
+                     (~a "Yes, includes " (string-downcase lunch-info))))
   (define pickup-time (camp-pickup-time camp))
   (define meeting-dates (camp-meeting-dates camp))
   (define price (camp-price camp))
@@ -1143,7 +1189,7 @@ function setMonthlyDonate@amount() {
                  (table class: "table table-striped table-bordered"
                    (tr (td (b "Check-in")) (td check-in-time))
                    (tr (td (b "Camp Activities")) (td camp-time))
-                   (if (eq? lunch-time "")
+                   (if (string=? lunch-time "")
                        '()
                        (tr (td (b "Lunchtime")) (td lunch-time)))
                    (tr (td (b "Pick-up")) (td pickup-time))
@@ -1163,7 +1209,9 @@ function setMonthlyDonate@amount() {
                  (h5 "What's Included?")
                  (ul (li "6:1 student-to-instructor ratio")
                      (li "A week full of coding fun!")
-                     (if (eq? lunch-time "") '() (li "All-you-can-eat lunch at the campus dining hall"))
+                     (if (string=? lunch-time "")
+                         '()
+                         (li lunch-info))
                      (li "Outdoor time, team-building, & teamerwork excercises"))
                  (h5 "How to Purchase")
                  (p "To purchase this one half-day camp, set the number of students and use the Enroll button below. Alternatively, if you plan to purchase multiple half-day camps, download our registration form below to receive additional discounts! The registration form is best if you plan to purchase both a morning & afternoon camp to make a full-day camp OR if you plan to purchase multiple camp weeks.")
@@ -1197,7 +1245,7 @@ function setMonthlyDonate@amount() {
                       "Phone Number: ________\n"
                       "Student Name: ________\n\n"))))
 
-(define (camp->camp-full-modal camp)
+(define (camp->camp-full-modal camp lunch-info)
   (define location  (camp-location camp))
   (define topic     (camp-topic camp))
   (define sku       (camp-sku camp))
@@ -1262,7 +1310,9 @@ function setMonthlyDonate@amount() {
                  (h5 "What's Included?")
                  (ul (li "6:1 student-to-instructor ratio")
                      (li "A week full of coding fun!")
-                     (if lunch-time (li "All-you-can-eat lunch at the campus dining hall") '())
+                     (if (string=? lunch-time "")
+                         '()
+                         (li lunch-info))
                      (li "Outdoor time, team-building, & teamerwork excercises"))
                  (h5 "How to Purchase")
                  (p "Unfortunately, this camp is full. To join the waitlist, click the button below.")
@@ -1278,7 +1328,7 @@ function setMonthlyDonate@amount() {
                    "Close")
                 camp-full-button))))))
 
-(define (camp->topic-info-modal camp)
+(define (camp->topic-info-modal camp lunch-info)
   (define location  (camp-location camp))
   (define topic     (camp-topic camp))
   (define sku       (camp-sku camp))
@@ -1313,7 +1363,9 @@ function setMonthlyDonate@amount() {
                  (h5 "What's Included?")
                  (ul (li "6:1 student-to-instructor ratio")
                      (li "A week full of coding fun!")
-                     (li "All-you-can-eat lunch at the campus dining hall (morning camps only)")
+                     (if (string=? lunch-info "")
+                         '()
+                         (li (~a lunch-info " (morning camps only)")))
                      (li "Outdoor time, team-building, & teamerwork excercises"))
                  )
                 (col-lg-6 class: "col-xs-12"
