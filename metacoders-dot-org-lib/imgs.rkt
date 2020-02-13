@@ -220,6 +220,8 @@
   (list "img" "locations" "banners" "city-washington-dc.jpg"))
 (define/provide/image new-orleans-banner-path new-orleans-banner-webp-path
   (list "img" "locations" "banners" "city-new-orleans-la.jpg"))
+(define/provide/image charlotte-banner-path charlotte-banner-webp-path
+  (list "img" "locations" "banners" "city-charlotte-nc.jpg"))
 
 ; ==== COURSE VIDEO PATHS ====
 (define/provide/video battlearena-mp4-path battlearena-webm-path
