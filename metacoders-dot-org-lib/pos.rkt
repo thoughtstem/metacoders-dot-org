@@ -68,13 +68,17 @@
 (define (check-course-skus courses)
   (define duplicates (check-duplicates (map course-sku courses)))
   (if duplicates
-      (error (~a "Course duplicates found: " duplicates))
+      (error (~a "===== ERROR =====\n"
+                 "Course duplicates found: " duplicates "\n"
+                 "===== SITE BUILD DID NOT FINISH ===="))
       (displayln "===== NO COURSE SKU DUPLICATES FOUND =====")))
 
 (define (check-camp-skus camps)
   (define duplicates (check-duplicates (map camp-sku camps)))
   (if duplicates
-      (error (~a "Camp duplicates found: " duplicates))
+      (error (~a "===== ERROR =====\n"
+                 "Camp duplicates found: " duplicates "\n"
+                 "===== SITE BUILD DID NOT FINISH ===="))
       (displayln "===== NO CAMP SKU DUPLICATES FOUND =====")))
 
 (define (city-page
