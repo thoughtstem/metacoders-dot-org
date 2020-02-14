@@ -65,6 +65,18 @@
                                                            "it! We want to inspire the next generation of engineers, web developers, and computer scientists.")))
                     ))))))
 
+(define (check-course-skus courses)
+  (define duplicates (check-duplicates (map course-sku courses)))
+  (if duplicates
+      (error (~a "Course duplicates found: " duplicates))
+      (displayln "===== NO COURSE SKU DUPLICATES FOUND =====")))
+
+(define (check-camp-skus camps)
+  (define duplicates (check-duplicates (map camp-sku camps)))
+  (if duplicates
+      (error (~a "Camp duplicates found: " duplicates))
+      (displayln "===== NO CAMP SKU DUPLICATES FOUND =====")))
+
 (define (city-page
          #:city-name [city-name ""]
          #:banner-url [img-url ""]
@@ -79,6 +91,10 @@
                                                               #:pm-price "TBA"
                                                               #:full-day-price "TBA")]
          #:camp-lunch-info [camp-lunch-info "All-you-can-eat lunch at the campus dining hall"])
+  ;====== SKU CHECKS ======
+  (check-course-skus school-year-courses)
+  (check-camp-skus summer-camps)
+  
   (define jpg-url img-url)
   (define webp-url (string-replace jpg-url "jpg" "webp"))
   
