@@ -65,21 +65,21 @@
                                                            "it! We want to inspire the next generation of engineers, web developers, and computer scientists.")))
                     ))))))
 
-(define (check-course-skus courses)
+(define (check-course-skus courses city-name)
   (define duplicates (check-duplicates (map course-sku courses)))
   (if duplicates
-      (error (~a "===== ERROR =====\n"
+      (error (~a "===== " (string-upcase city-name) " ERROR =====\n"
                  "Course duplicates found: " duplicates "\n"
                  "===== SITE BUILD DID NOT FINISH ===="))
-      (displayln "===== NO COURSE SKU DUPLICATES FOUND =====")))
+      (displayln @~a{ @(~a #:width 20 (string-upcase city-name)): COURSE SKUS CHECKED})))
 
-(define (check-camp-skus camps)
+(define (check-camp-skus camps city-name)
   (define duplicates (check-duplicates (map camp-sku camps)))
   (if duplicates
-      (error (~a "===== ERROR =====\n"
+      (error (~a "===== " (string-upcase city-name) "ERROR =====\n"
                  "Camp duplicates found: " duplicates "\n"
                  "===== SITE BUILD DID NOT FINISH ===="))
-      (displayln "===== NO CAMP SKU DUPLICATES FOUND =====")))
+      (displayln @~a{ @(~a #:width 20 (string-upcase city-name)): CAMP SKUS CHECKED})))
 
 (define (city-page
          #:city-name [city-name ""]
@@ -96,8 +96,8 @@
                                                               #:full-day-price "TBA")]
          #:camp-lunch-info [camp-lunch-info "All-you-can-eat lunch at the campus dining hall"])
   ;====== SKU CHECKS ======
-  (check-course-skus school-year-courses)
-  (check-camp-skus summer-camps)
+  (check-course-skus school-year-courses city-name)
+  (check-camp-skus summer-camps city-name)
   
   (define jpg-url img-url)
   (define webp-url (string-replace jpg-url "jpg" "webp"))
