@@ -211,7 +211,7 @@
 (define/provide/image new-orleans-banner-path new-orleans-banner-webp-path
   (list "img" "locations" "banners" "city-new-orleans-la.jpg"))
 (define/provide/image phoenix-banner-path phoenix-banner-webp-path
-  (list "img" "locations" "banners" "city-new-phoenix-az.jpg"))
+  (list "img" "locations" "banners" "city-phoenix-az.jpg"))
 (define/provide/image poway-banner-path poway-banner-webp-path
   (list "img" "locations" "banners" "city-poway-ca.jpg"))
 (define/provide/image reno-banner-path reno-banner-webp-path
@@ -220,6 +220,8 @@
   (list "img" "locations" "banners" "city-temecula-ca.jpg"))
 (define/provide/image washington-dc-banner-path washington-dc-banner-webp-path
   (list "img" "locations" "banners" "city-washington-dc.jpg"))
+(define/provide/image charlotte-banner-path charlotte-banner-webp-path
+  (list "img" "locations" "banners" "city-charlotte-nc.jpg"))
 
 ; ==== COURSE VIDEO PATHS ====
 (define/provide/video battlearena-mp4-path battlearena-webm-path
@@ -252,6 +254,8 @@
   (list "videos" "survival-minecraft.mp4"))
 (define/provide/video survival-pokemon-mp4-path survival-pokemon-webm-path
   (list "videos" "survival-pokemon.mp4"))
+(define/provide/video 3d-orbit-mp4-path 3d-orbit-webm-path
+  (list "videos" "3d-orbit.mp4"))
 
 ; ==== OTHER FILE PATHS ====
 (define/provide/file camp-form-path
