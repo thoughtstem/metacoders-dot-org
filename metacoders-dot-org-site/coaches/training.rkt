@@ -10,7 +10,7 @@
          (only-in stories/base place-name)
          "./common.rkt"
          mc-classmaps
-         mc-languages)
+         )
 
 ;TESTING -- run this file to see training live
 ;does not work currently
@@ -48,8 +48,13 @@
     (appendix)))
 
 (define (language-pages)
- (sub-site "languages"
-   (languages-pages #:wrap-content normal-content)))
+ (page (list "languages")
+       (content
+        (h3 "MetaCoders Languages has Moved!")
+        (hr)
+        (a href: "https://thoughtstem.github.io/mc-languages/" "Click here to go to the new page."))))
+   ;page removed b/c mc-languages too large. slowing build of whole site.
+   ;(languages-pages #:wrap-content normal-content)))
 
 
 ;Move to lib...
@@ -202,6 +207,7 @@
              (ul
               (li (link-to (list "coaches" "maps.html") 
                            "Classmaps, Story Modes, Game Modes, Transition Tips"))
+              ;fix this link when metacoders languages has a final location
               (li (link-to (list "languages" "index.html") 
                            "MetaCoders Languages")))
               (hr)
