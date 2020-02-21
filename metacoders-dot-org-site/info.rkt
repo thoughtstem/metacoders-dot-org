@@ -16,6 +16,8 @@
                "https://github.com/thoughtstem/metacoders-dot-org-core-pages.git"
                "https://github.com/thoughtstem/mc-classmaps.git"
 
+               "https://github.com/thoughtstem/mc-static-pos.git"
+
                ; --------------
                "https://github.com/thoughtstem/mc-social-media.git" 
                "https://github.com/thoughtstem/mc-coach-training.git"
