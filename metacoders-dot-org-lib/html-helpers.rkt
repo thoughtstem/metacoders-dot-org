@@ -92,6 +92,12 @@
   color: @primary-dark-4;
   text-decoration: underline
  }
+ a.text-primary:focus, a.text-primary:hover {
+  color: @primary-dark-4 !important;
+ }
+ a.text-warning:focus, a.text-warning:hover {
+  color: @warning-dark-4 !important;
+ }
  .btn-primary {
     color: #fff;
     background-color: @primary;
