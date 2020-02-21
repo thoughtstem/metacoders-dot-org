@@ -21,6 +21,7 @@
          warning-dark-4
          warning-shadow
          common-critical-css
+	 custom-css-colors
          )
 
 (require website/bootstrap
