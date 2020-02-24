@@ -217,6 +217,7 @@
              (ul
               (li (link-to (list "coaches" "maps.html") 
                            "Classmaps, Story Modes, Game Modes, Transition Tips"))
+              ;fix this link when metacoders languages has a final location
               (li (link-to (list "languages" "index.html") 
                            "MetaCoders Languages")))
               (hr)

@@ -21,7 +21,7 @@
          warning-dark-4
          warning-shadow
          common-critical-css
-	 custom-css-colors
+         custom-css-colors
          )
 
 (require website/bootstrap
@@ -91,6 +91,12 @@
  a:hover {
   color: @primary-dark-4;
   text-decoration: underline
+ }
+ a.text-primary:focus, a.text-primary:hover {
+  color: @primary-dark-4 !important;
+ }
+ a.text-warning:focus, a.text-warning:hover {
+  color: @warning-dark-4 !important;
  }
  .btn-primary {
     color: #fff;

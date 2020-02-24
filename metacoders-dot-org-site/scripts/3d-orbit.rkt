@@ -7,7 +7,7 @@
    @~a{#lang 3d-orbit 
        (define the-ring
         (basic-ring
-          #:rotation (rotation 90 0 0)
+          #:tilt (tilt 90 0 0)
           #:texture saturnring-tex
           #:radius 2
           #:thickness 0.5)) 
