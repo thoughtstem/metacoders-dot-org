@@ -10,7 +10,9 @@
          (only-in stories/base place-name)
          "./common.rkt"
          mc-classmaps
-         )
+	 #;
+         mc-languages
+	 )
 
 ;TESTING -- run this file to see training live
 ;does not work currently
@@ -48,16 +50,24 @@
     (appendix)))
 
 (define (language-pages)
- (page (list "languages")
-       (content
-        (h3 "MetaCoders Languages has Moved!")
-        (hr)
-        (a href: "https://thoughtstem.github.io/mc-languages/" "Click here to go to the new page."))))
-   ;page removed b/c mc-languages too large. slowing build of whole site.
-   ;(languages-pages #:wrap-content normal-content)))
+  (page languages/index.html
+	(normal-content
+	  (card
+	    (card-body
+	      (p "One moment, we're redirecting you...")
+	      (p "Or feel free to click " 
+		 (a 
+		   href: "https://thoughtstem.github.io/mc-languages/"
+		   "here"))
 
+	      @script/inline{
+	      setTimeout(()=>window.location="https://thoughtstem.github.io/mc-languages/", 5000)
+	      }))))
+  #;
+ (sub-site "languages"
+   (languages-pages #:wrap-content normal-content))
+ )
 
-;Move to lib...
 
 (define (quest . content)
   (container
