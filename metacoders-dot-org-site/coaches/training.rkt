@@ -220,6 +220,8 @@
               ;fix this link when metacoders languages has a final location
               (li (link-to (list "languages" "index.html") 
                            "MetaCoders Languages"))
+              (li (a href: "https://youtu.be/2E8EaVZDFPM"
+                     "How to Complete an Assessment Video"))
               (li (a href: "https://youtu.be/YAsMx2BF0lg"
                      "Screen Recording Tutorial: OBS") " -- for all operating systems")
               (li (a href: "https://youtu.be/t8IXhVA64zs"
