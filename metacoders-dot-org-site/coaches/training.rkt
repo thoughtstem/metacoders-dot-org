@@ -219,7 +219,11 @@
                            "Classmaps, Story Modes, Game Modes, Transition Tips"))
               ;fix this link when metacoders languages has a final location
               (li (link-to (list "languages" "index.html") 
-                           "MetaCoders Languages")))
+                           "MetaCoders Languages"))
+              (li (a href: "https://youtu.be/YAsMx2BF0lg"
+                     "Screen Recording Tutorial: OBS") " -- for all operating systems")
+              (li (a href: "https://youtu.be/t8IXhVA64zs"
+                     "Screen Recording Tutorial: Quicktime") " -- for Mac"))
               (hr)
              (h5 "FAQs:")
              (ul
