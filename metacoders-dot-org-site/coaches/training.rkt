@@ -219,7 +219,13 @@
                            "Classmaps, Story Modes, Game Modes, Transition Tips"))
               ;fix this link when metacoders languages has a final location
               (li (link-to (list "languages" "index.html") 
-                           "MetaCoders Languages")))
+                           "MetaCoders Languages"))
+              (li (a href: "https://youtu.be/2E8EaVZDFPM"
+                     "How to Complete an Assessment Video"))
+              (li (a href: "https://youtu.be/YAsMx2BF0lg"
+                     "Screen Recording Tutorial: OBS") " -- for all operating systems")
+              (li (a href: "https://youtu.be/t8IXhVA64zs"
+                     "Screen Recording Tutorial: Quicktime") " -- for Mac"))
               (hr)
              (h5 "FAQs:")
              (ul
@@ -229,7 +235,7 @@
 
               @li{@b{How do I submit my assessments to MetaCoders}  If you've been accepted as a MetaCoders coach-in-training, you will upload your assessment video to YouTube and email a link to your Training Lead.}
 
-              @li{@b{How do I get a certification if I'm @i{not} employed by MetaCoders?} You'll need to contact us at @(a href: "mailto:contact@metacoders.org" "contact@metacoders.org").  We occasionally make exceptions for enthusiastic people who are trying to bring MetaCoders to their city and are training in advance of an official application.})
+              @li{@b{How do I get a certification if I'm @i{not} employed by MetaCoders?} You'll need to contact us at @(a href: "mailto:training@metacoders.org" "training@metacoders.org").  We occasionally make exceptions for enthusiastic people who are trying to bring MetaCoders to their city and are training in advance of an official application.})
              )))))
 
 
