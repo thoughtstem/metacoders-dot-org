@@ -5,6 +5,7 @@
          learn-more-path
          donate-path
          join-our-team-path
+         online-top-path
          scientists-top-path        
          coders-top-path           
          partners-top-path
@@ -22,6 +23,7 @@
 (define city-search-path          (list "city-search.html"))
 (define learn-more-path           (list "learn-more.html"))
 (define join-our-team-path        (list "join-our-team.html"))
+(define online-top-path               (list "online.html"))
 (define scientists-top-path       (list "scientists.html"))
 (define donate-path               (list "donate.html"))
 (define coders-top-path           (list "coders.html"))

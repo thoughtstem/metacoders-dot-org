@@ -156,6 +156,12 @@
   (list "img" "scientists" "volunteer-learning-scientist-studying-coding-classroom.jpg"))
 (define/provide/image volunteer-coder-banner-path volunteer-coder-banner-webp-path
   (list "img" "coders" "volunteer-coding-computer-science-curriculum-for-students.jpg"))
+(define/provide/image online-banner-path online-banner-webp-path
+  (list "img" "online" "student-coding-in-quarantine.jpg"))
+(define/provide/image covid-class-img-path covid-class-img-webp-path
+  (list "img" "online" "coders-conquering-covid-19-childrens-drawing.jpg"))
+(define/provide/image coding-club-img-path coding-club-img-webp-path
+  (list "img" "online" "online-coding-club-in-session-screenshot.jpg"))
 (define/provide/image summer-camp-intern-banner-path summer-camp-intern-banner-webp-path
   (list "img" "summer-interns" "summer-coding-education-intern-leadership-opportunity.jpg"))
 (define/provide/image tech-coordinator-banner-path tech-coordinator-banner-webp-path
