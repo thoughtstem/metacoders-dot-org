@@ -17,6 +17,7 @@
          "./coders.rkt"
          "./summer-interns.rkt"
          "./partners.rkt"
+         "./online.rkt"
          "./terms-and-conditions.rkt"         
          "./setup-scripts.rkt"
 
@@ -49,6 +50,7 @@
       (coders)
       (summer-interns)
       (partners) 
+      (online) 
       (terms-and-conditions)
       (sub-site "scripts"
                 (setup-scripts))
