@@ -160,6 +160,8 @@
   (list "img" "online" "student-coding-in-quarantine.jpg"))
 (define/provide/image covid-class-img-path covid-class-img-webp-path
   (list "img" "online" "coders-conquering-covid-19-childrens-drawing.jpg"))
+(define/provide/image conquering-covid-img-path conquering-covid-img-webp-path
+  (list "img" "online" "coders-conquering-covid-19.jpg"))
 (define/provide/image coding-club-img-path coding-club-img-webp-path
   (list "img" "online" "online-coding-club-in-session-screenshot.jpg"))
 (define/provide/image summer-camp-intern-banner-path summer-camp-intern-banner-webp-path
