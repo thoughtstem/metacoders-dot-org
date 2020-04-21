@@ -162,6 +162,8 @@
   (list "img" "online" "coders-conquering-covid-19-childrens-drawing.jpg"))
 (define/provide/image conquering-covid-img-path conquering-covid-img-webp-path
   (list "img" "online" "coders-conquering-covid-19.jpg"))
+(define/provide/image circuit-img-path circuit-img-webp-path
+  (list "img" "online" "circuits-background.jpg"))
 (define/provide/image adventures-in-coding-img-path adventures-in-coding-img-webp-path
   (list "img" "online" "two-girls-coding-having-fun.jpg"))
 (define/provide/image conquering-covid-b-img-path conquering-covid-b-img-webp-path
