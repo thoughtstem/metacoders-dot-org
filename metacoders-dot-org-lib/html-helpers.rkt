@@ -324,7 +324,7 @@
                  alt: "MetaCoders")
     (my-nav-link learn-more-path  "Learn More")
     (my-nav-link online-top-path  "Quarantine Coding Club")
-    (my-nav-link city-search-path "Locations")
+    ;(my-nav-link city-search-path "Locations")
     (my-nav-link join-our-team-path "Join Our Team")
     (my-nav-link donate-path "Donate")))
 
@@ -392,7 +392,7 @@
       (ul class: "navbar-nav ml-auto"
         (my-nav-link learn-more-path  "Learn More")
         (my-nav-link online-top-path  "Quarantine Coding Club")
-        (my-nav-link city-search-path "Locations")
+        ;(my-nav-link city-search-path "Locations")
         (my-nav-link join-our-team-path "Join Our Team")
         (my-nav-link donate-path "Donate"))))))
 
