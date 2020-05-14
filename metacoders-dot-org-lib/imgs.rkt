@@ -156,6 +156,28 @@
   (list "img" "scientists" "volunteer-learning-scientist-studying-coding-classroom.jpg"))
 (define/provide/image volunteer-coder-banner-path volunteer-coder-banner-webp-path
   (list "img" "coders" "volunteer-coding-computer-science-curriculum-for-students.jpg"))
+
+; QCC Start
+(define/provide/svg metacoders-diagram-path
+  (list "img" "online" "mc-diagram.svg")) 
+(define/provide/image discord-img-path discord-img-webp-path
+  (list "img" "online" "discord-bots.jpg")) 
+(define/provide/image graphic-design-img-path graphic-design-img-webp-path
+  (list "img" "online" "graphic-design.jpg"))
+(define/provide/image metacognition-img-path metacognition-img-webp-path
+  (list "img" "online" "metacognition.jpg"))
+(define/provide/image music-img-path music-img-webp-path
+  (list "img" "online" "music.jpg"))
+(define/provide/image racket-logo-img-path racket-logo-img-webp-path
+  (list "img" "online" "racket-programming-language-logo.jpg"))
+(define/provide/image video-editing-img-path video-editing-img-webp-path
+  (list "img" "online" "video-editing.jpg"))
+(define/provide/image web-development-img-path web-development-img-webp-path
+  (list "img" "online" "web-development.jpg"))
+(define/provide/image artificial-intelligence-img-path artificial-intelligence-img-webp-path
+  (list "img" "online" "artificial-intelligence.jpg"))
+(define/provide/image dont-teach-coding-img-path dont-teach-coding-img-webp-path
+  (list "img" "online" "dont-teach-coding-until-your-read-this-book-cover.jpg"))
 (define/provide/image online-banner-path online-banner-webp-path
   (list "img" "online" "student-coding-in-quarantine.jpg"))
 (define/provide/image covid-class-img-path covid-class-img-webp-path
@@ -170,6 +192,8 @@
   (list "img" "online" "teenager-at-coding-camp-learning-programming.jpg"))
 (define/provide/image coding-club-img-path coding-club-img-webp-path
   (list "img" "online" "online-coding-club-in-session-screenshot.jpg"))
+;; QCC End
+
 (define/provide/image summer-camp-intern-banner-path summer-camp-intern-banner-webp-path
   (list "img" "summer-interns" "summer-coding-education-intern-leadership-opportunity.jpg"))
 (define/provide/image tech-coordinator-banner-path tech-coordinator-banner-webp-path
