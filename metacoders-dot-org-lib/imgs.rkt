@@ -192,6 +192,14 @@
   (list "img" "online" "teenager-at-coding-camp-learning-programming.jpg"))
 (define/provide/image coding-club-img-path coding-club-img-webp-path
   (list "img" "online" "online-coding-club-in-session-screenshot.jpg"))
+(define/provide/image paper-coding-img-path paper-coding-img-webp-path
+  (list "img" "online" "students-coding-on-paper.jpg"))
+(define/provide/image scratch-img-path scratch-img-webp-path
+  (list "img" "online" "scratch-coding-software-for-kids.jpg"))
+(define/provide/image digital-art-img-path digital-art-img-webp-path
+  (list "img" "online" "coding-digital-art-in-wescheme.jpg"))
+(define/provide/image 3d-exploration-img-path 3d-exploration-img-webp-path
+  (list "img" "online" "3d-exploration-coding.jpg"))
 ;; QCC End
 
 (define/provide/image summer-camp-intern-banner-path summer-camp-intern-banner-webp-path
