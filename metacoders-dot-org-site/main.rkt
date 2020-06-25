@@ -15,7 +15,7 @@
          "./tech-coords.rkt"
          "./scientists.rkt"
          "./coders.rkt"
-         "./summer-interns.rkt"
+         "./volunteer-online.rkt"
          "./partners.rkt"
          "./online.rkt"
          "./terms-and-conditions.rkt"         
@@ -48,7 +48,7 @@
       (tech-coords)
       (scientists)
       (coders)
-      (summer-interns)
+      (volunteer-online)
       (partners) 
       (online) 
       (terms-and-conditions)

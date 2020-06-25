@@ -30,7 +30,8 @@
       (ul
         (map li locations-hiring)) 
       description    
-      (a href: application-link target: "_blank" (button-primary class: "mb-4"
-                      id: "main-button"
-                      "Apply To Volunteer Here")))))
+      (div class:"text-center"
+           (a href: application-link target: "_blank" (button-primary class: "mb-4"
+                                                                      id: "main-button"
+                                                                      "Apply To Volunteer Here"))))))
       
