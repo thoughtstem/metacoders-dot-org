@@ -313,7 +313,7 @@
               (li (small "MetaCoders, Inc. Copyright 2020"))
               (li (small "All Rights Reserved"))
               (li (br))
-              (li (small "MetaCoders, Inc. is a non-profit registered in the state of California."))
+              (li (small "MetaCoders, Inc. is a 501(c)(3) non-profit registered in the state of California."))
               (li (small "Tax ID: 84-3633066")))))))))
 
 (define (normal-navbar)
