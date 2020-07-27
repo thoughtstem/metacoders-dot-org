@@ -290,11 +290,12 @@
           (col-md-3 class: "text-white"
             (h6 "Programs")
             (ul class: "list-unstyled"
+              (li (link-to online-top-path  (small "Online Coding Camps")))
               (li (link-to city-search-path (small "Find a Location")))
               (li (link-to partners-top-path (small "Start a New Location"))))
             (h6 "Contact Us")
             (ul class: "list-unstyled"
-              (li (small "(858) 375-4097"))
+              (li (a href: "tel:858-375-4097" (small "(858) 375-4097")))
               (li (a href:"mailto: contact@metacoders.org" (small "contact@metacoders.org")))
               (li (small "Monday - Friday, 9am-5pm PT"))))
           (col-md-3 class: "text-white"
@@ -323,7 +324,7 @@
                  height: 40
                  alt: "MetaCoders")
     (my-nav-link learn-more-path  "Learn More")
-    (my-nav-link online-top-path  "Quarantine Coding Club")
+    (my-nav-link online-top-path  "Online Coding Camps")
     ;(my-nav-link city-search-path "Locations")
     (my-nav-link join-our-team-path "Join Our Team")
     (my-nav-link donate-path "Donate")))
@@ -391,7 +392,7 @@
     (div class: "collapse navbar-collapse" id: "navbarSupportedContent"
       (ul class: "navbar-nav ml-auto"
         (my-nav-link learn-more-path  "Learn More")
-        (my-nav-link online-top-path  "Quarantine Coding Club")
+        (my-nav-link online-top-path  "Online Coding Camps")
         ;(my-nav-link city-search-path "Locations")
         (my-nav-link join-our-team-path "Join Our Team")
         (my-nav-link donate-path "Donate"))))))
