@@ -18,6 +18,7 @@
          "./volunteer-online.rkt"
          "./partners.rkt"
          "./online.rkt"
+         "./online-fall.rkt"
          "./terms-and-conditions.rkt"         
          "./setup-scripts.rkt"
 
@@ -50,7 +51,8 @@
       (coders)
       (volunteer-online)
       (partners) 
-      (online) 
+      (online)
+      (online-fall)
       (terms-and-conditions)
       (sub-site "scripts"
                 (setup-scripts))
