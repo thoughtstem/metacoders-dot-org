@@ -115,12 +115,23 @@
   (list "img" "home" "child-coding-in-weekly-class-camp.jpg"))
 (define/provide/image lindsey-img-path lindsey-img-webp-path
   (list "img" "home" "lindsey-handley-metacoders-co-founder-vice-president.jpg"))
+(define/provide/image stephen-img-path stephen-img-webp-path
+  (list "img" "home" "stephen-r-foster-co-founder-and-president.jpg"))
 (define/provide/image judith-img-path judith-img-webp-path
   (list "img" "home" "judith-eisenberg-coding-educator.jpg"))
 (define/provide/image sara-img-path sara-img-webp-path
   (list "img" "home" "sara-lucchini-computer-science-curriculum-developer.jpg"))
 (define/provide/image sonny-img-path sonny-img-webp-path
   (list "img" "home" "sonny-najar-programming-language-developer.jpg"))
+(define/provide/image jason-img-path jason-img-webp-path
+  (list "img" "home" "jason-le-senior-curriculum-developer.jpg"))
+(define/provide/image jordan-img-path jordan-img-webp-path
+  (list "img" "home" "jordan-hisamoto-senior-operations-manager.jpg"))
+(define/provide/image eunice-img-path eunice-img-webp-path
+  (list "img" "home" "eunice-baes-senior-operations-manager.jpg"))
+(define/provide/svg tall-logo-svg-path
+  (list "img" "home" "metacoders-logo-tall.svg"))
+
 (define/provide/image takes-a-village-path takes-a-village-webp-path
   (list "img" "home" "coding-summer-camp-interns-fun.jpg"))
 (define/provide/image takes-a-village-2-path takes-a-village-2-webp-path

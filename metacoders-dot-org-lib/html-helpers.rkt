@@ -410,7 +410,8 @@
                      #:path the-path
                      #:name [name "Name goes here"]
                      #:position [position "Position goes here"]
-                     #:quote [quote "Quote goes here"])
+                     ;#:quote [quote "Quote goes here"]
+                     )
   (modal id: modal-id `tabindex: "-1" `role: "dialog" `aria-labelledby: "exampleModalLabel" `aria-hidden: "true"
     (modal-dialog class: "modal-dialog-centered text-left"
       (modal-content
@@ -429,7 +430,8 @@
             (col-8 
               (h3 name)
               (p (strong "Position: ") position)
-              (p (i quote)))))
+              ;(p (i quote))
+              )))
         (modal-footer class: "p-2"
           (button type: "button" class: "btn btn-secondary" `data-dismiss: "modal"
                   "Close")
