@@ -211,6 +211,8 @@
   (list "img" "online" "coding-digital-art-in-wescheme.jpg"))
 (define/provide/image 3d-exploration-img-path 3d-exploration-img-webp-path
   (list "img" "online" "3d-exploration-coding.jpg"))
+(define/provide/image 3d-orbit-img-path 3d-orbit-img-webp-path
+  (list "img" "online" "3d-orbit-coding.jpg"))
 (define/provide/video endless-runner-mp4-path endless-runner-webm-path
   (list "videos" "endless-runner-harry-potter-game.mp4"))
 (define/provide/video maze-mp4-path maze-webm-path
