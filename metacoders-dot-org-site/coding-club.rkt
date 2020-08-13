@@ -2,4 +2,4 @@
 
 (require metacoders-dot-org-core-pages)
 
-(provide online-fall)
+(provide coding-club)

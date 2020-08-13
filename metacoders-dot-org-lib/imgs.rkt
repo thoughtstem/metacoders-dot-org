@@ -115,12 +115,23 @@
   (list "img" "home" "child-coding-in-weekly-class-camp.jpg"))
 (define/provide/image lindsey-img-path lindsey-img-webp-path
   (list "img" "home" "lindsey-handley-metacoders-co-founder-vice-president.jpg"))
+(define/provide/image stephen-img-path stephen-img-webp-path
+  (list "img" "home" "stephen-r-foster-co-founder-and-president.jpg"))
 (define/provide/image judith-img-path judith-img-webp-path
   (list "img" "home" "judith-eisenberg-coding-educator.jpg"))
 (define/provide/image sara-img-path sara-img-webp-path
   (list "img" "home" "sara-lucchini-computer-science-curriculum-developer.jpg"))
 (define/provide/image sonny-img-path sonny-img-webp-path
   (list "img" "home" "sonny-najar-programming-language-developer.jpg"))
+(define/provide/image jason-img-path jason-img-webp-path
+  (list "img" "home" "jason-le-senior-curriculum-developer.jpg"))
+(define/provide/image jordan-img-path jordan-img-webp-path
+  (list "img" "home" "jordan-hisamoto-senior-operations-manager.jpg"))
+(define/provide/image eunice-img-path eunice-img-webp-path
+  (list "img" "home" "eunice-baes-senior-operations-manager.jpg"))
+(define/provide/svg tall-logo-svg-path
+  (list "img" "home" "metacoders-logo-tall.svg"))
+
 (define/provide/image takes-a-village-path takes-a-village-webp-path
   (list "img" "home" "coding-summer-camp-interns-fun.jpg"))
 (define/provide/image takes-a-village-2-path takes-a-village-2-webp-path
@@ -200,11 +211,18 @@
   (list "img" "online" "coding-digital-art-in-wescheme.jpg"))
 (define/provide/image 3d-exploration-img-path 3d-exploration-img-webp-path
   (list "img" "online" "3d-exploration-coding.jpg"))
+(define/provide/image 3d-orbit-img-path 3d-orbit-img-webp-path
+  (list "img" "online" "3d-orbit-coding.jpg"))
 (define/provide/video endless-runner-mp4-path endless-runner-webm-path
   (list "videos" "endless-runner-harry-potter-game.mp4"))
 (define/provide/video maze-mp4-path maze-webm-path
   (list "videos" "coding-maze-pokemon-game.mp4"))
+(define/provide/image python-img-path python-img-webp-path
+  (list "img" "online" "python-game-with-code.jpg"))
 ;; QCC End
+
+(define/provide/image sched-value-img-path sched-value-img-webp-path
+  (list "img" "online" "sched-value-img.jpg"))
 
 (define/provide/image summer-camp-intern-banner-path summer-camp-intern-banner-webp-path
   (list "img" "summer-interns" "summer-coding-education-intern-leadership-opportunity.jpg"))
