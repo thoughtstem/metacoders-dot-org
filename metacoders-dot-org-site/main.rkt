@@ -19,6 +19,10 @@
          "./partners.rkt"
          "./online.rkt"
          "./coding-club.rkt"
+         "./pods.rkt"
+         "./one-on-one.rkt"
+         "./badges.rkt"
+         
          "./terms-and-conditions.rkt"         
          "./setup-scripts.rkt"
 
