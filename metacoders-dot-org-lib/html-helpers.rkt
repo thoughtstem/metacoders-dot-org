@@ -291,8 +291,10 @@
             (h6 "Programs")
             (ul class: "list-unstyled"
               (li (link-to coding-club-top-path  (small "Coding Club")))
-              (li (link-to city-search-path (small "Find a Location")))
-              (li (link-to partners-top-path (small "Start a New Location"))))
+              ;(li (link-to pods-top-path (small "Pods")))
+              ;(li (link-to city-search-path (small "Find a Location")))
+              ;(li (link-to partners-top-path (small "Start a New Location")))
+              )
             (h6 "Contact Us")
             (ul class: "list-unstyled"
               (li (a href: "tel:858-375-4097" (small "(858) 375-4097")))
@@ -326,6 +328,7 @@
     (my-nav-link learn-more-path  "Learn More")
     ;(my-nav-link online-top-path  "Online Coding Camps")
     (my-nav-link coding-club-top-path "Virtual Coding Club")
+    ;(my-nav-link pods-top-path "Pods")
     ;(my-nav-link city-search-path "Locations")
     (my-nav-link join-our-team-path "Join Our Team")
     (my-nav-link donate-path "Donate")))
@@ -395,6 +398,7 @@
         (my-nav-link learn-more-path  "Learn More")
         ;(my-nav-link online-top-path  "Online Coding Camps")
         (my-nav-link coding-club-top-path "Virtual Coding Club")
+        ;(my-nav-link pods-top-path "Pods")
         ;(my-nav-link city-search-path "Locations")
         (my-nav-link join-our-team-path "Join Our Team")
         (my-nav-link donate-path "Donate"))))))
