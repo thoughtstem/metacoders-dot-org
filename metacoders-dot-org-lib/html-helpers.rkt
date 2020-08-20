@@ -181,6 +181,8 @@
                         #:defer-css [defer #f]
                         . more)
   (content #:head (list h
+                        (link 'rel: "icon" type: "image/svg+xml"
+                              href: (prefix/pathify tall-logo-svg-path))
                         (custom-css-colors)
                         (google-tag-manager)
                         )
@@ -197,6 +199,8 @@
                              #:defer-css [defer #f]
                              . more)
   (content #:head (list h
+                        (link 'rel: "icon" type: "image/svg+xml"
+                              href: (prefix/pathify tall-logo-svg-path))
                         (custom-css-colors)
                         (google-tag-manager)
                         )
