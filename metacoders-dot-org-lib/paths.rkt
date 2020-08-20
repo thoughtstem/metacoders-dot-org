@@ -7,7 +7,7 @@
          join-our-team-path
          online-top-path
          coding-club-top-path
-         pods-top-path
+         coding-for-pods-top-path
          one-on-one-top-path
          badges-top-path
          scientists-top-path        
@@ -25,11 +25,11 @@
 
 (define index-path                (list "index.html"))
 (define city-search-path          (list "city-search.html"))
-(define learn-more-path           (list "learn-more.html"))
+(define learn-more-path           (list "about-us.html"))
 (define join-our-team-path        (list "join-our-team.html"))
 (define online-top-path           (list "online.html"))
 (define coding-club-top-path      (list "coding-club.html"))
-(define pods-top-path             (list "pods.html"))
+(define coding-for-pods-top-path  (list "coding-for-pods.html"))
 (define one-on-one-top-path       (list "one-on-one.html"))
 (define badges-top-path           (list "badges.html"))
 
