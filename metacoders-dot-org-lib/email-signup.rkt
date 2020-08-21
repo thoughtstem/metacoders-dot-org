@@ -15,7 +15,7 @@
         (void)
         (card-title title)) 
       (form action:
-               "https://docs.google.com/forms/u/1/d/e/1FAIpQLScqxPx0LO9PLJF0mltgUlWbUv7t1urtmsWa3UN6om-XYAYcqw/formResponse"
+               "https://docs.google.com/forms/d/e/1FAIpQLScqLkdGyAOhU4pL7CVzLPy1kgBpk9LGxAqfGrdmXHJOBejGEw/formResponse"
             (if (eq? interest "")
                 '()
                 (div 'hidden: class: "form-group"

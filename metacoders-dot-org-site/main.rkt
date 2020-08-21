@@ -19,6 +19,10 @@
          "./partners.rkt"
          "./online.rkt"
          "./coding-club.rkt"
+         "./coding-for-pods.rkt"
+         "./one-on-one.rkt"
+         "./badges.rkt"
+         
          "./terms-and-conditions.rkt"         
          "./setup-scripts.rkt"
 
@@ -53,6 +57,7 @@
       (partners) 
       (online)
       (coding-club)
+      (coding-for-pods)
       (terms-and-conditions)
       (sub-site "scripts"
                 (setup-scripts))

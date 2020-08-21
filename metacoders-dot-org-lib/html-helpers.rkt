@@ -181,6 +181,8 @@
                         #:defer-css [defer #f]
                         . more)
   (content #:head (list h
+                        (link 'rel: "icon" type: "image/svg+xml"
+                              href: (prefix/pathify tall-logo-svg-path))
                         (custom-css-colors)
                         (google-tag-manager)
                         )
@@ -197,6 +199,8 @@
                              #:defer-css [defer #f]
                              . more)
   (content #:head (list h
+                        (link 'rel: "icon" type: "image/svg+xml"
+                              href: (prefix/pathify tall-logo-svg-path))
                         (custom-css-colors)
                         (google-tag-manager)
                         )
@@ -283,7 +287,7 @@
           (col-md-3 class: "text-white"
             (h6 "Company")
             (ul class: "list-unstyled"
-              (li (link-to learn-more-path (small "Learn More")))
+              (li (link-to learn-more-path (small "About Us")))
               (li (link-to join-our-team-path (small "Join Our Team")))
               (li (link-to donate-path (small "Donate")))
               (li (link-to terms-and-conditions-path (small "Terms & Conditions")))))
@@ -291,8 +295,10 @@
             (h6 "Programs")
             (ul class: "list-unstyled"
               (li (link-to coding-club-top-path  (small "Coding Club")))
-              (li (link-to city-search-path (small "Find a Location")))
-              (li (link-to partners-top-path (small "Start a New Location"))))
+              (li (link-to coding-for-pods-top-path (small "Coding for Pods")))
+              ;(li (link-to city-search-path (small "Find a Location")))
+              ;(li (link-to partners-top-path (small "Start a New Location")))
+              )
             (h6 "Contact Us")
             (ul class: "list-unstyled"
               (li (a href: "tel:858-375-4097" (small "(858) 375-4097")))
@@ -323,9 +329,10 @@
              (img src: (prefix/pathify navbar-logo7-wide-path)
                  height: 40
                  alt: "MetaCoders")
-    (my-nav-link learn-more-path  "Learn More")
+    (my-nav-link learn-more-path  "About Us")
     ;(my-nav-link online-top-path  "Online Coding Camps")
     (my-nav-link coding-club-top-path "Virtual Coding Club")
+    (my-nav-link coding-for-pods-top-path "Coding for Pods")
     ;(my-nav-link city-search-path "Locations")
     (my-nav-link join-our-team-path "Join Our Team")
     (my-nav-link donate-path "Donate")))
@@ -392,9 +399,10 @@
   }})
     (div class: "collapse navbar-collapse" id: "navbarSupportedContent"
       (ul class: "navbar-nav ml-auto"
-        (my-nav-link learn-more-path  "Learn More")
+        (my-nav-link learn-more-path  "About Us")
         ;(my-nav-link online-top-path  "Online Coding Camps")
         (my-nav-link coding-club-top-path "Virtual Coding Club")
+        (my-nav-link coding-for-pods-top-path "Coding for Pods")
         ;(my-nav-link city-search-path "Locations")
         (my-nav-link join-our-team-path "Join Our Team")
         (my-nav-link donate-path "Donate"))))))
@@ -499,7 +507,7 @@
                         (button-secondary 
                           style: (properties
                                    margin-top: 10)
-                          "Learn More"))))))))
+                          "About Us"))))))))
 
 (define (common-critical-css)
   @style/inline[type: "text/css"]{

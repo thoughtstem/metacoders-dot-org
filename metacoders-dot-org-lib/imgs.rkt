@@ -224,6 +224,9 @@
 (define/provide/image sched-value-img-path sched-value-img-webp-path
   (list "img" "online" "sched-value-img.jpg"))
 
+;banners
+(define/provide/image students-in-row-path students-in-row-webp-path
+  (list "img" "pods" "students-in-row.jpg"))
 (define/provide/image summer-camp-intern-banner-path summer-camp-intern-banner-webp-path
   (list "img" "summer-interns" "summer-coding-education-intern-leadership-opportunity.jpg"))
 (define/provide/image tech-coordinator-banner-path tech-coordinator-banner-webp-path
