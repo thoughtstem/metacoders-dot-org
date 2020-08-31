@@ -233,6 +233,8 @@
   (list "img" "tech-coordinators" "tech-coordinator-at-home-with-hardware.jpg"))
 (define/provide/image partners-img-path partners-img-webp-path
   (list "img" "partners" "girls-making-friends-at-coding-camp.jpg"))
+(define/provide/image senior-hands-on-keyboard-path senior-hands-on-keyboard-webp-path
+  (list "img" "tech-ed" "senior-hands-on-keyboard.jpg"))
 
 (define/provide/image world-img-path world-img-webp-path
   (list "img" "locations" "metacoders-camps-classes-across-us-world.jpg"))
