@@ -8,6 +8,8 @@
          online-top-path
          coding-club-top-path
          coding-for-pods-top-path
+         genentech-top-path
+         tech-skills-top-path
          one-on-one-top-path
          badges-top-path
          scientists-top-path        
@@ -30,6 +32,8 @@
 (define online-top-path           (list "online.html"))
 (define coding-club-top-path      (list "coding-club.html"))
 (define coding-for-pods-top-path  (list "coding-for-pods.html"))
+(define genentech-top-path        (list "genentech.html"))
+(define tech-skills-top-path      (list "tech-skills.html"))
 (define one-on-one-top-path       (list "one-on-one.html"))
 (define badges-top-path           (list "badges.html"))
 

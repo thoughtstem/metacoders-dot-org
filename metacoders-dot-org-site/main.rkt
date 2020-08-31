@@ -20,6 +20,8 @@
          "./online.rkt"
          "./coding-club.rkt"
          "./coding-for-pods.rkt"
+         "./genentech.rkt"
+         "./tech-skills.rkt"
          "./one-on-one.rkt"
          "./badges.rkt"
          
@@ -58,6 +60,8 @@
       (online)
       (coding-club)
       (coding-for-pods)
+      (genentech)
+      (tech-skills)
       (terms-and-conditions)
       (sub-site "scripts"
                 (setup-scripts))
