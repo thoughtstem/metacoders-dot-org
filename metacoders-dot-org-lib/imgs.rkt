@@ -235,6 +235,8 @@
   (list "img" "partners" "girls-making-friends-at-coding-camp.jpg"))
 (define/provide/image senior-hands-on-keyboard-path senior-hands-on-keyboard-webp-path
   (list "img" "tech-ed" "senior-hands-on-keyboard.jpg"))
+(define/provide/image girl-on-computer-path girl-on-computer-webp-path
+  (list "img" "genentech" "girl-on-computer.jpg"))
 
 (define/provide/image world-img-path world-img-webp-path
   (list "img" "locations" "metacoders-camps-classes-across-us-world.jpg"))
