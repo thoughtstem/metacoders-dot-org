@@ -2,4 +2,4 @@
 
 (require metacoders-dot-org-core-pages)
 
-(provide tech-skills)
+(provide tech-ed)

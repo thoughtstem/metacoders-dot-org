@@ -21,7 +21,7 @@
          "./coding-club.rkt"
          "./coding-for-pods.rkt"
          "./genentech.rkt"
-         "./tech-skills.rkt"
+         "./tech-ed.rkt"
          "./one-on-one.rkt"
          "./badges.rkt"
          
@@ -61,7 +61,7 @@
       (coding-club)
       (coding-for-pods)
       (genentech)
-      (tech-skills)
+      (tech-ed)
       (terms-and-conditions)
       (sub-site "scripts"
                 (setup-scripts))
