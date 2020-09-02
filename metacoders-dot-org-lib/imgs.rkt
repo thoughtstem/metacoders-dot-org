@@ -278,6 +278,9 @@
 (define/provide/svg navbar-logo14-wide-path
   (list "img" "logo14-wide.svg"))
 
+(define/provide/file favicon-path
+  (list "img" "favicon.ico"))
+
 ; ==== CITY BANNER PATHS ====
 (define/provide/image chula-vista-banner-path chula-vista-banner-webp-path
   (list "img" "locations" "banners" "city-chula-vista-ca.jpg"))
