@@ -333,6 +333,8 @@
   (list "videos" "survival-pokemon.mp4"))
 (define/provide/video 3d-orbit-mp4-path 3d-orbit-webm-path
   (list "videos" "3d-orbit.mp4"))
+(define/provide/video cpx-makecode-mp4-path cpx-makecode-webm-path
+  (list "videos" "cpx-makecode.mp4"))
 
 ; ==== OTHER FILE PATHS ====
 (define/provide/file camp-form-path
