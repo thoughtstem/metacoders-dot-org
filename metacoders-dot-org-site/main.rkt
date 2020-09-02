@@ -30,6 +30,8 @@
 
          "./checkout-success.rkt"
          "./camp-checkout-success.rkt"
+         "./tech-ed-checkout-success.rkt"
+         
          "./donate-success.rkt"
          
          "./checkout-fail.rkt"
@@ -67,6 +69,7 @@
                 (setup-scripts))
       (checkout-success)
       (camp-checkout-success)
+      (tech-ed-checkout-success)
       (donate-success)
       (checkout-fail)
       )))
