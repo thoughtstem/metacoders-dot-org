@@ -22,6 +22,8 @@
          checkout-success-top-path
          checkout-fail-top-path
          camp-checkout-success-top-path
+         tech-ed-checkout-success-top-path
+         
          donate-success-top-path
          )
 
@@ -48,7 +50,9 @@
 
 (define checkout-success-top-path      (list "checkout-success.html"))
 (define camp-checkout-success-top-path (list "camp-checkout-success.html"))
+(define tech-ed-checkout-success-top-path (list "tech-ed-checkout-success.html"))
 (define donate-success-top-path        (list "donate-success.html"))
+
 
 (define checkout-fail-top-path        (list "checkout-fail.html"))
 

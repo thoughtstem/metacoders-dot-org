@@ -221,6 +221,8 @@
   (list "img" "online" "python-game-with-code.jpg"))
 (define/provide/image seniors-zoom-coding-path seniors-zoom-coding-webp-path
   (list "img" "tech-ed" "seniors-zoom-coding.jpg"))
+(define/provide/image cpx-img-path cpx-img-webp-path
+  (list "img" "online" "virtual-engineering-cpx.jpg"))
 ;; QCC End
 
 (define/provide/image sched-value-img-path sched-value-img-webp-path
