@@ -219,6 +219,8 @@
   (list "videos" "coding-maze-pokemon-game.mp4"))
 (define/provide/image python-img-path python-img-webp-path
   (list "img" "online" "python-game-with-code.jpg"))
+(define/provide/image seniors-zoom-coding-path seniors-zoom-coding-webp-path
+  (list "img" "tech-ed" "seniors-zoom-coding.jpg"))
 ;; QCC End
 
 (define/provide/image sched-value-img-path sched-value-img-webp-path
