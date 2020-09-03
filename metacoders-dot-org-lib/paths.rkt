@@ -8,6 +8,8 @@
          online-top-path
          coding-club-top-path
          coding-for-pods-top-path
+         genentech-top-path
+         tech-ed-top-path
          one-on-one-top-path
          badges-top-path
          scientists-top-path        
@@ -20,6 +22,8 @@
          checkout-success-top-path
          checkout-fail-top-path
          camp-checkout-success-top-path
+         tech-ed-checkout-success-top-path
+         
          donate-success-top-path
          )
 
@@ -30,6 +34,8 @@
 (define online-top-path           (list "online.html"))
 (define coding-club-top-path      (list "coding-club.html"))
 (define coding-for-pods-top-path  (list "coding-for-pods.html"))
+(define genentech-top-path        (list "genentech.html"))
+(define tech-ed-top-path          (list "tech-ed.html"))
 (define one-on-one-top-path       (list "one-on-one.html"))
 (define badges-top-path           (list "badges.html"))
 
@@ -44,7 +50,9 @@
 
 (define checkout-success-top-path      (list "checkout-success.html"))
 (define camp-checkout-success-top-path (list "camp-checkout-success.html"))
+(define tech-ed-checkout-success-top-path (list "tech-ed-checkout-success.html"))
 (define donate-success-top-path        (list "donate-success.html"))
+
 
 (define checkout-fail-top-path        (list "checkout-fail.html"))
 

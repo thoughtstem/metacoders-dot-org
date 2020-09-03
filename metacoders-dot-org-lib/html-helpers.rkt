@@ -181,8 +181,10 @@
                         #:defer-css [defer #f]
                         . more)
   (content #:head (list h
-                        (link 'rel: "icon" type: "image/svg+xml"
-                              href: (prefix/pathify tall-logo-svg-path))
+                        ;(link 'rel: "icon" type: "image/svg+xml"
+                        ;      href: (prefix/pathify tall-logo-svg-path))
+                        (link 'rel: "icon" type: "image/x-icon"
+                              href: (prefix/pathify favicon-path))
                         (custom-css-colors)
                         (google-tag-manager)
                         )
@@ -199,8 +201,10 @@
                              #:defer-css [defer #f]
                              . more)
   (content #:head (list h
-                        (link 'rel: "icon" type: "image/svg+xml"
-                              href: (prefix/pathify tall-logo-svg-path))
+                        ;(link 'rel: "icon" type: "image/svg+xml"
+                        ;      href: (prefix/pathify tall-logo-svg-path))
+                        (link 'rel: "icon" type: "image/x-icon"
+                              href: (prefix/pathify favicon-path))
                         (custom-css-colors)
                         (google-tag-manager)
                         )
@@ -333,6 +337,7 @@
     ;(my-nav-link online-top-path  "Online Coding Camps")
     (my-nav-link coding-club-top-path "Virtual Coding Club")
     (my-nav-link coding-for-pods-top-path "Coding for Pods")
+    (my-nav-link tech-ed-top-path "Lifelong Learners")
     ;(my-nav-link city-search-path "Locations")
     (my-nav-link join-our-team-path "Join Our Team")
     (my-nav-link donate-path "Donate")))
@@ -403,6 +408,7 @@
         ;(my-nav-link online-top-path  "Online Coding Camps")
         (my-nav-link coding-club-top-path "Virtual Coding Club")
         (my-nav-link coding-for-pods-top-path "Coding for Pods")
+        (my-nav-link tech-ed-top-path "Lifelong Learners")
         ;(my-nav-link city-search-path "Locations")
         (my-nav-link join-our-team-path "Join Our Team")
         (my-nav-link donate-path "Donate"))))))

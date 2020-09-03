@@ -219,6 +219,10 @@
   (list "videos" "coding-maze-pokemon-game.mp4"))
 (define/provide/image python-img-path python-img-webp-path
   (list "img" "online" "python-game-with-code.jpg"))
+(define/provide/image seniors-zoom-coding-path seniors-zoom-coding-webp-path
+  (list "img" "tech-ed" "seniors-zoom-coding.jpg"))
+(define/provide/image cpx-img-path cpx-img-webp-path
+  (list "img" "online" "virtual-engineering-cpx.jpg"))
 ;; QCC End
 
 (define/provide/image sched-value-img-path sched-value-img-webp-path
@@ -233,6 +237,10 @@
   (list "img" "tech-coordinators" "tech-coordinator-at-home-with-hardware.jpg"))
 (define/provide/image partners-img-path partners-img-webp-path
   (list "img" "partners" "girls-making-friends-at-coding-camp.jpg"))
+(define/provide/image senior-hands-on-keyboard-path senior-hands-on-keyboard-webp-path
+  (list "img" "tech-ed" "senior-hands-on-keyboard.jpg"))
+(define/provide/image girl-on-computer-path girl-on-computer-webp-path
+  (list "img" "genentech" "girl-on-computer.jpg"))
 
 (define/provide/image world-img-path world-img-webp-path
   (list "img" "locations" "metacoders-camps-classes-across-us-world.jpg"))
@@ -271,6 +279,9 @@
   (list "img" "logo13-wide.svg"))
 (define/provide/svg navbar-logo14-wide-path
   (list "img" "logo14-wide.svg"))
+
+(define/provide/file favicon-path
+  (list "img" "favicon.ico"))
 
 ; ==== CITY BANNER PATHS ====
 (define/provide/image chula-vista-banner-path chula-vista-banner-webp-path
@@ -327,6 +338,8 @@
   (list "videos" "survival-pokemon.mp4"))
 (define/provide/video 3d-orbit-mp4-path 3d-orbit-webm-path
   (list "videos" "3d-orbit.mp4"))
+(define/provide/video cpx-makecode-mp4-path cpx-makecode-webm-path
+  (list "videos" "cpx-makecode.mp4"))
 
 ; ==== OTHER FILE PATHS ====
 (define/provide/file camp-form-path

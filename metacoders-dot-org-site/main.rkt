@@ -20,6 +20,8 @@
          "./online.rkt"
          "./coding-club.rkt"
          "./coding-for-pods.rkt"
+         "./genentech.rkt"
+         "./tech-ed.rkt"
          "./one-on-one.rkt"
          "./badges.rkt"
          
@@ -28,6 +30,8 @@
 
          "./checkout-success.rkt"
          "./camp-checkout-success.rkt"
+         "./tech-ed-checkout-success.rkt"
+         
          "./donate-success.rkt"
          
          "./checkout-fail.rkt"
@@ -58,11 +62,14 @@
       (online)
       (coding-club)
       (coding-for-pods)
+      (genentech)
+      (tech-ed)
       (terms-and-conditions)
       (sub-site "scripts"
                 (setup-scripts))
       (checkout-success)
       (camp-checkout-success)
+      (tech-ed-checkout-success)
       (donate-success)
       (checkout-fail)
       )))
