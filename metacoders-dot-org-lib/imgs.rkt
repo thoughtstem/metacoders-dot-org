@@ -241,6 +241,16 @@
   (list "img" "tech-ed" "senior-hands-on-keyboard.jpg"))
 (define/provide/image girl-on-computer-path girl-on-computer-webp-path
   (list "img" "genentech" "girl-on-computer.jpg"))
+(define/provide/image over-shoulder-game-path over-shoulder-game-webp-path
+  (list "img" "genentech" "over-shoulder-game.jpg"))
+
+
+(define/provide/image 3-teens-smiling-while-coding-path 3-teens-smiling-while-coding-webp-path
+  (list "img" "genentech" "3-teens-smiling-while-coding.jpg"))
+(define/provide/image proud-coder-path proud-coder-webp-path
+  (list "img" "genentech" "proud-coder.jpg"))
+(define/provide/image genentech-logo-path genentech-logo-webp-path
+  (list "img" "genentech" "genentech-logo.jpg"))
 
 (define/provide/image world-img-path world-img-webp-path
   (list "img" "locations" "metacoders-camps-classes-across-us-world.jpg"))
