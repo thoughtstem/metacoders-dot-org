@@ -241,6 +241,16 @@
   (list "img" "tech-ed" "senior-hands-on-keyboard.jpg"))
 (define/provide/image girl-on-computer-path girl-on-computer-webp-path
   (list "img" "genentech" "girl-on-computer.jpg"))
+(define/provide/image over-shoulder-game-path over-shoulder-game-webp-path
+  (list "img" "genentech" "over-shoulder-game.jpg"))
+
+
+(define/provide/image 3-teens-smiling-while-coding-path 3-teens-smiling-while-coding-webp-path
+  (list "img" "genentech" "3-teens-smiling-while-coding.jpg"))
+(define/provide/image proud-coder-path proud-coder-webp-path
+  (list "img" "genentech" "proud-coder.jpg"))
+(define/provide/image genentech-logo-path genentech-logo-webp-path
+  (list "img" "genentech" "genentech-logo.jpg"))
 
 (define/provide/image world-img-path world-img-webp-path
   (list "img" "locations" "metacoders-camps-classes-across-us-world.jpg"))
@@ -267,21 +277,27 @@
 (define/provide/img stripe-7-10-camp-img-path
   (list "img" "stripe" "stripe-7-10-camp.jpg"))
 
+; ==== LOGO AND FAVICONS ====
 (define/provide/svg navbar-logo7-wide-path
   (list "img" "logo7-wide.svg"))
-(define/provide/svg navbar-logo9-wide-path
-  (list "img" "logo9-wide.svg"))
-(define/provide/svg navbar-logo10-wide-path
-  (list "img" "logo10-wide.svg"))
-(define/provide/svg navbar-logo12-wide-path
-  (list "img" "logo12-wide.svg"))
-(define/provide/svg navbar-logo13-wide-path
-  (list "img" "logo13-wide.svg"))
-(define/provide/svg navbar-logo14-wide-path
-  (list "img" "logo14-wide.svg"))
 
-(define/provide/file favicon-path
-  (list "img" "favicon.ico"))
+(define/provide/svg favicon-svg-path
+  (list "." "favicon.svg"))
+
+(define/provide/img favicon-ico-path
+  (list "." "favicon.ico"))
+
+(define/provide/svg mask-icon-path
+  (list "." "mask-icon.svg"))
+
+(define/provide/img apple-touch-icon-path
+  (list "." "apple-touch-icon.png"))
+
+(define/provide/img google-touch-icon-path
+  (list "." "google-touch-icon.png"))
+
+(define/provide/file manifest-path
+  (list "." "manifest.json"))
 
 ; ==== CITY BANNER PATHS ====
 (define/provide/image chula-vista-banner-path chula-vista-banner-webp-path

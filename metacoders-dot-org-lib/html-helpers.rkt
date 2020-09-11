@@ -181,10 +181,16 @@
                         #:defer-css [defer #f]
                         . more)
   (content #:head (list h
-                        ;(link 'rel: "icon" type: "image/svg+xml"
-                        ;      href: (prefix/pathify tall-logo-svg-path))
-                        (link 'rel: "icon" type: "image/x-icon"
-                              href: (prefix/pathify favicon-path))
+                        (meta name: "theme-color" 'context: "#ffffff")
+                        (link 'rel: "icon"
+                              href: (prefix/pathify favicon-svg-path))
+                        (link 'rel: "mask-icon"
+                              href: (prefix/pathify mask-icon-path)
+                              color: "#1581c2")
+                        (link 'rel: "apple-touch-icon"
+                              href: (prefix/pathify apple-touch-icon-path))
+                        (link 'rel: "manifest"
+                              href: (prefix/pathify manifest-path))
                         (custom-css-colors)
                         (google-tag-manager)
                         )
@@ -201,10 +207,16 @@
                              #:defer-css [defer #f]
                              . more)
   (content #:head (list h
-                        ;(link 'rel: "icon" type: "image/svg+xml"
-                        ;      href: (prefix/pathify tall-logo-svg-path))
-                        (link 'rel: "icon" type: "image/x-icon"
-                              href: (prefix/pathify favicon-path))
+                        (meta name: "theme-color" 'context: "#ffffff")
+                        (link 'rel: "icon"
+                              href: (prefix/pathify favicon-svg-path))
+                        (link 'rel: "mask-icon"
+                              href: (prefix/pathify mask-icon-path)
+                              color: "#1581c2")
+                        (link 'rel: "apple-touch-icon"
+                              href: (prefix/pathify apple-touch-icon-path))
+                        (link 'rel: "manifest"
+                              href: (prefix/pathify manifest-path))
                         (custom-css-colors)
                         (google-tag-manager)
                         )
