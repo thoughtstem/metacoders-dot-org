@@ -225,8 +225,9 @@
   (list "img" "online" "virtual-engineering-cpx.jpg"))
 ;; QCC End
 
-(define/provide/image sched-value-img-path sched-value-img-webp-path
-  (list "img" "online" "sched-value-img.jpg"))
+;Topics
+(define/provide/image tech-skills-path tech-skills-webp-path
+  (list "img" "topics" "tech-skills.jpg"))
 
 ;banners
 (define/provide/image students-in-row-path students-in-row-webp-path
