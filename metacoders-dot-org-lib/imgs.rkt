@@ -227,19 +227,19 @@
 
 ;Topics
 (define/provide/image CPX-path CPX-webp-path
-  (list "img" "topics" "CPX.jpg"))
+  (list "img" "topics" "CPX.png"))
 (define/provide/image drracket-path drracket-webp-path
-  (list "img" "topics" "drracket.jpg"))
+  (list "img" "topics" "drracket.png"))
 (define/provide/image LTM-path LTM-webp-path
-  (list "img" "topics" "LTM.jpg"))
+  (list "img" "topics" "LTM.png"))
 (define/provide/image python-path python-webp-path
-  (list "img" "topics" "python.jpg"))
+  (list "img" "topics" "python.png"))
 (define/provide/image scratch-path scratch-webp-path
-  (list "img" "topics" "scratch.jpg"))
+  (list "img" "topics" "scratch.png"))
 (define/provide/image tech-skills-path tech-skills-webp-path
-  (list "img" "topics" "techskills.jpg"))
+  (list "img" "topics" "techskills.png"))
 (define/provide/image web-path web-webp-path
-  (list "img" "topics" "web.jpg"))
+  (list "img" "topics" "web.png"))
 
 ;banners
 (define/provide/image students-in-row-path students-in-row-webp-path
