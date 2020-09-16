@@ -226,8 +226,20 @@
 ;; QCC End
 
 ;Topics
+(define/provide/image CPX-path CPX-webp-path
+  (list "img" "topics" "CPX.jpg"))
+(define/provide/image drracket-path drracket-webp-path
+  (list "img" "topics" "drracket.jpg"))
+(define/provide/image LTM-path LTM-webp-path
+  (list "img" "topics" "LTM.jpg"))
+(define/provide/image python-path python-webp-path
+  (list "img" "topics" "python.jpg"))
+(define/provide/image scratch-path scratch-webp-path
+  (list "img" "topics" "scratch.jpg"))
 (define/provide/image tech-skills-path tech-skills-webp-path
-  (list "img" "topics" "tech-skills.jpg"))
+  (list "img" "topics" "techskills.jpg"))
+(define/provide/image web-path web-webp-path
+  (list "img" "topics" "web.jpg"))
 
 ;banners
 (define/provide/image students-in-row-path students-in-row-webp-path
