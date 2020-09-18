@@ -300,18 +300,19 @@
     (footer class: "px-3 pt-4 bg-dark"
       (container 
         (row
-          (col-md-3 class: "text-white"
+          (col-md-3 class: "text-white justify-content-center"
             (h6 "Company")
             (ul class: "list-unstyled"
               (li (link-to learn-more-path (small "About Us")))
               (li (link-to join-our-team-path (small "Join Our Team")))
               (li (link-to donate-path (small "Donate")))
               (li (link-to terms-and-conditions-path (small "Terms & Conditions")))))
-          (col-md-3 class: "text-white"
+          (col-md-4 class: "text-white"
             (h6 "Programs")
             (ul class: "list-unstyled"
-              (li (link-to coding-club-top-path  (small "Coding Club")))
+              (li (link-to coding-club-top-path  (small "Virtual Coding Club")))
               (li (link-to coding-for-pods-top-path (small "Coding for Pods")))
+              (li (link-to tech-ed-top-path (small "Tech Ed for Lifelong Learners")))
               ;(li (link-to city-search-path (small "Find a Location")))
               ;(li (link-to partners-top-path (small "Start a New Location")))
               )
@@ -320,7 +321,7 @@
               (li (a href: "tel:858-375-4097" (small "(858) 375-4097")))
               (li (a href:"mailto: contact@metacoders.org" (small "contact@metacoders.org")))
               (li (small "Monday - Friday, 9am-5pm PT"))))
-          (col-md-3 class: "text-white"
+          (col-md-4 class: "text-white"
             (h6 "Follow Us")
             (ul class: "list-unstyled"
               (li 
