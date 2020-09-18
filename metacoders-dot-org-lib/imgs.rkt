@@ -2,6 +2,7 @@
 
 (provide imgs
          jpg-path->webp-path
+         png-path->webp-path
          mp4-path->webm-path
          )
 
@@ -225,8 +226,23 @@
   (list "img" "online" "virtual-engineering-cpx.jpg"))
 ;; QCC End
 
-(define/provide/image sched-value-img-path sched-value-img-webp-path
-  (list "img" "online" "sched-value-img.jpg"))
+;Topics
+(define/provide/image cpx-icon-path cpx-icon-webp-path
+  (list "img" "topics" "cpx.png"))
+(define/provide/image drracket-icon-path drracket-icon-webp-path
+  (list "img" "topics" "drracket.png"))
+(define/provide/image ltm-icon-path ltm-icon-webp-path
+  (list "img" "topics" "ltm.png"))
+(define/provide/image python-icon-path python-icon-webp-path
+  (list "img" "topics" "python.png"))
+(define/provide/image scratch-icon-path scratch-icon-webp-path
+  (list "img" "topics" "scratch.png"))
+(define/provide/image tech-skills-icon-path tech-skills-icon-webp-path
+  (list "img" "topics" "techskills.png"))
+(define/provide/image web-icon-path web-icon-webp-path
+  (list "img" "topics" "web.png"))
+(define/provide/image wescheme-icon-path wescheme-icon-webp-path
+  (list "img" "topics" "wescheme.png"))
 
 ;banners
 (define/provide/image students-in-row-path students-in-row-webp-path
@@ -370,6 +386,11 @@
   (and (list? jpg-path)
        (append (take jpg-path (sub1 (length jpg-path)))
                (list (string-replace (last jpg-path) "jpg" "webp")))))
+
+(define (png-path->webp-path png-path)
+  (and (list? png-path)
+       (append (take png-path (sub1 (length png-path)))
+               (list (string-replace (last png-path) "png" "webp")))))
 
 (define (mp4-path->webm-path mp4-path)
   (and (list? mp4-path)
