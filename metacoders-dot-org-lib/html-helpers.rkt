@@ -299,8 +299,8 @@
     })
     (footer class: "px-3 pt-4 bg-dark"
       (container 
-        (row
-          (col-md-3 class: "text-white justify-content-center"
+        (row class: "justify-content-center"
+          (col-md-3 class: "text-white"
             (h6 "Company")
             (ul class: "list-unstyled"
               (li (link-to learn-more-path (small "About Us")))
