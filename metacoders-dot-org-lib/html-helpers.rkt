@@ -318,7 +318,6 @@
               )
             (h6 "Contact Us")
             (ul class: "list-unstyled"
-              (li (a href: "tel:858-375-4097" (small "(858) 375-4097")))
               (li (a href:"mailto: contact@metacoders.org" (small "contact@metacoders.org")))
               (li (small "Monday - Friday, 9am-5pm PT"))))
           (col-md-4 class: "text-white"
