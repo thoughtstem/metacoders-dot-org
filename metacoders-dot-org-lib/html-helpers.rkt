@@ -345,6 +345,7 @@
              (img src: (prefix/pathify navbar-logo7-wide-path)
                  height: 40
                  alt: "MetaCoders")
+    (my-nav-link index-path "Out of Business")
     (my-nav-link learn-more-path  "About Us")
     ;(my-nav-link online-top-path  "Online Coding Camps")
     (my-nav-link coding-club-top-path "Virtual Coding Club")
@@ -352,7 +353,9 @@
     (my-nav-link tech-ed-top-path "Lifelong Learners")
     ;(my-nav-link city-search-path "Locations")
     (my-nav-link join-our-team-path "Join Our Team")
-    (my-nav-link donate-path "Donate")))
+    (my-nav-link donate-path "Donate")
+    (my-nav-button index-path "Out of Business")
+    ))
 
 (define (jumbotron-navbar)
 
@@ -423,13 +426,23 @@
         (my-nav-link tech-ed-top-path "Lifelong Learners")
         ;(my-nav-link city-search-path "Locations")
         (my-nav-link join-our-team-path "Join Our Team")
-        (my-nav-link donate-path "Donate"))))))
+        (my-nav-link donate-path "Donate")
+        (my-nav-button index-path "Out of Business")
+        )))))
 
 (define (my-nav-link to text)
   (nav-item
     (a class: "nav-link mr-3 text-white"
        href: (pathify (add-path-prefix to))
        text)))
+
+(define (my-nav-button to text)
+  (nav-item
+    (a class: "nav-link mr-3 text-white"
+       href: (pathify (add-path-prefix to))
+       (button-primary 
+                          text)
+       )))
 
 (provide big-image
          big-quote)
