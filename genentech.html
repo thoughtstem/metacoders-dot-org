@@ -1,0 +1,1135 @@
+<!DOCTYPE html>
+<html><head><meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" /><script>
+//<![CDATA[
+function preloadSupported() {
+  var relList = document.createElement('link').relList;
+  return !!(relList && relList.supports && relList.supports('preload'));
+}
+//]]>
+</script><script async="" src="/js/modernizr-custom.js"></script><script>
+//<![CDATA[
+if (preloadSupported()){
+ var cssLink = document.createElement('link');
+ cssLink.rel = 'preload';
+ cssLink.as = 'style';
+ cssLink.onload = function(){this.onload=null;this.rel="stylesheet"};
+ cssLink.href = '/css/bootstrap.min.css';
+ document.head.appendChild(cssLink);
+}
+else{
+ var cssLink = document.createElement('link');
+ cssLink.rel = 'stylesheet';
+ cssLink.href = '/css/bootstrap.min.css';
+ document.head.appendChild(cssLink);
+}
+//]]>
+</script><noscript><link rel="stylesheet" href="/css/bootstrap.min.css" /></noscript><script>
+//<![CDATA[
+if (preloadSupported()){
+ var cssLink = document.createElement('link');
+ cssLink.rel = 'preload';
+ cssLink.as = 'style';
+ cssLink.onload = function(){this.onload=null;this.rel="stylesheet"};
+ cssLink.href = '/css/fontawesome.min.css';
+ document.head.appendChild(cssLink);
+}
+else{
+ var cssLink = document.createElement('link');
+ cssLink.rel = 'stylesheet';
+ cssLink.href = '/css/fontawesome.min.css';
+ document.head.appendChild(cssLink);
+}
+//]]>
+</script><noscript><link rel="stylesheet" href="/css/fontawesome.min.css" /></noscript><script>
+//<![CDATA[
+if (preloadSupported()){
+ var cssLink = document.createElement('link');
+ cssLink.rel = 'preload';
+ cssLink.as = 'style';
+ cssLink.onload = function(){this.onload=null;this.rel="stylesheet"};
+ cssLink.href = '/css/fontawesome-brands.min.css';
+ document.head.appendChild(cssLink);
+}
+else{
+ var cssLink = document.createElement('link');
+ cssLink.rel = 'stylesheet';
+ cssLink.href = '/css/fontawesome-brands.min.css';
+ document.head.appendChild(cssLink);
+}
+//]]>
+</script><noscript><link rel="stylesheet" href="/css/fontawesome-brands.min.css" /></noscript><script>
+//<![CDATA[
+if (preloadSupported()){
+ var cssLink = document.createElement('link');
+ cssLink.rel = 'preload';
+ cssLink.as = 'style';
+ cssLink.onload = function(){this.onload=null;this.rel="stylesheet"};
+ cssLink.href = '/css/fontawesome-solid.min.css';
+ document.head.appendChild(cssLink);
+}
+else{
+ var cssLink = document.createElement('link');
+ cssLink.rel = 'stylesheet';
+ cssLink.href = '/css/fontawesome-solid.min.css';
+ document.head.appendChild(cssLink);
+}
+//]]>
+</script><noscript><link rel="stylesheet" href="/css/fontawesome-solid.min.css" /></noscript><title>Diversity in Coding Scholarship</title><meta name="description" content="For Students of OUSD &amp; VUSD" /><style type="text/css">
+:root {
+    --blue:#007bff;--indigo:#6610f2;--purple:#6f42c1;--pink:#e83e8c;--red:#dc3545;--orange:#fd7e14;--yellow:#ffc107;--green:#28a745;--teal:#20c997;--cyan:#17a2b8;--white:#fff;--gray:#6c757d;--gray-dark:#343a40;--primary:#007bff;--secondary:#6c757d;--success:#28a745;--info:#17a2b8;--warning:#ffc107;--danger:#dc3545;--light:#f8f9fa;--dark:#343a40;--breakpoint-xs:0;--breakpoint-sm:576px;--breakpoint-md:768px;--breakpoint-lg:992px;--breakpoint-xl:1200px;--font-family-sans-serif:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto,&quot;Helvetica Neue&quot;,Arial,sans-serif,&quot;Apple Color Emoji&quot;,&quot;Segoe UI Emoji&quot;,&quot;Segoe UI Symbol&quot;;--font-family-monospace:SFMono-Regular,Menlo,Monaco,Consolas,&quot;Liberation Mono&quot;,&quot;Courier New&quot;,monospace}
+
+*,::after,::before {
+    box-sizing: border-box
+}
+
+html {
+    font-family: sans-serif;
+    line-height: 1.15;
+    -webkit-text-size-adjust: 100%;
+    -ms-text-size-adjust: 100%;
+    -ms-overflow-style: scrollbar;
+    -webkit-tap-highlight-color: transparent
+}
+
+article,aside,dialog,figcaption,figure,footer,header,hgroup,main,nav,section {
+    display: block
+}
+
+body {
+    margin: 0;
+    font-family: -apple-system,BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto,&quot;Helvetica Neue&quot;,Arial,sans-serif,&quot;Apple Color Emoji&quot;,&quot;Segoe UI Emoji&quot;,&quot;Segoe UI Symbol&quot;;
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.5;
+    color: #212529;
+    text-align: left;
+    background-color: #fff
+}
+
+h1,h2,h3,h4,h5,h6 {
+    margin-top: 0;
+    margin-bottom: .5rem
+}
+
+p {
+    margin-top: 0;
+    margin-bottom: 1rem
+}
+
+dl,ol,ul {
+    margin-top: 0;
+    margin-bottom: 1rem
+}
+
+b,strong {
+    font-weight: bolder
+}
+
+small {
+    font-size: 80%
+}
+
+a {
+    color: #007bff;
+    text-decoration: none;
+    background-color: transparent;
+    -webkit-text-decoration-skip: objects
+}
+
+img {
+    vertical-align: middle;
+    border-style: none
+}
+
+button {
+    border-radius: 0
+}
+
+button,input,optgroup,select,textarea {
+    margin: 0;
+    font-family: inherit;
+    font-size: inherit;
+    line-height: inherit
+}
+
+button,input {
+    overflow: visible
+}
+
+button,select {
+    text-transform: none
+}
+
+[type=reset],[type=submit],button,html [type=button] {
+    -webkit-appearance: button
+}
+
+.h1,.h2,.h3,.h4,.h5,.h6,h1,h2,h3,h4,h5,h6 {
+    margin-bottom: .5rem;
+    font-family: inherit;
+    font-weight: 500;
+    line-height: 1.2;
+    color: inherit
+}
+
+.h1,h1 {
+    font-size: 2.5rem
+}
+
+.h2,h2 {
+    font-size: 2rem
+}
+
+.h5,h5 {
+    font-size: 1.25rem
+}
+
+.h6,h6 {
+    font-size: 1rem
+}
+
+.small,small {
+    font-size: 80%;
+    font-weight: 400
+}
+
+.list-unstyled {
+    padding-left: 0;
+    list-style: none
+}
+
+.container {
+    width: 100%;
+    padding-right: 15px;
+    padding-left: 15px;
+    margin-right: auto;
+    margin-left: auto
+}
+
+@media (min-width: 576px) {
+    .container {
+        max-width:540px
+    }
+}
+
+@media (min-width: 768px) {
+    .container {
+        max-width:720px
+    }
+}
+
+@media (min-width: 992px) {
+    .container {
+        max-width:960px
+    }
+}
+
+@media (min-width: 1200px) {
+    .container {
+        max-width:1140px
+    }
+}
+
+.row {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+    margin-right: -15px;
+    margin-left: -15px
+}
+
+.col,.col-1,.col-10,.col-11,.col-12,.col-2,.col-3,.col-4,.col-5,.col-6,.col-7,.col-8,.col-9,.col-auto,.col-lg,.col-lg-1,.col-lg-10,.col-lg-11,.col-lg-12,.col-lg-2,.col-lg-3,.col-lg-4,.col-lg-5,.col-lg-6,.col-lg-7,.col-lg-8,.col-lg-9,.col-lg-auto,.col-md,.col-md-1,.col-md-10,.col-md-11,.col-md-12,.col-md-2,.col-md-3,.col-md-4,.col-md-5,.col-md-6,.col-md-7,.col-md-8,.col-md-9,.col-md-auto,.col-sm,.col-sm-1,.col-sm-10,.col-sm-11,.col-sm-12,.col-sm-2,.col-sm-3,.col-sm-4,.col-sm-5,.col-sm-6,.col-sm-7,.col-sm-8,.col-sm-9,.col-sm-auto,.col-xl,.col-xl-1,.col-xl-10,.col-xl-11,.col-xl-12,.col-xl-2,.col-xl-3,.col-xl-4,.col-xl-5,.col-xl-6,.col-xl-7,.col-xl-8,.col-xl-9,.col-xl-auto {
+    position: relative;
+    width: 100%;
+    min-height: 1px;
+    padding-right: 15px;
+    padding-left: 15px
+}
+
+.col-12 {
+    -webkit-box-flex: 0;
+    -ms-flex: 0 0 100%;
+    flex: 0 0 100%;
+    max-width: 100%
+}
+
+@media (min-width: 576px) {
+    .col-sm-6 {
+        -webkit-box-flex: 0;
+        -ms-flex: 0 0 50%;
+        flex: 0 0 50%;
+        max-width: 50%
+    }
+}
+
+@media (min-width: 768px) {
+        .col-md-3 {
+                -webkit-box-flex: 0;
+                -ms-flex: 0 0 25%;
+                flex: 0 0 25%;
+                max-width: 25%
+        }
+        .col-md-6 {
+        -webkit-box-flex: 0;
+        -ms-flex: 0 0 50%;
+        flex: 0 0 50%;
+        max-width: 50%
+    }
+}
+
+@media (min-width: 992px) {
+        .col-lg-4 {
+                -webkit-box-flex: 0;
+                -ms-flex: 0 0 33.333333%;
+                flex: 0 0 33.333333%;
+                max-width: 33.333333%
+    }
+}
+
+.btn {
+    display: inline-block;
+    font-weight: 400;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: middle;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    border: 1px solid transparent;
+    padding: .375rem .75rem;
+    font-size: 1rem;
+    line-height: 1.5;
+    border-radius: .25rem;
+    transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out
+}
+
+.btn:not(:disabled):not(.disabled) {
+    cursor: pointer
+}
+
+.btn-primary {
+    color: #fff;
+    background-color: #007bff;
+    border-color: #007bff
+}
+
+.btn-block {
+    display: block;
+    width: 100%
+}
+
+.collapse {
+    display: none
+}
+
+.nav-link {
+    display: block;
+    padding: .5rem 1rem
+}
+
+.navbar {
+    position: relative;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    -webkit-box-pack: justify;
+    -ms-flex-pack: justify;
+    justify-content: space-between;
+    padding: .5rem 1rem
+}
+
+.navbar-brand {
+    display: inline-block;
+    padding-top: .3125rem;
+    padding-bottom: .3125rem;
+    margin-right: 1rem;
+    font-size: 1.25rem;
+    line-height: inherit;
+    white-space: nowrap
+}
+
+.navbar-nav {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    padding-left: 0;
+    margin-bottom: 0;
+    list-style: none
+}
+
+.navbar-nav .nav-link {
+    padding-right: 0;
+    padding-left: 0
+}
+
+.navbar-collapse {
+    -ms-flex-preferred-size: 100%;
+    flex-basis: 100%;
+    -webkit-box-flex: 1;
+    -ms-flex-positive: 1;
+    flex-grow: 1;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center
+}
+
+.navbar-toggler {
+    padding: .25rem .75rem;
+    font-size: 1.25rem;
+    line-height: 1;
+    background-color: transparent;
+    border: 1px solid transparent;
+    border-radius: .25rem
+}
+
+.navbar-toggler:focus,.navbar-toggler:hover {
+    text-decoration: none
+}
+
+.navbar-toggler:not(:disabled):not(.disabled) {
+    cursor: pointer
+}
+
+.navbar-toggler-icon {
+    display: inline-block;
+    width: 1.5em;
+    height: 1.5em;
+    vertical-align: middle;
+    content: &quot;&quot;;
+    background: no-repeat center center;
+    background-size: 100% 100%
+}
+
+@media (min-width: 768px) {
+    .navbar-expand-md {
+        -webkit-box-orient:horizontal;
+        -webkit-box-direction: normal;
+        -ms-flex-flow: row nowrap;
+        flex-flow: row nowrap;
+        -webkit-box-pack: start;
+        -ms-flex-pack: start;
+        justify-content: flex-start
+    }
+
+    .navbar-expand-md .navbar-nav {
+        -webkit-box-orient: horizontal;
+        -webkit-box-direction: normal;
+        -ms-flex-direction: row;
+        flex-direction: row
+    }
+
+        .navbar-expand-md .navbar-nav .nav-link {
+        padding-right: .5rem;
+        padding-left: .5rem
+    }
+
+        .navbar-expand-md .navbar-collapse {
+        display: -webkit-box!important;
+        display: -ms-flexbox!important;
+        display: flex!important;
+        -ms-flex-preferred-size: auto;
+        flex-basis: auto
+    }
+
+    .navbar-expand-md .navbar-toggler {
+        display: none
+    }
+}
+
+.navbar-dark .navbar-brand {
+    color: #fff
+}
+
+.navbar-dark .navbar-nav .nav-link {
+    color: rgba(255,255,255,.5)
+}
+
+.navbar-dark .navbar-toggler {
+    color: rgba(255,255,255,.5);
+    border-color: rgba(255,255,255,.1)
+}
+
+.navbar-dark .navbar-toggler-icon {
+    background-image: url(&quot;data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 30 30' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba(255, 255, 255, 0.5)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E&quot;)
+}
+
+.card {
+    position: relative;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    min-width: 0;
+    word-wrap: break-word;
+    background-color: #fff;
+    background-clip: border-box;
+    border: 1px solid rgba(0,0,0,.125);
+    border-radius: .25rem
+}
+
+.card-body {
+    -webkit-box-flex: 1;
+    -ms-flex: 1 1 auto;
+    flex: 1 1 auto;
+    padding: 1.25rem
+}
+
+.card-title {
+    margin-bottom: .75rem
+}
+
+.card-text:last-child {
+    margin-bottom: 0
+}
+
+.card-header {
+    padding: .75rem 1.25rem;
+    margin-bottom: 0;
+    background-color: rgba(0,0,0,.03);
+    border-bottom: 1px solid rgba(0,0,0,.125)
+}
+
+.card-header:first-child {
+    border-radius: calc(.25rem - 1px) calc(.25rem - 1px) 0 0
+}
+
+
+.card-footer {
+    padding: .75rem 1.25rem;
+    background-color: rgba(0,0,0,.03);
+    border-top: 1px solid rgba(0,0,0,.125)
+}
+
+.card-footer:last-child {
+    border-radius: 0 0 calc(.25rem - 1px) calc(.25rem - 1px)
+}
+
+.card-img-top {
+    width: 100%;
+    border-top-left-radius: calc(.25rem - 1px);
+    border-top-right-radius: calc(.25rem - 1px)
+}
+
+.jumbotron {
+    padding: 2rem 1rem;
+    margin-bottom: 2rem;
+    background-color: #e9ecef;
+    border-radius: .3rem
+}
+
+@media (min-width: 576px) {
+    .jumbotron {
+        padding:4rem 2rem
+    }
+}
+
+.bg-dark {
+    background-color: #343a40!important
+}
+
+.bg-transparent {
+    background-color: transparent!important
+}
+
+.border-primary {
+    border-color: #007bff!important
+}
+
+.d-flex {
+    display: -webkit-box!important;
+    display: -ms-flexbox!important;
+    display: flex!important
+}
+
+.align-items-center {
+    -webkit-box-align: center!important;
+    -ms-flex-align: center!important;
+    align-items: center!important
+}
+
+.fixed-top {
+    position: fixed;
+    top: 0;
+    right: 0;
+    left: 0;
+    z-index: 1030
+}
+
+.h-100 {
+    height: 100%!important
+}
+
+.m-0 {
+    margin: 0!important
+}
+
+.mb-0,.my-0 {
+    margin-bottom: 0!important
+}
+
+.mr-2,.mx-2 {
+    margin-right: .5rem!important
+}
+
+.mt-3,.my-3 {
+    margin-top: 1rem!important
+}
+
+.mr-3,.mx-3 {
+    margin-right: 1rem!important
+}
+
+.mb-3,.my-3 {
+    margin-bottom: 1rem!important
+}
+
+.p-0 {
+    padding: 0!important
+}
+
+.p-2 {
+    padding: .5rem!important
+}
+
+.p-3 {
+    padding: 1rem!important
+}
+
+.pr-3,.px-3 {
+    padding-right: 1rem!important
+}
+
+.pl-3,.px-3 {
+    padding-left: 1rem!important
+}
+
+.pt-4,.py-4 {
+    padding-top: 1.5rem!important
+}
+
+.pt-5,.py-5 {
+    padding-top: 3rem!important
+}
+
+.pb-5,.py-5 {
+    padding-bottom: 3rem!important
+}
+
+.ml-auto,.mx-auto {
+    margin-left: auto!important
+}
+
+@media (min-width: 768px) {
+    .pr-md-5,.px-md-5 {
+        padding-right: 3rem!important
+    }
+        .pl-md-5,.px-md-5 {
+        padding-left: 3rem!important
+    }
+}
+
+.text-left {
+    text-align: left!important
+}
+
+.text-center {
+    text-align: center!important
+}
+
+.text-white {
+    color: #fff!important
+}
+
+.text-primary {
+    color: #007bff!important
+}
+
+/*# sourceMappingURL=bootstrap.min.css.map */
+h1 {
+    color: rgb($random[0 255],$random[0 255],$random[0 255]);
+}
+
+</style><link rel="preconnect" href="https://q.stripe.com" /><link rel="preconnect" href="https://m.stripe.com" /><script src="https://js.stripe.com/v3"></script><meta name="theme-color" context="#ffffff" /><link rel="icon" href="/./favicon.svg" /><link rel="mask-icon" href="/./mask-icon.svg" color="#1581c2" /><link rel="apple-touch-icon" href="/./apple-touch-icon.png" /><link rel="manifest" href="/./manifest.json" /><style type="text/css">
+.bg-primary {
+ background-color: #1581c2 !important;
+}
+.bg-warning {
+ background-color: #f37a1f !important;
+}
+.text-primary {
+ color: #1581c2 !important;
+}
+.text-warning {
+ color: #f37a1f !important;
+}
+.border-primary {
+   border-color: #1581c2 !important;
+}
+.border-warning {
+   border-color: #f37a1f !important;
+}
+a {
+ color: #1581c2;
+ text-decoration: none;
+ background-color: transparent;
+ -webkit-text-decoration-skip: objects
+}
+a:hover {
+ color: #0d4d75;
+ text-decoration: underline
+}
+a.text-primary:focus, a.text-primary:hover {
+ color: #0d4d75 !important;
+}
+a.text-warning:focus, a.text-warning:hover {
+ color: #a55416 !important;
+}
+.btn-primary {
+   color: #fff;
+   background-color: #1581c2;
+   border-color: #1581c2;
+}
+.btn-primary:hover {
+   color: #fff;
+   background-color: #11669b;
+   border-color: #105e8e;
+}
+
+.btn-primary.focus, .btn-primary:focus {
+   color: #fff;
+   background-color: #11669b;
+   border-color: #105e8e;
+   box-shadow: 0 0 0 0.2rem #1581c27f;
+}
+.btn-primary.disabled, .btn-primary:disabled {
+ color: #fff;
+ background-color: #11669b;
+ border-color: #11669b;
+}
+.btn-primary:not(:disabled):not(.disabled).active, .btn-primary:not(:disabled):not(.disabled):active, .show > .btn-primary.dropdown-toggle {
+ color: #fff;
+ background-color: #105e8e;
+ border-color: #0e5682;
+}
+.btn-primary:not(:disabled):not(.disabled).active:focus, .btn-primary:not(:disabled):not(.disabled):active:focus, .show > .btn-primary.dropdown-toggle:focus {
+   box-shadow: 0 0 0 0.2rem #1581c27f;
+}
+
+.btn-warning {
+   color: #fff;
+   background-color: #f37a1f;
+   border-color: #f37a1f;
+}
+.btn-warning:hover {
+   color: #fff;
+   background-color: #cc671b;
+   border-color: #bf6119;
+}
+.btn-warning.focus, .btn-warning:focus {
+   box-shadow: 0 0 0 0.2rem #f37a1f7f;
+}
+.btn-warning.disabled, .btn-warning:disabled {
+ color: #fff;
+ background-color: #cc671b;
+ border-color: #cc671b;
+}
+.btn-warning:not(:disabled):not(.disabled).active, .btn-warning:not(:disabled):not(.disabled):active, .show > .btn-warning.dropdown-toggle {
+ color: #fff;
+ background-color: #bf6119;
+ border-color: #b25a17;
+}
+.btn-warning:not(:disabled):not(.disabled).active:focus, .btn-warning:not(:disabled):not(.disabled):active:focus, .show > .btn-warning.dropdown-toggle:focus {
+   box-shadow: 0 0 0 0.2rem #f37a1f7f;
+}
+
+</style><script>
+//<![CDATA[
+(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+                                             new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+ 'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+ })(window,document,'script','dataLayer','GTM-MZ2K628');
+//]]>
+</script></head><body><script src="/js/jquery-3.4.1.min.js"></script><script async="" src="/js/moment.min.js"></script><noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-MZ2K628" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript><style>
+.navbar:before{
+ background: #343a40;
+ content: '';
+ width: 100%;
+ height: 100%;
+ top: 0;
+ left: 0;
+ position: absolute;
+ z-index: -1;
+ opacity: 0;
+ transition: opacity 1s ease 0s;
+}
+.navbar.solid:before {
+ opacity: 1;
+}
+</style><script>
+//<![CDATA[
+$(document).ready(function() {
+        // Transition effect for navbar
+        $(window).scroll(function() {
+          var navContent = document.getElementById('navbarSupportedContent');
+          // checks if window is scrolled more than 5% of screen width, adds/removes solid class
+          if($(this).scrollTop() > (.05 * window.innerHeight) ||
+              navContent.classList.contains("show")) {
+              $('.navbar').addClass('solid');
+          } else {
+              $('.navbar').removeClass('solid');
+          }
+        });
+});
+//]]>
+</script><nav class="navbar fixed-top navbar-dark navbar-expand-md bg-transparent"><a class="navbar-brand" href="/index.html" style="color:white;"><img src="/img/logo7-wide.svg" height="40" alt="MetaCoders" /></a><button id="navbarToggler" onclick="toggleNavbarSolid();" class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span><script>
+//<![CDATA[
+function toggleNavbarSolid() {
+ var navContent = document.getElementById('navbarSupportedContent');
+ if($(this).scrollTop() <= (.05 * window.innerHeight) &&
+    navContent.classList.contains("show")) {
+    $('.navbar').removeClass('solid');
+  } else {
+    $('.navbar').addClass('solid');
+ }
+ }
+//]]>
+</script></button><div class="collapse navbar-collapse" id="navbarSupportedContent"><ul class="navbar-nav ml-auto"><li class="nav-item"><a class="nav-link mr-3 text-white" href="/about-us.html">About Us</a></li><li class="nav-item"><a class="nav-link mr-3 text-white" href="/coding-club.html">Virtual Coding Club</a></li><li class="nav-item"><a class="nav-link mr-3 text-white" href="/coding-for-pods.html">Coding for Pods</a></li><li class="nav-item"><a class="nav-link mr-3 text-white" href="/tech-ed.html">Lifelong Learners</a></li><li class="nav-item"><a class="nav-link mr-3 text-white" href="/join-our-team.html">Join Our Team</a></li><li class="nav-item"><a class="nav-link mr-3 text-white" href="/donate.html">Donate</a></li><li class="nav-item"><a class="nav-link mr-3 text-white" href="/index.html"><button type="button" class="btn btn-primary">Out of Business</button></a></li></ul></div></nav><div id="main" style="min-height:80vh;"><script async="" src="/js/p5.min.js"></script><div class="jumbotron d-flex align-items-center" id="main-banner" style="text-align:center;margin-bottom:0.0px;background-position:center;background-size:cover;height:60vh;position:relative;" class="d-flex align-items-center" role="img" aria-label="Student playing a game he coded."><style type="text/css">
+.no-webp #main-banner{
+ background-image: url('/img/genentech/over-shoulder-game.jpg') !important;
+}
+.webp #main-banner{
+ background-image: url('/img/genentech/over-shoulder-game.webp') !important;
+}
+</style><div class="overlay" style="background-color:rgba(0, 0, 0, 0.6);width:100%;position:absolute;top:0.0px;left:0.0px;bottom:0.0px;right:0.0px;float:left;"></div><div class="container"><div style="display:inline-block;color:white;position:relative;z-index:10;"><h1>Diversity in Coding Scholarship</h1><h6>For Students of OUSD &amp; VUSD</h6></div></div></div><div class="jumbotron mb-0 pb-3 bg-white" class="mb-0 pb-3 bg-white"><div class="container"><p class="text-center">MetaCoders is excited to offer <b>200 scholarships</b> for K-8th students in San Diego County. This program is part of an initiative to bring more coding education to communities that are under-represented in computer science. Each recipient will receive 10 hours of high-quality coding education all taught online and in real time by MetaCoders Coding Coaches -- completely free!</p><hr /><div class="row align-items-center" class="align-items-center"><div class="col-md-12 col-lg-8"><h5>Who Can Apply?</h5><p>This opportunity is available to students in the Vista and Oceanside Unified School Districts who identify as persons of color and/or female.</p><h5>How Do I Apply?</h5><p>Please fill out the form below. Scholarships will be awarded on a rolling basis beginning September 21 and scholarship credits may be used through January 22, 2021.  For the greatest chance of receiving a scholarship, apply today!</p><h5>What Do I Learn?</h5><p>Scholarship awardees will receive 10 hours of coding education in our Virtual Coding Club. Visit <a href="https://metacoders.org/coding-club.html">metacoders.org/coding-club</a> for more information on topics and times.</p><h5>What Hardware Do I Need?</h5><p>Students must have access to a laptop, desktop (with Windows or macOS), or a Chromebook with access to the internet, a microphone, and a webcam.</p></div><div class="col-8 col-md-6 col-lg-4 mx-auto"><picture><source type="image/webp" srcset="/img/genentech/proud-coder.webp" /><source type="image/jpeg" srcset="/img/genentech/proud-coder.jpg" /><img src="/img/genentech/proud-coder.jpg" class="img-fluid rounded d-block w-100" alt="A young student proudly shows off his code." /></picture></div></div></div></div><div class="jumbotron mb-0 py-3" class="mb-0 py-3"><div class="container"><div class="row align-items-center" class="align-items-center"><div class="col-8 col-md-6 col-lg-4 py-md-0 py-lg-3 mx-auto"><picture><source type="image/webp" srcset="/img/genentech/3-teens-smiling-while-coding.webp" /><source type="image/jpeg" srcset="/img/genentech/3-teens-smiling-while-coding.jpg" /><img src="/img/genentech/3-teens-smiling-while-coding.jpg" class="img-fluid rounded d-block w-100" alt="Three teen girls happily learning coding." /></picture></div><div class="col-md-12 col-lg-8 mt-2"><h4>Everyone Can Code</h4><p>Computer science has a major diversity problem. People of color and women are incredibly underrepresented in CS careers, college degree programs, and K-12 level educational opportunities. The image of a software developer as white and male is more than just a stereotype: it is the reality of our education system and workforce. We need more diversity in this field not just for equality of opportunity, but to bring new ideas and keep innovating in the ever-growing technology sector!</p><p>MetaCoders partners with companies like Genentech to actively break down the barriers standing in the way of people of color, women, and girls by making coding classes accessible to as many students as possible. Scholarships and active outreach to schools and communities help us bring coding education to students who may not have access to such programs in their schools. MetaCoders also provides role models; our team of staff and volunteers is diverse in age, gender, race and ethnicity, showing students first-hand that <b>anyone can be a coder.</b></p></div></div></div></div><div class="jumbotron my-0 py-4 bg-white" class="my-0 py-4 bg-white"><div class="container"><h2 class="text-center">Funding for this Scholarship Generously Provided by</h2><a href="https://www.gene.com/"><picture><source type="image/webp" srcset="/img/genentech/genentech-logo.webp" /><source type="image/jpeg" srcset="/img/genentech/genentech-logo.jpg" /><div class="row"><div class="col col-sm-8 col-md-6 mx-auto my-4" class="col-sm-8 col-md-6 mx-auto my-4"><img src="/img/genentech/genentech-logo.jpg" class="img-fluid rounded d-block mx-auto" alt="Genentech logo" /></div></div></picture></a></div></div><div id="ns13632_main" class="card px-3 py-5 mb-0 bg-transparent" style="overflow:hidden;" data-ns="ns13632"><div class="container"><div class="card border-primary" class="border-primary"><div class="card-header h5 bg-primary text-white text-center" class="h5 bg-primary text-white text-center">Submit the form below to apply for the scholarship!</div><div class="card-body"><form action="https://docs.google.com/forms/u/1/d/e/1FAIpQLSd5uZWn8a3X5e8bR12ppdGj7cFmiPOPq8fZ54RFK_9oBNzfKw/formResponse"><div class="form-group"><label>Parent or Guardian Name</label><input type="text" class="form-control" name="entry.2077215683" /></div><div class="form-group"><label>Parent or Guardian Email</label><input type="email" class="form-control" name="entry.1799593606" /></div><div class="form-group"><label>Parent or Guardian Phone Number</label><input type="text" class="form-control" name="entry.1396717720" /></div><div class="form-group"><label>Student's Name</label><input type="text" class="form-control" name="entry.1054010153" /></div><div class="form-group"><label>Student's Date of Birth</label><input type="date" class="form-control" name="entry.56393326" /></div><div class="form-group"><label class="pr-4">Student's Gender</label><div class="form-check form-check-inline"><input class="form-check-input" type="radio" id="genderOption1" value="Male" onchange="toggleCustomInput();" name="entry.1733469838" /><label class="form-check-label" for="genderOption1">Male</label></div><div class="form-check form-check-inline"><input class="form-check-input" type="radio" id="genderOption2" value="Female" onchange="toggleCustomInput();" name="entry.1733469838" /><label class="form-check-label" for="genderOption2">Female</label></div><div class="form-check form-check-inline"><input class="form-check-input" type="radio" name="entry.1733469838" id="genderOption3" value="other" onchange="toggleCustomInput();" /><label class="form-check-label" for="genderOption3">Custom </label><input class="form-control form-control-sm mx-2" type="hidden" id="genderTextInput" placeholder="Type here" oninput="toggleCustomGenderValue();" /><script>
+//<![CDATA[
+function toggleCustomInput(){
+  var checked = document.getElementById("genderOption3").checked;
+  if(checked){
+     document.getElementById("genderTextInput").type = "text";
+  } else{
+     document.getElementById("genderTextInput").type = "hidden";
+}}
+function toggleCustomGenderValue(){
+  var customValue = document.getElementById("genderTextInput").value;
+  var checked = document.getElementById("genderOption3").checked;
+  if(checked){
+     document.getElementById("genderOption3").value = customValue;
+  } else{
+     document.getElementById("genderOption3").value = "other";
+}}
+//]]>
+</script></div></div><div class="form-group"><label class="mdb-main-label">Student's Race/Ethnicity (choose all that apply)</label><div class="form-check"><input class="form-control form-control-sm mx-2" type="hidden" id="raceText" value="--fill in--" name="entry.1663616049" /><div class="container"><div class="row"><div class="col-md-4"><input class="form-check-input" type="checkbox" id="raceOption1" onchange="toggleOtherInput(); concatStrings();" value="American Indian or Alaska Native, " /><label class="form-check-label" for="raceOption1">American Indian or Alaska Native</label></div><div class="col-md-4"><input class="form-check-input" type="checkbox" id="raceOption2" onchange="toggleOtherInput(); concatStrings();" value="Asian ," /><label class="form-check-label" for="raceOption2">Asian</label></div><div class="col-md-4"><input class="form-check-input" type="checkbox" id="raceOption3" onchange="toggleOtherInput(); concatStrings();" value="Black or African American, " /><label class="form-check-label" for="raceOption3">Black or African American</label></div></div><div class="row"><div class="col-md-4"><input class="form-check-input" type="checkbox" id="raceOption4" onchange="toggleOtherInput(); concatStrings();" value="Caucasian, " /><label class="form-check-label" for="raceOption4">Caucasian</label></div><div class="col-md-4"><input class="form-check-input" type="checkbox" id="raceOption5" onchange="toggleOtherInput(); concatStrings();" value="Latinx or Hispanic, " /><label class="form-check-label" for="raceOption5">Latinx or Hispanic</label></div><div class="col-md-4"><input class="form-check-input" type="checkbox" id="raceOption6" onchange="toggleOtherInput(); concatStrings();" value="Pacific Islander or Hawaiian, " /><label class="form-check-label" for="raceOption6">Pacific Islander or Hawaiian</label></div></div><div class="row col-md-4"><input class="form-check-input" type="checkbox" id="raceOption7" onchange="toggleOtherInput(); concatStrings();" value="other" /><label class="form-check-label" for="raceOption7">Other</label><input class="form-control-md mx-2" type="hidden" id="raceTextInput" placeholder="Type here" oninput="toggleCustomValue(); concatStrings();" /></div></div><script>
+//<![CDATA[
+ function toggleOtherInput(){
+   var checked = document.getElementById("raceOption7").checked;
+   if(checked){
+      document.getElementById("raceTextInput").type = "text";
+   } else{
+      document.getElementById("raceTextInput").type = "hidden";
+   }}
+ function concatStrings(){
+   var option1 = document.getElementById("raceOption1").value;
+   var option2 = document.getElementById("raceOption2").value;
+   var option3 = document.getElementById("raceOption3").value;
+   var option4 = document.getElementById("raceOption4").value;
+   var option5 = document.getElementById("raceOption5").value;
+   var option6 = document.getElementById("raceOption6").value;
+   var option7 = document.getElementById("raceTextInput").value;
+
+   var selected1 = "";
+   var selected2 = "";
+   var selected3 = "";
+   var selected4 = "";
+   var selected5 = "";
+   var selected6 = "";
+   var selected7 = "";
+
+   if (document.getElementById("raceOption1").checked){
+       selected1 = option1;
+   } else {
+       selected1 = ""; }
+
+   if (document.getElementById("raceOption2").checked){
+       selected2 = option2;
+   } else {
+       selected2 = ""; }
+
+   if (document.getElementById("raceOption3").checked){
+       selected3 = option3;
+   } else {
+       selected3 = ""; }
+
+   if (document.getElementById("raceOption4").checked){
+       selected4 = option4;
+   } else {
+       selected4 = ""; }
+
+   if (document.getElementById("raceOption5").checked){
+       selected5 = option5;
+   } else {
+       selected5 = ""; }
+
+   if (document.getElementById("raceOption6").checked){
+       selected6 = option6;
+   } else {
+       selected6 = ""; }
+
+   if (document.getElementById("raceOption7").checked){
+       selected7 = option7;
+   } else {
+       selected7 = ""; }
+
+ document.getElementById("raceText").value = "".concat(selected1, selected2, selected3, selected4, selected5, selected6, selected7, '.');
+
+ }
+function toggleCustomValue(){
+ var customValue = document.getElementById("raceTextInput").value;
+ var checked = document.getElementById("raceOption7").checked;
+ if(checked){
+    document.getElementById("raceOption7").value = customValue;
+ } else{
+    document.getElementById("raceOption7").value = "other";
+ }}
+//]]>
+</script></div></div><div class="form-group"><label>Student's Grade Level</label><select class="form-control" name="entry.323010727"><option>Kinder</option><option>1st Grade</option><option>2nd Grade</option><option>3rd Grade</option><option>4th Grade</option><option>5th Grade</option><option>6th Grade</option><option>7th Grade</option><option>8th Grade</option></select></div><div class="form-group"><label>Student's School District</label><select class="form-control" name="entry.1900729753"><option>Vista Unified School District</option><option>Oceanside Unified School District</option></select></div><div class="form-group"><label>Student's School Name</label><input type="text" class="form-control" name="entry.134599855" /></div><div class="form-group"><label>What does the student hope to gain from this experience?</label><textarea class="form-control" name="entry.43316897"></textarea></div><button type="submit" class="btn btn-primary" type="submit" name="submit">Submit</button></form><br /><div class="container text-center" class="text-center"><i>Thank you for your application. You will hear back from our team soon.</i></div></div></div></div><style>
+#ns13632_canvas {
+ position:absolute;
+ top:0;
+ left:0;
+ width:100%;
+ height:100%;
+ z-index:-1;
+}
+</style></div><script>
+//<![CDATA[
+ var ns13632_isMobile = {
+            Android: function () {
+                return navigator.userAgent.match(/Android/i);
+            },
+            BlackBerry: function () {
+                return navigator.userAgent.match(/BlackBerry/i);
+            },
+            iOS: function () {
+                return navigator.userAgent.match(/iPhone|iPad|iPod/i);
+            },
+            Opera: function () {
+                return navigator.userAgent.match(/Opera Mini/i);
+            },
+            Windows: function () {
+                return navigator.userAgent.match(/IEMobile/i);
+            },
+            any: function () {
+                return (ns13632_isMobile.Android() || ns13632_isMobile.BlackBerry() || ns13632_isMobile.iOS() || ns13632_isMobile.Opera() || ns13632_isMobile.Windows());
+            }
+        };
+ var ns13632_sketch = function(p){
+  // TURTLE STUFF:
+  let x, y; // the current position of the turtle
+  let currentangle = -150; // which way the turtle is pointing
+  let step = 18; // how much the turtle moves with each 'F'
+  let angle = 90; // how much the turtle turns with a '-' or '+'
+
+  // LINDENMAYER STUFF (L-SYSTEMS)
+  let thestring = 'FX'; // "axiom" or start of the string
+  let numloops = 16; // how many iterations to pre-compute
+  let therules = [['X', 'X+YF+'],['Y', '-FX-Y']]; // array for rules
+
+  let whereinstring = 0; // where in the L-system are we?
+
+  p.setup = function() {
+   //var canvas = p.createCanvas(p.windowWidth, p.windowHeight);
+   var parent = document.getElementById("ns13632_main");
+   var canvas = p.createCanvas(parent.offsetWidth, parent.offsetHeight);
+
+   canvas.id('ns13632_canvas');
+   //canvas.style('display','block');
+   canvas.parent("ns13632_main");
+
+   p.background('#e9ecef');
+   p.stroke('#1581c266');
+
+   // start the x and y position at lower-left corner
+   x = 240;
+   y = p.height/3*2;
+
+   // COMPUTE THE L-SYSTEM
+   for (let i = 0; i < numloops; i++) {
+    thestring = lindenmayer(thestring);
+   }
+  }
+
+  p.draw = function() {
+
+   // draw the current character in the string:
+   drawIt(thestring[whereinstring]);
+
+   // increment the point for where we're reading the string.
+   // wrap around at the end.
+   whereinstring++;
+   if (whereinstring > thestring.length-1) whereinstring = 0;
+
+  }
+
+  // interpret an L-system
+  function lindenmayer(s) {
+   let outputstring = ''; // start a blank output string
+
+   // iterate through 'therules' looking for symbol matches:
+   for (let i = 0; i < s.length; i++) {
+    let ismatch = 0; // by default, no match
+    for (let j = 0; j < therules.length; j++) {
+     if (s[i] == therules[j][0])  {
+      outputstring += therules[j][1]; // write substitution
+      ismatch = 1; // we have a match, so don't copy over symbol
+      break; // get outta this for() loop
+     }
+    }
+    // if nothing matches, just copy the symbol over.
+    if (ismatch == 0) outputstring+= s[i];
+   }
+
+   return outputstring; // send out the modified string
+  }
+
+  // this is a custom function that draws turtle commands
+  function drawIt(k) {
+
+   if (k=='F') { // draw forward
+    // polar to cartesian based on step and currentangle:
+    let x1 = x + step*p.cos(p.radians(currentangle));
+    let y1 = y + step*p.sin(p.radians(currentangle));
+    p.line(x, y, x1, y1); // connect the old and the new
+
+    // update the turtle's position:
+    x = x1;
+    y = y1;
+    } else if (k == '+') {
+    currentangle += angle; // turn left
+    } else if (k == '-') {
+    currentangle -= angle; // turn right
+   }
+
+   // give me some random color values:
+   let r = p.random(128, 255);
+   let g = p.random(0, 192);
+   let b = p.random(0, 50);
+   let a = p.random(10, 24);
+
+   // pick a gaussian (D&D) distribution for the radius:
+   let radius = 0;
+   radius += p.random(0, 0);
+   radius += p.random(0, 0);
+   radius += p.random(0, 0);
+   radius = radius / 3;
+
+   // draw the stuff:
+   p.fill(r, g, b, a);
+   p.ellipse(x, y, radius, radius);
+  }
+  p.windowResized = function() {
+   //p.resizeCanvas(p.windowWidth, p.windowHeight);
+   var parent = document.getElementById("ns13632_main");
+   p.resizeCanvas(parent.offsetWidth, parent.offsetHeight);
+   p.background('#e9ecef');
+   x = 240;
+   y = p.height/3*2;
+   currentangle = -150;
+   whereinstring = 0;
+   };
+  };
+window.onload = function(){
+ if (ns13632_isMobile.any()){
+  var parent = document.getElementById("ns13632_main");
+  parent.classList.remove('bg-transparent');
+  parent.style.backgroundColor = '#e9ecef';
+ }
+ else {
+  var myp5 = new p5(ns13632_sketch,'ns13632_canvas');
+ }
+}
+//]]>
+</script><div class="jumbotron d-flex justify-content-center text-center m-0 px-0" id="customer-testimonial-banner" style="background-position:center;background-size:initial;position:relative;" class="d-flex justify-content-center text-center m-0 px-0" role="img" aria-label="background image"><style type="text/css">
+.no-webp #customer-testimonial-banner{
+background-image: url(/img/online/circuits-background.jpg) !important;
+}
+.webp #customer-testimonial-banner{
+background-image: url(/img/online/circuits-background.webp) !important;
+}
+</style><div class="overlay" style="background-color:rgba(0, 0, 0, 0.6);width:100%;position:absolute;top:0.0px;left:0.0px;bottom:0.0px;right:0.0px;float:left;"></div><div class="container m-0 p-0" class="m-0 p-0"><div id="carouselTestimonials" class="carousel slide carousel-fade" data-ride="carousel"><div class="carousel-inner w-75 mx-auto text-left"><div class="carousel-item text-white active"><h2>&quot;My daughter looks forward to each and every class. They keep her engaged and often she continues to experiment with the code after class is over. I would recommend to any student at all interested in technology as this is the way to get them introduced at a young age.&quot;</h2><br /><h4 class="text-right">Veronica L.</h4><p class="text-right">Parent of a 9 year-old</p></div><div class="carousel-item text-white"><h2>&quot;Coding is a great starting block for any kid to teach discipline and especially attention to details. Thank you MetaCoders for giving my boys something to look forward to during the tough stay at home days!&quot;</h2><br /><h4 class="text-right">Robert M.</h4><p class="text-right">Parent of a 12 year-old</p></div><div class="carousel-item text-white"><h2>&quot;My daughter loves her coding class with MetaCoders. She is learning something new every time! The activities are a lot of fun and keep her engaged. I would highly recommend this class to every student who wants to delve into coding&quot;</h2><br /><h4 class="text-right">Colette V.</h4><p class="text-right">Parent of an 11 year-old</p></div><div class="carousel-item text-white"><h2>&quot;This is the best online class my boys have ever attended. The teachers are engaging. The classes are interesting and fun. I am very very impressed by their professional and fun program!&quot;</h2><br /><h4 class="text-right">Allison S.</h4><p class="text-right">Parent of a 7 and 9 year-old</p></div><div class="carousel-item text-white"><h2>&quot;It was actually better than school. At school, we have a Zoom class for 30 minutes and then we do the work on our own. Here, the coaches were more on hand.&quot;</h2><br /><h4 class="text-right">Stanley M.</h4><p class="text-right">Age 15</p></div><div class="carousel-item text-white"><h2>&quot;I’ve been missing an organized class over the summer. The coaches were very nice and helped you when you needed help. I liked that you could choose your own projects, and you got to create your own characters.&quot;</h2><br /><h4 class="text-right">Arwen M.</h4><p class="text-right">Age 13</p></div><div class="carousel-item text-white"><h2>&quot;My learner really enjoyed this class. The instructor was lively and kept the class exciting.&quot;</h2><br /><h4 class="text-right">Roberta T.</h4><p class="text-right">Parent of an 11 year-old</p></div><div class="carousel-item text-white"><h2>&quot;When school ended last year, there was no real distance learning in place for the kids. These lessons are what I would expect distance learning to be like. The instructor was on screen and sharing a screen of the lesson that was going on. It was very well done.&quot;</h2><br /><h4 class="text-right">Ed M.</h4><p class="text-right">Parent of a 13 and 15 year-old</p></div></div><a class="carousel-control-prev" href="#carouselTestimonials" role="button" data-slide="prev"><span class="carousel-control-prev-icon" aria-hidden="true"></span><span class="sr-only">Previous</span></a><a class="carousel-control-next" href="#carouselTestimonials" role="button" data-slide="next"><span class="carousel-control-next-icon" aria-hidden="true"></span><span class="sr-only">Next</span></a></div><script>
+//<![CDATA[
+$.fn.carouselHeights = function() {
+
+    var items = $(this), //grab all slides
+        heights = [], //create empty array to store height values
+        tallest; //create variable to make note of the tallest slide
+
+    var normalizeHeights = function() {
+
+        items.each(function() { //add heights to array
+            heights.push($(this).height());
+        });
+        tallest = Math.max.apply(null, heights); //cache largest value
+        items.each(function() {
+            $(this).css('min-height',tallest + 'px');
+        });
+    };
+
+    normalizeHeights();
+
+    $(window).on('resize orientationchange', function () {
+        //reset vars
+        tallest = 0;
+        heights.length = 0;
+
+        items.each(function() {
+            $(this).css('min-height','0'); //reset min-height
+        });
+        normalizeHeights(); //run it again
+    });
+
+};
+
+jQuery(function($){
+
+    $(window).on('load', function(){
+        $('#carouselTestimonials .carousel-item').carouselHeights();
+    });
+
+});
+
+//]]>
+</script></div></div></div><style>
+.fab {
+  padding: 5px;
+  font-size: 30px;
+  text-align: center;
+  text-decoration: none;
+}
+
+/* Add a hover effect if you want */
+.fab:hover {
+  opacity: 0.7;
+}
+</style><footer class="px-3 pt-4 bg-dark"><div class="container"><div class="row justify-content-center" class="justify-content-center"><div class="col-md-3 text-white" class="text-white"><h6>Company</h6><ul class="list-unstyled"><li><a href="/about-us.html"><small>About Us</small></a></li><li><a href="/join-our-team.html"><small>Join Our Team</small></a></li><li><a href="/donate.html"><small>Donate</small></a></li><li><a href="/terms-and-conditions.html"><small>Terms &amp; Conditions</small></a></li></ul></div><div class="col-md-4 text-white" class="text-white"><h6>Programs</h6><ul class="list-unstyled"><li><a href="/coding-club.html"><small>Virtual Coding Club</small></a></li><li><a href="/coding-for-pods.html"><small>Coding for Pods</small></a></li><li><a href="/tech-ed.html"><small>Tech Ed for Lifelong Learners</small></a></li></ul><h6>Contact Us</h6><ul class="list-unstyled"><li><a href="mailto: contact@metacoders.org"><small>contact@metacoders.org</small></a></li><li><small>Monday - Friday, 9am-5pm PT</small></li></ul></div><div class="col-md-4 text-white" class="text-white"><h6>Follow Us</h6><ul class="list-unstyled"><li><div class="row"><div class="col-12"><a href="https://www.facebook.com/metacoders.org/" style="padding-left:0px;" class="fab fa-facebook-square fa-2x"></a><a href="https://twitter.com/metacoders" class="fab fa-twitter-square fa-2x"></a><a href="https://www.linkedin.com/company/34648496" class="fab fa-linkedin fa-2x"></a><a href="https://www.instagram.com/metacoders/" class="fab fa-instagram fa-2x"></a></div></div></li><li><br /></li><li><small>MetaCoders, Inc. Copyright 2020</small></li><li><small>All Rights Reserved</small></li><li><br /></li><li><small>MetaCoders, Inc. is a 501(c)(3) non-profit registered in the state of California.</small></li><li><small>Tax ID: 84-3633066</small></li></ul></div></div></div></footer><script src="/js/bootstrap.bundle.min.js"></script><script>
+//<![CDATA[
+$(function () {
+  $('[data-toggle="tooltip"]').tooltip()
+})
+//]]>
+</script></body></html>

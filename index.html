@@ -1,15 +1,991 @@
-<html><head><link rel="stylesheet" type="text/css" href="/metacoders-dot-org/css/bootstrap.min.css" /></head><body><script src="/metacoders-dot-org/js/jquery-3.2.1.slim.min.js"></script><script src="/metacoders-dot-org/js/moment.min.js"></script><style>
-.navbar.solid {
-    background-color: #343a40 !important;
-    transition: background-color 1s ease 0s;
-  }
+<!DOCTYPE html>
+<html><head><meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" /><script>
+//<![CDATA[
+function preloadSupported() {
+  var relList = document.createElement('link').relList;
+  return !!(relList && relList.supports && relList.supports('preload'));
+}
+//]]>
+</script><script async="" src="/js/modernizr-custom.js"></script><script>
+//<![CDATA[
+if (preloadSupported()){
+ var cssLink = document.createElement('link');
+ cssLink.rel = 'preload';
+ cssLink.as = 'style';
+ cssLink.onload = function(){this.onload=null;this.rel="stylesheet"};
+ cssLink.href = '/css/bootstrap.min.css';
+ document.head.appendChild(cssLink);
+}
+else{
+ var cssLink = document.createElement('link');
+ cssLink.rel = 'stylesheet';
+ cssLink.href = '/css/bootstrap.min.css';
+ document.head.appendChild(cssLink);
+}
+//]]>
+</script><noscript><link rel="stylesheet" href="/css/bootstrap.min.css" /></noscript><script>
+//<![CDATA[
+if (preloadSupported()){
+ var cssLink = document.createElement('link');
+ cssLink.rel = 'preload';
+ cssLink.as = 'style';
+ cssLink.onload = function(){this.onload=null;this.rel="stylesheet"};
+ cssLink.href = '/css/fontawesome.min.css';
+ document.head.appendChild(cssLink);
+}
+else{
+ var cssLink = document.createElement('link');
+ cssLink.rel = 'stylesheet';
+ cssLink.href = '/css/fontawesome.min.css';
+ document.head.appendChild(cssLink);
+}
+//]]>
+</script><noscript><link rel="stylesheet" href="/css/fontawesome.min.css" /></noscript><script>
+//<![CDATA[
+if (preloadSupported()){
+ var cssLink = document.createElement('link');
+ cssLink.rel = 'preload';
+ cssLink.as = 'style';
+ cssLink.onload = function(){this.onload=null;this.rel="stylesheet"};
+ cssLink.href = '/css/fontawesome-brands.min.css';
+ document.head.appendChild(cssLink);
+}
+else{
+ var cssLink = document.createElement('link');
+ cssLink.rel = 'stylesheet';
+ cssLink.href = '/css/fontawesome-brands.min.css';
+ document.head.appendChild(cssLink);
+}
+//]]>
+</script><noscript><link rel="stylesheet" href="/css/fontawesome-brands.min.css" /></noscript><script>
+//<![CDATA[
+if (preloadSupported()){
+ var cssLink = document.createElement('link');
+ cssLink.rel = 'preload';
+ cssLink.as = 'style';
+ cssLink.onload = function(){this.onload=null;this.rel="stylesheet"};
+ cssLink.href = '/css/fontawesome-solid.min.css';
+ document.head.appendChild(cssLink);
+}
+else{
+ var cssLink = document.createElement('link');
+ cssLink.rel = 'stylesheet';
+ cssLink.href = '/css/fontawesome-solid.min.css';
+ document.head.appendChild(cssLink);
+}
+//]]>
+</script><noscript><link rel="stylesheet" href="/css/fontawesome-solid.min.css" /></noscript><title>MetaCoders | Coding Camps and Year-Round Classes for K-12</title><meta name="description" content="MetaCoders teaches kids in K-12 how to code through cutting-edge learning science. MetaCoders’ classes and summer camps operate at locations across the country." /><style type="text/css">
+:root {
+    --blue:#007bff;--indigo:#6610f2;--purple:#6f42c1;--pink:#e83e8c;--red:#dc3545;--orange:#fd7e14;--yellow:#ffc107;--green:#28a745;--teal:#20c997;--cyan:#17a2b8;--white:#fff;--gray:#6c757d;--gray-dark:#343a40;--primary:#007bff;--secondary:#6c757d;--success:#28a745;--info:#17a2b8;--warning:#ffc107;--danger:#dc3545;--light:#f8f9fa;--dark:#343a40;--breakpoint-xs:0;--breakpoint-sm:576px;--breakpoint-md:768px;--breakpoint-lg:992px;--breakpoint-xl:1200px;--font-family-sans-serif:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto,&quot;Helvetica Neue&quot;,Arial,sans-serif,&quot;Apple Color Emoji&quot;,&quot;Segoe UI Emoji&quot;,&quot;Segoe UI Symbol&quot;;--font-family-monospace:SFMono-Regular,Menlo,Monaco,Consolas,&quot;Liberation Mono&quot;,&quot;Courier New&quot;,monospace}
+
+*,::after,::before {
+    box-sizing: border-box
+}
+
+html {
+    font-family: sans-serif;
+    line-height: 1.15;
+    -webkit-text-size-adjust: 100%;
+    -ms-text-size-adjust: 100%;
+    -ms-overflow-style: scrollbar;
+    -webkit-tap-highlight-color: transparent
+}
+
+article,aside,dialog,figcaption,figure,footer,header,hgroup,main,nav,section {
+    display: block
+}
+
+body {
+    margin: 0;
+    font-family: -apple-system,BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto,&quot;Helvetica Neue&quot;,Arial,sans-serif,&quot;Apple Color Emoji&quot;,&quot;Segoe UI Emoji&quot;,&quot;Segoe UI Symbol&quot;;
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.5;
+    color: #212529;
+    text-align: left;
+    background-color: #fff
+}
+
+h1,h2,h3,h4,h5,h6 {
+    margin-top: 0;
+    margin-bottom: .5rem
+}
+
+p {
+    margin-top: 0;
+    margin-bottom: 1rem
+}
+
+dl,ol,ul {
+    margin-top: 0;
+    margin-bottom: 1rem
+}
+
+b,strong {
+    font-weight: bolder
+}
+
+small {
+    font-size: 80%
+}
+
+a {
+    color: #007bff;
+    text-decoration: none;
+    background-color: transparent;
+    -webkit-text-decoration-skip: objects
+}
+
+a:hover {
+    color: #0056b3;
+    text-decoration: underline
+}
+
+img {
+    vertical-align: middle;
+    border-style: none
+}
+
+button {
+    border-radius: 0
+}
+
+button,input,optgroup,select,textarea {
+    margin: 0;
+    font-family: inherit;
+    font-size: inherit;
+    line-height: inherit
+}
+
+button,input {
+    overflow: visible
+}
+
+button,select {
+    text-transform: none
+}
+
+[type=reset],[type=submit],button,html [type=button] {
+    -webkit-appearance: button
+}
+
+.h1,.h2,.h3,.h4,.h5,.h6,h1,h2,h3,h4,h5,h6 {
+    margin-bottom: .5rem;
+    font-family: inherit;
+    font-weight: 500;
+    line-height: 1.2;
+    color: inherit
+}
+
+.h1,h1 {
+    font-size: 2.5rem
+}
+
+.h2,h2 {
+    font-size: 2rem
+}
+
+.h3,h3 {
+    font-size: 1.75rem
+}
+
+
+.h5,h5 {
+    font-size: 1.25rem
+}
+
+.h6,h6 {
+    font-size: 1rem
+}
+
+.small,small {
+    font-size: 80%;
+    font-weight: 400
+}
+
+.list-unstyled {
+    padding-left: 0;
+    list-style: none
+}
+
+.img-fluid {
+    max-width: 100%;
+    height: auto
+}
+
+.container {
+    width: 100%;
+    padding-right: 15px;
+    padding-left: 15px;
+    margin-right: auto;
+    margin-left: auto
+}
+
+@media (min-width: 576px) {
+    .container {
+        max-width:540px
+    }
+}
+
+@media (min-width: 768px) {
+    .container {
+        max-width:720px
+    }
+}
+
+@media (min-width: 992px) {
+    .container {
+        max-width:960px
+    }
+}
+
+@media (min-width: 1200px) {
+    .container {
+        max-width:1140px
+    }
+}
+
+.row {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+    margin-right: -15px;
+    margin-left: -15px
+}
+
+.col,.col-1,.col-10,.col-11,.col-12,.col-2,.col-3,.col-4,.col-5,.col-6,.col-7,.col-8,.col-9,.col-auto,.col-lg,.col-lg-1,.col-lg-10,.col-lg-11,.col-lg-12,.col-lg-2,.col-lg-3,.col-lg-4,.col-lg-5,.col-lg-6,.col-lg-7,.col-lg-8,.col-lg-9,.col-lg-auto,.col-md,.col-md-1,.col-md-10,.col-md-11,.col-md-12,.col-md-2,.col-md-3,.col-md-4,.col-md-5,.col-md-6,.col-md-7,.col-md-8,.col-md-9,.col-md-auto,.col-sm,.col-sm-1,.col-sm-10,.col-sm-11,.col-sm-12,.col-sm-2,.col-sm-3,.col-sm-4,.col-sm-5,.col-sm-6,.col-sm-7,.col-sm-8,.col-sm-9,.col-sm-auto,.col-xl,.col-xl-1,.col-xl-10,.col-xl-11,.col-xl-12,.col-xl-2,.col-xl-3,.col-xl-4,.col-xl-5,.col-xl-6,.col-xl-7,.col-xl-8,.col-xl-9,.col-xl-auto {
+    position: relative;
+    width: 100%;
+    min-height: 1px;
+    padding-right: 15px;
+    padding-left: 15px
+}
+
+.col-6 {
+    -webkit-box-flex: 0;
+    -ms-flex: 0 0 50%;
+    flex: 0 0 50%;
+    max-width: 50%
+}
+
+.col-12 {
+    -webkit-box-flex: 0;
+    -ms-flex: 0 0 100%;
+    flex: 0 0 100%;
+    max-width: 100%
+}
+
+@media (min-width: 576px) {
+    .col-sm-6 {
+        -webkit-box-flex: 0;
+        -ms-flex: 0 0 50%;
+        flex: 0 0 50%;
+        max-width: 50%
+    }
+        .col-sm-8 {
+        -webkit-box-flex: 0;
+        -ms-flex: 0 0 66.666667%;
+        flex: 0 0 66.666667%;
+        max-width: 66.666667%
+    }
+}
+
+@media (min-width: 576px) {
+        .col-sm-6 {
+        -webkit-box-flex: 0;
+        -ms-flex: 0 0 50%;
+        flex: 0 0 50%;
+        max-width: 50%
+    }
+        .col-sm-8 {
+        -webkit-box-flex: 0;
+        -ms-flex: 0 0 66.666667%;
+        flex: 0 0 66.666667%;
+        max-width: 66.666667%
+    }
+}
+
+@media (min-width: 768px) {
+            .col-md-3 {
+        -webkit-box-flex: 0;
+        -ms-flex: 0 0 25%;
+        flex: 0 0 25%;
+        max-width: 25%
+    }
+        .col-md-5 {
+        -webkit-box-flex: 0;
+        -ms-flex: 0 0 41.666667%;
+        flex: 0 0 41.666667%;
+        max-width: 41.666667%
+    }
+
+    .col-md-6 {
+        -webkit-box-flex: 0;
+        -ms-flex: 0 0 50%;
+        flex: 0 0 50%;
+        max-width: 50%
+    }
+
+    .col-md-7 {
+        -webkit-box-flex: 0;
+        -ms-flex: 0 0 58.333333%;
+        flex: 0 0 58.333333%;
+        max-width: 58.333333%
+    }
+}
+
+@media (min-width: 992px) {
+            .col-lg-4 {
+        -webkit-box-flex: 0;
+        -ms-flex: 0 0 33.333333%;
+        flex: 0 0 33.333333%;
+        max-width: 33.333333%
+    }
+}
+
+.btn {
+    display: inline-block;
+    font-weight: 400;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: middle;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    border: 1px solid transparent;
+    padding: .375rem .75rem;
+    font-size: 1rem;
+    line-height: 1.5;
+    border-radius: .25rem;
+    transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out
+}
+
+.btn:not(:disabled):not(.disabled) {
+    cursor: pointer
+}
+
+.btn-primary {
+    color: #fff;
+    background-color: #007bff;
+    border-color: #007bff
+}
+
+.fade {
+    opacity: 0;
+    transition: opacity .15s linear
+}
+
+.collapse {
+    display: none
+}
+
+.navbar {
+    position: relative;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    -webkit-box-pack: justify;
+    -ms-flex-pack: justify;
+    justify-content: space-between;
+    padding: .5rem 1rem
+}
+
+.navbar-brand {
+    display: inline-block;
+    padding-top: .3125rem;
+    padding-bottom: .3125rem;
+    margin-right: 1rem;
+    font-size: 1.25rem;
+    line-height: inherit;
+    white-space: nowrap
+}
+
+.navbar-brand:focus,.navbar-brand:hover {
+    text-decoration: none
+}
+
+.navbar-nav {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    padding-left: 0;
+    margin-bottom: 0;
+    list-style: none
+}
+
+.navbar-nav .nav-link {
+    padding-right: 0;
+    padding-left: 0
+}
+
+.navbar-collapse {
+    -ms-flex-preferred-size: 100%;
+    flex-basis: 100%;
+    -webkit-box-flex: 1;
+    -ms-flex-positive: 1;
+    flex-grow: 1;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center
+}
+
+.navbar-toggler {
+    padding: .25rem .75rem;
+    font-size: 1.25rem;
+    line-height: 1;
+    background-color: transparent;
+    border: 1px solid transparent;
+    border-radius: .25rem
+}
+
+.navbar-toggler:not(:disabled):not(.disabled) {
+    cursor: pointer
+}
+
+@media (min-width: 768px) {
+    .navbar-expand-md {
+        -webkit-box-orient:horizontal;
+        -webkit-box-direction: normal;
+        -ms-flex-flow: row nowrap;
+        flex-flow: row nowrap;
+        -webkit-box-pack: start;
+        -ms-flex-pack: start;
+        justify-content: flex-start
+    }
+
+    .navbar-expand-md .navbar-nav {
+        -webkit-box-orient: horizontal;
+        -webkit-box-direction: normal;
+        -ms-flex-direction: row;
+        flex-direction: row
+    }
+
+        .navbar-expand-md .navbar-nav .nav-link {
+        padding-right: .5rem;
+        padding-left: .5rem
+    }
+
+        .navbar-expand-md .navbar-collapse {
+        display: -webkit-box!important;
+        display: -ms-flexbox!important;
+        display: flex!important;
+        -ms-flex-preferred-size: auto;
+        flex-basis: auto
+    }
+
+    .navbar-expand-md .navbar-toggler {
+        display: none
+    }
+}
+
+.navbar-dark .navbar-brand {
+    color: #fff
+}
+
+.navbar-dark .navbar-brand:focus,.navbar-dark .navbar-brand:hover {
+    color: #fff
+}
+
+.navbar-dark .navbar-nav .nav-link {
+    color: rgba(255,255,255,.5)
+}
+
+.navbar-dark .navbar-toggler {
+    color: rgba(255,255,255,.5);
+    border-color: rgba(255,255,255,.1)
+}
+
+.card {
+    position: relative;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    min-width: 0;
+    word-wrap: break-word;
+    background-color: #fff;
+    background-clip: border-box;
+    border: 1px solid rgba(0,0,0,.125);
+    border-radius: .25rem
+}
+
+.card-body {
+    -webkit-box-flex: 1;
+    -ms-flex: 1 1 auto;
+    flex: 1 1 auto;
+    padding: 1.25rem
+}
+
+.card-title {
+    margin-bottom: .75rem
+}
+
+.card-text:last-child {
+    margin-bottom: 0
+}
+
+.card-img-top {
+    width: 100%;
+    border-top-left-radius: calc(.25rem - 1px);
+    border-top-right-radius: calc(.25rem - 1px)
+}
+
+.jumbotron {
+    padding: 2rem 1rem;
+    margin-bottom: 2rem;
+    background-color: #e9ecef;
+    border-radius: .3rem
+}
+
+@media (min-width: 576px) {
+    .jumbotron {
+        padding:4rem 2rem
+    }
+}
+
+.modal {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 1050;
+    display: none;
+    overflow: hidden;
+    outline: 0
+}
+
+.carousel {
+    position: relative
+}
+
+.carousel-inner {
+    position: relative;
+    width: 100%;
+    overflow: hidden
+}
+
+.carousel-item {
+    position: relative;
+    display: none;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    width: 100%;
+    transition: -webkit-transform .6s ease;
+    transition: transform .6s ease;
+    transition: transform .6s ease,-webkit-transform .6s ease;
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+    -webkit-perspective: 1000px;
+    perspective: 1000px
+}
+
+.carousel-item-next,.carousel-item-prev,.carousel-item.active {
+    display: block
+}
+
+.carousel-item-next,.carousel-item-prev {
+    position: absolute;
+    top: 0
+}
+
+.carousel-item-next.carousel-item-left,.carousel-item-prev.carousel-item-right {
+    -webkit-transform: translateX(0);
+    transform: translateX(0)
+}
+
+@supports ((-webkit-transform-style: preserve-3d) or (transform-style:preserve-3d)) {
+    .carousel-item-next.carousel-item-left,.carousel-item-prev.carousel-item-right {
+        -webkit-transform:translate3d(0,0,0);
+        transform: translate3d(0,0,0)
+    }
+}
+
+.active.carousel-item-right,.carousel-item-next {
+    -webkit-transform: translateX(100%);
+    transform: translateX(100%)
+}
+
+@supports ((-webkit-transform-style: preserve-3d) or (transform-style:preserve-3d)) {
+    .active.carousel-item-right,.carousel-item-next {
+        -webkit-transform:translate3d(100%,0,0);
+        transform: translate3d(100%,0,0)
+    }
+}
+
+.active.carousel-item-left,.carousel-item-prev {
+    -webkit-transform: translateX(-100%);
+    transform: translateX(-100%)
+}
+
+@supports ((-webkit-transform-style: preserve-3d) or (transform-style:preserve-3d)) {
+    .active.carousel-item-left,.carousel-item-prev {
+        -webkit-transform:translate3d(-100%,0,0);
+        transform: translate3d(-100%,0,0)
+    }
+}
+
+.carousel-control-next,.carousel-control-prev {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    width: 15%;
+    color: #fff;
+    text-align: center;
+    opacity: .5
+}
+
+.carousel-control-prev {
+    left: 0
+}
+
+.carousel-control-next {
+    right: 0
+}
+
+.carousel-control-next-icon,.carousel-control-prev-icon {
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    background: transparent no-repeat center center;
+    background-size: 100% 100%
+}
+
+.carousel-control-prev-icon {
+    background-image: url(&quot;data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='%23fff' viewBox='0 0 8 8'%3E%3Cpath d='M5.25 0l-4 4 4 4 1.5-1.5-2.5-2.5 2.5-2.5-1.5-1.5z'/%3E%3C/svg%3E&quot;)
+}
+
+.carousel-control-next-icon {
+    background-image: url(&quot;data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='%23fff' viewBox='0 0 8 8'%3E%3Cpath d='M2.75 0l-1.5 1.5 2.5 2.5-2.5 2.5 1.5 1.5 4-4-4-4z'/%3E%3C/svg%3E&quot;)
+}
+
+.bg-dark {
+    background-color: #343a40!important
+}
+
+.bg-white {
+    background-color: #fff!important
+}
+
+.bg-transparent {
+    background-color: transparent!important
+}
+
+.rounded {
+    border-radius: .25rem!important
+}
+
+.d-block {
+    display: block!important
+}
+
+.d-flex {
+    display: -webkit-box!important;
+    display: -ms-flexbox!important;
+    display: flex!important
+}
+
+.justify-content-center {
+    -webkit-box-pack: center!important;
+    -ms-flex-pack: center!important;
+    justify-content: center!important
+}
+
+.align-items-center {
+    -webkit-box-align: center!important;
+    -ms-flex-align: center!important;
+    align-items: center!important
+}
+
+.float-right {
+    float: right!important
+}
+
+.fixed-top {
+    position: fixed;
+    top: 0;
+    right: 0;
+    left: 0;
+    z-index: 1030
+}
+
+.sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    overflow: hidden;
+    clip: rect(0,0,0,0);
+    white-space: nowrap;
+    -webkit-clip-path: inset(50%);
+    clip-path: inset(50%);
+    border: 0
+}
+
+.w-100 {
+    width: 100%!important
+}
+
+.h-100 {
+    height: 100%!important
+}
+
+.mb-0,.my-0 {
+    margin-bottom: 0!important
+}
+
+.mt-2,.my-2 {
+    margin-top: .5rem!important
+}
+
+.mb-2,.my-2 {
+    margin-bottom: .5rem!important
+}
+
+.mt-3,.my-3 {
+    margin-top: 1rem!important
+}
+
+.mr-3,.mx-3 {
+    margin-right: 1rem!important
+}
+
+.mb-3,.my-3 {
+    margin-bottom: 1rem!important
+}
+
+.pr-3,.px-3 {
+    padding-right: 1rem!important
+}
+
+.pl-3,.px-3 {
+    padding-left: 1rem!important
+}
+
+.pt-4,.py-4 {
+    padding-top: 1.5rem!important
+}
+
+.pt-5,.py-5 {
+    padding-top: 3rem!important
+}
+
+.pb-5,.py-5 {
+    padding-bottom: 3rem!important
+}
+
+.ml-auto,.mx-auto {
+    margin-left: auto!important
+}
+
+.text-center {
+    text-align: center!important
+}
+
+.text-white {
+    color: #fff!important
+}
+
+/*# sourceMappingURL=bootstrap.min.css.map */
+h1 {
+    color: rgb($random[0 255],$random[0 255],$random[0 255]);
+}
+
+/* ==== FONT AWESOME ==== */
+.fa,.fab,.fad,.fal,.far,.fas {
+    -moz-osx-font-smoothing: grayscale;
+    -webkit-font-smoothing: antialiased;
+    display: inline-block;
+    font-style: normal;
+    font-variant: normal;
+    text-rendering: auto;
+    line-height: 1
+}
+
+.fa-2x {
+    font-size: 2em
+}
+
+.fa-facebook-square:before {
+    content: &quot;\f082&quot;
+}
+
+.fa-linkedin:before {
+    content: &quot;\f08c&quot;
+}
+
+.fa-twitter-square:before {
+    content: &quot;\f081&quot;
+}
+
+.sr-only {
+    border: 0;
+    clip: rect(0,0,0,0);
+    height: 1px;
+    margin: -1px;
+    overflow: hidden;
+    padding: 0;
+    position: absolute;
+    width: 1px
+}
+
+.fab {
+    font-family: &quot;Font Awesome 5 Brands&quot;
+}
+.fas {
+    font-family: &quot;Font Awesome 5 Brands&quot;
+}
+</style><meta name="theme-color" context="#ffffff" /><link rel="icon" href="/./favicon.svg" /><link rel="mask-icon" href="/./mask-icon.svg" color="#1581c2" /><link rel="apple-touch-icon" href="/./apple-touch-icon.png" /><link rel="manifest" href="/./manifest.json" /><style type="text/css">
+.bg-primary {
+ background-color: #1581c2 !important;
+}
+.bg-warning {
+ background-color: #f37a1f !important;
+}
+.text-primary {
+ color: #1581c2 !important;
+}
+.text-warning {
+ color: #f37a1f !important;
+}
+.border-primary {
+   border-color: #1581c2 !important;
+}
+.border-warning {
+   border-color: #f37a1f !important;
+}
+a {
+ color: #1581c2;
+ text-decoration: none;
+ background-color: transparent;
+ -webkit-text-decoration-skip: objects
+}
+a:hover {
+ color: #0d4d75;
+ text-decoration: underline
+}
+a.text-primary:focus, a.text-primary:hover {
+ color: #0d4d75 !important;
+}
+a.text-warning:focus, a.text-warning:hover {
+ color: #a55416 !important;
+}
+.btn-primary {
+   color: #fff;
+   background-color: #1581c2;
+   border-color: #1581c2;
+}
+.btn-primary:hover {
+   color: #fff;
+   background-color: #11669b;
+   border-color: #105e8e;
+}
+
+.btn-primary.focus, .btn-primary:focus {
+   color: #fff;
+   background-color: #11669b;
+   border-color: #105e8e;
+   box-shadow: 0 0 0 0.2rem #1581c27f;
+}
+.btn-primary.disabled, .btn-primary:disabled {
+ color: #fff;
+ background-color: #11669b;
+ border-color: #11669b;
+}
+.btn-primary:not(:disabled):not(.disabled).active, .btn-primary:not(:disabled):not(.disabled):active, .show > .btn-primary.dropdown-toggle {
+ color: #fff;
+ background-color: #105e8e;
+ border-color: #0e5682;
+}
+.btn-primary:not(:disabled):not(.disabled).active:focus, .btn-primary:not(:disabled):not(.disabled):active:focus, .show > .btn-primary.dropdown-toggle:focus {
+   box-shadow: 0 0 0 0.2rem #1581c27f;
+}
+
+.btn-warning {
+   color: #fff;
+   background-color: #f37a1f;
+   border-color: #f37a1f;
+}
+.btn-warning:hover {
+   color: #fff;
+   background-color: #cc671b;
+   border-color: #bf6119;
+}
+.btn-warning.focus, .btn-warning:focus {
+   box-shadow: 0 0 0 0.2rem #f37a1f7f;
+}
+.btn-warning.disabled, .btn-warning:disabled {
+ color: #fff;
+ background-color: #cc671b;
+ border-color: #cc671b;
+}
+.btn-warning:not(:disabled):not(.disabled).active, .btn-warning:not(:disabled):not(.disabled):active, .show > .btn-warning.dropdown-toggle {
+ color: #fff;
+ background-color: #bf6119;
+ border-color: #b25a17;
+}
+.btn-warning:not(:disabled):not(.disabled).active:focus, .btn-warning:not(:disabled):not(.disabled):active:focus, .show > .btn-warning.dropdown-toggle:focus {
+   box-shadow: 0 0 0 0.2rem #f37a1f7f;
+}
+
+</style><script>
+//<![CDATA[
+(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+                                             new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+ 'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+ })(window,document,'script','dataLayer','GTM-MZ2K628');
+//]]>
+</script></head><body><script src="/js/jquery-3.4.1.min.js"></script><script async="" src="/js/moment.min.js"></script><noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-MZ2K628" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript><style>
+.navbar:before{
+ background: #343a40;
+ content: '';
+ width: 100%;
+ height: 100%;
+ top: 0;
+ left: 0;
+ position: absolute;
+ z-index: -1;
+ opacity: 0;
+ transition: opacity 1s ease 0s;
+}
+.navbar.solid:before {
+ opacity: 1;
+}
 </style><script>
 //<![CDATA[
 $(document).ready(function() {
         // Transition effect for navbar
         $(window).scroll(function() {
+          var navContent = document.getElementById('navbarSupportedContent');
           // checks if window is scrolled more than 5% of screen width, adds/removes solid class
-          if($(this).scrollTop() > (.05 * window.innerHeight)) {
+          if($(this).scrollTop() > (.05 * window.innerHeight) ||
+              navContent.classList.contains("show")) {
               $('.navbar').addClass('solid');
           } else {
               $('.navbar').removeClass('solid');
@@ -17,11 +993,68 @@ $(document).ready(function() {
         });
 });
 //]]>
-</script><nav class="navbar fixed-top navbar-dark navbar-expand-md bg-transparent"><a class="navbar-brand" href="/metacoders-dot-org/index.html" style="color:white;">MetaCoders</a><button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button><div class="collapse navbar-collapse" id="navbarSupportedContent"><ul class="navbar-nav ml-auto"><li class="nav-item"><a class="nav-link mr-3 text-white" href="/metacoders-dot-org/learn-more.html">Learn More</a></li><li class="nav-item"><a class="nav-link mr-3 text-white" href="/metacoders-dot-org/city-search.html">Locations</a></li><li class="nav-item"><a class="nav-link mr-3 text-white" href="/metacoders-dot-org/join-our-team.html">Join Our Team</a></li><li class="nav-item"><a class="nav-link mr-3 text-white" href="/metacoders-dot-org/donate.html">Donate</a></li></ul></div></nav><div id="main"><style type="text/css">
+</script><nav class="navbar fixed-top navbar-dark navbar-expand-md bg-transparent"><a class="navbar-brand" href="/index.html" style="color:white;"><img src="/img/logo7-wide.svg" height="40" alt="MetaCoders" /></a><button id="navbarToggler" onclick="toggleNavbarSolid();" class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span><script>
+//<![CDATA[
+function toggleNavbarSolid() {
+ var navContent = document.getElementById('navbarSupportedContent');
+ if($(this).scrollTop() <= (.05 * window.innerHeight) &&
+    navContent.classList.contains("show")) {
+    $('.navbar').removeClass('solid');
+  } else {
+    $('.navbar').addClass('solid');
+ }
+ }
+//]]>
+</script></button><div class="collapse navbar-collapse" id="navbarSupportedContent"><ul class="navbar-nav ml-auto"><li class="nav-item"><a class="nav-link mr-3 text-white" href="/about-us.html">About Us</a></li><li class="nav-item"><a class="nav-link mr-3 text-white" href="/coding-club.html">Virtual Coding Club</a></li><li class="nav-item"><a class="nav-link mr-3 text-white" href="/coding-for-pods.html">Coding for Pods</a></li><li class="nav-item"><a class="nav-link mr-3 text-white" href="/tech-ed.html">Lifelong Learners</a></li><li class="nav-item"><a class="nav-link mr-3 text-white" href="/join-our-team.html">Join Our Team</a></li><li class="nav-item"><a class="nav-link mr-3 text-white" href="/donate.html">Donate</a></li><li class="nav-item"><a class="nav-link mr-3 text-white" href="/index.html"><button type="button" class="btn btn-primary">Out of Business</button></a></li></ul></div></nav><div id="main" style="min-height:80vh;"><style type="text/css">
 .img-link:hover {
                             opacity: 0.5;
-                            filter: alpha(opacity=50); /* For IE8 and earlier */}
-</style><div class="jumbotron d-flex align-items-center" style="text-align:center;margin-bottom:0.0px;background-image:url(/metacoders-dot-org/img/homepage-cover.png);background-position:center;background-size:cover;height:80%;" class="d-flex align-items-center"><div class="container"><div style="display:inline-block;padding:15.0px;color:white;background:rgba(0, 0, 0, 0.5);"><h1>A New Kind of Coding Education</h1><h6>Cutting-edge learning science,</h6><h6>with grass-roots community support</h6><h6>to prepare kids for the future.</h6></div></div></div><div class="jumbotron" style="text-align:center;margin-bottom:0.0px;background:white;"><div class="container"><h1>Code the Meta Way</h1><br /><h3>Kids deserve the best in coding education.</h3><br /><h6>We teach kids coding the “meta” way. We bring the latest scientific research</h6><h6>to the table to make sure kids are getting the most out of our classes.</h6><br /><div class="card-deck"><div class="card"><img class="card-img-top" src="/metacoders-dot-org/img/games.png" src="/metacoders-dot-org/img/games.png" /><div class="card-body"><h5 class="card-title">Meta Games</h5><p class="card-text">Our students stay motivated with badges and prizes.</p></div></div><div class="card"><img class="card-img-top" src="/metacoders-dot-org/img/brain.png" src="/metacoders-dot-org/img/brain.png" /><div class="card-body"><h5 class="card-title">Metacognition</h5><p class="card-text">By reflecting on how we learn, we are able to learn more efficiently.</p></div></div><div class="card"><img class="card-img-top" src="/metacoders-dot-org/img/story.png" src="/metacoders-dot-org/img/story.png" /><div class="card-body"><h5 class="card-title">Meta Stories</h5><p class="card-text">Stories are powerful tools for teaching values and communicating ideas.</p></div></div></div></div></div><div class="jumbotron" style="margin-bottom:0.0px;"><div class="container"><div class="row align-items-center" class="align-items-center"><div class="col-sm-6"><img src="/metacoders-dot-org/img/takes-a-village.png" class="img-fluid rounded" /></div><div class="col-sm-6"><h2>A good education takes a village.</h2><p>Coding education isn’t possible in many communities because the expertise isn’t there yet. We help train community members to bring grass-roots coding education to local kids.</p><a href="/metacoders-dot-org/join-our-team.html"><button type="button" class="btn btn-primary float-right" id="main-button" class="float-right">Join Our Team</button></a></div></div></div></div><div class="jumbotron" style="margin-bottom:0.0px;background:white;"><div class="container"><div class="row align-items-center" class="align-items-center"><div class="col-sm-7"><h2>We’re teaching coding to save the world.</h2><p>Around the world, coders are tackling cancer, self-driving cars, and terrorism.  If we are going to save the world, we need more people coding.</p><br /><b><p>Meet the people who are saving the world, one coding student at a time:</p></b></div><div class="col-sm-5"><div class="row"><div class="col-sm-6"><a href="#" data-toggle="modal" data-target="#Modal-Sonny"><img src="/metacoders-dot-org/img/sonny.png" class="img-fluid rounded m-3 img-link" /></a></div><div class="col-sm-6"><a href="#" data-toggle="modal" data-target="#Modal-Lindsey"><img src="/metacoders-dot-org/img/lindsey.png" class="img-fluid rounded m-3 img-link" /></a></div></div><div class="row"><div class="col-sm-6"><a href="#" data-toggle="modal" data-target="#Modal-Sara"><img src="/metacoders-dot-org/img/sara.png" class="img-fluid rounded m-3 img-link" /></a></div><div class="col-sm-6"><a href="#" data-toggle="modal" data-target="#Modal-Judith"><img src="/metacoders-dot-org/img/judith.png" class="img-fluid rounded m-3 img-link" /></a></div></div><div class="modal fade" id="Modal-Sonny" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true"><div class="modal-dialog modal-dialog-centered" class="modal-dialog-centered"><div class="modal-content"><div class="modal-header bg-primary" class="bg-primary"><button type="button" class="close" data-dismiss="modal" aria-label="Close"><span class="text-white" aria-hidden="true">×</span></button></div><div class="modal-body"><div class="row"><div class="col-4"><img src="/metacoders-dot-org/img/sonny.png" class="img-fluid rounded m-3" /></div><div class="col-8"><h3>Sonny Najar</h3><p><strong>Position: </strong>Software Developer and Instructor at MetaCoders</p><p><i>Bringing teachers and students together to learn coding is the most important thing we can be doing for our future.</i></p></div></div></div><div class="modal-footer"><button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button><button type="button" class="btn btn-primary">Save Changes</button></div></div></div></div><div class="modal fade" id="Modal-Lindsey" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true"><div class="modal-dialog modal-dialog-centered" class="modal-dialog-centered"><div class="modal-content"><div class="modal-header bg-primary" class="bg-primary"><button type="button" class="close" data-dismiss="modal" aria-label="Close"><span class="text-white" aria-hidden="true">×</span></button></div><div class="modal-body"><div class="row"><div class="col-4"><img src="/metacoders-dot-org/img/lindsey.png" class="img-fluid rounded m-3" /></div><div class="col-8"><h3>Lindsey Handley, Ph.D.</h3><p><strong>Position: </strong>Co-Founder &amp; Officer</p><p><i>Bringing teachers and students together to learn coding is the most important thing we can be doing for our future.</i></p></div></div></div><div class="modal-footer"><button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button><button type="button" class="btn btn-primary">Save Changes</button></div></div></div></div><div class="modal fade" id="Modal-Sara" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true"><div class="modal-dialog modal-dialog-centered" class="modal-dialog-centered"><div class="modal-content"><div class="modal-header bg-primary" class="bg-primary"><button type="button" class="close" data-dismiss="modal" aria-label="Close"><span class="text-white" aria-hidden="true">×</span></button></div><div class="modal-body"><div class="row"><div class="col-4"><img src="/metacoders-dot-org/img/sara.png" class="img-fluid rounded m-3" /></div><div class="col-8"><h3>Sara Lucchini</h3><p><strong>Position: </strong>Software Developer and Instructor at MetaCoders</p><p><i>Bringing teachers and students together to learn coding is the most important thing we can be doing for our future.</i></p></div></div></div><div class="modal-footer"><button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button><button type="button" class="btn btn-primary">Save Changes</button></div></div></div></div><div class="modal fade" id="Modal-Judith" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true"><div class="modal-dialog modal-dialog-centered" class="modal-dialog-centered"><div class="modal-content"><div class="modal-header bg-primary" class="bg-primary"><button type="button" class="close" data-dismiss="modal" aria-label="Close"><span class="text-white" aria-hidden="true">×</span></button></div><div class="modal-body"><div class="row"><div class="col-4"><img src="/metacoders-dot-org/img/judith.png" class="img-fluid rounded m-3" /></div><div class="col-8"><h3>Judith Eisenberg</h3><p><strong>Position: </strong>Administrator and Instructor at MetaCoders</p><p><i>Bringing teachers and students together to learn coding is the most important thing we can be doing for our future.</i></p></div></div></div><div class="modal-footer"><button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button><button type="button" class="btn btn-primary">Save Changes</button></div></div></div></div></div></div></div></div></div><style>
+                            filter: alpha(opacity=50); /* For IE8 and earlier */}@keyframes flow {
+                              0% {
+                                background-position: 0% 50%;
+                              }
+                              50% {
+                                background-position: 100% 50%;
+                              }
+                              100% {
+                                background-position: 0% 50%;
+                              }
+                            }.gradient-effect-green:hover {background: linear-gradient(-45deg, #7fe3a8, #7fe3a8, #00C851, #00C851);
+                                                    background-size: 400% 400%;
+                                                    animation: flow 10s ease infinite;}.gradient-effect-yellow:hover {background: linear-gradient(-45deg, #ffdd99, #ffdd99,#ffbb33, #ffbb33);
+                                                    background-size: 400% 400%;
+                                                    animation: flow 10s ease infinite;}.gradient-effect-blue:hover {background: linear-gradient(-45deg, #99daf2, #99daf2, #33b5e5, #33b5e5);
+                                                    background-size: 400% 400%;
+                                                    animation: flow 10s ease infinite;}
+</style><div class="jumbotron d-flex align-items-center" id="main-banner" style="text-align:center;margin-bottom:0.0px;background-position:center;background-size:cover;height:80vh;position:relative;" class="d-flex align-items-center" role="img" aria-label="Young boy focused on building a video game with drag-and-drop coding at computer science workshop"><style type="text/css">
+.no-webp #main-banner{
+ background-image: url('/img/home/child-coding-in-weekly-class-camp.jpg') !important;
+}
+.webp #main-banner{
+ background-image: url('/img/home/child-coding-in-weekly-class-camp.webp') !important;
+}
+</style><div class="overlay" style="background-color:rgba(0, 0, 0, 0.6);width:100%;position:absolute;top:0.0px;left:0.0px;bottom:0.0px;right:0.0px;float:left;"></div><div class="container"><div style="display:inline-block;color:white;position:relative;z-index:10;"><h1>Out of Business Due to COVID-19</h1><h6>MetaCoders will no longer be running online or in-person coding classes for the foreseeable future.<br />This website is being maintained for legacy purposes.</h6></div></div></div><div class="jumbotron text-center mb-0 bg-white" class="text-center mb-0 bg-white" style="overflow:hidden;"><div class="container"><h1>Code the Meta Way</h1><br /><h3>Kids deserve the best in coding education.</h3><br /><div class="row justify-content-center" class="justify-content-center"><div class="col-sm-8"><h6>We teach kids coding the “meta“ way. We bring the latest scientific research to the table to make sure kids are getting the most out of our classes.</h6></div></div><br /><div class="row"><div class="d-flex col-12 col-md-6 col-lg-4 my-3 px-3"><div class="card" style="flex:1.0px;"><img class="card-img-top gradient-effect-green" src="/img/home/games-classroom-gamification.svg" class="gradient-effect-green" src="/img/home/games-classroom-gamification.svg" style="background-color:#00C851;" alt="Simple video game clipart" /><div class="card-body"><h5 class="card-title">Meta Games</h5><p class="card-text">Our students stay motivated with badges and prizes.</p></div></div></div><div class="d-flex col-12 col-md-6 col-lg-4 my-3 px-3"><div class="card" style="flex:1.0px;"><img class="card-img-top gradient-effect-yellow" src="/img/home/brain-metacognition.svg" class="gradient-effect-yellow" src="/img/home/brain-metacognition.svg" style="background-color:#ffbb33;" alt="Simple brain clipart" /><div class="card-body"><h5 class="card-title">Metacognition</h5><p class="card-text">By reflecting on how we learn, we are able to learn more efficiently.</p></div></div></div><div class="d-flex col-12 col-md-6 col-lg-4 my-3 px-3"><div class="card" style="flex:1.0px;"><img class="card-img-top gradient-effect-blue" src="/img/home/storytelling-for-education.svg" class="gradient-effect-blue" src="/img/home/storytelling-for-education.svg" style="background-color:#33b5e5;" alt="Simple storybook clipart" /><div class="card-body"><h5 class="card-title">Meta Stories</h5><p class="card-text">Stories are powerful tools for teaching values and communicating ideas.</p></div></div></div></div></div></div><div class="jumbotron text-center mb-0" class="text-center mb-0" style="overflow:hidden;"><div class="container"><div class="row align-items-center" class="align-items-center"><div class="col-md-6 my-2" class="my-2"><div class="carousel slide" class="slide" data-ride="carousel" id="carouselExampleControls"><div class="carousel-inner"><div class="carousel-item active" class="active"><picture><source type="image/webp" srcset="/img/home/coding-summer-camp-interns-fun.webp" /><source type="image/jpeg" srcset="/img/home/coding-summer-camp-interns-fun.jpg" /><img src="/img/home/coding-summer-camp-interns-fun.jpg" class="img-fluid rounded d-block w-100" alt="Summer coding camp leaders having fun outdoors around tree" /></picture></div><div class="carousel-item" alt="Second Slide"><picture><source type="image/webp" srcset="/img/home/computer-science-summer-educators-collage.webp" /><source type="image/jpeg" srcset="/img/home/computer-science-summer-educators-collage.jpg" /><img src="/img/home/computer-science-summer-educators-collage.jpg" class="img-fluid rounded d-block w-100" alt="A collage of a diverse group of coding and computer science summer interns" /></picture></div><div class="carousel-item" alt="Second Slide"><picture><source type="image/webp" srcset="/img/home/coding-coaches-for-grassroots-education.webp" /><source type="image/jpeg" srcset="/img/home/coding-coaches-for-grassroots-education.jpg" /><img src="/img/home/coding-coaches-for-grassroots-education.jpg" class="img-fluid rounded d-block w-100" alt="A collage of a diverse group of coding and computer science instructors" /></picture></div></div><a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev"><span class="carousel-control-prev-icon" aria-hidden="true"></span><span class="sr-only">Previous</span></a><a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next"><span class="carousel-control-next-icon" aria-hidden="true"></span><span class="sr-only">Next</span></a></div></div><div class="col-md-6 my-2" class="my-2"><h2>A good education takes a village.</h2><p>Coding education isn’t possible in many communities because the expertise isn’t there yet. We help train community members to bring grass-roots coding education to local kids.</p><a href="/join-our-team.html"><button type="button" class="btn btn-primary float-right" id="main-button" class="float-right">Join Our Team</button></a></div></div></div></div><div data-ns="ns684"><style>
+#ns684_main {
+  background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
+  background-size: 400% 400%;
+  animation: gradientBG 15s ease infinite;
+}
+
+@keyframes gradientBG {
+        0% {
+                background-position: 0% 50%;
+        }
+        50% {
+                background-position: 100% 50%;
+        }
+        100% {
+                background-position: 0% 50%;
+        }
+}
+</style><div id="ns684_main" class="jumbotron mb-0 px-3 py-5" style=""><div class="container"><div class="row align-items-center" class="align-items-center"><div class="col-md-7"><h2>We’re teaching coding to save the world.</h2><p>Around the world, coders are finding a cure for cancer, engineering safer self-driving cars, and fighting the spread of COVID.  If we are going to save the world, we need more people coding.</p><br /><b><p>Meet the people who are saving the world, one coding student at a time:</p></b></div><div class="col-md-5 text-center" class="text-center"><div class="row"><div class="col-3 m-1 p-1" class="m-1 p-1"><a href="#" data-toggle="modal" data-target="#Modal-Stephen"><picture><source type="image/webp" srcset="/img/home/stephen-r-foster-co-founder-and-president.webp" /><source type="image/jpeg" srcset="/img/home/stephen-r-foster-co-founder-and-president.jpg" /><img src="/img/home/stephen-r-foster-co-founder-and-president.jpg" class="img-fluid rounded img-link" alt="Portrait of Stephen R. Foster,the MetaCoders Co-Founder and President." /></picture></a></div><div class="col-3 m-1 p-1" class="m-1 p-1"><a href="#" data-toggle="modal" data-target="#Modal-Lindsey"><picture><source type="image/webp" srcset="/img/home/lindsey-handley-metacoders-co-founder-vice-president.webp" /><source type="image/jpeg" srcset="/img/home/lindsey-handley-metacoders-co-founder-vice-president.jpg" /><img src="/img/home/lindsey-handley-metacoders-co-founder-vice-president.jpg" class="img-fluid rounded img-link" alt="Portrait of Lindsey Handley, the MetaCoders Co-Founder and Vice President." /></picture></a></div><div class="col-3 m-1 p-1" class="m-1 p-1"><a href="#" data-toggle="modal" data-target="#Modal-Sonny"><picture><source type="image/webp" srcset="/img/home/sonny-najar-programming-language-developer.webp" /><source type="image/jpeg" srcset="/img/home/sonny-najar-programming-language-developer.jpg" /><img src="/img/home/sonny-najar-programming-language-developer.jpg" class="img-fluid rounded img-link" alt="Portrait of Sonny Najar, Senior Operations Manager." /></picture></a></div></div><div class="row"><div class="col-3 m-1 p-1" class="m-1 p-1"><a href="#" data-toggle="modal" data-target="#Modal-Jason"><picture><source type="image/webp" srcset="/img/home/jason-le-senior-curriculum-developer.webp" /><source type="image/jpeg" srcset="/img/home/jason-le-senior-curriculum-developer.jpg" /><img src="/img/home/jason-le-senior-curriculum-developer.jpg" class="img-fluid rounded img-link" alt="Portrait of Jason Le, Senior Curriculum Manager." /></picture></a></div><div class="col-3 m-1 p-1" class="m-1 p-1"><picture><img class="h-100 w-100 p-2 bg-white rounded" src="/img/home/metacoders-logo-tall.svg" /></picture></div><div class="col-3 m-1 p-1" class="m-1 p-1"><a href="#" data-toggle="modal" data-target="#Modal-Sara"><picture><source type="image/webp" srcset="/img/home/sara-lucchini-computer-science-curriculum-developer.webp" /><source type="image/jpeg" srcset="/img/home/sara-lucchini-computer-science-curriculum-developer.jpg" /><img src="/img/home/sara-lucchini-computer-science-curriculum-developer.jpg" class="img-fluid rounded img-link" alt="Portrait of Sara Lucchini, Senior Manager of Learning &amp; Development." /></picture></a></div></div><div class="row"><div class="col-3 m-1 p-1" class="m-1 p-1"><a href="#" data-toggle="modal" data-target="#Modal-Judith"><picture><source type="image/webp" srcset="/img/home/judith-eisenberg-coding-educator.webp" /><source type="image/jpeg" srcset="/img/home/judith-eisenberg-coding-educator.jpg" /><img src="/img/home/judith-eisenberg-coding-educator.jpg" class="img-fluid rounded img-link" alt="Portrait of Judith Eisenberg, Senior Manager of Human Resources &amp; Instructional Operations." /></picture></a></div><div class="col-3 m-1 p-1" class="m-1 p-1"><a href="#" data-toggle="modal" data-target="#Modal-Jordan"><picture><source type="image/webp" srcset="/img/home/jordan-hisamoto-senior-operations-manager.webp" /><source type="image/jpeg" srcset="/img/home/jordan-hisamoto-senior-operations-manager.jpg" /><img src="/img/home/jordan-hisamoto-senior-operations-manager.jpg" class="img-fluid rounded img-link" alt="Portrait of Jordan Hisamoto, Senior Program Manager." /></picture></a></div><div class="col-3 m-1 p-1" class="m-1 p-1"><a href="#" data-toggle="modal" data-target="#Modal-Eunice"><picture><source type="image/webp" srcset="/img/home/eunice-baes-senior-operations-manager.webp" /><source type="image/jpeg" srcset="/img/home/eunice-baes-senior-operations-manager.jpg" /><img src="/img/home/eunice-baes-senior-operations-manager.jpg" class="img-fluid rounded img-link" alt="Portrait of Eunice Baes, Customer Service Specialist" /></picture></a></div></div><div class="modal fade" id="Modal-Stephen" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true"><div class="modal-dialog modal-dialog-centered text-left" class="modal-dialog-centered text-left"><div class="modal-content"><div class="modal-header bg-primary" class="bg-primary"><button type="button" class="close p-2" data-dismiss="modal" aria-label="Close"><span class="text-white" aria-hidden="true">×</span></button></div><div class="modal-body"><div class="row"><div class="col-4"><picture><source type="image/webp" srcset="/img/home/stephen-r-foster-co-founder-and-president.webp" /><source type="image/jpeg" srcset="/img/home/stephen-r-foster-co-founder-and-president.jpg" /><img src="/img/home/stephen-r-foster-co-founder-and-president.jpg" class="img-fluid rounded m-3" /></picture></div><div class="col-8"><h3>Stephen R. Foster, Ph.D.</h3><p><strong>Position: </strong>President | Co-Founder | Officer</p></div></div></div><div class="modal-footer p-2" class="p-2"><button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button></div></div></div></div><div class="modal fade" id="Modal-Lindsey" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true"><div class="modal-dialog modal-dialog-centered text-left" class="modal-dialog-centered text-left"><div class="modal-content"><div class="modal-header bg-primary" class="bg-primary"><button type="button" class="close p-2" data-dismiss="modal" aria-label="Close"><span class="text-white" aria-hidden="true">×</span></button></div><div class="modal-body"><div class="row"><div class="col-4"><picture><source type="image/webp" srcset="/img/home/lindsey-handley-metacoders-co-founder-vice-president.webp" /><source type="image/jpeg" srcset="/img/home/lindsey-handley-metacoders-co-founder-vice-president.jpg" /><img src="/img/home/lindsey-handley-metacoders-co-founder-vice-president.jpg" class="img-fluid rounded m-3" /></picture></div><div class="col-8"><h3>Lindsey Handley, Ph.D.</h3><p><strong>Position: </strong>Vice-President | Co-Founder | Officer</p></div></div></div><div class="modal-footer p-2" class="p-2"><button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button></div></div></div></div><div class="modal fade" id="Modal-Sonny" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true"><div class="modal-dialog modal-dialog-centered text-left" class="modal-dialog-centered text-left"><div class="modal-content"><div class="modal-header bg-primary" class="bg-primary"><button type="button" class="close p-2" data-dismiss="modal" aria-label="Close"><span class="text-white" aria-hidden="true">×</span></button></div><div class="modal-body"><div class="row"><div class="col-4"><picture><source type="image/webp" srcset="/img/home/sonny-najar-programming-language-developer.webp" /><source type="image/jpeg" srcset="/img/home/sonny-najar-programming-language-developer.jpg" /><img src="/img/home/sonny-najar-programming-language-developer.jpg" class="img-fluid rounded m-3" /></picture></div><div class="col-8"><h3>Sonny Najar</h3><p><strong>Position: </strong>Senior Operations Manager | Software and Curriculum Developer | Head Coach</p></div></div></div><div class="modal-footer p-2" class="p-2"><button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button></div></div></div></div><div class="modal fade" id="Modal-Sara" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true"><div class="modal-dialog modal-dialog-centered text-left" class="modal-dialog-centered text-left"><div class="modal-content"><div class="modal-header bg-primary" class="bg-primary"><button type="button" class="close p-2" data-dismiss="modal" aria-label="Close"><span class="text-white" aria-hidden="true">×</span></button></div><div class="modal-body"><div class="row"><div class="col-4"><picture><source type="image/webp" srcset="/img/home/sara-lucchini-computer-science-curriculum-developer.webp" /><source type="image/jpeg" srcset="/img/home/sara-lucchini-computer-science-curriculum-developer.jpg" /><img src="/img/home/sara-lucchini-computer-science-curriculum-developer.jpg" class="img-fluid rounded m-3" /></picture></div><div class="col-8"><h3>Sara Lucchini</h3><p><strong>Position: </strong>Senior Manager of Learning &amp; Development | Software and Curriculum Developer | Head Coach</p></div></div></div><div class="modal-footer p-2" class="p-2"><button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button></div></div></div></div><div class="modal fade" id="Modal-Jason" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true"><div class="modal-dialog modal-dialog-centered text-left" class="modal-dialog-centered text-left"><div class="modal-content"><div class="modal-header bg-primary" class="bg-primary"><button type="button" class="close p-2" data-dismiss="modal" aria-label="Close"><span class="text-white" aria-hidden="true">×</span></button></div><div class="modal-body"><div class="row"><div class="col-4"><picture><source type="image/webp" srcset="/img/home/jason-le-senior-curriculum-developer.webp" /><source type="image/jpeg" srcset="/img/home/jason-le-senior-curriculum-developer.jpg" /><img src="/img/home/jason-le-senior-curriculum-developer.jpg" class="img-fluid rounded m-3" /></picture></div><div class="col-8"><h3>Jason Le</h3><p><strong>Position: </strong>Senior Curriculum Manager | Software Developer | Game Designer | Head Coach </p></div></div></div><div class="modal-footer p-2" class="p-2"><button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button></div></div></div></div><div class="modal fade" id="Modal-Judith" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true"><div class="modal-dialog modal-dialog-centered text-left" class="modal-dialog-centered text-left"><div class="modal-content"><div class="modal-header bg-primary" class="bg-primary"><button type="button" class="close p-2" data-dismiss="modal" aria-label="Close"><span class="text-white" aria-hidden="true">×</span></button></div><div class="modal-body"><div class="row"><div class="col-4"><picture><source type="image/webp" srcset="/img/home/judith-eisenberg-coding-educator.webp" /><source type="image/jpeg" srcset="/img/home/judith-eisenberg-coding-educator.jpg" /><img src="/img/home/judith-eisenberg-coding-educator.jpg" class="img-fluid rounded m-3" /></picture></div><div class="col-8"><h3>Judith Eisenberg</h3><p><strong>Position: </strong>Senior Manager of Human Resources &amp; Instructional Operations | Head Coach</p></div></div></div><div class="modal-footer p-2" class="p-2"><button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button></div></div></div></div><div class="modal fade" id="Modal-Jordan" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true"><div class="modal-dialog modal-dialog-centered text-left" class="modal-dialog-centered text-left"><div class="modal-content"><div class="modal-header bg-primary" class="bg-primary"><button type="button" class="close p-2" data-dismiss="modal" aria-label="Close"><span class="text-white" aria-hidden="true">×</span></button></div><div class="modal-body"><div class="row"><div class="col-4"><picture><source type="image/webp" srcset="/img/home/jordan-hisamoto-senior-operations-manager.webp" /><source type="image/jpeg" srcset="/img/home/jordan-hisamoto-senior-operations-manager.jpg" /><img src="/img/home/jordan-hisamoto-senior-operations-manager.jpg" class="img-fluid rounded m-3" /></picture></div><div class="col-8"><h3>Jordan Hisamoto</h3><p><strong>Position: </strong>Senior Program Manager | Senior Manager of Customer Service</p></div></div></div><div class="modal-footer p-2" class="p-2"><button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button></div></div></div></div><div class="modal fade" id="Modal-Eunice" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true"><div class="modal-dialog modal-dialog-centered text-left" class="modal-dialog-centered text-left"><div class="modal-content"><div class="modal-header bg-primary" class="bg-primary"><button type="button" class="close p-2" data-dismiss="modal" aria-label="Close"><span class="text-white" aria-hidden="true">×</span></button></div><div class="modal-body"><div class="row"><div class="col-4"><picture><source type="image/webp" srcset="/img/home/eunice-baes-senior-operations-manager.webp" /><source type="image/jpeg" srcset="/img/home/eunice-baes-senior-operations-manager.jpg" /><img src="/img/home/eunice-baes-senior-operations-manager.jpg" class="img-fluid rounded m-3" /></picture></div><div class="col-8"><h3>Eunice Baes</h3><p><strong>Position: </strong>Customer Service Specialist</p></div></div></div><div class="modal-footer p-2" class="p-2"><button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button></div></div></div></div></div></div></div></div></div><script>
+//<![CDATA[
+
+//]]>
+</script></div><style>
 .fab {
   padding: 5px;
   font-size: 30px;
@@ -33,10 +1066,10 @@ $(document).ready(function() {
 .fab:hover {
   opacity: 0.7;
 }
-</style><footer class="pt-4 bg-dark" style="margin-top:20vh;"><div class="container"><div class="row"><div class="col-3 text-white" class="text-white"><h6>Company</h6><ul class="list-unstyled"><li><a href="/metacoders-dot-org/learn-more.html"><small>Learn More</small></a></li><li><a href="/metacoders-dot-org/join-our-team.html"><small>Join Our Team</small></a></li><li><a href="/metacoders-dot-org/donate.html"><small>Donate</small></a></li><li><a href="/metacoders-dot-org/terms-and-conditions.html"><small>Terms &amp; Conditions</small></a></li></ul></div><div class="col-3 text-white" class="text-white"><h6>Programs</h6><ul class="list-unstyled"><li><a href="/metacoders-dot-org/city-search.html"><small>Find a Location</small></a></li><li><a href="/metacoders-dot-org/partners.html"><small>Start a New Location</small></a></li></ul><h6>Contact Us</h6><ul class="list-unstyled"><li><small>(858) 869-9430</small></li><li><a href="mailto: contact@metacoders.org"><small>contact@metacoders.org</small></a></li><li><small>Monday - Friday, 9am-5pm PT</small></li></ul></div><div class="col-3 text-white" class="text-white"><h6>Follow Us</h6><ul class="list-unstyled"><li><div class="row"><div class="col-12"><a href="https://www.facebook.com/thoughtstem" style="padding-left:0px;" class="fab fa-facebook-square fa-2x"></a><a href="https://www.twitter.com/thoughtstem" class="fab fa-twitter-square fa-2x"></a><a href="https://www.linkedin.com/company/thoughtstem" class="fab fa-linkedin fa-2x"></a><a href="https://www.instagram.com/thoughtstem" class="fab fa-instagram fa-2x"></a></div></div></li><li><br /></li><li><small>MetaCoders, Inc. Copyright 2020</small></li><li><small>All Rights Reserved</small></li><li><br /></li><li><small>MetaCoders, Inc. is a non-profit registered in the state of California.</small></li><li><small>Tax ID: 84-3633066</small></li></ul></div></div></div></footer><script src="/metacoders-dot-org/js/bootstrap.bundle.min.js"></script><script>
+</style><footer class="px-3 pt-4 bg-dark"><div class="container"><div class="row justify-content-center" class="justify-content-center"><div class="col-md-3 text-white" class="text-white"><h6>Company</h6><ul class="list-unstyled"><li><a href="/about-us.html"><small>About Us</small></a></li><li><a href="/join-our-team.html"><small>Join Our Team</small></a></li><li><a href="/donate.html"><small>Donate</small></a></li><li><a href="/terms-and-conditions.html"><small>Terms &amp; Conditions</small></a></li></ul></div><div class="col-md-4 text-white" class="text-white"><h6>Programs</h6><ul class="list-unstyled"><li><a href="/coding-club.html"><small>Virtual Coding Club</small></a></li><li><a href="/coding-for-pods.html"><small>Coding for Pods</small></a></li><li><a href="/tech-ed.html"><small>Tech Ed for Lifelong Learners</small></a></li></ul><h6>Contact Us</h6><ul class="list-unstyled"><li><a href="mailto: contact@metacoders.org"><small>contact@metacoders.org</small></a></li><li><small>Monday - Friday, 9am-5pm PT</small></li></ul></div><div class="col-md-4 text-white" class="text-white"><h6>Follow Us</h6><ul class="list-unstyled"><li><div class="row"><div class="col-12"><a href="https://www.facebook.com/metacoders.org/" style="padding-left:0px;" class="fab fa-facebook-square fa-2x"></a><a href="https://twitter.com/metacoders" class="fab fa-twitter-square fa-2x"></a><a href="https://www.linkedin.com/company/34648496" class="fab fa-linkedin fa-2x"></a><a href="https://www.instagram.com/metacoders/" class="fab fa-instagram fa-2x"></a></div></div></li><li><br /></li><li><small>MetaCoders, Inc. Copyright 2020</small></li><li><small>All Rights Reserved</small></li><li><br /></li><li><small>MetaCoders, Inc. is a 501(c)(3) non-profit registered in the state of California.</small></li><li><small>Tax ID: 84-3633066</small></li></ul></div></div></div></footer><script src="/js/bootstrap.bundle.min.js"></script><script>
 //<![CDATA[
 $(function () {
   $('[data-toggle="tooltip"]').tooltip()
 })
 //]]>
-</script><script src="/metacoders-dot-org/js/font-awesome.js"></script></body></html>
+</script></body></html>

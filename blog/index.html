@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html><head><meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" /><script>
+//<![CDATA[
+function preloadSupported() {
+  var relList = document.createElement('link').relList;
+  return !!(relList && relList.supports && relList.supports('preload'));
+}
+//]]>
+</script><script async="" src="/js/modernizr-custom.js"></script><link rel="stylesheet" type="text/css" href="/css/bootstrap.min.css" /><link rel="stylesheet" type="text/css" href="/css/fontawesome.min.css" /><link rel="stylesheet" type="text/css" href="/css/fontawesome-brands.min.css" /><link rel="stylesheet" type="text/css" href="/css/fontawesome-solid.min.css" /><meta name="theme-color" context="#ffffff" /><link rel="icon" href="/./favicon.svg" /><link rel="mask-icon" href="/./mask-icon.svg" color="#1581c2" /><link rel="apple-touch-icon" href="/./apple-touch-icon.png" /><link rel="manifest" href="/./manifest.json" /><style type="text/css">
+.bg-primary {
+ background-color: #1581c2 !important;
+}
+.bg-warning {
+ background-color: #f37a1f !important;
+}
+.text-primary {
+ color: #1581c2 !important;
+}
+.text-warning {
+ color: #f37a1f !important;
+}
+.border-primary {
+   border-color: #1581c2 !important;
+}
+.border-warning {
+   border-color: #f37a1f !important;
+}
+a {
+ color: #1581c2;
+ text-decoration: none;
+ background-color: transparent;
+ -webkit-text-decoration-skip: objects
+}
+a:hover {
+ color: #0d4d75;
+ text-decoration: underline
+}
+a.text-primary:focus, a.text-primary:hover {
+ color: #0d4d75 !important;
+}
+a.text-warning:focus, a.text-warning:hover {
+ color: #a55416 !important;
+}
+.btn-primary {
+   color: #fff;
+   background-color: #1581c2;
+   border-color: #1581c2;
+}
+.btn-primary:hover {
+   color: #fff;
+   background-color: #11669b;
+   border-color: #105e8e;
+}
+
+.btn-primary.focus, .btn-primary:focus {
+   color: #fff;
+   background-color: #11669b;
+   border-color: #105e8e;
+   box-shadow: 0 0 0 0.2rem #1581c27f;
+}
+.btn-primary.disabled, .btn-primary:disabled {
+ color: #fff;
+ background-color: #11669b;
+ border-color: #11669b;
+}
+.btn-primary:not(:disabled):not(.disabled).active, .btn-primary:not(:disabled):not(.disabled):active, .show > .btn-primary.dropdown-toggle {
+ color: #fff;
+ background-color: #105e8e;
+ border-color: #0e5682;
+}
+.btn-primary:not(:disabled):not(.disabled).active:focus, .btn-primary:not(:disabled):not(.disabled):active:focus, .show > .btn-primary.dropdown-toggle:focus {
+   box-shadow: 0 0 0 0.2rem #1581c27f;
+}
+
+.btn-warning {
+   color: #fff;
+   background-color: #f37a1f;
+   border-color: #f37a1f;
+}
+.btn-warning:hover {
+   color: #fff;
+   background-color: #cc671b;
+   border-color: #bf6119;
+}
+.btn-warning.focus, .btn-warning:focus {
+   box-shadow: 0 0 0 0.2rem #f37a1f7f;
+}
+.btn-warning.disabled, .btn-warning:disabled {
+ color: #fff;
+ background-color: #cc671b;
+ border-color: #cc671b;
+}
+.btn-warning:not(:disabled):not(.disabled).active, .btn-warning:not(:disabled):not(.disabled):active, .show > .btn-warning.dropdown-toggle {
+ color: #fff;
+ background-color: #bf6119;
+ border-color: #b25a17;
+}
+.btn-warning:not(:disabled):not(.disabled).active:focus, .btn-warning:not(:disabled):not(.disabled):active:focus, .show > .btn-warning.dropdown-toggle:focus {
+   box-shadow: 0 0 0 0.2rem #f37a1f7f;
+}
+
+</style><script>
+//<![CDATA[
+(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+                                             new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+ 'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+ })(window,document,'script','dataLayer','GTM-MZ2K628');
+//]]>
+</script></head><body><script src="/js/jquery-3.4.1.min.js"></script><script async="" src="/js/moment.min.js"></script><noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-MZ2K628" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript><style>
+.navbar:before{
+ background: #343a40;
+ content: '';
+ width: 100%;
+ height: 100%;
+ top: 0;
+ left: 0;
+ position: absolute;
+ z-index: -1;
+ opacity: 0;
+ transition: opacity 1s ease 0s;
+}
+.navbar.solid:before {
+ opacity: 1;
+}
+</style><script>
+//<![CDATA[
+$(document).ready(function() {
+        // Transition effect for navbar
+        $(window).scroll(function() {
+          var navContent = document.getElementById('navbarSupportedContent');
+          // checks if window is scrolled more than 5% of screen width, adds/removes solid class
+          if($(this).scrollTop() > (.05 * window.innerHeight) ||
+              navContent.classList.contains("show")) {
+              $('.navbar').addClass('solid');
+          } else {
+              $('.navbar').removeClass('solid');
+          }
+        });
+});
+//]]>
+</script><nav class="navbar fixed-top navbar-dark navbar-expand-md bg-transparent"><a class="navbar-brand" href="/index.html" style="color:white;"><img src="/img/logo7-wide.svg" height="40" alt="MetaCoders" /></a><button id="navbarToggler" onclick="toggleNavbarSolid();" class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span><script>
+//<![CDATA[
+function toggleNavbarSolid() {
+ var navContent = document.getElementById('navbarSupportedContent');
+ if($(this).scrollTop() <= (.05 * window.innerHeight) &&
+    navContent.classList.contains("show")) {
+    $('.navbar').removeClass('solid');
+  } else {
+    $('.navbar').addClass('solid');
+ }
+ }
+//]]>
+</script></button><div class="collapse navbar-collapse" id="navbarSupportedContent"><ul class="navbar-nav ml-auto"><li class="nav-item"><a class="nav-link mr-3 text-white" href="/about-us.html">About Us</a></li><li class="nav-item"><a class="nav-link mr-3 text-white" href="/coding-club.html">Virtual Coding Club</a></li><li class="nav-item"><a class="nav-link mr-3 text-white" href="/coding-for-pods.html">Coding for Pods</a></li><li class="nav-item"><a class="nav-link mr-3 text-white" href="/tech-ed.html">Lifelong Learners</a></li><li class="nav-item"><a class="nav-link mr-3 text-white" href="/join-our-team.html">Join Our Team</a></li><li class="nav-item"><a class="nav-link mr-3 text-white" href="/donate.html">Donate</a></li><li class="nav-item"><a class="nav-link mr-3 text-white" href="/index.html"><button type="button" class="btn btn-primary">Out of Business</button></a></li></ul></div></nav><div id="main" style="min-height:80vh;"><div class="jumbotron d-flex align-items-center" id="main-banner" style="text-align:center;margin-bottom:0.0px;background-position:center;background-size:cover;height:60vh;position:relative;" class="d-flex align-items-center" role="img" aria-label=""><style type="text/css">
+.no-webp #main-banner{
+ background-image: url('/img/learn-more/fun-at-coding-camps-for-k-12-lg.jpg') !important;
+}
+.webp #main-banner{
+ background-image: url('/img/learn-more/fun-at-coding-camps-for-k-12-lg.webp') !important;
+}
+</style><div class="overlay" style="background-color:rgba(0, 0, 0, 0.6);width:100%;position:absolute;top:0.0px;left:0.0px;bottom:0.0px;right:0.0px;float:left;"></div><div class="container"><div style="display:inline-block;color:white;position:relative;z-index:10;"><h1>The Blog</h1><h6>The future will be written with code</h6></div></div></div><div class="container p-5" class="p-5"><h1>Blog</h1><div class="card"><div class="card-header">The Soft Side of Coding: Critical Soft Skills Learned from Coding<h6 class="card-subtitle mb-2 text-muted">By Mona Elibiary</h6></div><div class="card-body"><p class="card-text">Prior to joining ThoughtSTEM and MetaCoders, I was a product marketing manager at a Fortune 50 technology company. I spent 20 years working with brilliant engineers and technologists in a quest to deliver exciting and relevant innovations to consumers. What I learned over my tenure is that innovations do not stem purely from great scientific minds - innovations come to market as a result of successful cross-functional teams (Research and Development, Finance, Marketing, Manufacturing, Sales, Operations, etc.,) collaborating to achieve a unified goal.<br /><br />I spent the majority of my days in meetings discussing, deliberating, and debating issues and opportunities with peers. Why is that? Because the best ideas do not come from a silo nor are they implemented single-handedly. For example, engineers may design a great innovation - but how do they know it will sell? - they need the help of marketing. Marketing may determine how best to sell - but how do they get products to the customer? - they need the help of operations. When operations determines how best to deliver the product, how do they ensure they can produce enough to meet demand? - they need the help of manufacturing. And at the end of the day, how does anyone know they can create and deliver the product profitably - that’s where finance comes in.<br /><br />So, as you can see, innovation requires more than technical skills and academic training. Successful team players capitalize on “soft-skills” to maximize their contributions to collaborative efforts. According to <a href="https://business.linkedin.com/talent-solutions/blog/recruiting-strategy/2019/soft-skills-are-hard-to-assess-but-these-6-steps-can-help">LinkedIn’s Global Talent Trends 2019 report</a>, 92% of hiring professionals consider soft skills to be as or more important than hard skills; 89% indicate that when a new hire doesn’t work out, it’s because the person lacks essential soft skills.<br /><br />As a ThoughtSTEM coach, I am excited to see students grow their technical skills and coding savvy (hard skills), but I find it even more rewarding to see them develop and practice the use of critical “soft skills” that are so important in life and in the work world. Here are some of my classroom observations of what students learn beyond the computer:<br /><br /><b>Listening and Patience</b><br /><br />Each class we gather “off the computer” to discuss concepts such as <b>systems</b>, <b>inputs</b> and <b>outputs</b>, and <b>bugs</b>. We discuss these concepts not only in the context of technology but also from a non-technology perspective. For instance, before explaining a technology concept, we typically start by comparing the topic to an everyday “tool” that students may be more familiar with. As an example, this week we discussed that a household kitchen is in essence a system with inputs of ingredients and outputs of baked goods and bugs such as not adding enough sugar or forgetting to turn on the oven. It is amazing to watch a classroom of 20+ kids who are eager to jump into coding and tempted by the sight of computers, listen with patience to their coding coaches and peers as they engage and contribute to a broader, and somewhat philosophical, discussion about the basis of what they are learning. Patience is further demonstrated when they go to their computers and discover a bug. Students must have the patience to read through their lines of code and look for their error; students must have the patience to see if the code change fixed their bug; students must have the patience to see if working code yielded their intended output; students must have the patience to wait for the coding coach to assist them (which requires that the coach read and test code once again).<br /><br /><b>Risk taking</b><br /><br />One of the beauties of coding is the immediacy of feedback - positive and negative. If code has something that is not understandable by the computer, the student immediately gets an error and tries again. Students can easily identify mistakes, attempt to correct it, see if it works, and if not correct again - all in a matter of minutes. This immediacy fosters risk taking which encourages creative thinking and discovery.<br /><br />Consider a different situation in which students successfully run code, but receive different output than what was initially expected. Rather than frustration, this situation most often yields excitement and a sense of discovery: “I expected red text on a yellow background, but instead I got yellow text on a red background” or “I wanted my hippo to eat fish, but instead my fish is trying to eat the hippo - that’s kind of funny!” Students who stumble across this type of “error” often don’t try to change their code, but instead get creative to explore other “funny” stories or games. This is probably my favorite part of the class - students don’t feel discouraged by mistakes, instead they are energized and excited to show their coaches and friends their creations. Witnessing kids shift from a “follow precise instructions” mindset and embracing a culture of “try it and see what happens” is not only one of the most rewarding aspects of coaching, it is an attitude that drives innovation.<br /><br /><b>Attention to Detail</b><br /><br />Coding is a precise science. Computers are taught to expect very specific commands and any deviation from that command will often result in a bug. As we’ve watched kids code and they troubleshoot, oftentimes their errors come from mistyped words - things like misspelling “turquoise” or forgetting to put a colon or dash in the command <code>#:font-size</code> . Coding requires attention to detail and because of the immediacy of feedback, students quickly realize that lack detail can result in a computer being “stuck.” As we progress each week, it is nice to see students learn to pay attention to the details that matter.<br /><br /><b>Collaboration</b><br /><br />Coding may seem like an individual task, but in our classrooms I see students constantly collaborating. Students code on individual computers, but because some students inevitably have more advanced keyboard, mousing, or coding skills, I oftentimes witness these  students helping other students identify errors. Students of all levels have healthy discussion and challenge one another to come up with different creative outputs - “I got my elephant to eat 10 apples and 5 fish” and “I got my fish to eat 25 bananas.” Students delight during our wrap up as they discuss how they came up with ideas inspired by their peers and brainstorm new goals for the following class.<br /><br /><b>Complex Problem Solving</b><br /><br />The most successful leaders can visualize and articulate high level opportunities or problems, dissect them into manageable pieces, and then execute. Steve Jobs famously said “Everyone should learn how to program... because it teaches you how to think.” Coding is not a “one-and-done” task; as steps are navigated, obstacles are inevitably discovered and must be addressed. Coding teaches students how to break complex problems into smaller problems, solve those problems, and integrate all the pieces to develop a unified solution. Complex problem solving is an essential skill in almost any career in any industry.<br /><br />Before I wrap up, I wanted to reference an infographic from the <a href="https://www.shrm.org/resourcesandtools/hr-topics/employee-relations/pages/employers-say-students-arent-learning-soft-skills-in-college.aspx">Society for Human Resources Management study</a>. Here, you see employers are noticing that college graduates lack soft skills. As parents and educators, we have a great opportunity to emphasize the development of soft-skills as we teach hard skills.<br /><br /><img width="100%" src="https://github.com/thoughtstem/mc-social-media/raw/master/blog/soft-skills/images/infographic.png" /></p></div></div></div></div><style>
+.fab {
+  padding: 5px;
+  font-size: 30px;
+  text-align: center;
+  text-decoration: none;
+}
+
+/* Add a hover effect if you want */
+.fab:hover {
+  opacity: 0.7;
+}
+</style><footer class="px-3 pt-4 bg-dark"><div class="container"><div class="row justify-content-center" class="justify-content-center"><div class="col-md-3 text-white" class="text-white"><h6>Company</h6><ul class="list-unstyled"><li><a href="/blog/about-us.html"><small>About Us</small></a></li><li><a href="/blog/join-our-team.html"><small>Join Our Team</small></a></li><li><a href="/blog/donate.html"><small>Donate</small></a></li><li><a href="/blog/terms-and-conditions.html"><small>Terms &amp; Conditions</small></a></li></ul></div><div class="col-md-4 text-white" class="text-white"><h6>Programs</h6><ul class="list-unstyled"><li><a href="/blog/coding-club.html"><small>Virtual Coding Club</small></a></li><li><a href="/blog/coding-for-pods.html"><small>Coding for Pods</small></a></li><li><a href="/blog/tech-ed.html"><small>Tech Ed for Lifelong Learners</small></a></li></ul><h6>Contact Us</h6><ul class="list-unstyled"><li><a href="mailto: contact@metacoders.org"><small>contact@metacoders.org</small></a></li><li><small>Monday - Friday, 9am-5pm PT</small></li></ul></div><div class="col-md-4 text-white" class="text-white"><h6>Follow Us</h6><ul class="list-unstyled"><li><div class="row"><div class="col-12"><a href="https://www.facebook.com/metacoders.org/" style="padding-left:0px;" class="fab fa-facebook-square fa-2x"></a><a href="https://twitter.com/metacoders" class="fab fa-twitter-square fa-2x"></a><a href="https://www.linkedin.com/company/34648496" class="fab fa-linkedin fa-2x"></a><a href="https://www.instagram.com/metacoders/" class="fab fa-instagram fa-2x"></a></div></div></li><li><br /></li><li><small>MetaCoders, Inc. Copyright 2020</small></li><li><small>All Rights Reserved</small></li><li><br /></li><li><small>MetaCoders, Inc. is a 501(c)(3) non-profit registered in the state of California.</small></li><li><small>Tax ID: 84-3633066</small></li></ul></div></div></div></footer><script src="/js/bootstrap.bundle.min.js"></script><script>
+//<![CDATA[
+$(function () {
+  $('[data-toggle="tooltip"]').tooltip()
+})
+//]]>
+</script></body></html>

@@ -1,15 +1,716 @@
-<html><head><link rel="stylesheet" type="text/css" href="/metacoders-dot-org/css/bootstrap.min.css" /></head><body><script src="/metacoders-dot-org/js/jquery-3.2.1.slim.min.js"></script><script src="/metacoders-dot-org/js/moment.min.js"></script><style>
-.navbar.solid {
-    background-color: #343a40 !important;
-    transition: background-color 1s ease 0s;
-  }
+<!DOCTYPE html>
+<html><head><meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" /><script>
+//<![CDATA[
+function preloadSupported() {
+  var relList = document.createElement('link').relList;
+  return !!(relList && relList.supports && relList.supports('preload'));
+}
+//]]>
+</script><script async="" src="/js/modernizr-custom.js"></script><script>
+//<![CDATA[
+if (preloadSupported()){
+ var cssLink = document.createElement('link');
+ cssLink.rel = 'preload';
+ cssLink.as = 'style';
+ cssLink.onload = function(){this.onload=null;this.rel="stylesheet"};
+ cssLink.href = '/css/bootstrap.min.css';
+ document.head.appendChild(cssLink);
+}
+else{
+ var cssLink = document.createElement('link');
+ cssLink.rel = 'stylesheet';
+ cssLink.href = '/css/bootstrap.min.css';
+ document.head.appendChild(cssLink);
+}
+//]]>
+</script><noscript><link rel="stylesheet" href="/css/bootstrap.min.css" /></noscript><script>
+//<![CDATA[
+if (preloadSupported()){
+ var cssLink = document.createElement('link');
+ cssLink.rel = 'preload';
+ cssLink.as = 'style';
+ cssLink.onload = function(){this.onload=null;this.rel="stylesheet"};
+ cssLink.href = '/css/fontawesome.min.css';
+ document.head.appendChild(cssLink);
+}
+else{
+ var cssLink = document.createElement('link');
+ cssLink.rel = 'stylesheet';
+ cssLink.href = '/css/fontawesome.min.css';
+ document.head.appendChild(cssLink);
+}
+//]]>
+</script><noscript><link rel="stylesheet" href="/css/fontawesome.min.css" /></noscript><script>
+//<![CDATA[
+if (preloadSupported()){
+ var cssLink = document.createElement('link');
+ cssLink.rel = 'preload';
+ cssLink.as = 'style';
+ cssLink.onload = function(){this.onload=null;this.rel="stylesheet"};
+ cssLink.href = '/css/fontawesome-brands.min.css';
+ document.head.appendChild(cssLink);
+}
+else{
+ var cssLink = document.createElement('link');
+ cssLink.rel = 'stylesheet';
+ cssLink.href = '/css/fontawesome-brands.min.css';
+ document.head.appendChild(cssLink);
+}
+//]]>
+</script><noscript><link rel="stylesheet" href="/css/fontawesome-brands.min.css" /></noscript><script>
+//<![CDATA[
+if (preloadSupported()){
+ var cssLink = document.createElement('link');
+ cssLink.rel = 'preload';
+ cssLink.as = 'style';
+ cssLink.onload = function(){this.onload=null;this.rel="stylesheet"};
+ cssLink.href = '/css/fontawesome-solid.min.css';
+ document.head.appendChild(cssLink);
+}
+else{
+ var cssLink = document.createElement('link');
+ cssLink.rel = 'stylesheet';
+ cssLink.href = '/css/fontawesome-solid.min.css';
+ document.head.appendChild(cssLink);
+}
+//]]>
+</script><noscript><link rel="stylesheet" href="/css/fontawesome-solid.min.css" /></noscript><title>Locations | Coding Summer Camps and Weekly Classes | MetaCoders</title><meta name="description" content="MetaCoders teaches K-12 kids how to code in cities across the United States, including in California, Texas, Nevada, Minnesota, North Carolina, and Louisiana." /><style type="text/css">
+:root {
+    --blue:#007bff;--indigo:#6610f2;--purple:#6f42c1;--pink:#e83e8c;--red:#dc3545;--orange:#fd7e14;--yellow:#ffc107;--green:#28a745;--teal:#20c997;--cyan:#17a2b8;--white:#fff;--gray:#6c757d;--gray-dark:#343a40;--primary:#007bff;--secondary:#6c757d;--success:#28a745;--info:#17a2b8;--warning:#ffc107;--danger:#dc3545;--light:#f8f9fa;--dark:#343a40;--breakpoint-xs:0;--breakpoint-sm:576px;--breakpoint-md:768px;--breakpoint-lg:992px;--breakpoint-xl:1200px;--font-family-sans-serif:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto,&quot;Helvetica Neue&quot;,Arial,sans-serif,&quot;Apple Color Emoji&quot;,&quot;Segoe UI Emoji&quot;,&quot;Segoe UI Symbol&quot;;--font-family-monospace:SFMono-Regular,Menlo,Monaco,Consolas,&quot;Liberation Mono&quot;,&quot;Courier New&quot;,monospace}
+
+*,::after,::before {
+    box-sizing: border-box
+}
+
+html {
+    font-family: sans-serif;
+    line-height: 1.15;
+    -webkit-text-size-adjust: 100%;
+    -ms-text-size-adjust: 100%;
+    -ms-overflow-style: scrollbar;
+    -webkit-tap-highlight-color: transparent
+}
+
+article,aside,dialog,figcaption,figure,footer,header,hgroup,main,nav,section {
+    display: block
+}
+
+body {
+    margin: 0;
+    font-family: -apple-system,BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto,&quot;Helvetica Neue&quot;,Arial,sans-serif,&quot;Apple Color Emoji&quot;,&quot;Segoe UI Emoji&quot;,&quot;Segoe UI Symbol&quot;;
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.5;
+    color: #212529;
+    text-align: left;
+    background-color: #fff
+}
+
+h1,h2,h3,h4,h5,h6 {
+    margin-top: 0;
+    margin-bottom: .5rem
+}
+
+p {
+    margin-top: 0;
+    margin-bottom: 1rem
+}
+
+dl,ol,ul {
+    margin-top: 0;
+    margin-bottom: 1rem
+}
+
+small {
+    font-size: 80%
+}
+
+a {
+    color: #007bff;
+    text-decoration: none;
+    background-color: transparent;
+    -webkit-text-decoration-skip: objects
+}
+
+img {
+    vertical-align: middle;
+    border-style: none
+}
+
+button {
+    border-radius: 0
+}
+
+button,input,optgroup,select,textarea {
+    margin: 0;
+    font-family: inherit;
+    font-size: inherit;
+    line-height: inherit
+}
+
+button,input {
+    overflow: visible
+}
+
+button,select {
+    text-transform: none
+}
+
+[type=reset],[type=submit],button,html [type=button] {
+    -webkit-appearance: button
+}
+
+.h1,.h2,.h3,.h4,.h5,.h6,h1,h2,h3,h4,h5,h6 {
+    margin-bottom: .5rem;
+    font-family: inherit;
+    font-weight: 500;
+    line-height: 1.2;
+    color: inherit
+}
+
+.h1,h1 {
+    font-size: 2.5rem
+}
+
+.h2,h2 {
+    font-size: 2rem
+}
+
+.h5,h5 {
+    font-size: 1.25rem
+}
+
+.h6,h6 {
+    font-size: 1rem
+}
+
+.small,small {
+    font-size: 80%;
+    font-weight: 400
+}
+
+.list-unstyled {
+    padding-left: 0;
+    list-style: none
+}
+
+.container {
+    width: 100%;
+    padding-right: 15px;
+    padding-left: 15px;
+    margin-right: auto;
+    margin-left: auto
+}
+
+@media (min-width: 576px) {
+    .container {
+        max-width:540px
+    }
+}
+
+@media (min-width: 768px) {
+    .container {
+        max-width:720px
+    }
+}
+
+@media (min-width: 992px) {
+    .container {
+        max-width:960px
+    }
+}
+
+.row {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+    margin-right: -15px;
+    margin-left: -15px
+}
+
+.col,.col-1,.col-10,.col-11,.col-12,.col-2,.col-3,.col-4,.col-5,.col-6,.col-7,.col-8,.col-9,.col-auto,.col-lg,.col-lg-1,.col-lg-10,.col-lg-11,.col-lg-12,.col-lg-2,.col-lg-3,.col-lg-4,.col-lg-5,.col-lg-6,.col-lg-7,.col-lg-8,.col-lg-9,.col-lg-auto,.col-md,.col-md-1,.col-md-10,.col-md-11,.col-md-12,.col-md-2,.col-md-3,.col-md-4,.col-md-5,.col-md-6,.col-md-7,.col-md-8,.col-md-9,.col-md-auto,.col-sm,.col-sm-1,.col-sm-10,.col-sm-11,.col-sm-12,.col-sm-2,.col-sm-3,.col-sm-4,.col-sm-5,.col-sm-6,.col-sm-7,.col-sm-8,.col-sm-9,.col-sm-auto,.col-xl,.col-xl-1,.col-xl-10,.col-xl-11,.col-xl-12,.col-xl-2,.col-xl-3,.col-xl-4,.col-xl-5,.col-xl-6,.col-xl-7,.col-xl-8,.col-xl-9,.col-xl-auto {
+    position: relative;
+    width: 100%;
+    min-height: 1px;
+    padding-right: 15px;
+    padding-left: 15px
+}
+
+.col-12 {
+    -webkit-box-flex: 0;
+    -ms-flex: 0 0 100%;
+    flex: 0 0 100%;
+    max-width: 100%
+}
+
+@media (min-width: 576px) {
+    .col-sm-6 {
+        -webkit-box-flex: 0;
+        -ms-flex: 0 0 50%;
+        flex: 0 0 50%;
+        max-width: 50%
+    }
+}
+
+@media (min-width: 768px) {
+        .col-md-3 {
+                -webkit-box-flex: 0;
+                -ms-flex: 0 0 25%;
+                flex: 0 0 25%;
+                max-width: 25%
+        }
+}
+
+@media (min-width: 992px) {
+        .col-lg-4 {
+                -webkit-box-flex: 0;
+                -ms-flex: 0 0 33.333333%;
+                flex: 0 0 33.333333%;
+                max-width: 33.333333%
+    }
+}
+
+.btn {
+    display: inline-block;
+    font-weight: 400;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: middle;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    border: 1px solid transparent;
+    padding: .375rem .75rem;
+    font-size: 1rem;
+    line-height: 1.5;
+    border-radius: .25rem;
+    transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out
+}
+
+.btn:not(:disabled):not(.disabled) {
+    cursor: pointer
+}
+
+.btn-primary {
+    color: #fff;
+    background-color: #007bff;
+    border-color: #007bff
+}
+
+.collapse {
+    display: none
+}
+
+.nav-link {
+    display: block;
+    padding: .5rem 1rem
+}
+
+.navbar {
+    position: relative;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    -webkit-box-pack: justify;
+    -ms-flex-pack: justify;
+    justify-content: space-between;
+    padding: .5rem 1rem
+}
+
+.navbar-brand {
+    display: inline-block;
+    padding-top: .3125rem;
+    padding-bottom: .3125rem;
+    margin-right: 1rem;
+    font-size: 1.25rem;
+    line-height: inherit;
+    white-space: nowrap
+}
+
+.navbar-nav {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    padding-left: 0;
+    margin-bottom: 0;
+    list-style: none
+}
+
+.navbar-nav .nav-link {
+    padding-right: 0;
+    padding-left: 0
+}
+
+.navbar-collapse {
+    -ms-flex-preferred-size: 100%;
+    flex-basis: 100%;
+    -webkit-box-flex: 1;
+    -ms-flex-positive: 1;
+    flex-grow: 1;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center
+}
+
+.navbar-toggler {
+    padding: .25rem .75rem;
+    font-size: 1.25rem;
+    line-height: 1;
+    background-color: transparent;
+    border: 1px solid transparent;
+    border-radius: .25rem
+}
+
+.navbar-toggler:focus,.navbar-toggler:hover {
+    text-decoration: none
+}
+
+.navbar-toggler:not(:disabled):not(.disabled) {
+    cursor: pointer
+}
+
+.navbar-toggler-icon {
+    display: inline-block;
+    width: 1.5em;
+    height: 1.5em;
+    vertical-align: middle;
+    content: &quot;&quot;;
+    background: no-repeat center center;
+    background-size: 100% 100%
+}
+
+@media (min-width: 768px) {
+    .navbar-expand-md {
+        -webkit-box-orient:horizontal;
+        -webkit-box-direction: normal;
+        -ms-flex-flow: row nowrap;
+        flex-flow: row nowrap;
+        -webkit-box-pack: start;
+        -ms-flex-pack: start;
+        justify-content: flex-start
+    }
+
+    .navbar-expand-md .navbar-nav {
+        -webkit-box-orient: horizontal;
+        -webkit-box-direction: normal;
+        -ms-flex-direction: row;
+        flex-direction: row
+    }
+
+        .navbar-expand-md .navbar-nav .nav-link {
+        padding-right: .5rem;
+        padding-left: .5rem
+    }
+
+        .navbar-expand-md .navbar-collapse {
+        display: -webkit-box!important;
+        display: -ms-flexbox!important;
+        display: flex!important;
+        -ms-flex-preferred-size: auto;
+        flex-basis: auto
+    }
+
+    .navbar-expand-md .navbar-toggler {
+        display: none
+    }
+}
+
+.navbar-dark .navbar-brand {
+    color: #fff
+}
+
+.navbar-dark .navbar-nav .nav-link {
+    color: rgba(255,255,255,.5)
+}
+
+.navbar-dark .navbar-toggler {
+    color: rgba(255,255,255,.5);
+    border-color: rgba(255,255,255,.1)
+}
+
+.navbar-dark .navbar-toggler-icon {
+    background-image: url(&quot;data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 30 30' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba(255, 255, 255, 0.5)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E&quot;)
+}
+
+.card {
+    position: relative;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    min-width: 0;
+    word-wrap: break-word;
+    background-color: #fff;
+    background-clip: border-box;
+    border: 1px solid rgba(0,0,0,.125);
+    border-radius: .25rem
+}
+
+.card-footer {
+    padding: .75rem 1.25rem;
+    background-color: rgba(0,0,0,.03);
+    border-top: 1px solid rgba(0,0,0,.125)
+}
+
+.card-footer:last-child {
+    border-radius: 0 0 calc(.25rem - 1px) calc(.25rem - 1px)
+}
+
+.jumbotron {
+    padding: 2rem 1rem;
+    margin-bottom: 2rem;
+    background-color: #e9ecef;
+    border-radius: .3rem
+}
+
+@media (min-width: 576px) {
+    .jumbotron {
+        padding:4rem 2rem
+    }
+}
+
+.bg-dark {
+    background-color: #343a40!important
+}
+
+.bg-transparent {
+    background-color: transparent!important
+}
+
+.border-primary {
+    border-color: #007bff!important
+}
+
+.d-flex {
+    display: -webkit-box!important;
+    display: -ms-flexbox!important;
+    display: flex!important
+}
+
+.align-items-center {
+    -webkit-box-align: center!important;
+    -ms-flex-align: center!important;
+    align-items: center!important
+}
+
+.fixed-top {
+    position: fixed;
+    top: 0;
+    right: 0;
+    left: 0;
+    z-index: 1030
+}
+
+.m-0 {
+    margin: 0!important
+}
+
+.mb-0,.my-0 {
+    margin-bottom: 0!important
+}
+
+.mt-3,.my-3 {
+    margin-top: 1rem!important
+}
+
+.mr-3,.mx-3 {
+    margin-right: 1rem!important
+}
+
+.mb-3,.my-3 {
+    margin-bottom: 1rem!important
+}
+
+.p-0 {
+    padding: 0!important
+}
+
+.p-3 {
+    padding: 1rem!important
+}
+
+.pr-3,.px-3 {
+    padding-right: 1rem!important
+}
+
+.pl-3,.px-3 {
+    padding-left: 1rem!important
+}
+
+.pt-4,.py-4 {
+    padding-top: 1.5rem!important
+}
+
+.pt-5,.py-5 {
+    padding-top: 3rem!important
+}
+
+.pb-5,.py-5 {
+    padding-bottom: 3rem!important
+}
+
+.ml-auto,.mx-auto {
+    margin-left: auto!important
+}
+
+.text-center {
+    text-align: center!important
+}
+
+.text-white {
+    color: #fff!important
+}
+
+.text-primary {
+    color: #007bff!important
+}
+
+/*# sourceMappingURL=bootstrap.min.css.map */
+h1 {
+    color: rgb($random[0 255],$random[0 255],$random[0 255]);
+}
+
+</style><meta name="theme-color" context="#ffffff" /><link rel="icon" href="/./favicon.svg" /><link rel="mask-icon" href="/./mask-icon.svg" color="#1581c2" /><link rel="apple-touch-icon" href="/./apple-touch-icon.png" /><link rel="manifest" href="/./manifest.json" /><style type="text/css">
+.bg-primary {
+ background-color: #1581c2 !important;
+}
+.bg-warning {
+ background-color: #f37a1f !important;
+}
+.text-primary {
+ color: #1581c2 !important;
+}
+.text-warning {
+ color: #f37a1f !important;
+}
+.border-primary {
+   border-color: #1581c2 !important;
+}
+.border-warning {
+   border-color: #f37a1f !important;
+}
+a {
+ color: #1581c2;
+ text-decoration: none;
+ background-color: transparent;
+ -webkit-text-decoration-skip: objects
+}
+a:hover {
+ color: #0d4d75;
+ text-decoration: underline
+}
+a.text-primary:focus, a.text-primary:hover {
+ color: #0d4d75 !important;
+}
+a.text-warning:focus, a.text-warning:hover {
+ color: #a55416 !important;
+}
+.btn-primary {
+   color: #fff;
+   background-color: #1581c2;
+   border-color: #1581c2;
+}
+.btn-primary:hover {
+   color: #fff;
+   background-color: #11669b;
+   border-color: #105e8e;
+}
+
+.btn-primary.focus, .btn-primary:focus {
+   color: #fff;
+   background-color: #11669b;
+   border-color: #105e8e;
+   box-shadow: 0 0 0 0.2rem #1581c27f;
+}
+.btn-primary.disabled, .btn-primary:disabled {
+ color: #fff;
+ background-color: #11669b;
+ border-color: #11669b;
+}
+.btn-primary:not(:disabled):not(.disabled).active, .btn-primary:not(:disabled):not(.disabled):active, .show > .btn-primary.dropdown-toggle {
+ color: #fff;
+ background-color: #105e8e;
+ border-color: #0e5682;
+}
+.btn-primary:not(:disabled):not(.disabled).active:focus, .btn-primary:not(:disabled):not(.disabled):active:focus, .show > .btn-primary.dropdown-toggle:focus {
+   box-shadow: 0 0 0 0.2rem #1581c27f;
+}
+
+.btn-warning {
+   color: #fff;
+   background-color: #f37a1f;
+   border-color: #f37a1f;
+}
+.btn-warning:hover {
+   color: #fff;
+   background-color: #cc671b;
+   border-color: #bf6119;
+}
+.btn-warning.focus, .btn-warning:focus {
+   box-shadow: 0 0 0 0.2rem #f37a1f7f;
+}
+.btn-warning.disabled, .btn-warning:disabled {
+ color: #fff;
+ background-color: #cc671b;
+ border-color: #cc671b;
+}
+.btn-warning:not(:disabled):not(.disabled).active, .btn-warning:not(:disabled):not(.disabled):active, .show > .btn-warning.dropdown-toggle {
+ color: #fff;
+ background-color: #bf6119;
+ border-color: #b25a17;
+}
+.btn-warning:not(:disabled):not(.disabled).active:focus, .btn-warning:not(:disabled):not(.disabled):active:focus, .show > .btn-warning.dropdown-toggle:focus {
+   box-shadow: 0 0 0 0.2rem #f37a1f7f;
+}
+
+</style><script>
+//<![CDATA[
+(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+                                             new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+ 'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+ })(window,document,'script','dataLayer','GTM-MZ2K628');
+//]]>
+</script></head><body><script src="/js/jquery-3.4.1.min.js"></script><script async="" src="/js/moment.min.js"></script><noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-MZ2K628" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript><style>
+.navbar:before{
+ background: #343a40;
+ content: '';
+ width: 100%;
+ height: 100%;
+ top: 0;
+ left: 0;
+ position: absolute;
+ z-index: -1;
+ opacity: 0;
+ transition: opacity 1s ease 0s;
+}
+.navbar.solid:before {
+ opacity: 1;
+}
 </style><script>
 //<![CDATA[
 $(document).ready(function() {
         // Transition effect for navbar
         $(window).scroll(function() {
+          var navContent = document.getElementById('navbarSupportedContent');
           // checks if window is scrolled more than 5% of screen width, adds/removes solid class
-          if($(this).scrollTop() > (.05 * window.innerHeight)) {
+          if($(this).scrollTop() > (.05 * window.innerHeight) ||
+              navContent.classList.contains("show")) {
               $('.navbar').addClass('solid');
           } else {
               $('.navbar').removeClass('solid');
@@ -17,24 +718,163 @@ $(document).ready(function() {
         });
 });
 //]]>
-</script><nav class="navbar fixed-top navbar-dark navbar-expand-md bg-transparent"><a class="navbar-brand" href="/metacoders-dot-org/index.html" style="color:white;">MetaCoders</a><button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button><div class="collapse navbar-collapse" id="navbarSupportedContent"><ul class="navbar-nav ml-auto"><li class="nav-item"><a class="nav-link mr-3 text-white" href="/metacoders-dot-org/learn-more.html">Learn More</a></li><li class="nav-item"><a class="nav-link mr-3 text-white" href="/metacoders-dot-org/city-search.html">Locations</a></li><li class="nav-item"><a class="nav-link mr-3 text-white" href="/metacoders-dot-org/join-our-team.html">Join Our Team</a></li><li class="nav-item"><a class="nav-link mr-3 text-white" href="/metacoders-dot-org/donate.html">Donate</a></li></ul></div></nav><div id="main"><style>
-.card:hover {background-color:#007bff;color:white !important;}
-</style><div class="jumbotron d-flex align-items-center mb-0 text-center" style="background-image:url(/metacoders-dot-org/img/world-map.jpg);background-position:center;background-size:cover;height:60%;" class="d-flex align-items-center mb-0 text-center"><div class="container"><div style="display:inline-block;padding:15.0px;color:white;background:rgba(0, 0, 0, 0.5);"><h1>Cities That Went Meta</h1><h6>MetaCoders is expanding rapidly throughout the world.
-</h6></div></div></div><div class="jumbotron mb-0 text-center" class="mb-0 text-center" style="background:white;"><div class="container"><h2>MetaCoders is excited to bring coding education to:</h2><br /><div class="row"><div class="col-lg-4 col-sm-6 col-xs-12 my-3"><a href="/metacoders-dot-org/cities/chula-vista/index.html" style="text-decoration:none;"><div class="card border-primary text-primary" id="chula-vista-ca" class="border-primary text-primary" style="height:18rem;"><style>
-#chula-vista-ca.card:before {content:' ';height:100%;background-image:url(https://upload.wikimedia.org/wikipedia/commons/e/e5/Chula_Vista%2C_CA%2C_USA_-_panoramio_%288%29.jpg);background-position:center;background-size:cover;filter:grayscale(100%);border-top-left-radius:calc(.25rem - 1px);border-top-right-radius:calc(.25rem - 1px);}#chula-vista-ca.card:hover:before {filter:none;-webkit-filter:grayscale(0%);}
-</style><div class="card-footer p-0 border-primary" class="p-0 border-primary"><h5 class="m-0 p-3">Chula Vista, CA</h5></div></div></a></div><div class="col-lg-4 col-sm-6 col-xs-12 my-3"><a href="/metacoders-dot-org/cities/dallas/index.html" style="text-decoration:none;"><div class="card border-primary text-primary" id="dallas-tx" class="border-primary text-primary" style="height:18rem;"><style>
-#dallas-tx.card:before {content:' ';height:100%;background-image:url(https://live.staticflickr.com/3937/33074076002_b2f829bc2d_k.jpg);background-position:center;background-size:cover;filter:grayscale(100%);border-top-left-radius:calc(.25rem - 1px);border-top-right-radius:calc(.25rem - 1px);}#dallas-tx.card:hover:before {filter:none;-webkit-filter:grayscale(0%);}
-</style><div class="card-footer p-0 border-primary" class="p-0 border-primary"><h5 class="m-0 p-3">Dallas, TX</h5></div></div></a></div><div class="col-lg-4 col-sm-6 col-xs-12 my-3"><a href="/metacoders-dot-org/cities/minneapolis/index.html" style="text-decoration:none;"><div class="card border-primary text-primary" id="minneapolis-mn" class="border-primary text-primary" style="height:18rem;"><style>
-#minneapolis-mn.card:before {content:' ';height:100%;background-image:url(https://upload.wikimedia.org/wikipedia/commons/f/f6/Minneapolis-skyline-20070508.jpg);background-position:center;background-size:cover;filter:grayscale(100%);border-top-left-radius:calc(.25rem - 1px);border-top-right-radius:calc(.25rem - 1px);}#minneapolis-mn.card:hover:before {filter:none;-webkit-filter:grayscale(0%);}
-</style><div class="card-footer p-0 border-primary" class="p-0 border-primary"><h5 class="m-0 p-3">Minneapolis, MN</h5></div></div></a></div><div class="col-lg-4 col-sm-6 col-xs-12 my-3"><a href="/metacoders-dot-org/cities/poway/index.html" style="text-decoration:none;"><div class="card border-primary text-primary" id="poway-ca" class="border-primary text-primary" style="height:18rem;"><style>
-#poway-ca.card:before {content:' ';height:100%;background-image:url(https://upload.wikimedia.org/wikipedia/commons/e/e6/LakePowayByPhilKonstantin.JPG);background-position:center;background-size:cover;filter:grayscale(100%);border-top-left-radius:calc(.25rem - 1px);border-top-right-radius:calc(.25rem - 1px);}#poway-ca.card:hover:before {filter:none;-webkit-filter:grayscale(0%);}
-</style><div class="card-footer p-0 border-primary" class="p-0 border-primary"><h5 class="m-0 p-3">Poway, CA</h5></div></div></a></div><div class="col-lg-4 col-sm-6 col-xs-12 my-3"><a href="/metacoders-dot-org/cities/reno/index.html" style="text-decoration:none;"><div class="card border-primary text-primary" id="reno-nv" class="border-primary text-primary" style="height:18rem;"><style>
-#reno-nv.card:before {content:' ';height:100%;background-image:url(https://live.staticflickr.com/2916/14377709314_0ccfdd06cf_k.jpg);background-position:center;background-size:cover;filter:grayscale(100%);border-top-left-radius:calc(.25rem - 1px);border-top-right-radius:calc(.25rem - 1px);}#reno-nv.card:hover:before {filter:none;-webkit-filter:grayscale(0%);}
-</style><div class="card-footer p-0 border-primary" class="p-0 border-primary"><h5 class="m-0 p-3">Reno, NV</h5></div></div></a></div><div class="col-lg-4 col-sm-6 col-xs-12 my-3"><a href="/metacoders-dot-org/cities/temecula/index.html" style="text-decoration:none;"><div class="card border-primary text-primary" id="temecula-ca" class="border-primary text-primary" style="height:18rem;"><style>
-#temecula-ca.card:before {content:' ';height:100%;background-image:url(https://images.pexels.com/photos/582938/pexels-photo-582938.jpeg);background-position:center;background-size:cover;filter:grayscale(100%);border-top-left-radius:calc(.25rem - 1px);border-top-right-radius:calc(.25rem - 1px);}#temecula-ca.card:hover:before {filter:none;-webkit-filter:grayscale(0%);}
-</style><div class="card-footer p-0 border-primary" class="p-0 border-primary"><h5 class="m-0 p-3">Temecula, CA</h5></div></div></a></div><div class="col-lg-4 col-sm-6 col-xs-12 my-3"><a href="/metacoders-dot-org/cities/dc/index.html" style="text-decoration:none;"><div class="card border-primary text-primary" id="washington-dc" class="border-primary text-primary" style="height:18rem;"><style>
-#washington-dc.card:before {content:' ';height:100%;background-image:url(https://secularstudents.org/wp-content/uploads/2019/09/US-Capitol.jpeg);background-position:center;background-size:cover;filter:grayscale(100%);border-top-left-radius:calc(.25rem - 1px);border-top-right-radius:calc(.25rem - 1px);}#washington-dc.card:hover:before {filter:none;-webkit-filter:grayscale(0%);}
-</style><div class="card-footer p-0 border-primary" class="p-0 border-primary"><h5 class="m-0 p-3">Washington, D.C.</h5></div></div></a></div></div></div></div><div class="jumbotron mb-0 text-center" class="mb-0 text-center"><div class="container"><h2>If you don't see your city listed, you can still go meta.</h2><br /><p>MetaCoders would love to come to your community and can do it with your help.</p><br /><a href="/metacoders-dot-org/partners.html"><button type="button" class="btn btn-primary">Learn More</button></a></div></div></div><style>
+</script><nav class="navbar fixed-top navbar-dark navbar-expand-md bg-transparent"><a class="navbar-brand" href="/index.html" style="color:white;"><img src="/img/logo7-wide.svg" height="40" alt="MetaCoders" /></a><button id="navbarToggler" onclick="toggleNavbarSolid();" class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span><script>
+//<![CDATA[
+function toggleNavbarSolid() {
+ var navContent = document.getElementById('navbarSupportedContent');
+ if($(this).scrollTop() <= (.05 * window.innerHeight) &&
+    navContent.classList.contains("show")) {
+    $('.navbar').removeClass('solid');
+  } else {
+    $('.navbar').addClass('solid');
+ }
+ }
+//]]>
+</script></button><div class="collapse navbar-collapse" id="navbarSupportedContent"><ul class="navbar-nav ml-auto"><li class="nav-item"><a class="nav-link mr-3 text-white" href="/about-us.html">About Us</a></li><li class="nav-item"><a class="nav-link mr-3 text-white" href="/coding-club.html">Virtual Coding Club</a></li><li class="nav-item"><a class="nav-link mr-3 text-white" href="/coding-for-pods.html">Coding for Pods</a></li><li class="nav-item"><a class="nav-link mr-3 text-white" href="/tech-ed.html">Lifelong Learners</a></li><li class="nav-item"><a class="nav-link mr-3 text-white" href="/join-our-team.html">Join Our Team</a></li><li class="nav-item"><a class="nav-link mr-3 text-white" href="/donate.html">Donate</a></li><li class="nav-item"><a class="nav-link mr-3 text-white" href="/index.html"><button type="button" class="btn btn-primary">Out of Business</button></a></li></ul></div></nav><div id="main" style="min-height:80vh;"><script async="" src="/js/p5.min.js"></script><style>
+.card:hover {background-color:#1581c2;color:white !important;}
+</style><div class="jumbotron d-flex align-items-center" id="main-banner" style="text-align:center;margin-bottom:0.0px;background-position:center;background-size:cover;height:60vh;position:relative;" class="d-flex align-items-center" role="img" aria-label="A map of the world with pins densely covering North America and hand pointing"><style type="text/css">
+.no-webp #main-banner{
+ background-image: url('/img/locations/metacoders-camps-classes-across-us-world.jpg') !important;
+}
+.webp #main-banner{
+ background-image: url('/img/locations/metacoders-camps-classes-across-us-world.webp') !important;
+}
+</style><div class="overlay" style="background-color:rgba(0, 0, 0, 0.6);width:100%;position:absolute;top:0.0px;left:0.0px;bottom:0.0px;right:0.0px;float:left;"></div><div class="container"><div style="display:inline-block;color:white;position:relative;z-index:10;"><h1>Cities That Went Meta</h1><h6>MetaCoders is expanding rapidly throughout the world.</h6></div></div></div><div class="jumbotron mb-0 text-center" class="mb-0 text-center" style="background:white;"><div class="container"><h2>MetaCoders is excited to bring coding education to:</h2><br /><div class="row"><div class="col-12 col-md-6 col-lg-4 my-3 px-3"><a href="/cities/charlotte/index.html" style="text-decoration:none;"><div class="card border-primary text-primary" id="charlotte-nc" class="border-primary text-primary" style="height:18rem;" role="img" aria-label="City of Charlotte, North Carolina with green trees and blue sky"><style>
+.no-webp #charlotte-nc.card:before {content:' ';height:100%;background-image:url(/img/locations/banners/city-charlotte-nc.jpg);background-position:center;background-size:cover;filter:grayscale(100%);border-top-left-radius:calc(.25rem - 1px);border-top-right-radius:calc(.25rem - 1px);}.webp #charlotte-nc.card:before {content:' ';height:100%;background-image:url(/img/locations/banners/city-charlotte-nc.webp);background-position:center;background-size:cover;filter:grayscale(100%);border-top-left-radius:calc(.25rem - 1px);border-top-right-radius:calc(.25rem - 1px);}#charlotte-nc.card:hover:before {filter:none;-webkit-filter:grayscale(0%);}
+</style><div class="card-footer p-0 border-primary" class="p-0 border-primary"><h5 class="m-0 p-3">Charlotte, NC</h5></div></div></a></div><div class="col-12 col-md-6 col-lg-4 my-3 px-3"><a href="/cities/chula-vista/index.html" style="text-decoration:none;"><div class="card border-primary text-primary" id="chula-vista-ca" class="border-primary text-primary" style="height:18rem;" role="img" aria-label="City of Chula Vista, California with mountains and colorful signs"><style>
+.no-webp #chula-vista-ca.card:before {content:' ';height:100%;background-image:url(https://upload.wikimedia.org/wikipedia/commons/e/e5/Chula_Vista%2C_CA%2C_USA_-_panoramio_%288%29.jpg);background-position:center;background-size:cover;filter:grayscale(100%);border-top-left-radius:calc(.25rem - 1px);border-top-right-radius:calc(.25rem - 1px);}.webp #chula-vista-ca.card:before {content:' ';height:100%;background-image:url(https://upload.wikimedia.org/wikipedia/commons/e/e5/Chula_Vista%2C_CA%2C_USA_-_panoramio_%288%29.webp);background-position:center;background-size:cover;filter:grayscale(100%);border-top-left-radius:calc(.25rem - 1px);border-top-right-radius:calc(.25rem - 1px);}#chula-vista-ca.card:hover:before {filter:none;-webkit-filter:grayscale(0%);}
+</style><div class="card-footer p-0 border-primary" class="p-0 border-primary"><h5 class="m-0 p-3">Chula Vista, CA</h5></div></div></a></div><div class="col-12 col-md-6 col-lg-4 my-3 px-3"><a href="/cities/dallas/index.html" style="text-decoration:none;"><div class="card border-primary text-primary" id="dallas-tx" class="border-primary text-primary" style="height:18rem;" role="img" aria-label="City of Dallas, Texas with a view of downtown on a cloudy day"><style>
+.no-webp #dallas-tx.card:before {content:' ';height:100%;background-image:url(/img/locations/banners/city-dallas-tx.jpg);background-position:center;background-size:cover;filter:grayscale(100%);border-top-left-radius:calc(.25rem - 1px);border-top-right-radius:calc(.25rem - 1px);}.webp #dallas-tx.card:before {content:' ';height:100%;background-image:url(/img/locations/banners/city-dallas-tx.webp);background-position:center;background-size:cover;filter:grayscale(100%);border-top-left-radius:calc(.25rem - 1px);border-top-right-radius:calc(.25rem - 1px);}#dallas-tx.card:hover:before {filter:none;-webkit-filter:grayscale(0%);}
+</style><div class="card-footer p-0 border-primary" class="p-0 border-primary"><h5 class="m-0 p-3">Dallas, TX</h5></div></div></a></div><div class="col-12 col-md-6 col-lg-4 my-3 px-3"><a href="/cities/minneapolis/index.html" style="text-decoration:none;"><div class="card border-primary text-primary" id="minneapolis-mn" class="border-primary text-primary" style="height:18rem;" role="img" aria-label="City of Minneapolis, Minnesota with a view of the downtown skyline and trees"><style>
+.no-webp #minneapolis-mn.card:before {content:' ';height:100%;background-image:url(https://upload.wikimedia.org/wikipedia/commons/f/f6/Minneapolis-skyline-20070508.jpg);background-position:center;background-size:cover;filter:grayscale(100%);border-top-left-radius:calc(.25rem - 1px);border-top-right-radius:calc(.25rem - 1px);}.webp #minneapolis-mn.card:before {content:' ';height:100%;background-image:url(https://upload.wikimedia.org/wikipedia/commons/f/f6/Minneapolis-skyline-20070508.webp);background-position:center;background-size:cover;filter:grayscale(100%);border-top-left-radius:calc(.25rem - 1px);border-top-right-radius:calc(.25rem - 1px);}#minneapolis-mn.card:hover:before {filter:none;-webkit-filter:grayscale(0%);}
+</style><div class="card-footer p-0 border-primary" class="p-0 border-primary"><h5 class="m-0 p-3">Minneapolis, MN</h5></div></div></a></div><div class="col-12 col-md-6 col-lg-4 my-3 px-3"><a href="/cities/new-orleans/index.html" style="text-decoration:none;"><div class="card border-primary text-primary" id="new-orleans-la" class="border-primary text-primary" style="height:18rem;" role="img" aria-label="City of New Orleans, Louisiana with busy streets and trolley"><style>
+.no-webp #new-orleans-la.card:before {content:' ';height:100%;background-image:url(/img/locations/banners/city-new-orleans-la.jpg);background-position:center;background-size:cover;filter:grayscale(100%);border-top-left-radius:calc(.25rem - 1px);border-top-right-radius:calc(.25rem - 1px);}.webp #new-orleans-la.card:before {content:' ';height:100%;background-image:url(/img/locations/banners/city-new-orleans-la.webp);background-position:center;background-size:cover;filter:grayscale(100%);border-top-left-radius:calc(.25rem - 1px);border-top-right-radius:calc(.25rem - 1px);}#new-orleans-la.card:hover:before {filter:none;-webkit-filter:grayscale(0%);}
+</style><div class="card-footer p-0 border-primary" class="p-0 border-primary"><h5 class="m-0 p-3">New Orleans, LA</h5></div></div></a></div><div class="col-12 col-md-6 col-lg-4 my-3 px-3"><a href="/cities/phoenix/index.html" style="text-decoration:none;"><div class="card border-primary text-primary" id="phoenix-az" class="border-primary text-primary" style="height:18rem;" role="img" aria-label="City of Phoenix, Arizona panorama view from afar with mountains"><style>
+.no-webp #phoenix-az.card:before {content:' ';height:100%;background-image:url(/img/locations/banners/city-phoenix-az.jpg);background-position:center;background-size:cover;filter:grayscale(100%);border-top-left-radius:calc(.25rem - 1px);border-top-right-radius:calc(.25rem - 1px);}.webp #phoenix-az.card:before {content:' ';height:100%;background-image:url(/img/locations/banners/city-phoenix-az.webp);background-position:center;background-size:cover;filter:grayscale(100%);border-top-left-radius:calc(.25rem - 1px);border-top-right-radius:calc(.25rem - 1px);}#phoenix-az.card:hover:before {filter:none;-webkit-filter:grayscale(0%);}
+</style><div class="card-footer p-0 border-primary" class="p-0 border-primary"><h5 class="m-0 p-3">Phoenix, AZ</h5></div></div></a></div><div class="col-12 col-md-6 col-lg-4 my-3 px-3"><a href="/cities/poway/index.html" style="text-decoration:none;"><div class="card border-primary text-primary" id="poway-ca" class="border-primary text-primary" style="height:18rem;" role="img" aria-label="City of Poway, California with a view of Lake Poway and natural preserve"><style>
+.no-webp #poway-ca.card:before {content:' ';height:100%;background-image:url(https://upload.wikimedia.org/wikipedia/commons/e/e6/LakePowayByPhilKonstantin.JPG);background-position:center;background-size:cover;filter:grayscale(100%);border-top-left-radius:calc(.25rem - 1px);border-top-right-radius:calc(.25rem - 1px);}.webp #poway-ca.card:before {content:' ';height:100%;background-image:url(https://upload.wikimedia.org/wikipedia/commons/e/e6/LakePowayByPhilKonstantin.JPG);background-position:center;background-size:cover;filter:grayscale(100%);border-top-left-radius:calc(.25rem - 1px);border-top-right-radius:calc(.25rem - 1px);}#poway-ca.card:hover:before {filter:none;-webkit-filter:grayscale(0%);}
+</style><div class="card-footer p-0 border-primary" class="p-0 border-primary"><h5 class="m-0 p-3">Poway, CA</h5></div></div></a></div><div class="col-12 col-md-6 col-lg-4 my-3 px-3"><a href="/cities/reno/index.html" style="text-decoration:none;"><div class="card border-primary text-primary" id="reno-nv" class="border-primary text-primary" style="height:18rem;" role="img" aria-label="City of Reno, Nevada with busy streets and welcome sign"><style>
+.no-webp #reno-nv.card:before {content:' ';height:100%;background-image:url(https://live.staticflickr.com/2916/14377709314_0ccfdd06cf_k.jpg);background-position:center;background-size:cover;filter:grayscale(100%);border-top-left-radius:calc(.25rem - 1px);border-top-right-radius:calc(.25rem - 1px);}.webp #reno-nv.card:before {content:' ';height:100%;background-image:url(https://live.staticflickr.com/2916/14377709314_0ccfdd06cf_k.webp);background-position:center;background-size:cover;filter:grayscale(100%);border-top-left-radius:calc(.25rem - 1px);border-top-right-radius:calc(.25rem - 1px);}#reno-nv.card:hover:before {filter:none;-webkit-filter:grayscale(0%);}
+</style><div class="card-footer p-0 border-primary" class="p-0 border-primary"><h5 class="m-0 p-3">Reno, NV</h5></div></div></a></div><div class="col-12 col-md-6 col-lg-4 my-3 px-3"><a href="/cities/temecula/index.html" style="text-decoration:none;"><div class="card border-primary text-primary" id="temecula-ca" class="border-primary text-primary" style="height:18rem;" role="img" aria-label="City of Temecula, California on a cloudy day with view of pond"><style>
+.no-webp #temecula-ca.card:before {content:' ';height:100%;background-image:url(https://images.pexels.com/photos/582938/pexels-photo-582938.jpeg);background-position:center;background-size:cover;filter:grayscale(100%);border-top-left-radius:calc(.25rem - 1px);border-top-right-radius:calc(.25rem - 1px);}.webp #temecula-ca.card:before {content:' ';height:100%;background-image:url(https://images.pexels.com/photos/582938/pexels-photo-582938.jpeg);background-position:center;background-size:cover;filter:grayscale(100%);border-top-left-radius:calc(.25rem - 1px);border-top-right-radius:calc(.25rem - 1px);}#temecula-ca.card:hover:before {filter:none;-webkit-filter:grayscale(0%);}
+</style><div class="card-footer p-0 border-primary" class="p-0 border-primary"><h5 class="m-0 p-3">Temecula, CA</h5></div></div></a></div><div class="col-12 col-md-6 col-lg-4 my-3 px-3"><a href="/cities/dc/index.html" style="text-decoration:none;"><div class="card border-primary text-primary" id="washington-dc" class="border-primary text-primary" style="height:18rem;" role="img" aria-label="City of Washington, D.C. with view of capital and cherry blossom trees"><style>
+.no-webp #washington-dc.card:before {content:' ';height:100%;background-image:url(/img/locations/banners/city-washington-dc.jpg);background-position:center;background-size:cover;filter:grayscale(100%);border-top-left-radius:calc(.25rem - 1px);border-top-right-radius:calc(.25rem - 1px);}.webp #washington-dc.card:before {content:' ';height:100%;background-image:url(/img/locations/banners/city-washington-dc.webp);background-position:center;background-size:cover;filter:grayscale(100%);border-top-left-radius:calc(.25rem - 1px);border-top-right-radius:calc(.25rem - 1px);}#washington-dc.card:hover:before {filter:none;-webkit-filter:grayscale(0%);}
+</style><div class="card-footer p-0 border-primary" class="p-0 border-primary"><h5 class="m-0 p-3">Washington, D.C.</h5></div></div></a></div></div></div></div><div id="ns689_main" id="learn-more-card" class="card px-3 py-5 bg-transparent mb-0 text-center" style="overflow:hidden;" data-ns="ns689"><div class="container"><h2>If you don't see your city listed, you can still go meta.</h2><br /><p>MetaCoders would love to come to your community and can do it with your help.</p><br /><a href="/partners.html"><button type="button" class="btn btn-primary">Learn More</button></a></div><style>
+#ns689_canvas {
+ position:absolute;
+ top:0;
+ left:0;
+ width:100%;
+ height:100%;
+ z-index:-1;
+}
+</style></div><script>
+//<![CDATA[
+var ns689_isMobile = {
+            Android: function () {
+                return navigator.userAgent.match(/Android/i);
+            },
+            BlackBerry: function () {
+                return navigator.userAgent.match(/BlackBerry/i);
+            },
+            iOS: function () {
+                return navigator.userAgent.match(/iPhone|iPad|iPod/i);
+            },
+            Opera: function () {
+                return navigator.userAgent.match(/Opera Mini/i);
+            },
+            Windows: function () {
+                return navigator.userAgent.match(/IEMobile/i);
+            },
+            any: function () {
+                return (ns689_isMobile.Android() || ns689_isMobile.BlackBerry() || ns689_isMobile.iOS() || ns689_isMobile.Opera() || ns689_isMobile.Windows());
+            }
+        };
+var ns689_sketch = function(p){
+  let theta;
+
+  p.setup = function() {
+   var parent = document.getElementById("ns689_main");
+   var canvas = p.createCanvas(parent.offsetWidth, parent.offsetHeight);
+
+   canvas.id('ns689_canvas');
+   canvas.style('display','block');
+   canvas.parent("ns689_main");
+  }
+
+  p.draw = function() {
+    p.background('#6c757d');
+    p.frameRate(30);
+    //p.strokeWeight(2);
+    p.strokeCap(p.SQUARE);
+    p.stroke('#f37a1f80');
+    // Let's pick an angle 0 to 90 degrees based on the mouse position
+    let a = (p.mouseX / p.width) * 90;
+    // Convert it to radians
+    theta = p.radians(a);
+    // Start the tree from the bottom of the screen
+    p.translate(100,p.height);
+    // Draw a line 120 pixels
+    p.line(0,0,0,-120);
+    // Move to the end of that line
+    p.translate(0,-120);
+    // Start the recursive branching!
+    branch(140);
+
+    //p.strokeWeight(2);
+    p.stroke('#1581c280');
+    p.translate(100,120);
+    p.line(0,0,0,-60);
+    p.translate(0,-60);
+    branch(100);
+
+  }
+
+  function branch(h) {
+    // Each branch will be 2/3rds the size of the previous one
+    h *= 0.66;
+
+    // All recursive functions must have an exit condition!!!!
+    // Here, ours is when the length of the branch is 2 pixels or less
+    if (h > 2) {
+      p.push();    // Save the current state of transformation (i.e. where are we now)
+      p.rotate(theta);   // Rotate by theta
+      p.line(0, 0, 0, -h);  // Draw the branch
+      p.translate(0, -h); // Move to the end of the branch
+      branch(h);       // Ok, now call myself to draw two new branches!!
+      p.pop();     // Whenever we get back here, we "pop" in order to restore the previous matrix state
+
+      // Repeat the same thing, only branch off to the "left" this time!
+      p.push();
+      p.rotate(-theta);
+      p.line(0, 0, 0, -h);
+      p.translate(0, -h);
+      branch(h);
+      p.pop();
+    }
+  }
+
+  p.windowResized = function() {
+   var parent = document.getElementById("ns689_main");
+
+   //p.resizeCanvas(p.windowWidth, p.windowHeight);
+   p.resizeCanvas(parent.offsetWidth, parent.offsetHeight);
+
+   };
+};
+
+window.onload = function(){
+ if (ns689_isMobile.any()){
+  var parent = document.getElementById("ns689_main");
+  parent.classList.remove('bg-transparent');
+  parent.style.backgroundColor = '#6c757d';
+ }
+ else {
+  var myp5 = new p5(ns689_sketch,'ns689_canvas');
+ }
+}
+//]]>
+</script></div><style>
 .fab {
   padding: 5px;
   font-size: 30px;
@@ -46,10 +886,10 @@ $(document).ready(function() {
 .fab:hover {
   opacity: 0.7;
 }
-</style><footer class="pt-4 bg-dark" style="margin-top:20vh;"><div class="container"><div class="row"><div class="col-3 text-white" class="text-white"><h6>Company</h6><ul class="list-unstyled"><li><a href="/metacoders-dot-org/learn-more.html"><small>Learn More</small></a></li><li><a href="/metacoders-dot-org/join-our-team.html"><small>Join Our Team</small></a></li><li><a href="/metacoders-dot-org/donate.html"><small>Donate</small></a></li><li><a href="/metacoders-dot-org/terms-and-conditions.html"><small>Terms &amp; Conditions</small></a></li></ul></div><div class="col-3 text-white" class="text-white"><h6>Programs</h6><ul class="list-unstyled"><li><a href="/metacoders-dot-org/city-search.html"><small>Find a Location</small></a></li><li><a href="/metacoders-dot-org/partners.html"><small>Start a New Location</small></a></li></ul><h6>Contact Us</h6><ul class="list-unstyled"><li><small>(858) 869-9430</small></li><li><a href="mailto: contact@metacoders.org"><small>contact@metacoders.org</small></a></li><li><small>Monday - Friday, 9am-5pm PT</small></li></ul></div><div class="col-3 text-white" class="text-white"><h6>Follow Us</h6><ul class="list-unstyled"><li><div class="row"><div class="col-12"><a href="https://www.facebook.com/thoughtstem" style="padding-left:0px;" class="fab fa-facebook-square fa-2x"></a><a href="https://www.twitter.com/thoughtstem" class="fab fa-twitter-square fa-2x"></a><a href="https://www.linkedin.com/company/thoughtstem" class="fab fa-linkedin fa-2x"></a><a href="https://www.instagram.com/thoughtstem" class="fab fa-instagram fa-2x"></a></div></div></li><li><br /></li><li><small>MetaCoders, Inc. Copyright 2020</small></li><li><small>All Rights Reserved</small></li><li><br /></li><li><small>MetaCoders, Inc. is a non-profit registered in the state of California.</small></li><li><small>Tax ID: 84-3633066</small></li></ul></div></div></div></footer><script src="/metacoders-dot-org/js/bootstrap.bundle.min.js"></script><script>
+</style><footer class="px-3 pt-4 bg-dark"><div class="container"><div class="row justify-content-center" class="justify-content-center"><div class="col-md-3 text-white" class="text-white"><h6>Company</h6><ul class="list-unstyled"><li><a href="/about-us.html"><small>About Us</small></a></li><li><a href="/join-our-team.html"><small>Join Our Team</small></a></li><li><a href="/donate.html"><small>Donate</small></a></li><li><a href="/terms-and-conditions.html"><small>Terms &amp; Conditions</small></a></li></ul></div><div class="col-md-4 text-white" class="text-white"><h6>Programs</h6><ul class="list-unstyled"><li><a href="/coding-club.html"><small>Virtual Coding Club</small></a></li><li><a href="/coding-for-pods.html"><small>Coding for Pods</small></a></li><li><a href="/tech-ed.html"><small>Tech Ed for Lifelong Learners</small></a></li></ul><h6>Contact Us</h6><ul class="list-unstyled"><li><a href="mailto: contact@metacoders.org"><small>contact@metacoders.org</small></a></li><li><small>Monday - Friday, 9am-5pm PT</small></li></ul></div><div class="col-md-4 text-white" class="text-white"><h6>Follow Us</h6><ul class="list-unstyled"><li><div class="row"><div class="col-12"><a href="https://www.facebook.com/metacoders.org/" style="padding-left:0px;" class="fab fa-facebook-square fa-2x"></a><a href="https://twitter.com/metacoders" class="fab fa-twitter-square fa-2x"></a><a href="https://www.linkedin.com/company/34648496" class="fab fa-linkedin fa-2x"></a><a href="https://www.instagram.com/metacoders/" class="fab fa-instagram fa-2x"></a></div></div></li><li><br /></li><li><small>MetaCoders, Inc. Copyright 2020</small></li><li><small>All Rights Reserved</small></li><li><br /></li><li><small>MetaCoders, Inc. is a 501(c)(3) non-profit registered in the state of California.</small></li><li><small>Tax ID: 84-3633066</small></li></ul></div></div></div></footer><script src="/js/bootstrap.bundle.min.js"></script><script>
 //<![CDATA[
 $(function () {
   $('[data-toggle="tooltip"]').tooltip()
 })
 //]]>
-</script><script src="/metacoders-dot-org/js/font-awesome.js"></script></body></html>
+</script></body></html>
